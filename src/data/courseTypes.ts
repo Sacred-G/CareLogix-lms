@@ -33,4 +33,17 @@ export interface Course {
   thumbnail: string;
   duration: string;
   modules: Module[];
+  certificateAvailable?: boolean;
+}
+
+export interface Certificate {
+  id: string;
+  userId: string;
+  userName: string;
+  courseId: string;
+  courseTitle: string;
+  issueDate: string;
+  completionDate: string;
+  validUntil?: string;
+  certificateNumber: string;
 }

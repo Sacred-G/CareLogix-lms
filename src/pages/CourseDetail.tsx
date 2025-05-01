@@ -13,6 +13,7 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Progress } from '@/components/ui/progress';
+import CompletedCourseActions from '@/components/courses/CompletedCourseActions';
 
 const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -159,6 +160,7 @@ const CourseDetail = () => {
   
   const activeModule = course.modules[activeModuleIndex];
   const isEnrolled = !!enrollment;
+  const isCompleted = enrollment?.completed || false;
   const courseProgress = enrollment?.progress || 0;
   
   return (
@@ -224,6 +226,16 @@ const CourseDetail = () => {
         {/* Course Content */}
         <section className="py-8">
           <div className="container px-4">
+            {/* Certificate Action for Completed Courses */}
+            {isEnrolled && isCompleted && (
+              <div className="mb-6">
+                <CompletedCourseActions 
+                  course={course} 
+                  isCompleted={isCompleted} 
+                />
+              </div>
+            )}
+          
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
               <TabsList>
                 <TabsTrigger value="content">Course Content</TabsTrigger>
