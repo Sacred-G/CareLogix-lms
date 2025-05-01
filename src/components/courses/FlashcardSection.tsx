@@ -59,32 +59,41 @@ export default function FlashcardSection({ title, flashcards }: FlashcardSection
         </div>
       </div>
 
-      <Card 
-        className={`relative h-64 cursor-pointer perspective-1000 transition-transform duration-300 ${
-          flipped ? 'rotate-y-180' : ''
-        }`}
-        onClick={toggleFlip}
-      >
-        <div className="absolute inset-0 backface-hidden">
-          <CardContent className="flex items-center justify-center h-full">
-            <div className="text-center">
-              <div className="text-sm text-muted-foreground mb-2">Term</div>
-              <div className="text-xl font-medium">{flashcards[currentCard].term}</div>
-              <div className="mt-4 text-sm text-muted-foreground">Click to flip</div>
-            </div>
-          </CardContent>
-        </div>
+      <div className="perspective-1000">
+        <div 
+          className={`relative h-64 cursor-pointer transition-transform duration-300 ${
+            flipped ? 'rotate-y-180' : ''
+          }`}
+          onClick={toggleFlip}
+          style={{ transformStyle: 'preserve-3d' }}
+        >
+          <Card className="absolute inset-0" style={{ backfaceVisibility: 'hidden' }}>
+            <CardContent className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <div className="text-sm text-muted-foreground mb-2">Term</div>
+                <div className="text-xl font-medium">{flashcards[currentCard].term}</div>
+                <div className="mt-4 text-sm text-muted-foreground">Click to flip</div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <div className="absolute inset-0 backface-hidden rotate-y-180">
-          <CardContent className="flex items-center justify-center h-full bg-muted rounded-lg">
-            <div className="text-center">
-              <div className="text-sm text-muted-foreground mb-2">Definition</div>
-              <div className="text-lg">{flashcards[currentCard].definition}</div>
-              <div className="mt-4 text-sm text-muted-foreground">Click to flip back</div>
-            </div>
-          </CardContent>
+          <Card 
+            className="absolute inset-0 bg-muted" 
+            style={{ 
+              backfaceVisibility: 'hidden',
+              transform: 'rotateY(180deg)'
+            }}
+          >
+            <CardContent className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <div className="text-sm text-muted-foreground mb-2">Definition</div>
+                <div className="text-lg">{flashcards[currentCard].definition}</div>
+                <div className="mt-4 text-sm text-muted-foreground">Click to flip back</div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-      </Card>
+      </div>
 
       <div className="flex justify-between pt-2">
         <Button variant="outline" onClick={handlePrevious}>
@@ -95,12 +104,9 @@ export default function FlashcardSection({ title, flashcards }: FlashcardSection
         </Button>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .perspective-1000 {
           perspective: 1000px;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
         }
         .rotate-y-180 {
           transform: rotateY(180deg);
