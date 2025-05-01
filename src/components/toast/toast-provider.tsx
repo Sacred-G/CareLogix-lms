@@ -1,7 +1,15 @@
 
 import * as React from "react";
 import { ToastContext, toast } from "@/hooks/use-toast";
-import { ToasterToast } from "@/components/ui/toast";
+import { ToastProps } from "@/components/ui/toast";
+
+// Define the ToasterToast type since it's not exported from toast.tsx
+interface ToasterToast extends ToastProps {
+  id: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  action?: React.ReactElement;
+}
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = React.useState<{ toasts: ToasterToast[] }>({ toasts: [] });
