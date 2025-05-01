@@ -21,48 +21,48 @@ export default function AdminStats({
 }: AdminStatsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <Card>
+      <Card className="bg-slate-800 text-slate-100 border-slate-700 shadow-md">
         <CardHeader className="pb-2">
           <CardTitle className="text-xl flex items-center gap-2">
-            <UserIcon className="h-5 w-5" />
+            <UserIcon className="h-5 w-5 text-lms-teal-400" />
             <span>Total Students</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           {loadingProfiles ? (
-            <Skeleton className="h-8 w-20" />
+            <Skeleton className="h-8 w-20 bg-slate-700" />
           ) : (
             <div className="text-3xl font-bold">{totalStudents}</div>
           )}
         </CardContent>
       </Card>
       
-      <Card>
+      <Card className="bg-slate-800 text-slate-100 border-slate-700 shadow-md">
         <CardHeader className="pb-2">
           <CardTitle className="text-xl flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="h-5 w-5 text-lms-teal-400" />
             <span>Active Enrollments</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           {loadingEnrollments ? (
-            <Skeleton className="h-8 w-20" />
+            <Skeleton className="h-8 w-20 bg-slate-700" />
           ) : (
             <div className="text-3xl font-bold">{totalEnrollments}</div>
           )}
         </CardContent>
       </Card>
       
-      <Card>
+      <Card className="bg-slate-800 text-slate-100 border-slate-700 shadow-md">
         <CardHeader className="pb-2">
           <CardTitle className="text-xl flex items-center gap-2">
-            <Award className="h-5 w-5" />
+            <Award className="h-5 w-5 text-lms-teal-400" />
             <span>Course Completions</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           {loadingEnrollments ? (
-            <Skeleton className="h-8 w-20" />
+            <Skeleton className="h-8 w-20 bg-slate-700" />
           ) : (
             <div className="text-3xl font-bold">{totalCompletions}</div>
           )}
