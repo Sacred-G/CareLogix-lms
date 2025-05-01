@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
@@ -48,9 +47,7 @@ export default function AuthPage() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await signUp(signupEmail, signupPassword, {
-        full_name: signupName
-      });
+      await signUp(signupEmail, signupPassword, signupName);
       toast.success('Account created! Please check your email for verification.');
     } catch (error) {
       console.error('Signup error:', error);

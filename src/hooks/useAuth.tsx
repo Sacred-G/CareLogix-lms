@@ -1,15 +1,17 @@
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { User } from '@supabase/supabase-js';
+import { User, Session } from '@supabase/supabase-js';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 interface AuthContextType {
   user: User | null;
+  session: Session | null; // Added session property
   loading: boolean;
+  error: string | null; // Added error property
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, fullName: string) => Promise<void>;
+  signUp: (email: string, password: string, fullName: string) => Promise<void>; // Fixed signUp parameters
   signOut: () => Promise<void>;
   updateProfile: (data: { full_name?: string; avatar_url?: string }) => Promise<void>;
 }
@@ -24,7 +26,9 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +36,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       try {
         const { data } = await supabase.auth.getSession();
         setUser(data.session?.user || null);
+        setSession(data.session);
       } catch (error) {
         console.error('Error getting session:', error);
       } finally {
@@ -43,6 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user || null);
+      setSession(session);
       setLoading(false);
     });
 
@@ -53,9 +59,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = async (email: string, password: string) => {
     try {
+      setError(null); // Clear any previous errors
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       
       if (error) {
+        setError(error.message);
         throw error;
       }
 
@@ -64,12 +72,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         navigate('/dashboard');
       }
     } catch (error: any) {
+      setError(error.message || 'Error signing in');
       toast.error(error.message || 'Error signing in');
     }
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
     try {
+      setError(null); // Clear any previous errors
       const { data, error } = await supabase.auth.signUp({ 
         email, 
         password,
@@ -81,6 +91,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       if (error) {
+        setError(error.message);
         throw error;
       }
 
@@ -104,6 +115,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         navigate('/auth');
       }
     } catch (error: any) {
+      setError(error.message || 'Error creating account');
       toast.error(error.message || 'Error creating account');
     }
   };
@@ -158,7 +170,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const value = {
     user,
+    session,
     loading,
+    error,
     signIn,
     signUp,
     signOut,
