@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -77,14 +76,15 @@ export default function AdminDashboard() {
       }
       
       const stats = await Promise.all(courses.map(async (course) => {
-        const { data: enrollmentCount, error: countError } = await supabase
+        // Fix: Get the actual count from the response data
+        const { count: enrollmentCount, error: countError } = await supabase
           .from('enrollments')
-          .select('id', { count: 'exact' })
+          .select('id', { count: 'exact', head: true })
           .eq('course_id', course.id);
         
-        const { data: completedCount, error: completedError } = await supabase
+        const { count: completedCount, error: completedError } = await supabase
           .from('enrollments')
-          .select('id', { count: 'exact' })
+          .select('id', { count: 'exact', head: true })
           .eq('course_id', course.id)
           .eq('completed', true);
         
@@ -101,8 +101,8 @@ export default function AdminDashboard() {
         return {
           id: course.id,
           title: course.title,
-          totalEnrollments: enrollmentCount.count || 0,
-          completedEnrollments: completedCount.count || 0
+          totalEnrollments: enrollmentCount || 0,
+          completedEnrollments: completedCount || 0
         };
       }));
       
