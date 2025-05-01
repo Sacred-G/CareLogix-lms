@@ -10,12 +10,19 @@ interface MediaUploaderProps {
   fileType: 'video' | 'audio';
   onUploadComplete: (url: string) => void;
   currentUrl?: string;
+  onTranscriptGenerated?: (transcript: string) => void;
 }
 
-export default function MediaUploader({ fileType, onUploadComplete, currentUrl }: MediaUploaderProps) {
+export default function MediaUploader({ 
+  fileType, 
+  onUploadComplete, 
+  currentUrl,
+  onTranscriptGenerated 
+}: MediaUploaderProps) {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [previewUrl, setPreviewUrl] = useState<string | null>(currentUrl || null);
+  const [extractingTranscript, setExtractingTranscript] = useState(false);
   
   const acceptedTypes = {
     video: 'video/mp4,video/webm,video/quicktime',
@@ -49,35 +56,97 @@ export default function MediaUploader({ fileType, onUploadComplete, currentUrl }
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
       const filePath = `${fileType}/${fileName}`;
       
-      // Upload file to Supabase Storage
-      const { data, error } = await supabase.storage
-        .from('course_media')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: false,
-          onUploadProgress: (progress) => {
-            const percent = Math.round((progress.loaded / progress.total) * 100);
+      // Create a custom upload handler with progress tracking
+      const uploadWithProgress = async () => {
+        const xhr = new XMLHttpRequest();
+        
+        // Track upload progress
+        xhr.upload.addEventListener('progress', (event) => {
+          if (event.lengthComputable) {
+            const percent = Math.round((event.loaded / event.total) * 100);
             setProgress(percent);
           }
         });
+        
+        // Create a promise for the upload
+        return new Promise<{ path: string }>((resolve, reject) => {
+          xhr.onload = async () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve({ path: filePath });
+            } else {
+              reject(new Error(`Upload failed with status ${xhr.status}`));
+            }
+          };
+          
+          xhr.onerror = () => reject(new Error('Upload failed'));
+          
+          // Get the upload URL from Supabase
+          const { data: uploadData, error: uploadError } = await supabase.storage
+            .from('course_media')
+            .createSignedUploadUrl(filePath);
+            
+          if (uploadError) {
+            reject(uploadError);
+            return;
+          }
+          
+          // Perform the upload
+          xhr.open('PUT', uploadData.signedUrl);
+          xhr.send(file);
+        });
+      };
       
-      if (error) {
-        throw error;
-      }
+      // Perform the upload with progress tracking
+      const { path } = await uploadWithProgress();
       
       // Get public URL for the uploaded file
       const { data: { publicUrl } } = supabase.storage
         .from('course_media')
-        .getPublicUrl(data.path);
+        .getPublicUrl(path);
         
       setPreviewUrl(publicUrl);
       onUploadComplete(publicUrl);
       toast.success(`${fileType} uploaded successfully`);
+      
+      // If this is a video or audio file and we have a transcript handler, extract the transcript
+      if ((fileType === 'video' || fileType === 'audio') && onTranscriptGenerated) {
+        await extractTranscript(publicUrl);
+      }
     } catch (error: any) {
       console.error('Error uploading file:', error);
       toast.error(`Failed to upload ${fileType}: ${error.message}`);
     } finally {
       setUploading(false);
+    }
+  };
+  
+  const extractTranscript = async (fileUrl: string) => {
+    if (!onTranscriptGenerated) return;
+    
+    setExtractingTranscript(true);
+    toast.info('Extracting transcript from media file. This may take a moment...');
+    
+    try {
+      // Call the Supabase Edge Function to extract transcript
+      const { data, error } = await supabase.functions.invoke('extract-transcript', {
+        body: { mediaUrl: fileUrl, mediaType: fileType }
+      });
+      
+      if (error) {
+        throw error;
+      }
+      
+      if (data?.transcript) {
+        onTranscriptGenerated(data.transcript);
+        toast.success('Transcript extracted successfully');
+      } else {
+        toast.warning('No transcript could be extracted from this file');
+      }
+    } catch (error: any) {
+      console.error('Error extracting transcript:', error);
+      toast.error(`Failed to extract transcript: ${error.message}`);
+    } finally {
+      setExtractingTranscript(false);
     }
   };
   
@@ -172,6 +241,26 @@ export default function MediaUploader({ fileType, onUploadComplete, currentUrl }
               <X className="h-4 w-4 mr-1" /> Remove
             </Button>
           </div>
+        </div>
+      )}
+      
+      {previewUrl && onTranscriptGenerated && (
+        <div className="flex justify-end">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => extractTranscript(previewUrl)}
+            disabled={extractingTranscript}
+          >
+            {extractingTranscript ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Extracting Transcript...
+              </>
+            ) : (
+              'Extract Transcript'
+            )}
+          </Button>
         </div>
       )}
     </div>

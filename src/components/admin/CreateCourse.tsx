@@ -20,6 +20,7 @@ type CourseFormValues = {
   thumbnail: string;
   videoUrl?: string;
   audioUrl?: string;
+  transcript?: string;
 };
 
 export default function CreateCourse() {
@@ -34,6 +35,7 @@ export default function CreateCourse() {
       thumbnail: 'https://placehold.co/600x400/png',
       videoUrl: '',
       audioUrl: '',
+      transcript: '',
     },
   });
 
@@ -45,7 +47,8 @@ export default function CreateCourse() {
           title: values.title,
           description: values.description,
           thumbnail: values.thumbnail,
-          created_by: (await supabase.auth.getUser()).data.user?.id
+          created_by: (await supabase.auth.getUser()).data.user?.id,
+          transcript: values.transcript || null
         })
         .select();
 
@@ -99,7 +102,8 @@ export default function CreateCourse() {
                 lesson_id: lessonId,
                 title: 'Course Introduction Video',
                 type: 'video',
-                url: values.videoUrl
+                url: values.videoUrl,
+                transcript: values.transcript
               });
             }
             
@@ -108,7 +112,8 @@ export default function CreateCourse() {
                 lesson_id: lessonId,
                 title: 'Audio Introduction',
                 type: 'audio',
-                url: values.audioUrl
+                url: values.audioUrl,
+                transcript: values.transcript
               });
             }
             
@@ -183,6 +188,35 @@ export default function CreateCourse() {
     setActiveTab('basic');
   };
 
+  const handleTranscriptGenerated = (transcript: string) => {
+    // Update form with the transcript
+    form.setValue('transcript', transcript);
+    
+    // If AI is enabled, let's also use this transcript to generate course content
+    if (useAI) {
+      toast.info('Using transcript to generate course content...');
+      
+      // Call the Supabase Edge Function to generate content from transcript
+      supabase.functions.invoke('generate-course-content', {
+        body: {
+          title: form.getValues('title') || 'New Course',
+          moduleType: 'description',
+          transcript: transcript
+        }
+      }).then(({ data, error }) => {
+        if (error) {
+          toast.error(`Failed to generate content from transcript: ${error.message}`);
+          return;
+        }
+        
+        if (data?.content) {
+          handleContentGenerated(data.content);
+          toast.success('Generated course content from transcript');
+        }
+      });
+    }
+  };
+
   const onSubmit = (values: CourseFormValues) => {
     createCourseMutation.mutate(values);
   };
@@ -214,12 +248,14 @@ export default function CreateCourse() {
                     fileType="video" 
                     onUploadComplete={(url) => form.setValue('videoUrl', url)} 
                     currentUrl={form.watch('videoUrl')}
+                    onTranscriptGenerated={handleTranscriptGenerated}
                   />
                   
                   <MediaUploader 
                     fileType="audio" 
                     onUploadComplete={(url) => form.setValue('audioUrl', url)}
                     currentUrl={form.watch('audioUrl')}
+                    onTranscriptGenerated={handleTranscriptGenerated}
                   />
                 </div>
               </TabsContent>
@@ -238,8 +274,18 @@ export default function CreateCourse() {
                   {useAI && (
                     <AIContentGenerator 
                       courseTitle={form.watch('title')} 
-                      onContentGenerated={handleContentGenerated} 
+                      onContentGenerated={handleContentGenerated}
+                      transcript={form.watch('transcript')}
                     />
+                  )}
+
+                  {form.watch('transcript') && (
+                    <div className="mt-4 p-4 bg-muted rounded-lg">
+                      <h4 className="font-medium mb-2">Extracted Transcript</h4>
+                      <div className="max-h-60 overflow-y-auto text-sm">
+                        <p className="whitespace-pre-wrap">{form.watch('transcript')}</p>
+                      </div>
+                    </div>
                   )}
                 </div>
               </TabsContent>

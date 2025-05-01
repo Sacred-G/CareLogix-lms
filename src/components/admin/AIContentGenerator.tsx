@@ -9,9 +9,10 @@ import { Loader2, Brain } from 'lucide-react';
 interface AIContentGeneratorProps {
   courseTitle: string;
   onContentGenerated: (content: string) => void;
+  transcript?: string;
 }
 
-export default function AIContentGenerator({ courseTitle, onContentGenerated }: AIContentGeneratorProps) {
+export default function AIContentGenerator({ courseTitle, onContentGenerated, transcript }: AIContentGeneratorProps) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [contentType, setContentType] = useState<'description' | 'module' | 'quiz' | 'objectives' | 'assessment' | 'scenario' | 'transcript' | 'lesson_plan'>('description');
 
@@ -27,7 +28,8 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
       const { data, error } = await supabase.functions.invoke('generate-course-content', {
         body: {
           title: courseTitle,
-          moduleType: contentType
+          moduleType: contentType,
+          transcript: transcript // Pass transcript data if available
         }
       });
 
@@ -71,6 +73,11 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
         </div>
         <div className="ml-3 flex-grow">
           <h3 className="font-medium mb-2">AI Content Generation</h3>
+          {transcript && (
+            <p className="text-sm text-green-600 mb-2">
+              Transcript data is available and will enhance AI-generated content.
+            </p>
+          )}
           <p className="text-sm text-muted-foreground mb-3">
             Select the type of content you want to generate using OpenAI
           </p>

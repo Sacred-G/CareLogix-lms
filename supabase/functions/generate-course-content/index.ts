@@ -16,7 +16,7 @@ serve(async (req) => {
   }
 
   try {
-    const { title, moduleType } = await req.json();
+    const { title, moduleType, transcript } = await req.json();
 
     if (!openAIApiKey) {
       throw new Error('OpenAI API key is not configured');
@@ -36,6 +36,15 @@ Create content that supports learning through multiple modalities and incorporat
 
     // Create a prompt based on the course title and module type
     let userPrompt = `Generate educational content for a course titled "${title}" for Direct Support Professionals working with young adults with developmental disabilities.`;
+    
+    // If transcript is available, add it to the prompt
+    if (transcript) {
+      userPrompt += `\n\nUse the following transcript from course media to inform your content. Make sure your generated content aligns with and references key points from this transcript:\n\n${transcript.substring(0, 3000)}`;
+      
+      if (transcript.length > 3000) {
+        userPrompt += "\n(Transcript was truncated due to length)";
+      }
+    }
     
     if (moduleType === 'description') {
       userPrompt += ` Create a comprehensive course description that explains the purpose, learning objectives, and key topics covered in this course. Format it in a professional and engaging style with paragraphs and bullet points where appropriate.`;
@@ -71,7 +80,7 @@ Create content that supports learning through multiple modalities and incorporat
       }`;
     }
 
-    console.log(`Sending prompt to OpenAI: ${userPrompt}`);
+    console.log(`Sending prompt to OpenAI: ${userPrompt.substring(0, 100)}...`);
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
