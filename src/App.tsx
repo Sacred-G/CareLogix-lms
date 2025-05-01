@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
-import { ToastProvider } from "@/hooks/use-toast";
+import { ToastProvider } from "@/components/toast/toast-provider";
 import Index from "./pages/Index";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
@@ -22,10 +22,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <ToastProvider>
-        <Toaster />
-        <Sonner />
-        <AuthProvider>
-          <BrowserRouter>
+        <BrowserRouter>
+          <AuthProvider>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/courses" element={<Courses />} />
@@ -37,8 +35,10 @@ const App = () => (
               <Route path="/certificates/:certificateId" element={<CertificatePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </AuthProvider>
+          </AuthProvider>
+          <Toaster />
+          <Sonner />
+        </BrowserRouter>
       </ToastProvider>
     </TooltipProvider>
   </QueryClientProvider>

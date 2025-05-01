@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import { toast } from 'sonner';
+import { useToast } from '@/hooks/use-toast';
 import { 
   Dialog,
   DialogContent,
@@ -22,15 +22,23 @@ interface CertificateModalProps {
 
 const CertificateModal = ({ open, onOpenChange, certificate }: CertificateModalProps) => {
   const certificateRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
   const handlePrint = useReactToPrint({
     content: () => certificateRef.current,
     documentTitle: `${certificate.courseTitle} Certificate - ${certificate.userName}`,
     onAfterPrint: () => {
-      toast.success('Certificate downloaded successfully');
+      toast({
+        title: "Success",
+        description: "Certificate downloaded successfully"
+      });
     },
     onPrintError: () => {
-      toast.error('Failed to download certificate');
+      toast({
+        title: "Error",
+        description: "Failed to download certificate",
+        variant: "destructive"
+      });
     }
   });
 
@@ -44,7 +52,9 @@ const CertificateModal = ({ open, onOpenChange, certificate }: CertificateModalP
           url: window.location.href,
         });
       } else {
-        toast('Sharing is not supported on this device');
+        toast({
+          description: "Sharing is not supported on this device"
+        });
       }
     } catch (error) {
       console.error('Error sharing:', error);

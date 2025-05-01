@@ -168,37 +168,11 @@ function toast({ ...props }: Toast) {
 }
 
 // Create a React context to pass toast state
-const ToastContext = React.createContext<{
+export const ToastContext = React.createContext<{
   toasts: ToasterToast[];
   toast: typeof toast;
   dismiss: (toastId?: string) => void;
 } | undefined>(undefined);
-
-export function ToastProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = React.useState<State>(memoryState);
-
-  React.useEffect(() => {
-    listeners.push(setState);
-    return () => {
-      const index = listeners.indexOf(setState);
-      if (index > -1) {
-        listeners.splice(index, 1);
-      }
-    };
-  }, [state]);
-
-  const contextValue = React.useMemo(() => ({
-    toasts: state.toasts,
-    toast,
-    dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId })
-  }), [state.toasts]);
-
-  return (
-    <ToastContext.Provider value={contextValue}>
-      {children}
-    </ToastContext.Provider>
-  );
-}
 
 export function useToast() {
   const context = React.useContext(ToastContext);
