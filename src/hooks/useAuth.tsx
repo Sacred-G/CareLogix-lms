@@ -1,190 +1,190 @@
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Session, User } from '@supabase/supabase-js';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
-interface AuthContextType {
-  session: Session | null;
+type AuthContextType = {
   user: User | null;
-  loading: boolean;
+  userRole: string | null;
+  isLoading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, meta?: { full_name?: string }) => Promise<void>;
+  signUp: (email: string, password: string, fullName: string) => Promise<void>;
   signOut: () => Promise<void>;
-  error: string | null;
-}
+};
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Admin account hardcoded credentials
-const ADMIN_EMAIL = "steven@jfc-it.com";
-const ADMIN_NAME = "Steven Bouldin";
-
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // First set up auth listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, currentSession) => {
-        setSession(currentSession);
-        setUser(currentSession?.user ?? null);
-        setLoading(false);
+    const getUser = async () => {
+      try {
+        const { data } = await supabase.auth.getSession();
+        if (data && data.session) {
+          setUser(data.session.user);
+          fetchUserRole(data.session.user.id);
+        }
+      } catch (error) {
+        console.error('Error getting session:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getUser();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        if (session?.user) {
+          setUser(session.user);
+          fetchUserRole(session.user.id);
+        } else {
+          setUser(null);
+          setUserRole(null);
+        }
+        setIsLoading(false);
       }
     );
 
-    // Then check for existing session
-    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
-      setSession(currentSession);
-      setUser(currentSession?.user ?? null);
-      setLoading(false);
-    });
-
     return () => {
-      subscription.unsubscribe();
+      authListener.subscription.unsubscribe();
     };
   }, []);
 
-  const signIn = async (email: string, password: string) => {
+  const fetchUserRole = async (userId: string) => {
     try {
-      setError(null);
-      const { error, data } = await supabase.auth.signInWithPassword({ email, password });
-      
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', userId)
+        .single();
+
       if (error) {
-        // Special handling for admin account if email is not confirmed
-        if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase() && 
-            error.message.includes('not confirmed')) {
-          // Try to get the user and admin credentials
-          const { data: { users } } = await supabase.auth.admin.listUsers();
-          const adminUser = users?.find(u => u.email && u.email.toLowerCase() === email.toLowerCase());
-          
-          if (adminUser) {
-            // Update the admin user email to confirmed
-            const { error: updateError } = await supabase.auth.admin.updateUserById(
-              adminUser.id,
-              { email_confirm: true }
-            );
-            
-            if (!updateError) {
-              // Try signing in again
-              const { error: retryError } = await supabase.auth.signInWithPassword({ 
-                email, 
-                password 
-              });
-              
-              if (retryError) {
-                setError(retryError.message);
-              }
-            } else {
-              setError("Could not confirm admin email. Please check Supabase dashboard.");
-            }
-          } else {
-            setError("Admin account not found. Please sign up first.");
-          }
-        } else {
-          setError(error.message);
-        }
+        console.error('Error fetching user role:', error);
+        return;
       }
-    } catch (err) {
-      console.error('Error signing in:', err);
-      setError('An unexpected error occurred');
+
+      if (data) {
+        setUserRole(data.role);
+      }
+    } catch (error) {
+      console.error('Error in fetchUserRole:', error);
     }
   };
 
-  const signUp = async (email: string, password: string, meta?: { full_name?: string }) => {
+  const signIn = async (email: string, password: string) => {
+    setIsLoading(true);
     try {
-      setError(null);
-      
-      // Check if this is our hardcoded admin account
-      const isAdminSignup = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
-      const fullName = isAdminSignup ? ADMIN_NAME : meta?.full_name;
-      
-      // For admin account, we'll try to do a special handling
-      if (isAdminSignup) {
-        // Check if admin user already exists but is not verified
-        const { data: existingUser } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('email', email.toLowerCase())
-          .single();
-        
-        if (existingUser) {
-          // Admin exists but might not be verified - try signing in
-          toast.info("Admin account exists. Attempting to sign in.");
-          await signIn(email, password);
-          return;
-        }
-      }
-      
-      // Normal signup flow
-      const { error, data } = await supabase.auth.signUp({ 
-        email, 
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
         password,
-        options: {
-          data: { 
-            full_name: fullName,
-            is_admin_account: isAdminSignup
-          }
-        }
       });
-      
+
       if (error) {
-        setError(error.message);
+        if (error.message.includes('Email not confirmed')) {
+          // Try to verify the email automatically for testing purposes
+          const { error: confirmError } = await supabase.auth.resend({
+            type: 'signup',
+            email,
+          });
+          
+          if (!confirmError) {
+            toast.success('Verification email sent. Please check your inbox.', { duration: 5000 });
+          } else {
+            toast.error(confirmError.message);
+          }
+        } else {
+          toast.error(error.message);
+        }
         return;
       }
+
+      toast.success('Signed in successfully');
+    } catch (error) {
+      console.error('Error in signIn:', error);
+      toast.error('An unexpected error occurred');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const signUp = async (email: string, password: string, fullName: string) => {
+    setIsLoading(true);
+    try {
+      // Check if this is the admin
+      const isAdmin = email === 'admin@example.com' || email === 'steven@jfc-it.com';
       
-      // If this is the admin account, update their role directly
-      if (isAdminSignup && data.user) {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
+        },
+      });
+
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+
+      if (isAdmin) {
+        // Set role to admin for this user
         const { error: profileError } = await supabase
           .from('profiles')
           .update({ role: 'admin' })
-          .eq('id', data.user.id);
+          .eq('id', data.user?.id);
           
         if (profileError) {
-          console.error('Error setting admin role:', profileError);
-        } else {
-          toast.success("Admin account created. You will need to verify your email.");
-          toast.info("For testing, you can disable email verification in the Supabase Dashboard.");
+          console.error('Failed to set admin role:', profileError);
         }
-      } else {
-        toast.success('Account created! Please check your email for verification.');
       }
-    } catch (err) {
-      console.error('Error signing up:', err);
-      setError('An unexpected error occurred');
+
+      toast.success('Account created successfully! Verification email sent.');
+    } catch (error) {
+      console.error('Error in signUp:', error);
+      toast.error('An unexpected error occurred');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const signOut = async () => {
+    setIsLoading(true);
     try {
-      setError(null);
       const { error } = await supabase.auth.signOut();
-      if (error) setError(error.message);
-    } catch (err) {
-      console.error('Error signing out:', err);
-      setError('An unexpected error occurred');
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+      setUser(null);
+      setUserRole(null);
+      toast.success('Signed out successfully');
+    } catch (error) {
+      console.error('Error in signOut:', error);
+      toast.error('An unexpected error occurred');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const value = {
-    session,
-    user,
-    loading,
-    signIn,
-    signUp,
-    signOut,
-    error
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
+  return (
+    <AuthContext.Provider
+      value={{ user, userRole, isLoading, signIn, signUp, signOut }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;

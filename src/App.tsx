@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import AuthPage from "./pages/AuthPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import CertificatePage from "./pages/CertificatePage";
+import CourseManagement from "./pages/CourseManagement";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/profile" element={<Profile />} />
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/courses" element={<CourseManagement />} />
               <Route path="/certificates/:certificateId" element={<CertificatePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

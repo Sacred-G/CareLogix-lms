@@ -26,7 +26,12 @@ export function useAdminData() {
 
   // Update user profile mutation
   const updateUserProfile = useMutation({
-    mutationFn: async ({ id, full_name, email, role }) => {
+    mutationFn: async ({ id, full_name, email, role }: {
+      id: string;
+      full_name: string;
+      email: string;
+      role: string;
+    }) => {
       console.log('Updating user profile:', { id, full_name, email, role });
       const { data, error } = await supabase
         .from('profiles')

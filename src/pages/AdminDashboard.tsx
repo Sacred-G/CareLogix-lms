@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 import { AdminRoute } from '@/components/auth/AdminRoute';
@@ -9,6 +10,8 @@ import AdminStats from '@/components/admin/AdminStats';
 import UserManagement from '@/components/admin/UserManagement';
 import CourseStats from '@/components/admin/CourseStats';
 import EnrollmentsTable from '@/components/admin/EnrollmentsTable';
+import { Button } from '@/components/ui/button';
+import { BookOpen } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -47,6 +50,13 @@ export default function AdminDashboard() {
                 <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
                 <p className="text-muted-foreground">Track and manage student progress across all courses</p>
               </div>
+              
+              <Button asChild>
+                <Link to="/admin/courses">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Manage Courses
+                </Link>
+              </Button>
             </div>
             
             {/* Dashboard Overview Cards */}
