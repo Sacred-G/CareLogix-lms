@@ -7,6 +7,24 @@ export interface Question {
   explanation: string;
 }
 
+export interface Flashcard {
+  id: string;
+  term: string;
+  definition: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ScenarioOption {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+  feedback: string;
+}
+
 export interface Module {
   id: string;
   title: string;
@@ -16,11 +34,14 @@ export interface Module {
   audioUrl?: string;
   transcript?: string;
   questions: Question[];
+  flashcards?: Flashcard[];
+  faqs?: FAQ[];
   interactiveScenario?: {
     title: string;
     description: string;
     type: 'multiple-choice' | 'drag-drop' | 'dialogue';
     content: any; // This would be structured based on scenario type
+    options?: ScenarioOption[];
   };
 }
 
