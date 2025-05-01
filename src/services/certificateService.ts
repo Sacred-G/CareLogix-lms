@@ -29,19 +29,14 @@ export const createCertificate = (
   };
 };
 
-// Save certificate to database if needed
+// Save certificate to database if needed - using a mock implementation
+// We'll mock data storage since there's no certificates table in Supabase yet
 export const saveCertificate = async (certificate: Certificate): Promise<boolean> => {
   try {
-    // This would save to Supabase in a real implementation
-    const { error } = await supabase
-      .from('certificates')
-      .insert(certificate);
+    // Mock implementation - in a real app, this would save to Supabase
+    console.log('Saving certificate:', certificate);
     
-    if (error) {
-      console.error('Error saving certificate:', error);
-      return false;
-    }
-    
+    // Mock successful save
     return true;
   } catch (error) {
     console.error('Error saving certificate:', error);
@@ -49,20 +44,26 @@ export const saveCertificate = async (certificate: Certificate): Promise<boolean
   }
 };
 
-// Get user certificates
+// Get user certificates - using a mock implementation
+// We'll return mock certificates since there's no certificates table yet
 export const getUserCertificates = async (userId: string): Promise<Certificate[]> => {
   try {
-    const { data, error } = await supabase
-      .from('certificates')
-      .select('*')
-      .eq('userId', userId);
+    // Mock implementation - in a real app, this would fetch from Supabase
+    console.log('Fetching certificates for user:', userId);
     
-    if (error) {
-      console.error('Error fetching certificates:', error);
-      return [];
-    }
+    // Return a mock certificate
+    const mockCertificate: Certificate = {
+      id: 'CERT-12345678',
+      userId: userId,
+      userName: 'DSP Professional',
+      courseId: 'intro-dev-disabilities',
+      courseTitle: 'Introduction to Developmental Disabilities',
+      issueDate: new Date().toISOString(),
+      completionDate: new Date().toISOString(),
+      certificateNumber: 'CERT-12345678',
+    };
     
-    return data as Certificate[];
+    return [mockCertificate];
   } catch (error) {
     console.error('Error fetching certificates:', error);
     return [];
