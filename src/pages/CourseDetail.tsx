@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("content");
   
   const course = courses.find(c => c.id === courseId);
   
@@ -78,7 +79,7 @@ const CourseDetail = () => {
         {/* Course Content */}
         <section className="py-8">
           <div className="container px-4">
-            <Tabs defaultValue="content" className="space-y-8">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
               <TabsList>
                 <TabsTrigger value="content">Course Content</TabsTrigger>
                 <TabsTrigger value="modules">Modules</TabsTrigger>
@@ -106,8 +107,7 @@ const CourseDetail = () => {
                       }`}
                       onClick={() => {
                         setActiveModuleIndex(index);
-                        // Switch back to content tab
-                        document.querySelector('[data-value="content"]')?.click();
+                        setActiveTab("content");
                       }}
                     >
                       <div className="flex items-center justify-between">
