@@ -22,18 +22,37 @@ serve(async (req) => {
       throw new Error('OpenAI API key is not configured');
     }
 
+    // Create a system message with detailed DSP training context
+    const systemMessage = `You are an expert educational content creator specializing in training for Direct Support Professionals (DSPs) who work with young adults with developmental disabilities.
+
+Your audience is DSPs who need training that is:
+- Clear and accessible with plain language
+- Practical with real-world examples
+- Focused on person-centered support
+- Compliant with industry regulations
+- Respectful of individuals with disabilities
+
+Create content that supports learning through multiple modalities and incorporates best practices for teaching skills needed in supportive living settings.`;
+
     // Create a prompt based on the course title and module type
-    let prompt = `Generate educational content for a course titled "${title}" for Direct Support Professionals working with young adults with developmental disabilities.`;
+    let userPrompt = `Generate educational content for a course titled "${title}" for Direct Support Professionals working with young adults with developmental disabilities.`;
     
     if (moduleType === 'description') {
-      prompt += ` Create a comprehensive course description that explains the purpose, learning objectives, and key topics covered in this course.`;
+      userPrompt += ` Create a comprehensive course description that explains the purpose, learning objectives, and key topics covered in this course. Format it in a professional and engaging style with paragraphs and bullet points where appropriate.`;
     } else if (moduleType === 'module') {
-      prompt += ` Create a module outline with title, description, and 3-4 key learning topics for this course.`;
+      userPrompt += ` Create a module outline with title, description, and 3-4 key learning topics for this course. For each topic, provide a brief description of what will be covered. Format as a structured outline.`;
     } else if (moduleType === 'quiz') {
-      prompt += ` Create 5 multiple-choice quiz questions with answers related to this subject. Format as JSON with questions, choices, and correctAnswer fields.`;
+      userPrompt += ` Create 5 multiple-choice quiz questions with answers related to this subject. Include 4 options for each question, with only one correct answer. Format the output as a JSON array with the following structure:
+      [
+        {
+          "question": "Question text here?",
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": "Option that is correct"
+        }
+      ]`;
     }
 
-    console.log(`Sending prompt to OpenAI: ${prompt}`);
+    console.log(`Sending prompt to OpenAI: ${userPrompt}`);
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -42,10 +61,10 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: [
-          { role: 'system', content: 'You are an educational content creator specializing in training for Direct Support Professionals who work with young adults with developmental disabilities. Create clear, accessible content.' },
-          { role: 'user', content: prompt }
+          { role: 'system', content: systemMessage },
+          { role: 'user', content: userPrompt }
         ],
         temperature: 0.7,
       }),

@@ -12,6 +12,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Loader2, Plus, Brain } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 type CourseFormValues = {
   title: string;
@@ -22,6 +23,7 @@ type CourseFormValues = {
 export default function CreateCourse() {
   const [useAI, setUseAI] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [aiContentType, setAiContentType] = useState<'description' | 'module' | 'quiz'>('description');
   const queryClient = useQueryClient();
   
   const form = useForm<CourseFormValues>({
@@ -71,7 +73,7 @@ export default function CreateCourse() {
       const { data, error } = await supabase.functions.invoke('generate-course-content', {
         body: {
           title,
-          moduleType: 'description'
+          moduleType: aiContentType
         }
       });
 
@@ -80,8 +82,18 @@ export default function CreateCourse() {
       }
 
       if (data?.content) {
-        form.setValue('description', data.content);
-        toast.success('Content generated successfully with OpenAI');
+        if (aiContentType === 'description') {
+          form.setValue('description', data.content);
+          toast.success('Course description generated successfully with OpenAI');
+        } else if (aiContentType === 'module') {
+          // For now just show module content in description field
+          form.setValue('description', data.content);
+          toast.success('Module outline generated successfully with OpenAI');
+        } else if (aiContentType === 'quiz') {
+          // For now just show quiz content in description field
+          form.setValue('description', data.content);
+          toast.success('Quiz questions generated successfully with OpenAI');
+        }
       } else {
         throw new Error('No content was generated');
       }
@@ -135,30 +147,56 @@ export default function CreateCourse() {
 
             {useAI && (
               <div className="bg-muted/50 p-4 rounded-lg border border-muted">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center">
-                    <Brain className="w-5 h-5 mr-2 text-blue-500" />
-                    <span className="font-medium">AI Content Generation</span>
+                <div className="flex items-start mb-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <Brain className="w-5 h-5 text-blue-500" />
                   </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleGenerateWithAI}
-                    disabled={isGenerating}
-                  >
-                    {isGenerating ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating...
-                      </>
-                    ) : (
-                      'Generate Description'
-                    )}
-                  </Button>
+                  <div className="ml-3 flex-grow">
+                    <h3 className="font-medium mb-2">AI Content Generation</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Select the type of content you want to generate using OpenAI
+                    </p>
+                    
+                    <RadioGroup 
+                      defaultValue="description" 
+                      value={aiContentType}
+                      onValueChange={(value) => setAiContentType(value as any)}
+                      className="flex flex-col space-y-1 mb-4"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="description" id="description" />
+                        <label htmlFor="description" className="text-sm font-medium">Course Description</label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="module" id="module" />
+                        <label htmlFor="module" className="text-sm font-medium">Module Outline</label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="quiz" id="quiz" />
+                        <label htmlFor="quiz" className="text-sm font-medium">Quiz Questions</label>
+                      </div>
+                    </RadioGroup>
+                    
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleGenerateWithAI}
+                      disabled={isGenerating}
+                      className="w-full"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Generating...
+                        </>
+                      ) : (
+                        `Generate ${aiContentType === 'description' ? 'Description' : 
+                                  aiContentType === 'module' ? 'Module Outline' : 
+                                  'Quiz Questions'}`
+                      )}
+                    </Button>
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Enter a course title above, then click "Generate Description" to create course content using OpenAI
-                </p>
               </div>
             )}
 
