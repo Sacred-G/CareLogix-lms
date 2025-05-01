@@ -59,7 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             error.message.includes('not confirmed')) {
           // Try to get the user and admin credentials
           const { data: { users } } = await supabase.auth.admin.listUsers();
-          const adminUser = users?.find(u => u.email?.toLowerCase() === email.toLowerCase());
+          const adminUser = users?.find(u => u.email && u.email.toLowerCase() === email.toLowerCase());
           
           if (adminUser) {
             // Update the admin user email to confirmed
