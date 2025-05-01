@@ -67,17 +67,27 @@ export default function CreateCourse() {
 
     setIsGenerating(true);
     try {
-      // In a real implementation, this would call an edge function with OpenAI
-      // For now, let's simulate a response after a delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      const generatedDescription = `This is a comprehensive course about ${title} designed for Direct Support Professionals. It covers essential topics including best practices, legal requirements, and hands-on techniques that will help DSPs provide excellent support to individuals with developmental disabilities.`;
-      
-      form.setValue('description', generatedDescription);
-      toast.success('Content generated successfully');
-    } catch (error) {
+      // Make a request to our Supabase Edge Function
+      const { data, error } = await supabase.functions.invoke('generate-course-content', {
+        body: {
+          title,
+          moduleType: 'description'
+        }
+      });
+
+      if (error) {
+        throw new Error(`Error calling OpenAI: ${error.message}`);
+      }
+
+      if (data?.content) {
+        form.setValue('description', data.content);
+        toast.success('Content generated successfully with OpenAI');
+      } else {
+        throw new Error('No content was generated');
+      }
+    } catch (error: any) {
       console.error('Error generating content:', error);
-      toast.error('Failed to generate content');
+      toast.error(`Failed to generate content: ${error.message}`);
     } finally {
       setIsGenerating(false);
     }
@@ -147,7 +157,7 @@ export default function CreateCourse() {
                   </Button>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Enter a course title above, then click "Generate Description" to create course content using AI
+                  Enter a course title above, then click "Generate Description" to create course content using OpenAI
                 </p>
               </div>
             )}
