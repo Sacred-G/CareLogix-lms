@@ -9,7 +9,8 @@ import { courses } from '@/data/courseData';
 import CourseCard from '@/components/courses/CourseCard';
 
 const Index = () => {
-  const featuredCourses = courses.slice(0, 3);
+  // Show up to 6 courses on the home page instead of just 3
+  const featuredCourses = courses.slice(0, 6);
   
   return (
     <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
@@ -102,7 +103,7 @@ const Index = () => {
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredCourses.map((course) => (
                 <CourseCard key={course.id} course={course} />
               ))}
