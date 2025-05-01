@@ -1,27 +1,53 @@
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 interface AudioPlayerProps {
   url: string;
   transcript?: string;
+  onAudioEnded?: () => void;
 }
 
-export default function AudioPlayer({ url, transcript }: AudioPlayerProps) {
+export default function AudioPlayer({ url, transcript, onAudioEnded }: AudioPlayerProps) {
+  const [showTranscript, setShowTranscript] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handleAudioEnded = () => {
+    if (onAudioEnded) {
+      onAudioEnded();
+    }
+  };
+
   return (
     <div className="space-y-4">
-      <div className="audio-player">
-        <audio controls className="w-full">
+      <div className="audio-player bg-muted p-4 rounded-lg">
+        <audio 
+          ref={audioRef}
+          controls 
+          className="w-full" 
+          onEnded={handleAudioEnded}
+        >
           <source src={url} type="audio/mp3" />
           Your browser does not support the audio element.
         </audio>
       </div>
       
       {transcript && (
-        <div className="mt-4">
-          <h3 className="text-lg font-medium mb-2">Transcript</h3>
-          <div className="bg-muted p-4 rounded-lg text-muted-foreground">
-            <p>{transcript}</p>
-          </div>
+        <div>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => setShowTranscript(!showTranscript)}
+          >
+            {showTranscript ? 'Hide' : 'Show'} Transcript
+          </Button>
+          
+          {showTranscript && (
+            <div className="mt-4 p-4 bg-muted rounded-lg text-muted-foreground">
+              <h4 className="font-medium mb-2">Transcript</h4>
+              <p>{transcript}</p>
+            </div>
+          )}
         </div>
       )}
     </div>
