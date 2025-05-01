@@ -6,7 +6,7 @@ import { AdminRoute } from '@/components/auth/AdminRoute';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAdminData } from '@/hooks/useAdminData';
 import AdminStats from '@/components/admin/AdminStats';
-import StudentsTable from '@/components/admin/StudentsTable';
+import UserManagement from '@/components/admin/UserManagement';
 import CourseStats from '@/components/admin/CourseStats';
 import EnrollmentsTable from '@/components/admin/EnrollmentsTable';
 
@@ -19,7 +19,8 @@ export default function AdminDashboard() {
     courseStats,
     loadingProfiles, 
     loadingEnrollments, 
-    loadingStats 
+    loadingStats,
+    refetchProfiles
   } = useAdminData();
 
   // Filter profiles based on search query
@@ -56,22 +57,23 @@ export default function AdminDashboard() {
               loadingEnrollments={loadingEnrollments}
             />
             
-            <Tabs defaultValue="students" className="w-full">
+            <Tabs defaultValue="users" className="w-full">
               <TabsList className="grid grid-cols-3 w-full mb-6 max-w-md">
-                <TabsTrigger value="students">Students</TabsTrigger>
+                <TabsTrigger value="users">Users</TabsTrigger>
                 <TabsTrigger value="courses">Course Stats</TabsTrigger>
                 <TabsTrigger value="enrollments">Enrollments</TabsTrigger>
               </TabsList>
               
-              {/* Students Tab */}
-              <TabsContent value="students">
-                <StudentsTable 
+              {/* Users Tab */}
+              <TabsContent value="users">
+                <UserManagement
                   profiles={profiles}
                   filteredProfiles={filteredProfiles}
                   enrollments={enrollments}
                   searchQuery={searchQuery}
                   setSearchQuery={setSearchQuery}
                   loadingProfiles={loadingProfiles}
+                  refetchProfiles={refetchProfiles}
                 />
               </TabsContent>
               

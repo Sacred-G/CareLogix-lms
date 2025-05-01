@@ -1,8 +1,10 @@
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 
 export function useAdminData() {
+  const queryClient = useQueryClient();
+
   // Fetch all profiles (admin access)
   const { data: profiles, isLoading: loadingProfiles } = useQuery({
     queryKey: ['admin-profiles'],
@@ -20,6 +22,11 @@ export function useAdminData() {
       return data || [];
     }
   });
+
+  // Function to refetch profiles
+  const refetchProfiles = () => {
+    queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
+  };
 
   // Fetch all enrollments with course info
   const { data: enrollments, isLoading: loadingEnrollments } = useQuery({
@@ -96,6 +103,7 @@ export function useAdminData() {
     courseStats,
     loadingProfiles,
     loadingEnrollments,
-    loadingStats
+    loadingStats,
+    refetchProfiles
   };
 }
