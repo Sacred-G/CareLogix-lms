@@ -69,8 +69,8 @@ export default function MediaUploader({
         });
         
         // Create a promise for the upload
-        return new Promise<{ path: string }>((resolve, reject) => {
-          xhr.onload = async () => {
+        return new Promise<{ path: string }>(async (resolve, reject) => {
+          xhr.onload = () => {
             if (xhr.status >= 200 && xhr.status < 300) {
               resolve({ path: filePath });
             } else {
@@ -80,19 +80,23 @@ export default function MediaUploader({
           
           xhr.onerror = () => reject(new Error('Upload failed'));
           
-          // Get the upload URL from Supabase
-          const { data: uploadData, error: uploadError } = await supabase.storage
-            .from('course_media')
-            .createSignedUploadUrl(filePath);
+          try {
+            // Get the upload URL from Supabase
+            const { data: uploadData, error: uploadError } = await supabase.storage
+              .from('course_media')
+              .createSignedUploadUrl(filePath);
+              
+            if (uploadError) {
+              reject(uploadError);
+              return;
+            }
             
-          if (uploadError) {
-            reject(uploadError);
-            return;
+            // Perform the upload
+            xhr.open('PUT', uploadData.signedUrl);
+            xhr.send(file);
+          } catch (error) {
+            reject(error);
           }
-          
-          // Perform the upload
-          xhr.open('PUT', uploadData.signedUrl);
-          xhr.send(file);
         });
       };
       
