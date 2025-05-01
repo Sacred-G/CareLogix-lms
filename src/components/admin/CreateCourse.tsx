@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Loader2, Plus, AIIcon } from 'lucide-react';
+import { Loader2, Plus, Brain } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 
 type CourseFormValues = {
@@ -127,7 +127,7 @@ export default function CreateCourse() {
               <div className="bg-muted/50 p-4 rounded-lg border border-muted">
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex items-center">
-                    <AIIcon className="w-5 h-5 mr-2 text-blue-500" />
+                    <Brain className="w-5 h-5 mr-2 text-blue-500" />
                     <span className="font-medium">AI Content Generation</span>
                   </div>
                   <Button

@@ -16,14 +16,14 @@ interface CompletedCourseActionsProps {
 const CompletedCourseActions = ({ course, isCompleted }: CompletedCourseActionsProps) => {
   const [certificateModalOpen, setCertificateModalOpen] = useState(false);
   const [certificate, setCertificate] = useState<Certificate | null>(null);
-  const { user, session } = useAuth();
+  const { user } = useAuth();
   
   if (!isCompleted) {
     return null;
   }
   
   const handleGenerateCertificate = () => {
-    if (!user || !session) {
+    if (!user) {
       toast.error("You must be logged in to generate a certificate");
       return;
     }

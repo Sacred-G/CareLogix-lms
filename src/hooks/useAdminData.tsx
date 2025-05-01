@@ -51,9 +51,11 @@ export function useAdminData() {
       
       return data;
     },
-    onSuccess: () => {
-      toast.success('User profile updated successfully');
-      queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
+    onSuccess: (data) => {
+      if (data) {
+        toast.success('User profile updated successfully');
+        queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
+      }
     },
     onError: (error) => {
       console.error('Mutation error:', error);
