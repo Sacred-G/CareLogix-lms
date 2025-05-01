@@ -12,10 +12,26 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Menu } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function Header() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  
+  const { data: isAdmin } = useQuery({
+    queryKey: ['isAdmin', user?.id],
+    queryFn: async () => {
+      if (!user) return false;
+      const { data, error } = await supabase.rpc('is_admin');
+      if (error) {
+        console.error('Error checking admin status:', error);
+        return false;
+      }
+      return data;
+    },
+    enabled: !!user,
+  });
   
   const handleLogout = async () => {
     await signOut();
@@ -44,6 +60,9 @@ export default function Header() {
           <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Home</Link>
           <Link to="/courses" className="text-sm font-medium hover:text-primary transition-colors">Courses</Link>
           <Link to="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">Dashboard</Link>
+          {isAdmin && (
+            <Link to="/admin/dashboard" className="text-sm font-medium hover:text-primary transition-colors">Admin</Link>
+          )}
         </nav>
 
         <div className="flex items-center gap-4">
@@ -64,6 +83,11 @@ export default function Header() {
               <DropdownMenuItem asChild>
                 <Link to="/dashboard">Dashboard</Link>
               </DropdownMenuItem>
+              {isAdmin && (
+                <DropdownMenuItem asChild>
+                  <Link to="/admin/dashboard">Admin Dashboard</Link>
+                </DropdownMenuItem>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -82,6 +106,11 @@ export default function Header() {
               <DropdownMenuItem asChild>
                 <Link to="/settings">Settings</Link>
               </DropdownMenuItem>
+              {isAdmin && (
+                <DropdownMenuItem asChild>
+                  <Link to="/admin/dashboard">Admin Dashboard</Link>
+                </DropdownMenuItem>
+              )}
               <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
