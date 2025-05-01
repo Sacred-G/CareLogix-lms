@@ -13,7 +13,7 @@ interface AIContentGeneratorProps {
 
 export default function AIContentGenerator({ courseTitle, onContentGenerated }: AIContentGeneratorProps) {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [contentType, setContentType] = useState<'description' | 'module' | 'quiz' | 'objectives' | 'assessment' | 'scenario'>('description');
+  const [contentType, setContentType] = useState<'description' | 'module' | 'quiz' | 'objectives' | 'assessment' | 'scenario' | 'transcript' | 'lesson_plan'>('description');
 
   const handleGenerateWithAI = async () => {
     if (!courseTitle || courseTitle.length < 3) {
@@ -57,6 +57,8 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
       case 'objectives': return 'Learning objectives';
       case 'assessment': return 'Assessment criteria';
       case 'scenario': return 'Interactive scenario';
+      case 'transcript': return 'Audio transcript';
+      case 'lesson_plan': return 'Lesson plan';
       default: return 'Content';
     }
   };
@@ -102,6 +104,14 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="scenario" id="scenario" />
               <label htmlFor="scenario" className="text-sm font-medium">Interactive Scenario</label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="transcript" id="transcript" />
+              <label htmlFor="transcript" className="text-sm font-medium">Audio Transcript</label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="lesson_plan" id="lesson_plan" />
+              <label htmlFor="lesson_plan" className="text-sm font-medium">Detailed Lesson Plan</label>
             </div>
           </RadioGroup>
           

@@ -12,11 +12,14 @@ import { Loader2 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AIContentGenerator from './AIContentGenerator';
 import CourseFormFields from './CourseFormFields';
+import MediaUploader from './MediaUploader';
 
 type CourseFormValues = {
   title: string;
   description: string;
   thumbnail: string;
+  videoUrl?: string;
+  audioUrl?: string;
 };
 
 export default function CreateCourse() {
@@ -29,6 +32,8 @@ export default function CreateCourse() {
       title: '',
       description: '',
       thumbnail: 'https://placehold.co/600x400/png',
+      videoUrl: '',
+      audioUrl: '',
     },
   });
 
@@ -45,6 +50,82 @@ export default function CreateCourse() {
         .select();
 
       if (error) throw error;
+      
+      // If we have course media URLs, create media entries
+      if (data && data[0] && (values.videoUrl || values.audioUrl)) {
+        const courseId = data[0].id;
+        
+        // Create a default section for the course
+        const { data: sectionData, error: sectionError } = await supabase
+          .from('sections')
+          .insert({
+            course_id: courseId,
+            title: 'Introduction',
+            position: 0
+          })
+          .select();
+          
+        if (sectionError) {
+          console.error('Error creating section:', sectionError);
+          throw sectionError;
+        }
+        
+        if (sectionData && sectionData[0]) {
+          const sectionId = sectionData[0].id;
+          
+          // Create lesson for the section
+          const { data: lessonData, error: lessonError } = await supabase
+            .from('lessons')
+            .insert({
+              section_id: sectionId,
+              title: 'Welcome to the course',
+              content: values.description,
+              position: 0
+            })
+            .select();
+            
+          if (lessonError) {
+            console.error('Error creating lesson:', lessonError);
+            throw lessonError;
+          }
+          
+          // Add media entries
+          if (lessonData && lessonData[0]) {
+            const lessonId = lessonData[0].id;
+            const mediaEntries = [];
+            
+            if (values.videoUrl) {
+              mediaEntries.push({
+                lesson_id: lessonId,
+                title: 'Course Introduction Video',
+                type: 'video',
+                url: values.videoUrl
+              });
+            }
+            
+            if (values.audioUrl) {
+              mediaEntries.push({
+                lesson_id: lessonId,
+                title: 'Audio Introduction',
+                type: 'audio',
+                url: values.audioUrl
+              });
+            }
+            
+            if (mediaEntries.length > 0) {
+              const { error: mediaError } = await supabase
+                .from('media')
+                .insert(mediaEntries);
+                
+              if (mediaError) {
+                console.error('Error creating media entries:', mediaError);
+                throw mediaError;
+              }
+            }
+          }
+        }
+      }
+      
       return data;
     },
     onSuccess: () => {
@@ -117,13 +198,30 @@ export default function CreateCourse() {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid grid-cols-2 mb-6">
+              <TabsList className="grid grid-cols-3 mb-6">
                 <TabsTrigger value="basic">Basic Info</TabsTrigger>
+                <TabsTrigger value="media">Media</TabsTrigger>
                 <TabsTrigger value="ai">AI Content</TabsTrigger>
               </TabsList>
               
               <TabsContent value="basic">
                 <CourseFormFields control={form.control} />
+              </TabsContent>
+              
+              <TabsContent value="media">
+                <div className="space-y-6">
+                  <MediaUploader 
+                    fileType="video" 
+                    onUploadComplete={(url) => form.setValue('videoUrl', url)} 
+                    currentUrl={form.watch('videoUrl')}
+                  />
+                  
+                  <MediaUploader 
+                    fileType="audio" 
+                    onUploadComplete={(url) => form.setValue('audioUrl', url)}
+                    currentUrl={form.watch('audioUrl')}
+                  />
+                </div>
               </TabsContent>
               
               <TabsContent value="ai">

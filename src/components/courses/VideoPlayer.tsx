@@ -8,8 +8,9 @@ interface VideoPlayerProps {
 }
 
 export default function VideoPlayer({ url, title, onVideoEnded }: VideoPlayerProps) {
-  // Handle both YouTube embedded URLs and direct video files
+  // Handle both YouTube embedded URLs, Supabase Storage URLs, and direct video files
   const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
+  const isSupabaseUrl = url.includes('storage.googleapis.com') || url.includes('supabase');
   const videoRef = useRef<HTMLVideoElement>(null);
   
   // Extract video ID for YouTube

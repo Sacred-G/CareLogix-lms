@@ -18,6 +18,9 @@ export default function AudioPlayer({ url, transcript, onAudioEnded }: AudioPlay
     }
   };
 
+  // Check if the URL is a Supabase Storage URL or a direct URL
+  const isSupabaseUrl = url && url.includes('storage.googleapis.com') || url.includes('supabase');
+
   return (
     <div className="space-y-4">
       <div className="audio-player bg-muted p-4 rounded-lg">
