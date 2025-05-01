@@ -59,10 +59,10 @@ export default function FlashcardSection({ title, flashcards }: FlashcardSection
         </div>
       </div>
 
-      <div className="perspective-1000">
+      <div className="flashcard-perspective">
         <div 
           className={`relative h-64 cursor-pointer transition-transform duration-300 ${
-            flipped ? 'rotate-y-180' : ''
+            flipped ? 'flashcard-rotate' : ''
           }`}
           onClick={toggleFlip}
           style={{ transformStyle: 'preserve-3d' }}
@@ -104,14 +104,17 @@ export default function FlashcardSection({ title, flashcards }: FlashcardSection
         </Button>
       </div>
 
-      <style jsx global>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
+      {/* Add the styles as a regular style tag without jsx or global attributes */}
+      <style>
+        {`
+          .flashcard-perspective {
+            perspective: 1000px;
+          }
+          .flashcard-rotate {
+            transform: rotateY(180deg);
+          }
+        `}
+      </style>
     </div>
   );
 }
