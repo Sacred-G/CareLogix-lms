@@ -1,6 +1,7 @@
 
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 export function useAdminData() {
   const queryClient = useQueryClient();
@@ -20,6 +21,38 @@ export function useAdminData() {
       }
       
       return data || [];
+    }
+  });
+
+  // Update user profile mutation
+  const updateUserProfile = useMutation({
+    mutationFn: async ({ id, full_name, email, role }) => {
+      console.log('Updating user profile:', { id, full_name, email, role });
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({
+          full_name,
+          email,
+          role
+        })
+        .eq('id', id)
+        .select('*')
+        .single();
+      
+      if (error) {
+        console.error('Error updating profile:', error);
+        throw error;
+      }
+      
+      return data;
+    },
+    onSuccess: () => {
+      toast.success('User profile updated successfully');
+      queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
+    },
+    onError: (error) => {
+      console.error('Mutation error:', error);
+      toast.error('Failed to update user profile');
     }
   });
 
@@ -104,6 +137,7 @@ export function useAdminData() {
     loadingProfiles,
     loadingEnrollments,
     loadingStats,
-    refetchProfiles
+    refetchProfiles,
+    updateUserProfile
   };
 }

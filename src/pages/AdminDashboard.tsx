@@ -20,7 +20,8 @@ export default function AdminDashboard() {
     loadingProfiles, 
     loadingEnrollments, 
     loadingStats,
-    refetchProfiles
+    refetchProfiles,
+    updateUserProfile
   } = useAdminData();
 
   // Filter profiles based on search query
@@ -74,6 +75,7 @@ export default function AdminDashboard() {
                   setSearchQuery={setSearchQuery}
                   loadingProfiles={loadingProfiles}
                   refetchProfiles={refetchProfiles}
+                  updateUserProfile={updateUserProfile}
                 />
               </TabsContent>
               

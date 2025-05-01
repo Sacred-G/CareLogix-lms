@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, Edit, Save, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -8,12 +7,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from 'sonner';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
-import { supabase } from '@/integrations/supabase/client';
 
 interface Profile {
   id: string;
@@ -36,6 +34,7 @@ interface UserManagementProps {
   setSearchQuery: (query: string) => void;
   loadingProfiles: boolean;
   refetchProfiles: () => void;
+  updateUserProfile: any;
 }
 
 export default function UserManagement({
@@ -45,7 +44,8 @@ export default function UserManagement({
   searchQuery,
   setSearchQuery,
   loadingProfiles,
-  refetchProfiles
+  refetchProfiles,
+  updateUserProfile
 }: UserManagementProps) {
   const [editingUser, setEditingUser] = useState<Profile | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -77,32 +77,19 @@ export default function UserManagement({
     if (!editingUser) return;
 
     try {
-      const { error } = await supabase
-        .from('profiles')
-        .update({
-          full_name: data.full_name,
-          email: data.email,
-          role: data.role,
-        })
-        .eq('id', editingUser.id);
-
-      if (error) throw error;
-
-      toast({
-        title: "User updated",
-        description: "User information has been updated successfully",
+      // Use mutation to update user profile
+      await updateUserProfile.mutateAsync({
+        id: editingUser.id,
+        full_name: data.full_name,
+        email: data.email,
+        role: data.role,
       });
-
+      
       setIsDialogOpen(false);
       setEditingUser(null);
-      refetchProfiles();
     } catch (error) {
-      console.error('Error updating user:', error);
-      toast({
-        title: "Failed to update user",
-        description: "There was a problem updating the user information",
-        variant: "destructive",
-      });
+      console.error('Error in handleSave:', error);
+      // Toast is handled by the mutation
     }
   };
 
@@ -252,7 +239,9 @@ export default function UserManagement({
 
               <DialogFooter className="pt-4">
                 <Button type="button" variant="outline" onClick={handleCancel}>Cancel</Button>
-                <Button type="submit">Save changes</Button>
+                <Button type="submit" disabled={updateUserProfile.isPending}>
+                  {updateUserProfile.isPending ? 'Saving...' : 'Save changes'}
+                </Button>
               </DialogFooter>
             </form>
           </Form>
