@@ -15,6 +15,10 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Admin account hardcoded credentials
+const ADMIN_EMAIL = "steven@jfc-it.com";
+const ADMIN_NAME = "Steven Bouldin";
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
@@ -57,14 +61,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signUp = async (email: string, password: string, meta?: { full_name?: string }) => {
     try {
       setError(null);
-      const { error } = await supabase.auth.signUp({ 
+      
+      // Check if this is our hardcoded admin account
+      const isAdminSignup = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+      const fullName = isAdminSignup ? ADMIN_NAME : meta?.full_name;
+      
+      const { error, data } = await supabase.auth.signUp({ 
         email, 
         password,
         options: {
-          data: meta
+          data: { 
+            full_name: fullName,
+            is_admin_account: isAdminSignup // This will be used by the database trigger
+          }
         }
       });
-      if (error) setError(error.message);
+      
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      
+      // If this is the admin account, update their role directly
+      if (isAdminSignup && data.user) {
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({ role: 'admin' })
+          .eq('id', data.user.id);
+          
+        if (profileError) {
+          console.error('Error setting admin role:', profileError);
+          // Don't show this error to user, they'll still be able to login
+        }
+      }
     } catch (err) {
       console.error('Error signing up:', err);
       setError('An unexpected error occurred');
