@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Question } from '@/data/courseData';
+import { useToast } from '@/hooks/use-toast';
 
 interface QuizSectionProps {
   questions: Question[];
@@ -15,6 +16,7 @@ export default function QuizSection({ questions, onComplete }: QuizSectionProps)
   const [showExplanation, setShowExplanation] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const { toast } = useToast();
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -31,8 +33,21 @@ export default function QuizSection({ questions, onComplete }: QuizSectionProps)
     if (!showExplanation) {
       // First click - show explanation
       setShowExplanation(true);
-      if (selectedOption === currentQuestion.correctAnswer) {
+      
+      const isCorrect = selectedOption === currentQuestion.correctAnswer;
+      if (isCorrect) {
         setCorrectAnswers(correctAnswers + 1);
+        toast({
+          title: "Correct!",
+          description: "Great job!",
+          variant: "default",
+        });
+      } else {
+        toast({
+          title: "Incorrect",
+          description: `The correct answer is: ${currentQuestion.options[currentQuestion.correctAnswer]}`,
+          variant: "destructive",
+        });
       }
     } else {
       // Second click - go to next question or finish
@@ -110,19 +125,28 @@ export default function QuizSection({ questions, onComplete }: QuizSectionProps)
           {currentQuestion.options.map((option, index) => (
             <div
               key={index}
-              className={`quiz-option ${
-                showExplanation && index === currentQuestion.correctAnswer
-                  ? "correct"
-                  : showExplanation && selectedOption === index && index !== currentQuestion.correctAnswer
-                  ? "incorrect"
-                  : ""
-              } ${selectedOption === index ? "border-primary" : ""}`}
               onClick={() => handleOptionSelect(index)}
+              className={`p-4 border rounded-lg cursor-pointer transition-all relative ${
+                selectedOption === index ? 'border-primary' : 'hover:border-muted-foreground/50'
+              } ${
+                showExplanation && index === currentQuestion.correctAnswer
+                  ? "bg-green-50 border-green-500 text-green-800"
+                  : showExplanation && selectedOption === index && index !== currentQuestion.correctAnswer
+                  ? "bg-red-50 border-red-500 text-red-800"
+                  : "bg-background"
+              }`}
             >
               {option}
               {showExplanation && index === currentQuestion.correctAnswer && (
-                <div className="absolute top-2 right-2 text-green-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <div className="absolute top-1/2 -translate-y-1/2 right-4 text-green-600 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span className="ml-2 font-medium">Correct Answer</span>
+                </div>
+              )}
+              {showExplanation && selectedOption === index && index !== currentQuestion.correctAnswer && (
+                <div className="absolute top-1/2 -translate-y-1/2 right-4 text-red-600 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                  <span className="ml-2 font-medium">Incorrect</span>
                 </div>
               )}
             </div>
