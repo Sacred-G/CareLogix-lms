@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Session, User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface AuthContextType {
   session: Session | null;
@@ -50,8 +51,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signIn = async (email: string, password: string) => {
     try {
       setError(null);
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) setError(error.message);
+      const { error, data } = await supabase.auth.signInWithPassword({ email, password });
+      
+      if (error) {
+        // Special handling for admin account if email is not confirmed
+        if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase() && 
+            error.message.includes('not confirmed')) {
+          // Try to get the user and admin credentials
+          const { data: { users } } = await supabase.auth.admin.listUsers();
+          const adminUser = users?.find(u => u.email?.toLowerCase() === email.toLowerCase());
+          
+          if (adminUser) {
+            // Update the admin user email to confirmed
+            const { error: updateError } = await supabase.auth.admin.updateUserById(
+              adminUser.id,
+              { email_confirm: true }
+            );
+            
+            if (!updateError) {
+              // Try signing in again
+              const { error: retryError } = await supabase.auth.signInWithPassword({ 
+                email, 
+                password 
+              });
+              
+              if (retryError) {
+                setError(retryError.message);
+              }
+            } else {
+              setError("Could not confirm admin email. Please check Supabase dashboard.");
+            }
+          } else {
+            setError("Admin account not found. Please sign up first.");
+          }
+        } else {
+          setError(error.message);
+        }
+      }
     } catch (err) {
       console.error('Error signing in:', err);
       setError('An unexpected error occurred');
@@ -66,13 +102,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const isAdminSignup = email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
       const fullName = isAdminSignup ? ADMIN_NAME : meta?.full_name;
       
+      // For admin account, we'll try to do a special handling
+      if (isAdminSignup) {
+        // Check if admin user already exists but is not verified
+        const { data: existingUser } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('email', email.toLowerCase())
+          .single();
+        
+        if (existingUser) {
+          // Admin exists but might not be verified - try signing in
+          toast.info("Admin account exists. Attempting to sign in.");
+          await signIn(email, password);
+          return;
+        }
+      }
+      
+      // Normal signup flow
       const { error, data } = await supabase.auth.signUp({ 
         email, 
         password,
         options: {
           data: { 
             full_name: fullName,
-            is_admin_account: isAdminSignup // This will be used by the database trigger
+            is_admin_account: isAdminSignup
           }
         }
       });
@@ -91,8 +145,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           
         if (profileError) {
           console.error('Error setting admin role:', profileError);
-          // Don't show this error to user, they'll still be able to login
+        } else {
+          toast.success("Admin account created. You will need to verify your email.");
+          toast.info("For testing, you can disable email verification in the Supabase Dashboard.");
         }
+      } else {
+        toast.success('Account created! Please check your email for verification.');
       }
     } catch (err) {
       console.error('Error signing up:', err);
