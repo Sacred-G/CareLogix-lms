@@ -13,7 +13,7 @@ interface AIContentGeneratorProps {
 
 export default function AIContentGenerator({ courseTitle, onContentGenerated }: AIContentGeneratorProps) {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [contentType, setContentType] = useState<'description' | 'module' | 'quiz'>('description');
+  const [contentType, setContentType] = useState<'description' | 'module' | 'quiz' | 'objectives' | 'assessment' | 'scenario'>('description');
 
   const handleGenerateWithAI = async () => {
     if (!courseTitle || courseTitle.length < 3) {
@@ -37,9 +37,7 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
 
       if (data?.content) {
         onContentGenerated(data.content);
-        toast.success(`${contentType === 'description' ? 'Course description' : 
-                    contentType === 'module' ? 'Module outline' : 
-                    'Quiz questions'} generated successfully with OpenAI`);
+        toast.success(`${getContentTypeLabel(contentType)} generated successfully with OpenAI`);
       } else {
         throw new Error('No content was generated');
       }
@@ -48,6 +46,18 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
       toast.error(`Failed to generate content: ${error.message}`);
     } finally {
       setIsGenerating(false);
+    }
+  };
+
+  const getContentTypeLabel = (type: string): string => {
+    switch (type) {
+      case 'description': return 'Course description';
+      case 'module': return 'Module outline';
+      case 'quiz': return 'Quiz questions';
+      case 'objectives': return 'Learning objectives';
+      case 'assessment': return 'Assessment criteria';
+      case 'scenario': return 'Interactive scenario';
+      default: return 'Content';
     }
   };
 
@@ -78,8 +88,20 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
               <label htmlFor="module" className="text-sm font-medium">Module Outline</label>
             </div>
             <div className="flex items-center space-x-2">
+              <RadioGroupItem value="objectives" id="objectives" />
+              <label htmlFor="objectives" className="text-sm font-medium">Learning Objectives</label>
+            </div>
+            <div className="flex items-center space-x-2">
               <RadioGroupItem value="quiz" id="quiz" />
               <label htmlFor="quiz" className="text-sm font-medium">Quiz Questions</label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="assessment" id="assessment" />
+              <label htmlFor="assessment" className="text-sm font-medium">Assessment Criteria</label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="scenario" id="scenario" />
+              <label htmlFor="scenario" className="text-sm font-medium">Interactive Scenario</label>
             </div>
           </RadioGroup>
           
@@ -96,9 +118,7 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated }: 
                 Generating...
               </>
             ) : (
-              `Generate ${contentType === 'description' ? 'Description' : 
-                        contentType === 'module' ? 'Module Outline' : 
-                        'Quiz Questions'}`
+              `Generate ${getContentTypeLabel(contentType)}`
             )}
           </Button>
         </div>

@@ -50,6 +50,25 @@ Create content that supports learning through multiple modalities and incorporat
           "correctAnswer": "Option that is correct"
         }
       ]`;
+    } else if (moduleType === 'objectives') {
+      userPrompt += ` Create 5-7 clear learning objectives for this course using Bloom's Taxonomy (knowledge, comprehension, application, analysis, synthesis, evaluation). Each objective should start with an action verb and be measurable. Format them as a numbered list.`;
+    } else if (moduleType === 'assessment') {
+      userPrompt += ` Create a comprehensive assessment criteria framework for this course, including measures for knowledge retention, skill demonstration, and practical application. Include specific criteria for what constitutes successful completion of the course. Format as a structured outline with sections and bullet points.`;
+    } else if (moduleType === 'scenario') {
+      userPrompt += ` Create a detailed interactive scenario that DSPs might face in a supportive living environment related to this subject. Include a situation description, 3-4 possible response options, feedback for each option (explaining why it's effective or not), and identify the best practice response. Format the scenario in a JSON object with this structure:
+      {
+        "title": "Scenario title",
+        "description": "Detailed situation description",
+        "options": [
+          {
+            "id": "1",
+            "text": "Option 1 text",
+            "isCorrect": true/false,
+            "feedback": "Detailed feedback for option 1"
+          },
+          ...
+        ]
+      }`;
     }
 
     console.log(`Sending prompt to OpenAI: ${userPrompt}`);

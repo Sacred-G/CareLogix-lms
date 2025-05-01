@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Switch } from '@/components/ui/switch';
 import { Loader2 } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AIContentGenerator from './AIContentGenerator';
 import CourseFormFields from './CourseFormFields';
 
@@ -20,6 +21,7 @@ type CourseFormValues = {
 
 export default function CreateCourse() {
   const [useAI, setUseAI] = useState(false);
+  const [activeTab, setActiveTab] = useState<string>('basic');
   const queryClient = useQueryClient();
   
   const form = useForm<CourseFormValues>({
@@ -57,7 +59,47 @@ export default function CreateCourse() {
   });
 
   const handleContentGenerated = (content: string) => {
-    form.setValue('description', content);
+    // Try to detect if content is JSON
+    try {
+      // Check if content starts and ends with curly braces or square brackets
+      if ((content.trim().startsWith('{') && content.trim().endsWith('}')) || 
+          (content.trim().startsWith('[') && content.trim().endsWith(']'))) {
+        // Try to parse as JSON in case it's structured content
+        const parsedContent = JSON.parse(content);
+        // Handle different content types
+        if (Array.isArray(parsedContent) && parsedContent[0]?.question) {
+          // It's quiz questions
+          const formattedQuizContent = parsedContent.map((q, i) => 
+            `Question ${i+1}: ${q.question}\n` +
+            `Options: ${q.options.join(', ')}\n` +
+            `Correct Answer: ${q.correctAnswer}\n`
+          ).join('\n\n');
+          form.setValue('description', formattedQuizContent);
+        } else if (parsedContent.title && parsedContent.description && parsedContent.options) {
+          // It's a scenario
+          const formattedScenario = 
+            `# ${parsedContent.title}\n\n` +
+            `## Scenario Description\n${parsedContent.description}\n\n` +
+            `## Response Options\n` +
+            parsedContent.options.map((o, i) => 
+              `${i+1}. ${o.text}\n   ${o.isCorrect ? '✓ BEST PRACTICE: ' : ''}${o.feedback}`
+            ).join('\n\n');
+          form.setValue('description', formattedScenario);
+        } else {
+          // Default handling for other JSON structures
+          form.setValue('description', JSON.stringify(parsedContent, null, 2));
+        }
+      } else {
+        // Plain text content
+        form.setValue('description', content);
+      }
+    } catch (e) {
+      // If JSON parsing fails, just use the content as-is
+      form.setValue('description', content);
+    }
+    
+    // Switch to basic tab to show content
+    setActiveTab('basic');
   };
 
   const onSubmit = (values: CourseFormValues) => {
@@ -74,23 +116,36 @@ export default function CreateCourse() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
-            <CourseFormFields control={form.control} />
+            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <TabsList className="grid grid-cols-2 mb-6">
+                <TabsTrigger value="basic">Basic Info</TabsTrigger>
+                <TabsTrigger value="ai">AI Content</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="basic">
+                <CourseFormFields control={form.control} />
+              </TabsContent>
+              
+              <TabsContent value="ai">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between space-x-2">
+                    <div className="font-medium">Use AI to generate content</div>
+                    <Switch
+                      checked={useAI}
+                      onCheckedChange={setUseAI}
+                      id="ai-mode"
+                    />
+                  </div>
 
-            <div className="flex items-center justify-between space-x-2">
-              <div className="font-medium">Use AI to generate content</div>
-              <Switch
-                checked={useAI}
-                onCheckedChange={setUseAI}
-                id="ai-mode"
-              />
-            </div>
-
-            {useAI && (
-              <AIContentGenerator 
-                courseTitle={form.watch('title')} 
-                onContentGenerated={handleContentGenerated} 
-              />
-            )}
+                  {useAI && (
+                    <AIContentGenerator 
+                      courseTitle={form.watch('title')} 
+                      onContentGenerated={handleContentGenerated} 
+                    />
+                  )}
+                </div>
+              </TabsContent>
+            </Tabs>
           </CardContent>
           <CardFooter>
             <Button 
