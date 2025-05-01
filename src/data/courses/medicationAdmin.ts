@@ -134,6 +134,78 @@ Remember: Medication errors are serious but reporting them promptly is essential
           ],
           correctAnswer: 1,
           explanation: "Medication labels should be checked three times during the administration process: when taking the medication from storage, before preparing or pouring it, and before returning the container to storage. This triple-check helps prevent errors."
+        },
+        {
+          id: "q5-mod1",
+          question: "What does 'BID' mean on a medication order?",
+          options: [
+            "Before initial dose",
+            "Bring in doctor",
+            "Twice daily",
+            "Before important decisions"
+          ],
+          correctAnswer: 2,
+          explanation: "BID is a Latin abbreviation for 'bis in die' which means twice daily. This indicates the medication should be administered two times per day, typically with about 12 hours between doses."
+        },
+        {
+          id: "q6-mod1",
+          question: "What should be included in medication documentation?",
+          options: [
+            "Only the medication name",
+            "Medication, dose, time, refusals/missed doses, and observations of effects",
+            "Only information when something goes wrong",
+            "Only the time medication was given"
+          ],
+          correctAnswer: 1,
+          explanation: "Complete medication documentation includes the medication given, dose administered, time of administration, any refusals or missed doses, and observations of effects or side effects. This creates an accurate record for continuity of care."
+        },
+        {
+          id: "q7-mod1",
+          question: "As a DSP, which of the following is within your scope of practice regarding medications?",
+          options: [
+            "Adjusting dosages when you think it's appropriate",
+            "Administering medication according to orders and documenting properly",
+            "Discontinuing medications that seem to cause side effects",
+            "Recommending over-the-counter alternatives"
+          ],
+          correctAnswer: 1,
+          explanation: "DSPs may administer medication according to orders, document properly, monitor for side effects, and report concerns. They may NOT adjust dosages, discontinue medications, provide medical advice, or administer certain types of medications without special training."
+        },
+        {
+          id: "q8-mod1",
+          question: "What are 'identifiers' used for in medication administration?",
+          options: [
+            "To label medication bottles",
+            "To verify you're giving medication to the correct person",
+            "To determine the dose of medication",
+            "To decide what time to give medication"
+          ],
+          correctAnswer: 1,
+          explanation: "Identifiers are used to verify you're giving medication to the correct person. Using at least two identifiers (such as name, photo, date of birth) helps ensure medication is administered to the right individual, preventing medication errors."
+        },
+        {
+          id: "q9-mod1",
+          question: "If someone refuses their medication, what should a DSP do?",
+          options: [
+            "Force them to take it since it's prescribed",
+            "Crush the medication and hide it in their food",
+            "Document the refusal and notify appropriate staff according to policy",
+            "Simply skip the dose and say nothing"
+          ],
+          correctAnswer: 2,
+          explanation: "If someone refuses medication, the DSP should document the refusal and notify appropriate staff according to agency policy. Forcing medication or hiding it in food violates rights and is unethical. Simply skipping without documentation creates a dangerous gap in information."
+        },
+        {
+          id: "q10-mod1",
+          question: "Why is knowing the purpose of each medication important?",
+          options: [
+            "It's not important as long as you give what's prescribed",
+            "To be able to prescribe medications yourself",
+            "To help monitor for effectiveness and side effects",
+            "Only to answer questions from family members"
+          ],
+          correctAnswer: 2,
+          explanation: "Knowing the purpose of each medication helps you monitor for effectiveness and side effects. Understanding what a medication is for allows you to observe relevant symptoms or improvements and report important changes to healthcare providers."
         }
       ],
       audioUrl: "https://example.com/audio/medication-safety.mp3",
@@ -269,6 +341,90 @@ Remember: As a DSP, your role is to observe and report, not diagnose or adjust m
           ],
           correctAnswer: 2,
           explanation: "A DSP's role is to observe and document side effects and report them to appropriate medical staff. DSPs should never adjust, discontinue, or substitute medications, as these actions require medical authorization."
+        },
+        {
+          id: "q4-mod2",
+          question: "Why is it important to know an individual's baseline behaviors when monitoring medication effects?",
+          options: [
+            "To report to law enforcement",
+            "To determine medication dosages",
+            "To compare current behaviors to typical behaviors and identify meaningful changes",
+            "To decide which medications to give"
+          ],
+          correctAnswer: 2,
+          explanation: "Knowing baseline behaviors provides a point of comparison to identify meaningful changes that might be related to medication effects or side effects. Without this baseline knowledge, it's difficult to determine what changes are significant."
+        },
+        {
+          id: "q5-mod2",
+          question: "Which medication category is most often associated with a risk of physical dependence?",
+          options: [
+            "Antidepressants",
+            "Benzodiazepines (anti-anxiety medications)",
+            "Anticonvulsants",
+            "Vitamins"
+          ],
+          correctAnswer: 1,
+          explanation: "Benzodiazepines, which are often prescribed for anxiety, carry a risk of physical dependence with long-term use. This class includes medications like lorazepam, diazepam, and alprazolam."
+        },
+        {
+          id: "q6-mod2",
+          question: "What might be a sign that a mood stabilizer is causing a serious side effect?",
+          options: [
+            "Slightly improved mood",
+            "Mild thirst",
+            "Unusual bruising or bleeding",
+            "Occasional headache"
+          ],
+          correctAnswer: 2,
+          explanation: "Unusual bruising or bleeding can indicate serious blood disorders that are rare but serious side effects of some mood stabilizers. This symptom should be reported to medical professionals immediately."
+        },
+        {
+          id: "q7-mod2",
+          question: "Why are stimulant medications often taken early in the day rather than evening?",
+          options: [
+            "They're more effective in the morning",
+            "They're less expensive when taken in the morning",
+            "They can cause sleep difficulties if taken later",
+            "There's no reason; timing doesn't matter"
+          ],
+          correctAnswer: 2,
+          explanation: "Stimulant medications are typically taken early in the day because they can cause sleep difficulties if taken later. Their stimulating effects can interfere with falling asleep or staying asleep if present in the system at bedtime."
+        },
+        {
+          id: "q8-mod2",
+          question: "What environmental factor might affect how a medication works?",
+          options: [
+            "The color of the pill",
+            "The weather outside",
+            "The material of the furniture",
+            "Stress levels and activity patterns"
+          ],
+          correctAnswer: 3,
+          explanation: "Environmental factors like stress levels, activity patterns, diet, sleep quality, and other aspects of the person's life may influence how medications work or how side effects are experienced. These factors should be considered when monitoring medication effects."
+        },
+        {
+          id: "q9-mod2",
+          question: "When documenting medication effects, what approach is most helpful?",
+          options: [
+            "Using general terms like 'good day' or 'bad day'",
+            "Writing detailed personal opinions about the medication",
+            "Recording specific, objective observations about behaviors and symptoms",
+            "Only documenting when there are problems"
+          ],
+          correctAnswer: 2,
+          explanation: "Recording specific, objective observations about behaviors and symptoms provides the most useful information for healthcare providers. This might include frequency, duration, and intensity of symptoms or behaviors rather than subjective judgments."
+        },
+        {
+          id: "q10-mod2",
+          question: "Which statement about anti-seizure medications is accurate?",
+          options: [
+            "They can be safely stopped abruptly if seizures seem controlled",
+            "They should never be taken with food",
+            "They may affect coordination and alertness, requiring safety precautions",
+            "They only need to be taken when seizure activity is observed"
+          ],
+          correctAnswer: 2,
+          explanation: "Anti-seizure medications may affect coordination, balance, alertness, or vision, which may require additional safety precautions to prevent falls or injuries. Never stopping these medications abruptly is also critically important, as this can trigger severe seizures."
         }
       ],
       audioUrl: "https://example.com/audio/common-medications.mp3",

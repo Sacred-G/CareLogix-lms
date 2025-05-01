@@ -121,6 +121,90 @@ Remember that your documentation may be read by many people, including other sta
           ],
           correctAnswer: 1,
           explanation: "Timely documentation means completing your notes before ending your shift or work period. This ensures the information is fresh in your mind and available to the next staff person, supporting continuity of care."
+        },
+        {
+          id: "q4-mod1",
+          question: "How does documentation contribute to quality improvement?",
+          options: [
+            "It doesn't affect quality improvement efforts", 
+            "It helps identify patterns, track goal progress, and support data-based decision making", 
+            "It only matters for billing purposes", 
+            "It only helps with staff performance evaluations"
+          ],
+          correctAnswer: 1,
+          explanation: "Good documentation helps identify patterns and areas needing improvement, allows tracking of goal progress over time, supports data-based decision making, and contributes to overall program evaluation and improvement efforts."
+        },
+        {
+          id: "q5-mod1",
+          question: "What aspect of documentation helps with legal protection?",
+          options: [
+            "Using technical terminology", 
+            "Creating a record of services provided and procedures followed", 
+            "Writing lengthy narratives", 
+            "Including personal opinions about client behavior"
+          ],
+          correctAnswer: 1,
+          explanation: "Documentation provides legal protection by creating a record of services provided, documenting that proper procedures were followed, providing evidence in case of investigations, and demonstrating compliance with regulations and standards."
+        },
+        {
+          id: "q6-mod1",
+          question: "Which of the following is NOT a core principle of effective documentation?",
+          options: [
+            "Be objective", 
+            "Be detailed about your personal feelings", 
+            "Be accurate", 
+            "Be concise"
+          ],
+          correctAnswer: 1,
+          explanation: "Documenting personal feelings is not a core principle of effective documentation. Instead, documentation should be objective, accurate, complete, concise, and confidential, focusing on observable facts rather than subjective impressions."
+        },
+        {
+          id: "q7-mod1",
+          question: "How does documentation support client advocacy?",
+          options: [
+            "It doesn't relate to advocacy", 
+            "By documenting unmet needs, preferences, and choices that support client-centered planning", 
+            "By focusing only on client problems", 
+            "By emphasizing staff perspectives over client perspectives"
+          ],
+          correctAnswer: 1,
+          explanation: "Documentation supports client advocacy by recording unmet needs and necessary resources, documenting client preferences and choices, demonstrating respect for client rights, and supporting client-centered planning approaches."
+        },
+        {
+          id: "q8-mod1",
+          question: "What does it mean to be 'complete' in documentation?",
+          options: [
+            "Including every detail of your shift no matter how small", 
+            "Writing at least three pages per day", 
+            "Answering the what, when, where, who, and how of relevant situations", 
+            "Using complex medical terminology"
+          ],
+          correctAnswer: 2,
+          explanation: "Complete documentation answers the what, when, where, who, and how of relevant situations. It includes both routine and unusual occurrences, documents follow-up actions taken, notes any missing information and why, and records both successes and challenges."
+        },
+        {
+          id: "q9-mod1",
+          question: "Why is confidentiality important in documentation?",
+          options: [
+            "It only matters for famous clients", 
+            "To protect sensitive information and respect privacy rights", 
+            "It's only important for medical records", 
+            "It's mostly about preventing other staff from reading notes"
+          ],
+          correctAnswer: 1,
+          explanation: "Confidentiality in documentation protects sensitive information, respects privacy rights, maintains trust, complies with legal requirements like HIPAA, and recognizes that personal information belongs to the individual and should only be shared with those who need to know for support purposes."
+        },
+        {
+          id: "q10-mod1",
+          question: "How does documentation support continuity of care?",
+          options: [
+            "By ensuring all team members have updated information about clients", 
+            "By keeping information private from other staff", 
+            "By focusing only on unusual incidents", 
+            "By emphasizing staff concerns over client needs"
+          ],
+          correctAnswer: 0,
+          explanation: "Documentation supports continuity of care by ensuring all team members have updated information, providing a history of interventions and their effectiveness, helping track patterns and changes over time, and facilitating coordination between different providers."
         }
       ],
       audioUrl: "https://example.com/audio/documentation-principles.mp3",
@@ -246,6 +330,78 @@ Remember that your notes are part of a permanent record and may be read by the i
           ],
           correctAnswer: 2,
           explanation: "Person-first language puts the person before the disability, as in 'the client with Down syndrome' rather than defining them by their disability. This approach acknowledges the person's individuality first and the disability as just one aspect of who they are."
+        },
+        {
+          id: "q5-mod2",
+          question: "What should be included in the 'Plan' section of a SOAP note?",
+          options: [
+            "Only medical instructions from doctors",
+            "Next steps, follow-up actions, referrals made, and upcoming appointments",
+            "A complete history of all previous interventions",
+            "Only information about medication changes"
+          ],
+          correctAnswer: 1,
+          explanation: "The Plan section should include next steps and follow-up actions, referrals made, resources provided, and upcoming appointments. This section outlines what will happen next in the individual's support or treatment process."
+        },
+        {
+          id: "q6-mod2",
+          question: "What is the purpose of the 'Assessment' section in a SOAP note?",
+          options: [
+            "To list all medications the person takes",
+            "To document only what the individual says",
+            "To provide your professional analysis and identify patterns or progress",
+            "To schedule future appointments"
+          ],
+          correctAnswer: 2,
+          explanation: "The Assessment section provides your professional analysis of the situation, including patterns you've noticed, progress toward goals, and barriers identified. It goes beyond just reporting facts to drawing professional conclusions based on your observations and expertise."
+        },
+        {
+          id: "q7-mod2",
+          question: "Which statement demonstrates the most objective documentation?",
+          options: [
+            "Client was happy during the outing",
+            "Client smiled and stated 'I really enjoyed going to the park today'",
+            "Client had a great attitude about community participation",
+            "Client seems to prefer outdoor activities over indoor ones"
+          ],
+          correctAnswer: 1,
+          explanation: "The statement 'Client smiled and stated 'I really enjoyed going to the park today'' is the most objective because it describes observable behavior (smiling) and provides a direct quote, rather than interpreting or making assumptions about the client's feelings."
+        },
+        {
+          id: "q8-mod2",
+          question: "Why is it important to document both challenges and successes?",
+          options: [
+            "It's not important; only document problems",
+            "To provide a balanced and accurate picture of the person's situation and progress",
+            "Only successes matter for documentation",
+            "Only to satisfy audit requirements"
+          ],
+          correctAnswer: 1,
+          explanation: "Documenting both challenges and successes provides a balanced and accurate picture of the person's situation and progress. This comprehensive approach helps identify patterns, track real progress, and develop appropriate support strategies that address difficulties while building on strengths."
+        },
+        {
+          id: "q9-mod2",
+          question: "Why should you avoid backdating documentation?",
+          options: [
+            "It's too time-consuming",
+            "It creates legal and ethical issues related to accuracy and honesty in records",
+            "It makes the notes too lengthy",
+            "It's acceptable as long as you remember the details"
+          ],
+          correctAnswer: 1,
+          explanation: "Backdating documentation (writing notes with an earlier date than when they were actually written) creates legal and ethical issues related to accuracy and honesty in records. It can raise questions about credibility and may violate professional standards and policies."
+        },
+        {
+          id: "q10-mod2",
+          question: "Which information is appropriate to include in the 'Subjective' section of a SOAP note?",
+          options: [
+            "Your interpretation of why the client behaved a certain way",
+            "The exact time medications were administered",
+            "Measurements of vital signs",
+            "The client's statement about how they're feeling today"
+          ],
+          correctAnswer: 3,
+          explanation: "The Subjective section should include information provided by the client, such as their statements about how they feel, their perception of their situation, and their reported experiences. The client's statement about how they're feeling today belongs in this section."
         }
       ],
       audioUrl: "https://example.com/audio/writing-notes.mp3",

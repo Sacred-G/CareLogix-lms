@@ -110,6 +110,90 @@ Remember that preparation reduces panic. Regular practice of emergency procedure
           ],
           correctAnswer: 1,
           explanation: "Regular practice builds familiarity with emergency procedures, creating muscle memory that can reduce panic and confusion during actual emergencies. Practice helps both staff and individuals with disabilities respond more effectively under stress."
+        },
+        {
+          id: "q4-mod1",
+          question: "Why might social stories be helpful when preparing someone with a developmental disability for emergency situations?",
+          options: [
+            "They're entertaining and keep people occupied during emergencies", 
+            "They help familiarize individuals with what to expect in a non-threatening way", 
+            "They're only useful for children", 
+            "They replace the need for actual emergency drills"
+          ],
+          correctAnswer: 1,
+          explanation: "Social stories help familiarize individuals with what to expect during emergency situations in a non-threatening way. They can reduce anxiety by explaining procedures, sensory experiences, and expectations before they occur in a high-stress situation."
+        },
+        {
+          id: "q5-mod1",
+          question: "What is an important consideration regarding medication in an emergency plan?",
+          options: [
+            "Medications aren't important during emergencies", 
+            "Having a 72-hour supply and storage plan for medications that require refrigeration", 
+            "Substituting with over-the-counter alternatives", 
+            "Discontinuing all medications during emergencies"
+          ],
+          correctAnswer: 1,
+          explanation: "Emergency plans should include having a 72-hour supply of essential medications and a plan for storing medications that require refrigeration during power outages. Consistent access to necessary medications can be critical during emergencies."
+        },
+        {
+          id: "q6-mod1",
+          question: "Why should comfort items be included in an evacuation plan?",
+          options: [
+            "They're only included to meet regulations", 
+            "They help reduce anxiety and provide emotional support during stressful situations", 
+            "They're unnecessary luxuries during emergencies", 
+            "They're only for children, not adults with developmental disabilities"
+          ],
+          correctAnswer: 1,
+          explanation: "Comfort items (like familiar objects, sensory tools, or preferred items) help reduce anxiety and provide emotional support during stressful emergency situations. They can be particularly important for individuals who have difficulty with transitions or sensory sensitivities."
+        },
+        {
+          id: "q7-mod1",
+          question: "Who should have copies of an individual's emergency plan?",
+          options: [
+            "Only supervisors", 
+            "All support staff, family members, and the individual when appropriate", 
+            "Only medical professionals", 
+            "Only the person who wrote the plan"
+          ],
+          correctAnswer: 1,
+          explanation: "Emergency plans should be shared with all support staff, family members, and the individual (when appropriate). Everyone involved in supporting the person should understand the procedures to ensure consistent implementation during an emergency."
+        },
+        {
+          id: "q8-mod1",
+          question: "What information should be communicated to emergency responders about an individual with developmental disabilities?",
+          options: [
+            "Only their name", 
+            "Their diagnosis label only", 
+            "Specific needs, communication methods, and effective support strategies", 
+            "Their complete medical history"
+          ],
+          correctAnswer: 2,
+          explanation: "Emergency responders should be informed about specific needs, communication methods, and effective support strategies. This might include how the person communicates, what causes distress, calming techniques, and any critical medical information."
+        },
+        {
+          id: "q9-mod1",
+          question: "Why is it important to consider sensory sensitivities in emergency planning?",
+          options: [
+            "It's not important; emergencies override sensory concerns", 
+            "Sensory overload can lead to increased anxiety, freezing behavior, or resistance that impedes evacuation", 
+            "Only as a legal requirement", 
+            "Only for individuals with autism"
+          ],
+          correctAnswer: 1,
+          explanation: "Sensory sensitivities to alarms, lights, crowds, or other emergency stimuli can cause sensory overload leading to increased anxiety, freezing behavior, or resistance that impedes evacuation. Planning for these reactions can improve emergency response."
+        },
+        {
+          id: "q10-mod1",
+          question: "What is post-emergency emotional support?",
+          options: [
+            "Financial assistance after an emergency", 
+            "Support provided to address trauma, anxiety, and disruption after an emergency situation", 
+            "Only available through professional counselors", 
+            "Only necessary after major disasters"
+          ],
+          correctAnswer: 1,
+          explanation: "Post-emergency emotional support addresses trauma, anxiety, and disruption that may occur after an emergency situation. It recognizes that the impact of emergencies continues beyond the immediate event and may require ongoing support and processing."
         }
       ],
       audioUrl: "https://example.com/audio/emergency-plans.mp3",
@@ -235,6 +319,90 @@ Remember to customize go-kits for each individual's specific needs, and check co
           ],
           correctAnswer: 2,
           explanation: "During an earthquake, a person using a wheelchair should lock the wheels to prevent movement and protect their head and neck from falling objects. Attempting to exit during shaking is dangerous due to falling hazards."
+        },
+        {
+          id: "q4-mod2",
+          question: "Which fire safety practice is most important for prevention?",
+          options: [
+            "Painting all walls with fire-retardant paint", 
+            "Keeping walkways and exits clear at all times", 
+            "Installing marble flooring", 
+            "Removing all electrical appliances"
+          ],
+          correctAnswer: 1,
+          explanation: "Keeping walkways and exits clear at all times is crucial for fire safety prevention. This ensures that in case of an emergency, everyone can evacuate quickly without obstacles blocking escape routes."
+        },
+        {
+          id: "q5-mod2",
+          question: "When should you check the contents of emergency go-kits?",
+          options: [
+            "Only after using them", 
+            "Regularly, at least every 6 months", 
+            "Only when moving to a new residence", 
+            "Only when there's a weather warning"
+          ],
+          correctAnswer: 1,
+          explanation: "Emergency go-kits should be checked regularly, at least every 6 months. This ensures that medications haven't expired, food is still good, batteries work, documents are current, and any seasonal items are appropriate."
+        },
+        {
+          id: "q6-mod2",
+          question: "What should you do if there is smoke in a building during a fire?",
+          options: [
+            "Run as quickly as possible", 
+            "Stand up tall to get above the smoke", 
+            "Stay low where the air is clearer", 
+            "Open windows to clear the smoke"
+          ],
+          correctAnswer: 2,
+          explanation: "If there is smoke during a fire, stay low where the air is clearer. Smoke rises, so the air near the floor typically has less smoke and is cooler, making breathing easier and reducing exposure to toxic gases."
+        },
+        {
+          id: "q7-mod2",
+          question: "Why is it dangerous to walk or drive through flood waters?",
+          options: [
+            "It will get your clothes wet", 
+            "It's only dangerous for children", 
+            "Even shallow moving water can sweep people and vehicles away, and water may hide hazards", 
+            "It's only dangerous during thunderstorms"
+          ],
+          correctAnswer: 2,
+          explanation: "Even shallow moving water can be powerful enough to sweep people and vehicles away. Additionally, flood waters may hide hazards like submerged objects, open manholes, electrical hazards, or contamination. The CDC advises 'Turn Around, Don't Drown.'"
+        },
+        {
+          id: "q8-mod2",
+          question: "What adaptations might be needed for fire safety for someone with a hearing impairment?",
+          options: [
+            "No special adaptations are necessary", 
+            "Visual alarm systems with flashing lights", 
+            "Louder alarms only", 
+            "Constant supervision"
+          ],
+          correctAnswer: 1,
+          explanation: "Visual alarm systems with flashing lights are an important adaptation for individuals with hearing impairments. These systems provide a visual notification when smoke or fire alarms are activated, ensuring everyone receives emergency alerts."
+        },
+        {
+          id: "q9-mod2",
+          question: "Where is the safest place to be during a tornado?",
+          options: [
+            "Near windows to watch the storm", 
+            "In a vehicle trying to outrun it", 
+            "The lowest level in an interior room without windows", 
+            "Under a highway overpass"
+          ],
+          correctAnswer: 2,
+          explanation: "The safest place during a tornado is the lowest level of a building (basement or first floor) in an interior room without windows (e.g., bathroom, closet, hallway). This provides the most protection from flying debris, which is the greatest danger during tornados."
+        },
+        {
+          id: "q10-mod2",
+          question: "What special consideration for medical equipment should be included in power outage planning?",
+          options: [
+            "Plan to discontinue use of all electrical equipment", 
+            "Have backup power sources for essential medical equipment", 
+            "Always immediately evacuate to a hospital", 
+            "Medical equipment is always automatically switched to emergency power"
+          ],
+          correctAnswer: 1,
+          explanation: "Plans for power outages should include backup power sources (generators, battery backups, etc.) for essential medical equipment like oxygen concentrators, feeding pumps, or communication devices. This preparation can be life-saving for individuals dependent on powered medical equipment."
         }
       ],
       audioUrl: "https://example.com/audio/fire-and-disasters.mp3",

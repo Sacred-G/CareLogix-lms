@@ -102,6 +102,90 @@ As a DSP, you should:
           ],
           correctAnswer: 0,
           explanation: "Self-determination refers to individuals making their own choices and having control over decisions that affect their lives, with appropriate support when needed."
+        },
+        {
+          id: "q4-mod1",
+          question: "Which legislation provides broad protections against discrimination for people with disabilities?",
+          options: [
+            "Fair Housing Act only", 
+            "Americans with Disabilities Act (ADA)", 
+            "Family Medical Leave Act", 
+            "Social Security Act"
+          ],
+          correctAnswer: 1,
+          explanation: "The Americans with Disabilities Act (ADA) is comprehensive civil rights legislation that prohibits discrimination against individuals with disabilities in all areas of public life, including jobs, schools, transportation, and all public and private places that are open to the general public."
+        },
+        {
+          id: "q5-mod1",
+          question: "What is meant by the right to dignity and respect?",
+          options: [
+            "Being given expensive gifts", 
+            "Having all requests granted immediately", 
+            "Being treated as a valued individual with courtesy and having preferences acknowledged", 
+            "Being left alone whenever requested"
+          ],
+          correctAnswer: 2,
+          explanation: "The right to dignity and respect means being treated as a valued individual with courtesy, having personal preferences acknowledged, receiving privacy during personal care, and having cultural and religious practices honored."
+        },
+        {
+          id: "q6-mod1",
+          question: "Why is the right to privacy important for individuals with developmental disabilities?",
+          options: [
+            "It's not actually important since they need constant supervision", 
+            "To hide information from their families", 
+            "It acknowledges their personhood and preserves their dignity", 
+            "Only to satisfy legal requirements"
+          ],
+          correctAnswer: 2,
+          explanation: "The right to privacy is important because it acknowledges the individual's personhood, preserves their dignity, and shows respect for them as independent human beings with the same basic needs and rights as everyone else."
+        },
+        {
+          id: "q7-mod1",
+          question: "How can a DSP support an individual's right to community participation?",
+          options: [
+            "By keeping them in specialized settings for safety", 
+            "By facilitating access to community resources and transportation", 
+            "By deciding which community activities are appropriate for them", 
+            "By limiting participation to disability-specific programs"
+          ],
+          correctAnswer: 1,
+          explanation: "DSPs can support community participation by facilitating access to community resources, providing or arranging transportation options, helping develop social connections, and supporting inclusion in typical community activities."
+        },
+        {
+          id: "q8-mod1",
+          question: "Which statement about confidentiality is most accurate?",
+          options: [
+            "Information can be freely shared with anyone who asks", 
+            "Personal information should only be shared with those who need to know for support purposes", 
+            "All information must be kept secret even from the healthcare team", 
+            "Confidentiality only applies to medical information"
+          ],
+          correctAnswer: 1,
+          explanation: "Confidentiality means that personal information should only be shared with those who need to know for support purposes. This protects privacy while ensuring appropriate care coordination among necessary team members."
+        },
+        {
+          id: "q9-mod1",
+          question: "What is a supported decision-making approach?",
+          options: [
+            "When staff make all decisions for individuals", 
+            "When individuals make all decisions completely independently", 
+            "When individuals receive the support they need to understand options and make their own informed choices", 
+            "When family members make decisions for their adult relatives"
+          ],
+          correctAnswer: 2,
+          explanation: "Supported decision-making is an approach where individuals with disabilities receive the support they need to understand, evaluate, and communicate their choices, while maintaining their right to make decisions about their own lives."
+        },
+        {
+          id: "q10-mod1",
+          question: "What should a DSP consider when balancing an individual's right to take risks with safety concerns?",
+          options: [
+            "Always prioritize absolute safety over any risk", 
+            "Allow any risk the person wants to take regardless of consequences", 
+            "Consider the specific risk, the person's understanding, and whether there are ways to mitigate danger while respecting choice", 
+            "Let supervisors make all decisions about risk"
+          ],
+          correctAnswer: 2,
+          explanation: "DSPs should consider the specific risk involved, the person's understanding of consequences, and whether there are ways to mitigate danger while respecting choice. The goal is to support informed risk-taking rather than eliminating all risk or allowing dangerous situations."
         }
       ],
       audioUrl: "https://example.com/audio/client-rights.mp3",
@@ -201,6 +285,90 @@ Remember that effective advocacy is about amplifying the individual's voice, not
           ],
           correctAnswer: 2,
           explanation: "A major ethical concern in advocacy is imposing your own preferences or values instead of truly representing the individual's wishes. Effective advocacy amplifies their voice rather than replacing it with your own."
+        },
+        {
+          id: "q4-mod2",
+          question: "What is 'systems advocacy'?",
+          options: [
+            "Helping one person communicate with their doctor",
+            "Working to change policies or practices that affect many people",
+            "Upgrading computer systems in support organizations",
+            "Creating better filing systems for client records"
+          ],
+          correctAnswer: 1,
+          explanation: "Systems advocacy involves working to change policies, practices, or structures that affect many people. It addresses patterns of barriers or discrimination and aims to create broader systemic improvements."
+        },
+        {
+          id: "q5-mod2",
+          question: "What is a common barrier to effective advocacy for individuals with developmental disabilities?",
+          options: [
+            "Too many advocates available",
+            "Excessive funding for advocacy programs",
+            "Historical disempowerment and low expectations from others",
+            "Too much emphasis on independence"
+          ],
+          correctAnswer: 2,
+          explanation: "Historical disempowerment and low expectations from others are common barriers to effective advocacy. Many individuals with disabilities have experienced others making decisions for them and may not have had opportunities to develop advocacy skills."
+        },
+        {
+          id: "q6-mod2",
+          question: "In what situation might a DSP need to engage in individual advocacy?",
+          options: [
+            "When creating agency-wide policy changes",
+            "When lobbying the government for increased funding",
+            "When ensuring a person's accommodations are provided at a medical appointment",
+            "When organizing a protest against discrimination"
+          ],
+          correctAnswer: 2,
+          explanation: "Individual advocacy involves speaking up for the specific needs of one person, such as ensuring their accommodations are provided at a medical appointment, or that their voice is heard in a planning meeting."
+        },
+        {
+          id: "q7-mod2",
+          question: "Why is it important to celebrate successful advocacy?",
+          options: [
+            "To impress supervisors with your effectiveness",
+            "To reinforce skills and build confidence for future advocacy",
+            "To create competition between different individuals",
+            "To demonstrate the superiority of staff advocacy over self-advocacy"
+          ],
+          correctAnswer: 1,
+          explanation: "Celebrating successful advocacy reinforces skills and builds confidence for future advocacy efforts. Recognizing these successes helps individuals see that their voice matters and can have a positive impact."
+        },
+        {
+          id: "q8-mod2",
+          question: "What does informed consent mean in the context of advocacy?",
+          options: [
+            "Signing any form presented by professionals",
+            "Understanding the purpose, potential risks, and benefits of advocacy actions before agreeing to them",
+            "Getting permission from family members",
+            "Having a formal legal document"
+          ],
+          correctAnswer: 1,
+          explanation: "Informed consent means the individual understands the purpose, potential risks, and benefits of advocacy actions before agreeing to them. This requires providing information in an accessible way and ensuring genuine understanding."
+        },
+        {
+          id: "q9-mod2",
+          question: "What role do self-advocacy groups play?",
+          options: [
+            "They replace the need for individual decision-making",
+            "They provide a space for individuals to learn from peers and practice advocacy skills collectively",
+            "They only focus on political campaigns",
+            "They are only appropriate for people with mild disabilities"
+          ],
+          correctAnswer: 1,
+          explanation: "Self-advocacy groups provide a space for individuals to learn from peers, develop leadership skills, practice advocacy collectively, and gain confidence in speaking up about important issues that affect their lives."
+        },
+        {
+          id: "q10-mod2",
+          question: "What is the appropriate balance between protection and empowerment in advocacy?",
+          options: [
+            "Always prioritize protection over choice in all situations",
+            "Always prioritize choice regardless of risk or harm",
+            "Consider each situation individually, balancing genuine safety concerns with the right to make choices",
+            "Let agency policies determine all decisions"
+          ],
+          correctAnswer: 2,
+          explanation: "The appropriate balance involves considering each situation individually, weighing genuine safety concerns against the individual's right to make choices. This requires thoughtful assessment rather than blanket rules that either overprotect or abandon responsibility."
         }
       ],
       audioUrl: "https://example.com/audio/advocacy-empowerment.mp3",

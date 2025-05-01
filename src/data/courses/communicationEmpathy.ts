@@ -102,6 +102,90 @@ Remember that empathetic communication is a skill that improves with practice an
           options: ["Around 10%", "Around 30%", "Around 55-65%", "Around 90%"],
           correctAnswer: 2,
           explanation: "Research suggests that approximately 55-65% of communication is non-verbal, including body language, facial expressions, and tone of voice. This highlights the importance of paying attention to these aspects when communicating."
+        },
+        {
+          id: "q4-mod1",
+          question: "What is person-centered language?",
+          options: [
+            "Using technical medical terms to be precise",
+            "Speaking about the person's disability before anything else",
+            "Language that puts the person before their disability and uses respectful terminology",
+            "Only using simple words regardless of the individual's comprehension level"
+          ],
+          correctAnswer: 2,
+          explanation: "Person-centered language puts the person before their disability (e.g., 'person with autism' rather than 'autistic person'), uses respectful and age-appropriate terminology, and focuses on abilities alongside support needs."
+        },
+        {
+          id: "q5-mod1",
+          question: "Which of these is a common barrier to empathetic communication?",
+          options: [
+            "Taking too much time to listen to someone",
+            "Having preconceptions about disabilities",
+            "Using too much eye contact",
+            "Being too focused on the person's feelings"
+          ],
+          correctAnswer: 1,
+          explanation: "Having preconceptions about disabilities is a common barrier to empathetic communication. These preconceptions may cause us to make assumptions about someone's abilities or needs rather than truly listening to understand their unique experience."
+        },
+        {
+          id: "q6-mod1",
+          question: "What does it mean to validate someone's feelings?",
+          options: [
+            "Agreeing with everything they say",
+            "Recognizing their emotions as understandable without judging them",
+            "Trying to cheer them up immediately",
+            "Telling them how they should feel instead"
+          ],
+          correctAnswer: 1,
+          explanation: "Validating feelings means recognizing someone's emotions as understandable and acceptable, regardless of whether you agree with their perspective. It involves acknowledging their feelings without judgment rather than dismissing or trying to immediately change their emotions."
+        },
+        {
+          id: "q7-mod1",
+          question: "Why is it important to be aware of physical proximity in communication?",
+          options: [
+            "To ensure you can hear each other",
+            "Because everyone prefers close physical contact during conversations",
+            "Because personal space preferences vary among individuals and cultures",
+            "Physical proximity doesn't matter in communication"
+          ],
+          correctAnswer: 2,
+          explanation: "Personal space preferences vary widely among individuals and across different cultures. Being aware of and respecting physical proximity preferences is important for comfortable, respectful communication. Some individuals may be sensitive to being too close while communicating."
+        },
+        {
+          id: "q8-mod1",
+          question: "What does perspective-taking involve in empathetic communication?",
+          options: [
+            "Taking photographs of the conversation",
+            "Making sure your opinion is understood",
+            "Mentally putting yourself in another person's position to better understand their experience",
+            "Insisting that others see your point of view"
+          ],
+          correctAnswer: 2,
+          explanation: "Perspective-taking involves mentally putting yourself in another person's position to better understand their experience, feelings, and needs. This skill is essential for empathetic communication as it helps you respond in ways that acknowledge their unique situation."
+        },
+        {
+          id: "q9-mod1",
+          question: "Which of the following is NOT a component of active listening?",
+          options: [
+            "Giving undivided attention",
+            "Formulating your response while the other person is speaking",
+            "Using appropriate eye contact",
+            "Providing verbal and non-verbal feedback"
+          ],
+          correctAnswer: 1,
+          explanation: "Formulating your response while the other person is speaking is not a component of active listening. Active listening involves fully concentrating on what is being said rather than preparing what you will say next, which detracts from your ability to truly understand the speaker's message."
+        },
+        {
+          id: "q10-mod1",
+          question: "How can reflection improve your communication skills?",
+          options: [
+            "By helping you memorize pre-planned responses",
+            "By allowing you to examine your patterns and adjust your approach",
+            "By showing others you're a serious person",
+            "By focusing only on your successes"
+          ],
+          correctAnswer: 1,
+          explanation: "Reflection improves communication skills by allowing you to examine your patterns, recognize what works well and what doesn't, and thoughtfully adjust your approach. This ongoing process of self-awareness and growth is essential for developing empathetic communication skills."
         }
       ],
       audioUrl: "https://example.com/audio/empathetic-communication.mp3",
@@ -237,6 +321,78 @@ Remember that supporting communication effectively requires patience, creativity
           ],
           correctAnswer: 1,
           explanation: "Echolalia is the repetition of words or phrases that have been heard. It can be immediate (repeating something just heard) or delayed (repeating something heard in the past). It can be a meaningful form of communication for some individuals."
+        },
+        {
+          id: "q5-mod2",
+          question: "Why is it important to create communication-friendly environments?",
+          options: [
+            "To make the space look more professional",
+            "To reduce barriers and facilitate successful communication",
+            "To impress supervisors and families",
+            "Only because it's required by regulations"
+          ],
+          correctAnswer: 1,
+          explanation: "Communication-friendly environments reduce barriers and facilitate successful communication by addressing factors like noise, lighting, distractions, and access to communication supports, which can significantly impact someone's ability to understand and express themselves."
+        },
+        {
+          id: "q6-mod2",
+          question: "What approach should be taken when supporting someone with literal language interpretation?",
+          options: [
+            "Use plenty of idioms and figures of speech to expand their understanding",
+            "Use clear, concrete language and avoid abstract expressions",
+            "Speak very loudly to ensure comprehension",
+            "Always use the most complex vocabulary possible"
+          ],
+          correctAnswer: 1,
+          explanation: "For someone who interprets language literally, using clear, concrete language and avoiding idioms, abstract expressions, and figures of speech is most effective. Phrases like 'hold your horses' or 'it's raining cats and dogs' might be confusing when interpreted literally."
+        },
+        {
+          id: "q7-mod2",
+          question: "What is a key principle when modeling the use of an AAC system?",
+          options: [
+            "Only model the simplest words and concepts",
+            "Model correct and complex use of the system during natural interactions",
+            "Use the system only when the individual is present",
+            "Focus on just a few symbols or buttons"
+          ],
+          correctAnswer: 1,
+          explanation: "Modeling involves demonstrating correct and natural use of the AAC system during interactions. This shows how the system can be used effectively for communication, teaches new vocabulary and functions, and reduces stigma by normalizing its use."
+        },
+        {
+          id: "q8-mod2",
+          question: "How should you respond to unconventional communication attempts?",
+          options: [
+            "Ignore them until the person communicates in a more typical way",
+            "Acknowledge them, respond appropriately, and reinforce all attempts at communication",
+            "Always redirect to a more conventional communication method",
+            "Point out that the communication attempt is unusual"
+          ],
+          correctAnswer: 1,
+          explanation: "All communication attempts should be acknowledged, responded to appropriately, and reinforced, even if they seem unconventional. This validates the person's efforts, builds their confidence, and encourages continued communication."
+        },
+        {
+          id: "q9-mod2",
+          question: "When creating visual supports for communication, what is most important to consider?",
+          options: [
+            "Using the most colorful images possible",
+            "Making them look professional and polished",
+            "Ensuring they are meaningful and relevant to the specific individual",
+            "Using as many visuals as possible on each page"
+          ],
+          correctAnswer: 2,
+          explanation: "Visual supports should be meaningful and relevant to the specific individual, using symbols, photos, or text that they understand and that represent concepts important to them. The most effective visual supports are personalized rather than generic."
+        },
+        {
+          id: "q10-mod2",
+          question: "Why is consistency important when supporting communication?",
+          options: [
+            "It reduces the need for creativity in approaches",
+            "It helps build predictability, reduces anxiety, and supports understanding",
+            "It makes the DSP's job easier",
+            "It's only important for children, not adults"
+          ],
+          correctAnswer: 1,
+          explanation: "Consistency in communication approaches helps build predictability, reduces anxiety, and supports understanding. When communication methods, vocabulary, and responses are consistent, it creates a foundation of security that makes communication more successful."
         }
       ],
       audioUrl: "https://example.com/audio/diverse-communication.mp3",

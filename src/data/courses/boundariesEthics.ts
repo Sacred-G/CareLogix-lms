@@ -120,6 +120,90 @@ Remember that maintaining boundaries is not about being cold or distant—it's a
           ],
           correctAnswer: 1,
           explanation: "Good boundaries don't mean being cold or distant. The best approach is being clear and consistent with boundaries while still showing care and empathy, maintaining a professional relationship that is warm but has appropriate limits."
+        },
+        {
+          id: "q4-mod1",
+          question: "What characterizes the relationship between a DSP and the person they support?",
+          options: [
+            "It's identical to a friendship or family relationship",
+            "It's a paid position with specific responsibilities and a professional purpose",
+            "It should develop into a personal relationship over time",
+            "It's primarily focused on the DSP's needs and interests"
+          ],
+          correctAnswer: 1,
+          explanation: "The DSP relationship is characterized as a paid position with specific responsibilities and a professional purpose. While warm and caring, it differs from personal relationships in its purpose, power dynamics, professional nature, and time limitations."
+        },
+        {
+          id: "q5-mod1",
+          question: "Which of these is an example of appropriate financial boundaries?",
+          options: [
+            "Borrowing money from a client during a personal emergency",
+            "Buying items from a client's personal collection",
+            "Transparency and following agency guidelines when handling client finances",
+            "Giving small gifts to favorite clients"
+          ],
+          correctAnswer: 2,
+          explanation: "Appropriate financial boundaries include maintaining transparency when handling client finances and following agency guidelines. DSPs should not engage in personal financial transactions with clients such as lending, borrowing, buying, or selling items."
+        },
+        {
+          id: "q6-mod1",
+          question: "When might it be appropriate to share personal information about yourself with someone you support?",
+          options: [
+            "Whenever you want to build rapport",
+            "When you need emotional support from them",
+            "Limited sharing that serves a purpose for the individual's support",
+            "Extensive sharing to build a deeper friendship"
+          ],
+          correctAnswer: 2,
+          explanation: "Limited personal sharing that serves a purpose for the individual's support may be appropriate. This might include brief, relevant information that normalizes experiences or builds connection, but should not burden the individual with the DSP's personal problems or shift focus from their needs."
+        },
+        {
+          id: "q7-mod1",
+          question: "Why does a power differential exist in the DSP-client relationship?",
+          options: [
+            "Because DSPs should control their clients",
+            "Because DSPs have access to personal information and may assist with intimate tasks",
+            "Because clients are always less capable",
+            "Because DSPs earn more money than clients"
+          ],
+          correctAnswer: 1,
+          explanation: "A power differential exists because DSPs have access to personal information, may assist with intimate tasks, often have control over resources and supports, and are in a position of trust and authority. Recognizing this differential is important for maintaining appropriate boundaries."
+        },
+        {
+          id: "q8-mod1",
+          question: "What should a DSP do if they realize a boundary has been crossed?",
+          options: [
+            "Hide it to avoid getting in trouble",
+            "Discuss it with the individual but no one else",
+            "Discuss it with their supervisor and take steps to reestablish appropriate boundaries",
+            "Immediately terminate the support relationship"
+          ],
+          correctAnswer: 2,
+          explanation: "If a boundary has been crossed, the DSP should discuss it with their supervisor and take steps to reestablish appropriate boundaries. Being honest about boundary crossings allows for proper supervision and correction before more serious boundary violations occur."
+        },
+        {
+          id: "q9-mod1",
+          question: "Which statement about social media boundaries is most accurate?",
+          options: [
+            "DSPs should connect with all clients on social media to stay in touch",
+            "Agency policies about social media connections should be followed, which often restrict personal connections",
+            "Social media boundaries only matter for teenage clients",
+            "Connecting with clients on social media is fine as long as you don't comment on their posts"
+          ],
+          correctAnswer: 1,
+          explanation: "DSPs should follow their agency's policies regarding social media, which often restrict personal connections with clients. Social media can blur professional boundaries and potentially expose personal information that might change the professional nature of the relationship."
+        },
+        {
+          id: "q10-mod1",
+          question: "Which of these is NOT typically considered a physical boundary consideration in direct support work?",
+          options: [
+            "Providing privacy during personal care",
+            "Respecting personal space preferences",
+            "Insisting on physical contact to show caring",
+            "Knocking before entering living spaces"
+          ],
+          correctAnswer: 2,
+          explanation: "Insisting on physical contact is not an appropriate boundary consideration. Physical boundaries include respecting personal space, providing privacy during personal care, using appropriate touch only when necessary and welcomed, and respecting living spaces."
         }
       ],
       audioUrl: "https://example.com/audio/professional-boundaries.mp3",
@@ -260,6 +344,78 @@ Remember that many ethical dilemmas don't have perfect solutions. Your goal is t
           ],
           correctAnswer: 2,
           explanation: "The final step is to reflect and evaluate the outcomes of your decision. This reflection helps you learn from the experience and apply those insights to future ethical dilemmas, creating a continuous improvement process."
+        },
+        {
+          id: "q5-mod2",
+          question: "What does the ethical principle of beneficence mean?",
+          options: [
+            "Avoiding harm",
+            "Acting in ways that benefit the individual and promote well-being",
+            "Treating everyone equally",
+            "Following the law"
+          ],
+          correctAnswer: 1,
+          explanation: "Beneficence means acting in ways that benefit the individual, promote well-being and quality of life, and support growth and development. It's about actively doing good, not just avoiding harm."
+        },
+        {
+          id: "q6-mod2",
+          question: "When identifying an ethical problem, what should you focus on first?",
+          options: [
+            "Finding someone to blame for the situation",
+            "Determining if agency policies were violated",
+            "Clarifying the specific issue, who is involved, and the facts of the situation",
+            "Deciding what your supervisor would want you to do"
+          ],
+          correctAnswer: 2,
+          explanation: "When identifying an ethical problem, you should first clarify the specific issue or decision at hand, identify who is involved or affected, and gather the facts of the situation. This creates a clear foundation for addressing the dilemma."
+        },
+        {
+          id: "q7-mod2",
+          question: "What does the principle of non-maleficence require?",
+          options: [
+            "Doing whatever the individual wants",
+            "Avoiding actions that cause harm and protecting from abuse or neglect",
+            "Making all decisions for the individual",
+            "Reporting all issues to management"
+          ],
+          correctAnswer: 1,
+          explanation: "Non-maleficence requires avoiding actions that cause harm, protecting individuals from abuse, neglect, and exploitation, and considering the potential unintended consequences of actions. It's often summarized as 'first, do no harm.'"
+        },
+        {
+          id: "q8-mod2",
+          question: "Which of these is an example of the ethical principle of justice?",
+          options: [
+            "Giving your favorite client extra time and attention",
+            "Only helping clients who are cooperative",
+            "Advocating for fair distribution of resources and challenging discrimination",
+            "Following your personal values in all situations"
+          ],
+          correctAnswer: 2,
+          explanation: "Justice involves treating people fairly and equitably, advocating for access to resources, and challenging discrimination and bias. Advocating for fair distribution of resources and challenging discrimination exemplifies this principle."
+        },
+        {
+          id: "q9-mod2",
+          question: "What is meant by 'fidelity' in ethical practice?",
+          options: [
+            "Always agreeing with your supervisor",
+            "Being faithful to professional commitments, maintaining confidentiality, and following through on responsibilities",
+            "Never making mistakes",
+            "Always following the exact letter of every policy"
+          ],
+          correctAnswer: 1,
+          explanation: "Fidelity means being faithful to professional commitments, maintaining confidentiality as appropriate, and following through on responsibilities. It involves loyalty, honesty, and keeping promises made in a professional context."
+        },
+        {
+          id: "q10-mod2",
+          question: "Why is documentation important when resolving an ethical dilemma?",
+          options: [
+            "It creates extra paperwork that proves you're busy",
+            "It's only important for legal protection",
+            "It records your decision-making process, reasoning, and actions for accountability and learning",
+            "It's only necessary when something goes wrong"
+          ],
+          correctAnswer: 2,
+          explanation: "Documentation of ethical decision-making records your process, reasoning, and actions, which provides accountability, helps others understand your decisions, creates a record for future reference, and supports learning from the experience."
         }
       ],
       audioUrl: "https://example.com/audio/ethical-dilemmas.mp3",
