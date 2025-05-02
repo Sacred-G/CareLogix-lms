@@ -21,6 +21,12 @@ export default function VideoPlayer({ url, title, onVideoEnded }: VideoPlayerPro
       videoId = new URL(url).searchParams.get('v') || '';
     } else if (url.includes('youtu.be/')) {
       videoId = url.split('youtu.be/')[1].split('?')[0];
+    } else if (url.includes('youtube.com/embed/')) {
+      // Already in embed format, extract ID
+      videoId = url.split('youtube.com/embed/')[1].split('?')[0];
+    } else {
+      // Direct YouTube video ID
+      videoId = url;
     }
     
     return `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;

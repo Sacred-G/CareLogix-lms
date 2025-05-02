@@ -14,15 +14,15 @@ export const medicationAdminCourse: Course = {
       id: "mod-1",
       title: "Medication Safety Principles",
       description: "Learn the core principles of medication safety and proper administration techniques.",
-      videoUrl: "https://www.youtube.com/embed/e2gFKX-jjL8",
+      videoUrl: "https://www.youtube.com/watch?v=H9t-Hy69ZEY",
       content: `
 # Medication Safety Principles
 
 Medication administration is a critical responsibility for many Direct Support Professionals. Safe medication practices protect the health and well-being of the individuals you support.
 
-## The Five Rights of Medication Administration
+## The Seven Rights of Medication Administration
 
-Always verify these five elements before administering any medication:
+Always verify these seven elements before administering any medication:
 
 ### 1. Right Person
 - Check identification to ensure medication is given to correct individual
@@ -56,6 +56,18 @@ Always verify these five elements before administering any medication:
   - Sublingual (under tongue)
   - Rectal or vaginal
   - Other routes require specialized training
+
+### 6. Right Documentation
+- Document immediately after administration
+- Include all required information: medication, dose, time, initials
+- Document any refusals, missed doses, or PRN effectiveness
+- Follow your organization's specific documentation requirements
+
+### 7. Right Reason
+- Know why the person is taking each medication
+- Understand what symptoms the medication treats
+- Be alert to whether the medication is working as intended
+- Report if the medication doesn't seem to be addressing the condition
 
 ## Documentation Requirements
 
@@ -94,10 +106,10 @@ Remember: Medication errors are serious but reporting them promptly is essential
       questions: [
         {
           id: "q1-mod1",
-          question: "What is the most important step before administering any medication?",
-          options: ["Recording the time", "Checking the 'five rights' of medication administration", "Washing your hands", "Asking the client if they want the medication"],
+          question: "How many 'rights' are there in the current best practice of medication administration?",
+          options: ["Five", "Seven", "Nine", "Three"],
           correctAnswer: 1,
-          explanation: "The 'five rights' (right patient, right medication, right dose, right time, right route) are essential safety checks before any medication administration."
+          explanation: "Current best practice identifies seven rights of medication administration: right person, right medication, right dose, right time, right route, right documentation, and right reason."
         },
         {
           id: "q2-mod1",
@@ -125,15 +137,15 @@ Remember: Medication errors are serious but reporting them promptly is essential
         },
         {
           id: "q4-mod1",
-          question: "When should you check the medication label when administering medications?",
+          question: "Which of the following is one of the seven rights of medication administration?",
           options: [
-            "Once, when preparing the medication", 
-            "Three times: when taking from storage, before preparing, and before returning to storage", 
-            "Only when you're unfamiliar with the medication", 
-            "Only when administering controlled substances"
+            "Right cabinet", 
+            "Right documentation", 
+            "Right facility", 
+            "Right temperature"
           ],
           correctAnswer: 1,
-          explanation: "Medication labels should be checked three times during the administration process: when taking the medication from storage, before preparing or pouring it, and before returning the container to storage. This triple-check helps prevent errors."
+          explanation: "Right documentation is one of the seven rights of medication administration, emphasizing the importance of properly recording all medication-related activities."
         },
         {
           id: "q5-mod1",
@@ -149,15 +161,15 @@ Remember: Medication errors are serious but reporting them promptly is essential
         },
         {
           id: "q6-mod1",
-          question: "What should be included in medication documentation?",
+          question: "Why is 'right reason' important in medication administration?",
           options: [
-            "Only the medication name",
-            "Medication, dose, time, refusals/missed doses, and observations of effects",
-            "Only information when something goes wrong",
-            "Only the time medication was given"
+            "It ensures medications are only given for approved diagnoses",
+            "It helps DSPs determine if a medication is working as intended",
+            "It allows DSPs to change medications when needed",
+            "It's required by federal regulations"
           ],
           correctAnswer: 1,
-          explanation: "Complete medication documentation includes the medication given, dose administered, time of administration, any refusals or missed doses, and observations of effects or side effects. This creates an accurate record for continuity of care."
+          explanation: "The 'right reason' principle ensures that DSPs understand why a medication is being given and can monitor whether it is effectively addressing the intended condition or symptoms."
         },
         {
           id: "q7-mod1",
@@ -197,19 +209,19 @@ Remember: Medication errors are serious but reporting them promptly is essential
         },
         {
           id: "q10-mod1",
-          question: "Why is knowing the purpose of each medication important?",
+          question: "What is the purpose of the 'right route' principle in medication administration?",
           options: [
-            "It's not important as long as you give what's prescribed",
-            "To be able to prescribe medications yourself",
-            "To help monitor for effectiveness and side effects",
-            "Only to answer questions from family members"
+            "To ensure medications are delivered via the correct method of administration",
+            "To determine the fastest way to give medication",
+            "To plan the best driving route to deliver medications",
+            "To determine which staff member should administer medication"
           ],
-          correctAnswer: 2,
-          explanation: "Knowing the purpose of each medication helps you monitor for effectiveness and side effects. Understanding what a medication is for allows you to observe relevant symptoms or improvements and report important changes to healthcare providers."
+          correctAnswer: 0,
+          explanation: "The 'right route' principle ensures that medications are delivered via the correct method of administration (e.g., oral, topical, sublingual). Using the wrong route can cause harm or reduce effectiveness of the medication."
         }
       ],
       audioUrl: "https://example.com/audio/medication-safety.mp3",
-      transcript: "This audio segment covers the essential principles of medication safety, including the five rights of medication administration, proper documentation requirements, and what to do if a medication error occurs. We emphasize the importance of following protocols and understanding your scope of practice."
+      transcript: "This audio segment covers the essential principles of medication safety, including the seven rights of medication administration, proper documentation requirements, and what to do if a medication error occurs. We emphasize the importance of following protocols and understanding your scope of practice."
     },
     {
       id: "mod-2",
