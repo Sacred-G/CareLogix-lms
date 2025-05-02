@@ -10,35 +10,34 @@ import { Download, Share2, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuth } from '@/hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import { Certificate as CertificateType } from '@/data/courseTypes';
+import { getCertificateById } from '@/services/certificateService';
 
 const CertificatePage = () => {
   const { certificateId } = useParams<{ certificateId: string }>();
   const { user } = useAuth();
   const certificateRef = useRef<HTMLDivElement>(null);
 
-  // For now, since we don't have actual certificate data in Supabase yet,
-  // we'll mock a certificate for demo purposes
-  const mockCertificate: CertificateType = {
-    id: certificateId || 'cert-123',
-    userId: user?.id || 'user-123',
-    userName: user?.user_metadata?.full_name || 'DSP Professional',
-    courseId: 'intro-dev-disabilities',
-    courseTitle: 'Introduction to Developmental Disabilities',
-    issueDate: new Date().toISOString(),
-    completionDate: new Date().toISOString(),
-    certificateNumber: certificateId || 'CERT-12345678',
-    // Add any additional fields needed for signatures if necessary
-  };
-
   const { data: certificate, isLoading, error } = useQuery({
     queryKey: ['certificate', certificateId],
     queryFn: async () => {
-      // In a real app, you'd fetch from Supabase
-      // For now, return the mock certificate
-      return Promise.resolve(mockCertificate);
-    }
+      if (!certificateId) {
+        throw new Error('Certificate ID is required');
+      }
+      
+      const cert = await getCertificateById(certificateId);
+      
+      if (!cert) {
+        throw new Error('Certificate not found');
+      }
+      
+      // Security check: make sure the user owns this certificate
+      if (user && cert.userId !== user.id) {
+        throw new Error('Unauthorized');
+      }
+      
+      return cert;
+    },
+    enabled: !!certificateId
   });
 
   const handlePrint = useReactToPrint({
@@ -55,7 +54,6 @@ const CertificatePage = () => {
         await navigator.share({
           title: `${certificate?.courseTitle} Certificate`,
           text: `Check out my certificate for completing ${certificate?.courseTitle}!`,
-          // In a real app, you'd have a URL to the certificate
           url: window.location.href,
         });
       } else {

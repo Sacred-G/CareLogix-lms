@@ -67,4 +67,6 @@ export interface Certificate {
   completionDate: string;
   validUntil?: string;
   certificateNumber: string;
+  organizationName?: string;
+  organizationLogo?: string;
 }

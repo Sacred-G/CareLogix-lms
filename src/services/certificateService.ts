@@ -9,13 +9,36 @@ export const generateCertificateId = (): string => {
   return `CERT-${timestamp}-${random}`;
 };
 
+// Get organization name from email domain
+export const getOrganizationFromEmail = (email: string): { name: string; logo?: string } => {
+  if (!email) return { name: 'DSP Training Program' };
+  
+  const domain = email.split('@')[1]?.toLowerCase();
+  
+  // Map domains to organization names and logos
+  const organizationMap: Record<string, { name: string; logo?: string }> = {
+    'centeredsupportservice.org': { 
+      name: 'Centered Support Service',
+      logo: 'centered-learning' // This would be the logo key/name
+    },
+    // Add more organization mappings as needed
+  };
+  
+  // Return the mapped organization or a default
+  return domain && organizationMap[domain] 
+    ? organizationMap[domain] 
+    : { name: 'DSP Training Program' };
+};
+
 // Create a certificate object
 export const createCertificate = (
   userId: string,
   userName: string,
-  course: Course
+  course: Course,
+  email: string
 ): Certificate => {
   const currentDate = new Date().toISOString();
+  const organization = getOrganizationFromEmail(email);
   
   return {
     id: generateCertificateId(),
@@ -26,44 +49,62 @@ export const createCertificate = (
     issueDate: currentDate,
     completionDate: currentDate,
     certificateNumber: generateCertificateId(),
+    organizationName: organization.name,
+    organizationLogo: organization.logo,
   };
 };
 
-// Save certificate to database if needed - using a mock implementation
-// We'll mock data storage since there's no certificates table in Supabase yet
-export const saveCertificate = async (certificate: Certificate): Promise<boolean> => {
+// Save certificate to database
+export const saveCertificate = async (certificate: Certificate): Promise<{ success: boolean; certificateId?: string }> => {
   try {
-    // Mock implementation - in a real app, this would save to Supabase
-    console.log('Saving certificate:', certificate);
+    const { data, error } = await supabase
+      .from('certificates')
+      .insert(certificate)
+      .select('id')
+      .single();
     
-    // Mock successful save
-    return true;
+    if (error) throw error;
+    
+    return { 
+      success: true,
+      certificateId: data.id
+    };
   } catch (error) {
     console.error('Error saving certificate:', error);
-    return false;
+    return { success: false };
   }
 };
 
-// Get user certificates - using a mock implementation
-// We'll return mock certificates since there's no certificates table yet
+// Get a specific certificate by ID
+export const getCertificateById = async (certificateId: string): Promise<Certificate | null> => {
+  try {
+    const { data, error } = await supabase
+      .from('certificates')
+      .select('*')
+      .eq('id', certificateId)
+      .single();
+    
+    if (error) throw error;
+    
+    return data as Certificate;
+  } catch (error) {
+    console.error('Error fetching certificate:', error);
+    return null;
+  }
+};
+
+// Get user certificates
 export const getUserCertificates = async (userId: string): Promise<Certificate[]> => {
   try {
-    // Mock implementation - in a real app, this would fetch from Supabase
-    console.log('Fetching certificates for user:', userId);
+    const { data, error } = await supabase
+      .from('certificates')
+      .select('*')
+      .eq('userId', userId)
+      .order('issueDate', { ascending: false });
     
-    // Return a mock certificate
-    const mockCertificate: Certificate = {
-      id: 'CERT-12345678',
-      userId: userId,
-      userName: 'DSP Professional',
-      courseId: 'intro-dev-disabilities',
-      courseTitle: 'Introduction to Developmental Disabilities',
-      issueDate: new Date().toISOString(),
-      completionDate: new Date().toISOString(),
-      certificateNumber: 'CERT-12345678',
-    };
+    if (error) throw error;
     
-    return [mockCertificate];
+    return data as Certificate[];
   } catch (error) {
     console.error('Error fetching certificates:', error);
     return [];

@@ -15,6 +15,7 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
   const formattedIssueDate = format(new Date(certificate.issueDate), 'MMMM dd, yyyy');
   const formattedCompletionDate = format(new Date(certificate.completionDate), 'MMMM dd, yyyy');
   const validUntil = certificate.validUntil ? format(new Date(certificate.validUntil), 'MMMM dd, yyyy') : null;
+  const organizationName = certificate.organizationName || 'DSP Training Program';
   
   return (
     <div className={`certificate-container ${preview ? 'max-w-3xl mx-auto' : 'w-full'}`}>
@@ -28,7 +29,27 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
         <div className="relative z-10 text-center">
           <div className="flex justify-center items-center mb-8">
             <div className="bg-lms-blue-600 rounded-full p-3 shadow-lg">
-              <Award className="h-14 w-14 text-white" />
+              {certificate.organizationLogo ? (
+                <div className="h-14 w-14 flex items-center justify-center">
+                  <img 
+                    src={`/logos/${certificate.organizationLogo}.svg`} 
+                    alt={organizationName} 
+                    className="max-h-12 max-w-12"
+                    onError={(e) => {
+                      // Fallback to default icon if logo fails to load
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        const icon = document.createElement('div');
+                        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>';
+                        parent.appendChild(icon);
+                      }
+                    }}
+                  />
+                </div>
+              ) : (
+                <Award className="h-14 w-14 text-white" />
+              )}
             </div>
           </div>
           
@@ -52,7 +73,7 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
               <h3 className="text-2xl font-bold text-lms-blue-800 mb-2">{certificate.courseTitle}</h3>
               <p className="text-gray-600">
                 demonstrating proficiency and understanding of all required concepts
-                <br />in accordance with DSP training standards.
+                <br />in accordance with {organizationName} training standards.
               </p>
             </div>
             
@@ -74,7 +95,7 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
                   </div>
                 </div>
                 <p className="font-medium text-gray-800">Program Instructor</p>
-                <p className="text-sm text-gray-500">DSP Training Department</p>
+                <p className="text-sm text-gray-500">{organizationName}</p>
               </div>
               
               {/* Official Signature */}

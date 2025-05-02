@@ -13,6 +13,8 @@ import { Button } from '@/components/ui/button';
 import { FileBadge2, Download, Share2 } from 'lucide-react';
 import Certificate from './Certificate';
 import { Certificate as CertificateType } from '@/data/courseTypes';
+import { saveCertificate } from '@/services/certificateService';
+import { useNavigate } from 'react-router-dom';
 
 interface CertificateModalProps {
   open: boolean;
@@ -23,6 +25,7 @@ interface CertificateModalProps {
 const CertificateModal = ({ open, onOpenChange, certificate }: CertificateModalProps) => {
   const certificateRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handlePrint = useReactToPrint({
     content: () => certificateRef.current,
@@ -44,20 +47,57 @@ const CertificateModal = ({ open, onOpenChange, certificate }: CertificateModalP
 
   const handleShare = async () => {
     try {
+      // Save certificate first to get an ID
+      const result = await saveCertificate(certificate);
+      
+      if (!result.success || !result.certificateId) {
+        throw new Error("Failed to save certificate");
+      }
+      
+      const certificateUrl = `${window.location.origin}/certificates/${result.certificateId}`;
+      
       if (navigator.share) {
         await navigator.share({
           title: `${certificate.courseTitle} Certificate`,
           text: `Check out my certificate for completing ${certificate.courseTitle}!`,
-          // In a real app, you'd have a URL to the certificate
-          url: window.location.href,
+          url: certificateUrl,
         });
       } else {
+        // Copy link to clipboard
+        await navigator.clipboard.writeText(certificateUrl);
         toast({
-          description: "Sharing is not supported on this device"
+          description: "Certificate link copied to clipboard"
         });
       }
     } catch (error) {
       console.error('Error sharing:', error);
+      toast({
+        title: "Error",
+        description: "Failed to share certificate",
+        variant: "destructive"
+      });
+    }
+  };
+  
+  const handleView = async () => {
+    try {
+      // Save certificate first to get an ID
+      const result = await saveCertificate(certificate);
+      
+      if (!result.success || !result.certificateId) {
+        throw new Error("Failed to save certificate");
+      }
+      
+      // Navigate to certificate page
+      navigate(`/certificates/${result.certificateId}`);
+      onOpenChange(false);
+    } catch (error) {
+      console.error('Error viewing certificate:', error);
+      toast({
+        title: "Error",
+        description: "Failed to view certificate",
+        variant: "destructive"
+      });
     }
   };
 
@@ -75,8 +115,15 @@ const CertificateModal = ({ open, onOpenChange, certificate }: CertificateModalP
           <Certificate certificate={certificate} preview={true} />
         </div>
         
-        <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-0">
-          <div className="flex gap-2 w-full sm:w-auto">
+        <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between">
+          <Button 
+            onClick={handleView}
+            variant="outline" 
+            className="order-1 sm:order-none"
+          >
+            View Full Certificate
+          </Button>
+          <div className="flex gap-2">
             <Button 
               onClick={handlePrint}
               className="flex-1 sm:flex-none"

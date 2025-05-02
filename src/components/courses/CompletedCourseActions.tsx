@@ -28,8 +28,9 @@ const CompletedCourseActions = ({ course, isCompleted }: CompletedCourseActionsP
       return;
     }
     
-    const userName = user.user_metadata?.full_name || 'DSP Learner';
-    const newCertificate = createCertificate(user.id, userName, course);
+    const userName = user.user_metadata?.full_name || 'DSP Professional';
+    const email = user.email || '';
+    const newCertificate = createCertificate(user.id, userName, course, email);
     
     setCertificate(newCertificate);
     setCertificateModalOpen(true);
