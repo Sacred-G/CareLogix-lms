@@ -40,7 +40,8 @@ const convertDatabaseCourse = (dbCourse: DatabaseCourse): Course => {
     category: dbCourse.domain || "General",
     instructor: "Course Instructor",
     duration: "Self-paced",
-    modules: []
+    modules: [],
+    domain: dbCourse.domain // Explicitly map domain property
   };
 };
 
