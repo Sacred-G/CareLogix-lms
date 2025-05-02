@@ -180,4 +180,26 @@
       transform: translateY(0);
     }
   }
+  
+  /* Certificate Signature Styles */
+  .signature-container {
+    @apply flex items-end justify-center h-16 border-b border-gray-300;
+  }
+  
+  .signature-image {
+    @apply h-full w-auto max-w-full opacity-80;
+  }
+  
+  .certificate-signature-line {
+    @apply w-full h-px bg-gray-400 my-2;
+  }
+  
+  .signature-name {
+    @apply font-medium text-gray-800 mt-2;
+  }
+  
+  .signature-title {
+    @apply text-sm text-gray-500;
+  }
 }
+

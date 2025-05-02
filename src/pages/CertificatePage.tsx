@@ -29,6 +29,7 @@ const CertificatePage = () => {
     issueDate: new Date().toISOString(),
     completionDate: new Date().toISOString(),
     certificateNumber: certificateId || 'CERT-12345678',
+    // Add any additional fields needed for signatures if necessary
   };
 
   const { data: certificate, isLoading, error } = useQuery({
