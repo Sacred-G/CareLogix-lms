@@ -16,32 +16,6 @@ import {
 } from '@/components/ui/select';
 import { useAuth } from '@/hooks/useAuth';
 
-// Define a type that matches our database structure
-type DatabaseCourse = {
-  id: string;
-  title: string;
-  description: string | null;
-  thumbnail: string | null;
-  created_at: string | null;
-  created_by: string | null;
-  domain: string | null;
-  updated_at: string | null;
-};
-
-// Define a mapper function to convert DatabaseCourse to the format CourseCard expects
-const mapDatabaseCourseToCardCourse = (dbCourse: DatabaseCourse) => {
-  return {
-    id: dbCourse.id,
-    title: dbCourse.title,
-    description: dbCourse.description || '',
-    thumbnail: dbCourse.thumbnail || 'https://placehold.co/600x400/png',
-    category: dbCourse.domain || 'General', // Use domain as category
-    instructor: 'Instructor', // Default value
-    duration: 'Self-paced', // Default value
-    modules: [] // Required by type but not used in the card view
-  };
-};
-
 const Courses = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -69,9 +43,9 @@ const Courses = () => {
     enabled: !!user
   });
 
-  // Fetch all courses from Supabase
-  const { data: allDatabaseCourses, isLoading } = useQuery({
-    queryKey: ['all-courses'],
+  // Fetch courses from Supabase, filtered by domain through RLS policies
+  const { data: courses, isLoading } = useQuery({
+    queryKey: ['courses', userProfile?.email_domain],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('courses')
@@ -88,17 +62,6 @@ const Courses = () => {
     enabled: !!user
   });
 
-  // Filter courses based on user's domain
-  const databaseCourses = allDatabaseCourses?.filter(course => {
-    // Show courses with no domain to everyone
-    if (!course.domain) return true;
-    // Show domain-specific courses only to users from that domain
-    return !userProfile?.email_domain || course.domain === userProfile.email_domain;
-  });
-
-  // Convert database courses to the format expected by CourseCard
-  const courses = databaseCourses?.map(mapDatabaseCourseToCardCourse) || [];
-  
   // Get unique categories from the filtered courses
   const categories = courses && courses.length > 0 
     ? ['all', ...new Set(courses.map(course => course.category).filter(Boolean))]
@@ -185,7 +148,9 @@ const Courses = () => {
                 <p className="text-muted-foreground">
                   {searchQuery || categoryFilter !== 'all' 
                     ? 'Try adjusting your search or filter criteria'
-                    : 'No courses available yet'}
+                    : userProfile?.email_domain
+                      ? `No courses are available for ${userProfile.email_domain} yet`
+                      : 'No courses available yet'}
                 </p>
               </div>
             )}
