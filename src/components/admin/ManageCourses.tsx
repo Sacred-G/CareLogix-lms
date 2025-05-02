@@ -10,15 +10,42 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Edit, Plus, Trash2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { CourseModuleEditor } from './CourseModuleEditor';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function ManageCourses() {
   const [selectedCourse, setSelectedCourse] = useState<any>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const queryClient = useQueryClient();
+  const { user } = useAuth();
+
+  const { data: userProfile, isLoading: isLoadingProfile } = useQuery({
+    queryKey: ['user-profile', user?.id],
+    queryFn: async () => {
+      if (!user) return null;
+      
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      if (error) {
+        console.error('Error fetching user profile:', error);
+        throw error;
+      }
+      
+      return data;
+    },
+    enabled: !!user
+  });
 
   const { data: courses, isLoading } = useQuery({
-    queryKey: ['admin-courses'],
+    queryKey: ['admin-courses', userProfile?.email_domain],
     queryFn: async () => {
+      if (!userProfile) return [];
+      
+      console.log('Fetching courses for domain:', userProfile.email_domain);
+      
       const { data, error } = await supabase
         .from('courses')
         .select('*')
@@ -29,8 +56,10 @@ export default function ManageCourses() {
         throw error;
       }
       
+      console.log('Fetched courses:', data);
       return data || [];
-    }
+    },
+    enabled: !!userProfile
   });
 
   const deleteCourse = useMutation({
@@ -50,7 +79,7 @@ export default function ManageCourses() {
     },
     onError: (error) => {
       console.error('Error deleting course:', error);
-      toast.error('Failed to delete course');
+      toast.error('Failed to delete course: You can only delete courses for your domain');
     }
   });
 
@@ -70,10 +99,17 @@ export default function ManageCourses() {
       <Card>
         <CardHeader>
           <CardTitle>Manage Courses</CardTitle>
-          <CardDescription>View, edit and delete existing courses</CardDescription>
+          <CardDescription>
+            View, edit and delete existing courses for your organization
+            {userProfile?.email_domain && (
+              <span className="block text-sm font-medium mt-1">
+                Domain: {userProfile.email_domain}
+              </span>
+            )}
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          {isLoading ? (
+          {isLoading || isLoadingProfile ? (
             <div className="space-y-2">
               <Skeleton className="h-8 w-full" />
               <Skeleton className="h-8 w-full" />
@@ -112,7 +148,10 @@ export default function ManageCourses() {
                 ) : (
                   <TableRow>
                     <TableCell colSpan={3} className="text-center py-4">
-                      No courses found. Create your first course to get started.
+                      {userProfile ? 
+                        `No courses found for domain ${userProfile.email_domain}. Create your first course to get started.` :
+                        'Loading profile information...'
+                      }
                     </TableCell>
                   </TableRow>
                 )}
@@ -131,7 +170,11 @@ export default function ManageCourses() {
                 Modify course details, add modules and content
               </DialogDescription>
             </DialogHeader>
-            <CourseModuleEditor courseId={selectedCourse.id} onClose={() => setIsEditModalOpen(false)} />
+            <CourseModuleEditor 
+              courseId={selectedCourse.id} 
+              onClose={() => setIsEditModalOpen(false)}
+              domain={userProfile?.email_domain}
+            />
           </DialogContent>
         </Dialog>
       )}

@@ -1,7 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,6 +13,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AIContentGenerator from './AIContentGenerator';
 import CourseFormFields from './CourseFormFields';
 import MediaUploader from './MediaUploader';
+import { useAuth } from '@/hooks/useAuth';
+import { Badge } from '@/components/ui/badge';
 
 type CourseFormValues = {
   title: string;
@@ -27,6 +29,7 @@ export default function CreateCourse() {
   const [useAI, setUseAI] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('basic');
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   
   const form = useForm<CourseFormValues>({
     defaultValues: {
@@ -39,15 +42,41 @@ export default function CreateCourse() {
     },
   });
 
+  const { data: userProfile, isLoading: isLoadingProfile } = useQuery({
+    queryKey: ['user-profile', user?.id],
+    queryFn: async () => {
+      if (!user) return null;
+      
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      if (error) {
+        console.error('Error fetching user profile:', error);
+        throw error;
+      }
+      
+      return data;
+    },
+    enabled: !!user
+  });
+
   const createCourseMutation = useMutation({
     mutationFn: async (values: CourseFormValues) => {
+      if (!userProfile) {
+        throw new Error('User profile not found');
+      }
+
       const { data, error } = await supabase
         .from('courses')
         .insert({
           title: values.title,
           description: values.description,
           thumbnail: values.thumbnail,
-          created_by: (await supabase.auth.getUser()).data.user?.id,
+          created_by: user?.id,
+          domain: userProfile.email_domain,
           transcript: values.transcript || null
         })
         .select();
@@ -137,6 +166,7 @@ export default function CreateCourse() {
       toast.success('Course created successfully');
       form.reset();
       queryClient.invalidateQueries({ queryKey: ['admin-course-stats'] });
+      queryClient.invalidateQueries({ queryKey: ['admin-courses'] });
     },
     onError: (error) => {
       console.error('Error creating course:', error);
@@ -218,6 +248,10 @@ export default function CreateCourse() {
   };
 
   const onSubmit = (values: CourseFormValues) => {
+    if (!userProfile) {
+      toast.error('User profile not loaded. Please refresh and try again.');
+      return;
+    }
     createCourseMutation.mutate(values);
   };
 
@@ -225,77 +259,97 @@ export default function CreateCourse() {
     <Card>
       <CardHeader>
         <CardTitle>Create New Course</CardTitle>
-        <CardDescription>Add a new course to your learning platform</CardDescription>
+        <CardDescription>
+          Add a new course to your learning platform
+          {userProfile?.email_domain && (
+            <Badge variant="outline" className="ml-2">
+              Domain: {userProfile.email_domain}
+            </Badge>
+          )}
+        </CardDescription>
       </CardHeader>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid grid-cols-3 mb-6">
-                <TabsTrigger value="basic">Basic Info</TabsTrigger>
-                <TabsTrigger value="media">Media</TabsTrigger>
-                <TabsTrigger value="ai">AI Content</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="basic">
-                <CourseFormFields control={form.control} />
-              </TabsContent>
-              
-              <TabsContent value="media">
-                <div className="space-y-6">
-                  <MediaUploader 
-                    fileType="video" 
-                    onUploadComplete={(url) => form.setValue('videoUrl', url)} 
-                    currentUrl={form.watch('videoUrl')}
-                    onTranscriptGenerated={handleTranscriptGenerated}
-                  />
-                  
-                  <MediaUploader 
-                    fileType="audio" 
-                    onUploadComplete={(url) => form.setValue('audioUrl', url)}
-                    currentUrl={form.watch('audioUrl')}
-                    onTranscriptGenerated={handleTranscriptGenerated}
-                  />
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="ai">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between space-x-2">
-                    <div className="font-medium">Use AI to generate content</div>
-                    <Switch
-                      checked={useAI}
-                      onCheckedChange={setUseAI}
-                      id="ai-mode"
+            {isLoadingProfile ? (
+              <div className="space-y-2">
+                <Skeleton className="h-8 w-full" />
+                <Skeleton className="h-8 w-full" />
+              </div>
+            ) : userProfile ? (
+              <Tabs value={activeTab} onValueChange={setActiveTab}>
+                <TabsList className="grid grid-cols-3 mb-6">
+                  <TabsTrigger value="basic">Basic Info</TabsTrigger>
+                  <TabsTrigger value="media">Media</TabsTrigger>
+                  <TabsTrigger value="ai">AI Content</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="basic">
+                  <CourseFormFields control={form.control} />
+                </TabsContent>
+                
+                <TabsContent value="media">
+                  <div className="space-y-6">
+                    <MediaUploader 
+                      fileType="video" 
+                      onUploadComplete={(url) => form.setValue('videoUrl', url)} 
+                      currentUrl={form.watch('videoUrl')}
+                      onTranscriptGenerated={handleTranscriptGenerated}
+                    />
+                    
+                    <MediaUploader 
+                      fileType="audio" 
+                      onUploadComplete={(url) => form.setValue('audioUrl', url)}
+                      currentUrl={form.watch('audioUrl')}
+                      onTranscriptGenerated={handleTranscriptGenerated}
                     />
                   </div>
-
-                  {useAI && (
-                    <AIContentGenerator 
-                      courseTitle={form.watch('title')} 
-                      onContentGenerated={handleContentGenerated}
-                      transcript={form.watch('transcript')}
-                    />
-                  )}
-
-                  {form.watch('transcript') && (
-                    <div className="mt-4 p-4 bg-muted rounded-lg">
-                      <h4 className="font-medium mb-2">Extracted Transcript</h4>
-                      <div className="max-h-60 overflow-y-auto text-sm">
-                        <p className="whitespace-pre-wrap">{form.watch('transcript')}</p>
-                      </div>
+                </TabsContent>
+                
+                <TabsContent value="ai">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between space-x-2">
+                      <div className="font-medium">Use AI to generate content</div>
+                      <Switch
+                        checked={useAI}
+                        onCheckedChange={setUseAI}
+                        id="ai-mode"
+                      />
                     </div>
-                  )}
-                </div>
-              </TabsContent>
-            </Tabs>
+
+                    {useAI && (
+                      <AIContentGenerator 
+                        courseTitle={form.watch('title')} 
+                        onContentGenerated={handleContentGenerated}
+                        transcript={form.watch('transcript')}
+                      />
+                    )}
+
+                    {form.watch('transcript') && (
+                      <div className="mt-4 p-4 bg-muted rounded-lg">
+                        <h4 className="font-medium mb-2">Extracted Transcript</h4>
+                        <div className="max-h-60 overflow-y-auto text-sm">
+                          <p className="whitespace-pre-wrap">{form.watch('transcript')}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </TabsContent>
+              </Tabs>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-muted-foreground">
+                  Unable to load profile. Make sure you have logged in with an email address.
+                </p>
+              </div>
+            )}
           </CardContent>
           <CardFooter>
             <Button 
               type="submit" 
               className="w-full"
-              disabled={createCourseMutation.isPending}
+              disabled={createCourseMutation.isPending || isLoadingProfile || !userProfile}
             >
               {createCourseMutation.isPending ? (
                 <>

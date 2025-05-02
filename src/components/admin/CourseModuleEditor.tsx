@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -11,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Plus, Loader2, Save, Video, FileText, HelpCircle, Edit, X, Trash } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface ModuleData {
   title: string;
@@ -22,9 +22,10 @@ interface ModuleData {
 interface CourseModuleEditorProps {
   courseId: string;
   onClose: () => void;
+  domain?: string;
 }
 
-export function CourseModuleEditor({ courseId, onClose }: CourseModuleEditorProps) {
+export function CourseModuleEditor({ courseId, onClose, domain }: CourseModuleEditorProps) {
   const [modules, setModules] = useState<ModuleData[]>([]);
   const [currentModule, setCurrentModule] = useState<number | null>(null);
   const queryClient = useQueryClient();
@@ -80,6 +81,8 @@ export function CourseModuleEditor({ courseId, onClose }: CourseModuleEditorProp
           title: values.title,
           description: values.description,
           thumbnail: values.thumbnail,
+          // Keep the existing domain
+          domain: course?.domain
         })
         .eq('id', courseId)
         .select();
@@ -147,6 +150,13 @@ export function CourseModuleEditor({ courseId, onClose }: CourseModuleEditorProp
       {/* Course Basic Information */}
       <Form {...courseForm}>
         <div className="grid gap-4 mb-4">
+          {domain && (
+            <div className="flex items-center mb-2">
+              <span className="text-sm text-muted-foreground mr-2">Domain:</span>
+              <Badge variant="outline">{domain}</Badge>
+            </div>
+          )}
+          
           <FormField
             control={courseForm.control}
             name="title"

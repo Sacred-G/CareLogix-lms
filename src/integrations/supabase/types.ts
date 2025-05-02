@@ -56,6 +56,7 @@ export type Database = {
           created_at: string | null
           created_by: string | null
           description: string | null
+          domain: string | null
           id: string
           thumbnail: string | null
           title: string
@@ -65,6 +66,7 @@ export type Database = {
           created_at?: string | null
           created_by?: string | null
           description?: string | null
+          domain?: string | null
           id?: string
           thumbnail?: string | null
           title: string
@@ -74,6 +76,7 @@ export type Database = {
           created_at?: string | null
           created_by?: string | null
           description?: string | null
+          domain?: string | null
           id?: string
           thumbnail?: string | null
           title?: string
@@ -199,6 +202,7 @@ export type Database = {
         Row: {
           avatar_url: string | null
           email: string | null
+          email_domain: string | null
           full_name: string | null
           id: string
           role: string | null
@@ -206,6 +210,7 @@ export type Database = {
         Insert: {
           avatar_url?: string | null
           email?: string | null
+          email_domain?: string | null
           full_name?: string | null
           id: string
           role?: string | null
@@ -213,6 +218,7 @@ export type Database = {
         Update: {
           avatar_url?: string | null
           email?: string | null
+          email_domain?: string | null
           full_name?: string | null
           id?: string
           role?: string | null
@@ -365,6 +371,10 @@ export type Database = {
     Functions: {
       is_admin: {
         Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      user_belongs_to_domain: {
+        Args: { course_domain: string }
         Returns: boolean
       }
     }
