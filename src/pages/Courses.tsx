@@ -15,6 +15,34 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useAuth } from '@/hooks/useAuth';
+import { courses as staticCourses } from '@/data/courseData';
+import { Course } from '@/data/courseTypes';
+
+// Type for database courses
+interface DatabaseCourse {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  created_at: string;
+  updated_at: string;
+  created_by: string;
+  domain: string;
+}
+
+// Function to convert database course to frontend course model
+const convertDatabaseCourse = (dbCourse: DatabaseCourse): Course => {
+  return {
+    id: dbCourse.id,
+    title: dbCourse.title,
+    description: dbCourse.description || "",
+    thumbnail: dbCourse.thumbnail || "https://placehold.co/600x400/png",
+    category: dbCourse.domain || "General",
+    instructor: "Course Instructor",
+    duration: "Self-paced",
+    modules: []
+  };
+};
 
 const Courses = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -43,9 +71,9 @@ const Courses = () => {
     enabled: !!user
   });
 
-  // Fetch courses from Supabase, filtered by domain through RLS policies
-  const { data: courses, isLoading } = useQuery({
-    queryKey: ['courses', userProfile?.email_domain],
+  // Fetch courses from Supabase
+  const { data: databaseCourses, isLoading: isLoadingDbCourses } = useQuery({
+    queryKey: ['database-courses'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('courses')
@@ -61,24 +89,50 @@ const Courses = () => {
     },
     enabled: !!user
   });
-
-  // Get unique categories from the filtered courses
-  const categories = courses && courses.length > 0 
-    ? ['all', ...new Set(courses.map(course => course.category).filter(Boolean))]
-    : ['all'];
   
-  // Filter courses based on search query and category
-  const filteredCourses = courses?.filter(course => {
-    const matchesSearch = 
-      (course.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
-      (course.description || '').toLowerCase().includes(searchQuery.toLowerCase());
+  // Combine static courses with database courses
+  const allCourses = React.useMemo(() => {
+    const dbCourses = databaseCourses ? databaseCourses.map(convertDatabaseCourse) : [];
+    return [...staticCourses, ...dbCourses];
+  }, [databaseCourses]);
+  
+  // Get unique categories from all courses
+  const categories = React.useMemo(() => {
+    if (allCourses.length === 0) return ['all'];
     
-    const matchesCategory = 
-      categoryFilter === 'all' || 
-      course.category === categoryFilter;
+    const uniqueCategories = new Set(['all']);
+    allCourses.forEach(course => {
+      if (course.category) uniqueCategories.add(course.category);
+    });
     
-    return matchesSearch && matchesCategory;
-  }) || [];
+    return Array.from(uniqueCategories);
+  }, [allCourses]);
+  
+  // Filter courses based on search query, category, and domain access
+  const filteredCourses = React.useMemo(() => {
+    return allCourses.filter(course => {
+      // Filter by search query
+      const matchesSearch = 
+        (course.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
+        (course.description || '').toLowerCase().includes(searchQuery.toLowerCase());
+      
+      // Filter by category
+      const matchesCategory = 
+        categoryFilter === 'all' || 
+        course.category === categoryFilter;
+      
+      // Filter by domain - only if course has a domain restriction
+      // Static courses are always visible, domain-specific courses are filtered by user domain
+      const hasDomainAccess = 
+        !course.domain || // Static courses don't have domain
+        course.domain === userProfile?.email_domain || // Domain matches user's domain
+        !userProfile?.email_domain; // User has no domain - fallback to see all
+      
+      return matchesSearch && matchesCategory && hasDomainAccess;
+    });
+  }, [allCourses, searchQuery, categoryFilter, userProfile]);
+
+  const isLoading = isLoadingDbCourses;
 
   return (
     <div className="min-h-screen flex flex-col">
