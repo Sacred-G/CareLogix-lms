@@ -69,9 +69,9 @@ const Courses = () => {
     enabled: !!user
   });
 
-  // Fetch courses from Supabase, filtered by domain through RLS policies
-  const { data: databaseCourses, isLoading } = useQuery({
-    queryKey: ['courses', userProfile?.email_domain],
+  // Fetch all courses from Supabase
+  const { data: allDatabaseCourses, isLoading } = useQuery({
+    queryKey: ['all-courses'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('courses')
@@ -86,6 +86,14 @@ const Courses = () => {
       return data || [];
     },
     enabled: !!user
+  });
+
+  // Filter courses based on user's domain
+  const databaseCourses = allDatabaseCourses?.filter(course => {
+    // Show courses with no domain to everyone
+    if (!course.domain) return true;
+    // Show domain-specific courses only to users from that domain
+    return !userProfile?.email_domain || course.domain === userProfile.email_domain;
   });
 
   // Convert database courses to the format expected by CourseCard
@@ -177,9 +185,7 @@ const Courses = () => {
                 <p className="text-muted-foreground">
                   {searchQuery || categoryFilter !== 'all' 
                     ? 'Try adjusting your search or filter criteria'
-                    : userProfile?.email_domain
-                      ? `No courses are available for ${userProfile.email_domain} yet`
-                      : 'No courses available yet'}
+                    : 'No courses available yet'}
                 </p>
               </div>
             )}
