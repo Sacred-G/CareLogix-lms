@@ -16,6 +16,32 @@ import {
 } from '@/components/ui/select';
 import { useAuth } from '@/hooks/useAuth';
 
+// Define a type that matches our database structure
+type DatabaseCourse = {
+  id: string;
+  title: string;
+  description: string | null;
+  thumbnail: string | null;
+  created_at: string | null;
+  created_by: string | null;
+  domain: string | null;
+  updated_at: string | null;
+};
+
+// Define a mapper function to convert DatabaseCourse to the format CourseCard expects
+const mapDatabaseCourseToCardCourse = (dbCourse: DatabaseCourse) => {
+  return {
+    id: dbCourse.id,
+    title: dbCourse.title,
+    description: dbCourse.description || '',
+    thumbnail: dbCourse.thumbnail || 'https://placehold.co/600x400/png',
+    category: dbCourse.domain || 'General', // Use domain as category
+    instructor: 'Instructor', // Default value
+    duration: 'Self-paced', // Default value
+    modules: [] // Required by type but not used in the card view
+  };
+};
+
 const Courses = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -44,7 +70,7 @@ const Courses = () => {
   });
 
   // Fetch courses from Supabase, filtered by domain through RLS policies
-  const { data: courses, isLoading } = useQuery({
+  const { data: databaseCourses, isLoading } = useQuery({
     queryKey: ['courses', userProfile?.email_domain],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -62,6 +88,9 @@ const Courses = () => {
     enabled: !!user
   });
 
+  // Convert database courses to the format expected by CourseCard
+  const courses = databaseCourses?.map(mapDatabaseCourseToCardCourse) || [];
+  
   // Get unique categories from the filtered courses
   const categories = courses && courses.length > 0 
     ? ['all', ...new Set(courses.map(course => course.category).filter(Boolean))]
