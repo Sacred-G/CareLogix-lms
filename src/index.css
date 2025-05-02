@@ -109,7 +109,7 @@
   }
 
   .video-container {
-    @apply relative w-full pb-[56.25%] overflow-hidden rounded-lg;
+    @apply relative w-full overflow-hidden rounded-lg;
   }
 
   .video-container iframe,
@@ -131,5 +131,53 @@
   
   .quiz-option.incorrect {
     @apply bg-red-100 border-red-500;
+  }
+  
+  /* New styles for better reading experience */
+  .text-gradient-primary {
+    @apply bg-gradient-to-br from-primary via-primary/90 to-secondary bg-clip-text text-transparent;
+  }
+  
+  .prose {
+    @apply text-foreground leading-relaxed;
+  }
+  
+  .prose p {
+    @apply my-4 text-lg;
+  }
+  
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-primary;
+  }
+  
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-primary/90;
+  }
+  
+  .prose ul, .prose ol {
+    @apply my-4 ml-6 space-y-2;
+  }
+  
+  .prose li {
+    @apply text-lg;
+  }
+  
+  .prose strong {
+    @apply font-semibold text-secondary;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

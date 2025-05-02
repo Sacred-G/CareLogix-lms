@@ -129,23 +129,23 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold">{module.title}</h2>
-      <p className="text-muted-foreground">{module.description}</p>
+      <h2 className="text-2xl font-bold text-gradient-primary">{module.title}</h2>
+      <p className="text-muted-foreground text-lg">{module.description}</p>
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="content">Lesson Content</TabsTrigger>
-          <TabsTrigger value="interactive">Interactive</TabsTrigger>
-          <TabsTrigger value="resources">Resources</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsTrigger value="content" className="text-base py-3">Lesson Content</TabsTrigger>
+          <TabsTrigger value="interactive" className="text-base py-3">Interactive</TabsTrigger>
+          <TabsTrigger value="resources" className="text-base py-3">Resources</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="content" className="space-y-8 pt-4">
+        <TabsContent value="content" className="space-y-8 pt-4 animate-fade-in">
           {module.videoUrl && (
             <div className="space-y-4">
-              <h3 className="text-lg font-medium flex items-center gap-2">
+              <h3 className="text-lg font-medium flex items-center gap-2 border-l-4 border-primary pl-3 py-1">
                 Video Lesson
                 {videoCompleted && (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 ml-auto">
                     Completed
                   </span>
                 )}
@@ -158,15 +158,16 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
             </div>
           )}
           
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex justify-between items-start mb-4">
+          <Card className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-br from-card to-muted">
+            <CardHeader className="border-b bg-muted/30 pb-4">
+              <div className="flex justify-between items-center">
                 <h3 className="text-lg font-medium">Reading Material</h3>
                 {!textCompleted && (
                   <Button 
                     variant="outline" 
                     size="sm"
                     onClick={handleTextComplete}
+                    className="bg-primary/10 hover:bg-primary/20"
                   >
                     Mark as Read
                   </Button>
@@ -177,18 +178,20 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                   </span>
                 )}
               </div>
-              <ReactMarkdown className="prose max-w-none">
-                {module.content}
-              </ReactMarkdown>
+            </CardHeader>
+            <CardContent className="pt-6 px-6">
+              <article className="prose max-w-none dark:prose-invert prose-headings:text-primary prose-a:text-secondary hover:prose-a:text-secondary/80 prose-img:rounded-lg prose-img:shadow-md prose-strong:text-foreground/90">
+                <ReactMarkdown>{module.content}</ReactMarkdown>
+              </article>
             </CardContent>
           </Card>
           
           {module.audioUrl && (
             <div className="space-y-4">
-              <h3 className="text-lg font-medium flex items-center gap-2">
+              <h3 className="text-lg font-medium flex items-center gap-2 border-l-4 border-secondary pl-3 py-1">
                 Audio Lesson
                 {audioCompleted && (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 ml-auto">
                     Completed
                   </span>
                 )}
@@ -202,14 +205,16 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           )}
           
           {module.questions && module.questions.length > 0 && (
-            <QuizSection 
-              questions={module.questions}
-              onComplete={onQuizComplete}
-            />
+            <div className="pt-6">
+              <QuizSection 
+                questions={module.questions}
+                onComplete={onQuizComplete}
+              />
+            </div>
           )}
         </TabsContent>
         
-        <TabsContent value="interactive" className="space-y-8 pt-4">
+        <TabsContent value="interactive" className="space-y-8 pt-4 animate-fade-in">
           <FlashcardSection 
             title="Key Terms" 
             flashcards={flashcards} 
@@ -220,38 +225,38 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           />
         </TabsContent>
         
-        <TabsContent value="resources" className="space-y-8 pt-4">
+        <TabsContent value="resources" className="space-y-8 pt-4 animate-fade-in">
           <FAQSection 
             faqs={faqs} 
           />
           
-          <Card>
+          <Card className="bg-card/50 backdrop-blur border-none shadow-md">
             <CardHeader>
               <h3 className="text-lg font-medium">Additional Resources</h3>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 border rounded-lg flex items-center justify-between">
+              <div className="p-4 border border-border/50 rounded-lg bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors">
                 <div>
                   <div className="font-medium">Client Rights Guide</div>
                   <div className="text-sm text-muted-foreground">PDF handbook with detailed rights information</div>
                 </div>
-                <Button variant="outline" size="sm">Download</Button>
+                <Button variant="outline" size="sm" className="bg-primary/10 hover:bg-primary/20">Download</Button>
               </div>
               
-              <div className="p-4 border rounded-lg flex items-center justify-between">
+              <div className="p-4 border border-border/50 rounded-lg bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors">
                 <div>
                   <div className="font-medium">Decision-Making Support Tools</div>
                   <div className="text-sm text-muted-foreground">Visual aids for helping clients make choices</div>
                 </div>
-                <Button variant="outline" size="sm">Download</Button>
+                <Button variant="outline" size="sm" className="bg-primary/10 hover:bg-primary/20">Download</Button>
               </div>
               
-              <div className="p-4 border rounded-lg flex items-center justify-between">
+              <div className="p-4 border border-border/50 rounded-lg bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors">
                 <div>
                   <div className="font-medium">Advocacy Organizations</div>
                   <div className="text-sm text-muted-foreground">List of local and national advocacy resources</div>
                 </div>
-                <Button variant="outline" size="sm">View</Button>
+                <Button variant="outline" size="sm" className="bg-primary/10 hover:bg-primary/20">View</Button>
               </div>
             </CardContent>
           </Card>

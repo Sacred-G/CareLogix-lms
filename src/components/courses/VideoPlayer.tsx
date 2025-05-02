@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 interface VideoPlayerProps {
   url: string;
@@ -32,6 +32,19 @@ export default function VideoPlayer({ url, title, onVideoEnded }: VideoPlayerPro
     return `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
   };
 
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      // Add event listener for when video ends
+      videoElement.addEventListener('ended', handleVideoEnded);
+      
+      // Cleanup event listener when component unmounts
+      return () => {
+        videoElement.removeEventListener('ended', handleVideoEnded);
+      };
+    }
+  }, []);
+
   const handleVideoEnded = () => {
     if (onVideoEnded) {
       onVideoEnded();
@@ -39,7 +52,7 @@ export default function VideoPlayer({ url, title, onVideoEnded }: VideoPlayerPro
   };
 
   return (
-    <div className="video-container aspect-video rounded-lg overflow-hidden bg-black">
+    <div className="video-container aspect-video rounded-lg overflow-hidden bg-black shadow-lg">
       {isYouTube ? (
         <iframe
           src={getYouTubeEmbedUrl(url)}
