@@ -39,16 +39,17 @@ export const createCertificate = (
 ): Certificate => {
   const currentDate = new Date().toISOString();
   const organization = getOrganizationFromEmail(email);
+  const certNumber = generateCertificateId();
   
   return {
-    id: generateCertificateId(),
+    id: certNumber,
     userId,
     userName,
     courseId: course.id,
     courseTitle: course.title,
     issueDate: currentDate,
     completionDate: currentDate,
-    certificateNumber: generateCertificateId(),
+    certificateNumber: certNumber,
     organizationName: organization.name,
     organizationLogo: organization.logo,
   };
@@ -59,7 +60,19 @@ export const saveCertificate = async (certificate: Certificate): Promise<{ succe
   try {
     const { data, error } = await supabase
       .from('certificates')
-      .insert(certificate)
+      .insert({
+        id: certificate.id,
+        user_id: certificate.userId,
+        user_name: certificate.userName,
+        course_id: certificate.courseId,
+        course_title: certificate.courseTitle,
+        issue_date: certificate.issueDate,
+        completion_date: certificate.completionDate,
+        valid_until: certificate.validUntil || null,
+        certificate_number: certificate.certificateNumber,
+        organization_name: certificate.organizationName || null,
+        organization_logo: certificate.organizationLogo || null
+      })
       .select('id')
       .single();
     
@@ -86,7 +99,21 @@ export const getCertificateById = async (certificateId: string): Promise<Certifi
     
     if (error) throw error;
     
-    return data as Certificate;
+    if (!data) return null;
+    
+    return {
+      id: data.id,
+      userId: data.user_id,
+      userName: data.user_name,
+      courseId: data.course_id,
+      courseTitle: data.course_title,
+      issueDate: data.issue_date,
+      completionDate: data.completion_date,
+      validUntil: data.valid_until || undefined,
+      certificateNumber: data.certificate_number,
+      organizationName: data.organization_name || undefined,
+      organizationLogo: data.organization_logo || undefined,
+    };
   } catch (error) {
     console.error('Error fetching certificate:', error);
     return null;
@@ -99,12 +126,24 @@ export const getUserCertificates = async (userId: string): Promise<Certificate[]
     const { data, error } = await supabase
       .from('certificates')
       .select('*')
-      .eq('userId', userId)
-      .order('issueDate', { ascending: false });
+      .eq('user_id', userId)
+      .order('issue_date', { ascending: false });
     
     if (error) throw error;
     
-    return data as Certificate[];
+    return data.map(cert => ({
+      id: cert.id,
+      userId: cert.user_id,
+      userName: cert.user_name,
+      courseId: cert.course_id,
+      courseTitle: cert.course_title,
+      issueDate: cert.issue_date,
+      completionDate: cert.completion_date,
+      validUntil: cert.valid_until || undefined,
+      certificateNumber: cert.certificate_number,
+      organizationName: cert.organization_name || undefined,
+      organizationLogo: cert.organization_logo || undefined,
+    }));
   } catch (error) {
     console.error('Error fetching certificates:', error);
     return [];
