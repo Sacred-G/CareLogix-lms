@@ -39,7 +39,7 @@ export interface Module {
   interactiveScenario?: {
     title: string;
     description: string;
-    type: 'multiple-choice' | 'drag-drop' | 'dialogue';
+    type: 'multiple-choice' | 'dialogue';
     content: any; // This would be structured based on scenario type
     options?: ScenarioOption[];
   };

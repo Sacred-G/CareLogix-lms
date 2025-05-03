@@ -18,11 +18,12 @@ interface CourseContentProps {
   onContentComplete?: (type: 'video' | 'text' | 'audio') => void;
 }
 
-// Define a specific scenario type that matches what InteractiveScenario expects
-interface Scenario {
+// Define a local scenario type that matches what InteractiveScenario expects
+// Note: Remove 'drag-drop' since it's not supported by InteractiveScenario component
+interface LocalScenario {
   title: string;
   description: string;
-  type: 'multiple-choice' | 'drag-drop' | 'dialogue';
+  type: 'multiple-choice' | 'dialogue';
   options: ScenarioOption[];
   content?: any;
 }
@@ -94,7 +95,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
   ];
 
   // Example interactive scenario
-  const scenario: Scenario = {
+  const scenario: LocalScenario = {
     title: "Client Privacy Scenario",
     description: "A family member calls and asks for detailed information about their adult relative's medical appointments and daily activities. What should you do?",
     type: "multiple-choice",
@@ -245,7 +246,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               {
                 title: module.interactiveScenario.title,
                 description: module.interactiveScenario.description,
-                type: module.interactiveScenario.type,
+                type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
                 options: module.interactiveScenario.options || [],
                 content: module.interactiveScenario.content
               } : scenario
