@@ -55,7 +55,7 @@ export interface Course {
   duration: string;
   modules: Module[];
   certificateAvailable?: boolean;
-  domain?: string; // Added domain property
+  domain?: string; // Domain property added here
 }
 
 export interface Certificate {
