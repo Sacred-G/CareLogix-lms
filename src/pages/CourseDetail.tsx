@@ -43,7 +43,9 @@ const CourseDetail = () => {
       
       try {
         // First check for database courses with UUID format
-        try {
+        const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(courseId);
+        
+        if (isUuid) {
           const { data: dbEnrollment, error: dbError } = await supabase
             .from('enrollments')
             .select('*')
@@ -52,12 +54,10 @@ const CourseDetail = () => {
             .maybeSingle();
             
           if (dbEnrollment) return dbEnrollment;
-        } catch (err) {
-          console.error('Error checking for UUID enrollment:', err);
-          // Continue to checking for string IDs
+          if (dbError) console.error('Error checking for UUID enrollment:', dbError);
         }
         
-        // For static courses with string IDs, check if the user has enrolled in one of our static courses
+        // For static courses with string IDs, retrieve all enrollments and filter
         const { data: staticEnrollments, error: staticError } = await supabase
           .from('enrollments')
           .select('*')
@@ -83,6 +83,14 @@ const CourseDetail = () => {
   const enrollMutation = useMutation({
     mutationFn: async () => {
       if (!session?.user?.id || !courseId) throw new Error('User not logged in or course not found');
+      
+      // Get course metadata to store in enrollment
+      const courseForEnrollment = {
+        id: courseId,
+        title: course?.title || 'Unknown Course',
+        thumbnail: course?.thumbnail || '',
+        description: course?.description || ''
+      };
       
       const { data, error } = await supabase
         .from('enrollments')
@@ -138,7 +146,6 @@ const CourseDetail = () => {
       if (!enrollment) return;
       
       // Calculate new progress percentage
-      // This is simplified - in a real app, you'd count completed items vs total items
       const moduleCount = course?.modules?.length || 1;
       const newProgress = Math.min(
         Math.round(((activeModuleIndex + (completed ? 1 : 0)) / moduleCount) * 100),
