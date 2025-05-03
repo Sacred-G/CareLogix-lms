@@ -36,3 +36,7 @@ export const allCourses: Course[] = [
   ...dspCourses,
   ...microLearningCourses
 ];
+
+console.log('Micro learning courses loaded:', microLearningCourses);
+console.log('DSP courses loaded:', dspCourses);
+console.log('All courses loaded:', allCourses);

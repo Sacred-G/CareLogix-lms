@@ -4,12 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Course } from '@/data/courseTypes';
 import { DatabaseCourse, convertDatabaseCourse } from '@/components/courses/utils/courseConverters';
-import { 
-  courses as staticCourses, 
-  microLearningCourses, 
-  dspCourses, 
-  generalCourses 
-} from '@/data/courseData';
+import { allCourses, dspCourses, microLearningCourses } from '@/data/courses/completeDataIndex';
 import { useAuth } from '@/hooks/useAuth';
 
 export const useCourseData = () => {
@@ -60,34 +55,40 @@ export const useCourseData = () => {
   });
   
   // Combine static courses with database courses
-  const allCourses = React.useMemo(() => {
+  const allDbAndStaticCourses = React.useMemo(() => {
     const dbCourses = databaseCourses ? databaseCourses.map(convertDatabaseCourse) : [];
-    return [...staticCourses, ...dbCourses];
+    return [...allCourses, ...dbCourses];
   }, [databaseCourses]);
   
   // Get unique categories from all courses
   const categories = React.useMemo(() => {
-    if (allCourses.length === 0) return ['all'];
+    if (allDbAndStaticCourses.length === 0) return ['all'];
     
     const uniqueCategories = new Set(['all']);
-    allCourses.forEach(course => {
+    allDbAndStaticCourses.forEach(course => {
       if (course.category) uniqueCategories.add(course.category);
     });
     
     return Array.from(uniqueCategories);
-  }, [allCourses]);
+  }, [allDbAndStaticCourses]);
   
   // Filter courses based on search query, category, and domain access
   const filteredCourses = React.useMemo(() => {
-    let coursesToFilter = allCourses;
-
     // First filter by tab selection
+    let coursesToFilter;
+    
     if (activeTab === 'dsp') {
       coursesToFilter = [...dspCourses];
     } else if (activeTab === 'micro') {
       coursesToFilter = [...microLearningCourses];
+      console.log('Micro learning courses:', microLearningCourses);
     } else if (activeTab === 'general') {
-      coursesToFilter = [...generalCourses];
+      // Filter for general courses from allCourses
+      coursesToFilter = allDbAndStaticCourses.filter(course => 
+        course.domain === 'general' || course.category === 'General');
+    } else {
+      // 'all' tab - show all courses
+      coursesToFilter = allDbAndStaticCourses;
     }
 
     // Apply search and category filters
@@ -111,7 +112,7 @@ export const useCourseData = () => {
       
       return matchesSearch && matchesCategory && hasDomainAccess;
     });
-  }, [allCourses, searchQuery, categoryFilter, activeTab, userProfile, dspCourses, microLearningCourses, generalCourses]);
+  }, [allDbAndStaticCourses, searchQuery, categoryFilter, activeTab, userProfile]);
 
   const isLoading = isLoadingDbCourses;
 
