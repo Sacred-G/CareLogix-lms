@@ -15,7 +15,12 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useAuth } from '@/hooks/useAuth';
-import { courses as staticCourses, microLearningCourses, dspCourses, generalCourses } from '@/data/courseData';
+import { 
+  courses as staticCourses, 
+  microLearningCourses, 
+  dspCourses, 
+  generalCourses 
+} from '@/data/courseData';
 import { Course } from '@/data/courseTypes';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -124,6 +129,7 @@ const Courses = () => {
       coursesToFilter = [...generalCourses];
     }
 
+    // Apply search and category filters
     return coursesToFilter.filter(course => {
       // Filter by search query
       const matchesSearch = 
@@ -230,9 +236,11 @@ const Courses = () => {
                 <p className="text-muted-foreground">
                   {searchQuery || categoryFilter !== 'all' 
                     ? 'Try adjusting your search or filter criteria'
-                    : userProfile?.email_domain
-                      ? `No courses are available for ${userProfile.email_domain} yet`
-                      : 'No courses available yet'}
+                    : activeTab === 'micro' 
+                      ? 'No micro learning courses available yet'
+                      : userProfile?.email_domain
+                        ? `No courses are available for ${userProfile.email_domain} yet`
+                        : 'No courses available yet'}
                 </p>
               </div>
             )}
