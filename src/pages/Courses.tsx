@@ -1,158 +1,25 @@
 
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import React from 'react';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
-import CourseCard from '@/components/courses/CourseCard';
-import { Input } from '@/components/ui/input';
-import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { useAuth } from '@/hooks/useAuth';
-import { 
-  courses as staticCourses, 
-  microLearningCourses, 
-  dspCourses, 
-  generalCourses 
-} from '@/data/courseData';
-import { Course } from '@/data/courseTypes';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-// Type for database courses
-interface DatabaseCourse {
-  id: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  created_at: string;
-  updated_at: string;
-  created_by: string;
-  domain: string;
-}
-
-// Function to convert database course to frontend course model
-const convertDatabaseCourse = (dbCourse: DatabaseCourse): Course => {
-  return {
-    id: dbCourse.id,
-    title: dbCourse.title,
-    description: dbCourse.description || "",
-    thumbnail: dbCourse.thumbnail || "https://placehold.co/600x400/png",
-    category: dbCourse.domain || "General",
-    instructor: "Course Instructor",
-    duration: "Self-paced",
-    modules: [],
-    domain: dbCourse.domain // Explicitly map domain property
-  };
-};
+import { useCourseData } from '@/hooks/useCourseData';
+import CourseTabs from '@/components/courses/CourseTabs';
+import CourseFilters from '@/components/courses/CourseFilters';
+import CourseGrid from '@/components/courses/CourseGrid';
 
 const Courses = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('all');
-  const [activeTab, setActiveTab] = useState('all');
-  const { user } = useAuth();
-
-  // Get user profile to determine their email domain
-  const { data: userProfile } = useQuery({
-    queryKey: ['user-profile-courses', user?.id],
-    queryFn: async () => {
-      if (!user) return null;
-      
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .single();
-      
-      if (error) {
-        console.error('Error fetching user profile:', error);
-        throw error;
-      }
-      
-      return data;
-    },
-    enabled: !!user
-  });
-
-  // Fetch courses from Supabase
-  const { data: databaseCourses, isLoading: isLoadingDbCourses } = useQuery({
-    queryKey: ['database-courses'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('courses')
-        .select('*')
-        .order('created_at', { ascending: false });
-      
-      if (error) {
-        console.error('Error fetching courses:', error);
-        throw error;
-      }
-      
-      return data || [];
-    },
-    enabled: !!user
-  });
-  
-  // Combine static courses with database courses
-  const allCourses = React.useMemo(() => {
-    const dbCourses = databaseCourses ? databaseCourses.map(convertDatabaseCourse) : [];
-    return [...staticCourses, ...dbCourses];
-  }, [databaseCourses]);
-  
-  // Get unique categories from all courses
-  const categories = React.useMemo(() => {
-    if (allCourses.length === 0) return ['all'];
-    
-    const uniqueCategories = new Set(['all']);
-    allCourses.forEach(course => {
-      if (course.category) uniqueCategories.add(course.category);
-    });
-    
-    return Array.from(uniqueCategories);
-  }, [allCourses]);
-  
-  // Filter courses based on search query, category, and domain access
-  const filteredCourses = React.useMemo(() => {
-    let coursesToFilter = allCourses;
-
-    // First filter by tab selection
-    if (activeTab === 'dsp') {
-      coursesToFilter = [...dspCourses];
-    } else if (activeTab === 'micro') {
-      coursesToFilter = [...microLearningCourses];
-    } else if (activeTab === 'general') {
-      coursesToFilter = [...generalCourses];
-    }
-
-    // Apply search and category filters
-    return coursesToFilter.filter(course => {
-      // Filter by search query
-      const matchesSearch = 
-        (course.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
-        (course.description || '').toLowerCase().includes(searchQuery.toLowerCase());
-      
-      // Filter by category
-      const matchesCategory = 
-        categoryFilter === 'all' || 
-        course.category === categoryFilter;
-      
-      // Filter by domain - only if course has a domain restriction
-      // Static courses are always visible, domain-specific courses are filtered by user domain
-      const hasDomainAccess = 
-        !course.domain || // Static courses don't have domain
-        course.domain === userProfile?.email_domain || // Domain matches user's domain
-        !userProfile?.email_domain; // User has no domain - fallback to see all
-      
-      return matchesSearch && matchesCategory && hasDomainAccess;
-    });
-  }, [allCourses, searchQuery, categoryFilter, activeTab, userProfile]);
-
-  const isLoading = isLoadingDbCourses;
+  const { 
+    searchQuery,
+    setSearchQuery,
+    categoryFilter,
+    setCategoryFilter,
+    activeTab,
+    setActiveTab,
+    categories,
+    filteredCourses,
+    isLoading,
+    userProfile
+  } = useCourseData();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -173,79 +40,26 @@ const Courses = () => {
         </section>
         
         {/* Course Type Tabs */}
-        <section className="border-b">
-          <div className="container px-4 py-4">
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid grid-cols-4 max-w-xl">
-                <TabsTrigger value="all">All Courses</TabsTrigger>
-                <TabsTrigger value="dsp">DSP Courses</TabsTrigger>
-                <TabsTrigger value="micro">Micro Learning</TabsTrigger>
-                <TabsTrigger value="general">General</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-        </section>
+        <CourseTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         
         {/* Filters */}
-        <section className="py-8 border-b">
-          <div className="container px-4">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <Input
-                  placeholder="Search courses..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              <div className="w-full md:w-64">
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map((category) => (
-                      <SelectItem key={category} value={category}>
-                        {category === 'all' ? 'All Categories' : category}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-        </section>
+        <CourseFilters 
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          categoryFilter={categoryFilter}
+          setCategoryFilter={setCategoryFilter}
+          categories={categories}
+        />
         
         {/* Course Grid */}
-        <section className="py-12">
-          <div className="container px-4">
-            {isLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[...Array(6)].map((_, i) => (
-                  <Skeleton key={i} className="h-72 w-full rounded-lg" />
-                ))}
-              </div>
-            ) : filteredCourses.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <h3 className="text-xl font-medium mb-2">No courses found</h3>
-                <p className="text-muted-foreground">
-                  {searchQuery || categoryFilter !== 'all' 
-                    ? 'Try adjusting your search or filter criteria'
-                    : activeTab === 'micro' 
-                      ? 'No micro learning courses available yet'
-                      : userProfile?.email_domain
-                        ? `No courses are available for ${userProfile.email_domain} yet`
-                        : 'No courses available yet'}
-                </p>
-              </div>
-            )}
-          </div>
-        </section>
+        <CourseGrid 
+          isLoading={isLoading}
+          courses={filteredCourses}
+          searchQuery={searchQuery}
+          categoryFilter={categoryFilter}
+          activeTab={activeTab}
+          userProfileDomain={userProfile?.email_domain}
+        />
       </main>
       
       <Footer />
