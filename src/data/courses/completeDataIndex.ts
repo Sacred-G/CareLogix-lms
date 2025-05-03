@@ -10,6 +10,7 @@ import { boundariesEthicsCourse } from './boundariesEthics';
 import { personalCareDignityCourse } from './personalCareDignity';
 import { communityInclusionCourse } from './communityInclusion';
 import { scenarioPracticeCourse } from './scenarioPractice';
+import { developmentalDisabilitiesCourse } from './developmentalDisabilities';
 
 // Combine all courses into one array
 export const allCourses: Course[] = [
@@ -22,5 +23,6 @@ export const allCourses: Course[] = [
   boundariesEthicsCourse,
   personalCareDignityCourse,
   communityInclusionCourse,
-  scenarioPracticeCourse
+  scenarioPracticeCourse,
+  developmentalDisabilitiesCourse
 ];

@@ -13,13 +13,6 @@ import { personalCareDignityCourse } from './courses/personalCareDignity';
 import { communityInclusionCourse } from './courses/communityInclusion';
 import { scenarioPracticeCourse } from './courses/scenarioPractice';
 
-// Import general courses we'll use for examples
-import { webAccessibilityCourse } from './courses/webAccessibility';
-import { communicationSkillsCourse } from './courses/communicationSkills';
-import { timeManagementCourse } from './courses/timeManagement';
-import { conflictResolutionCourse } from './courses/conflictResolution';
-import { remoteWorkCourse } from './courses/remoteWork';
-
 // Create a primary array with the DSP-specific courses
 export const dspCourses: Course[] = [
   introDevDisabilitiesCourse,
@@ -34,13 +27,68 @@ export const dspCourses: Course[] = [
   scenarioPracticeCourse
 ];
 
-// Add some general professional development courses
+// Create placeholder general courses without importing non-existent files
 export const generalCourses: Course[] = [
-  webAccessibilityCourse,
-  communicationSkillsCourse,
-  timeManagementCourse,
-  conflictResolutionCourse,
-  remoteWorkCourse
+  {
+    id: 'web-accessibility',
+    title: 'Web Accessibility Fundamentals',
+    description: 'Learn how to make websites accessible to all users, including those with disabilities.',
+    category: 'Technology',
+    instructor: 'Alex Johnson',
+    thumbnail: 'https://placehold.co/600x400/png',
+    duration: '4 hours',
+    modules: [],
+    certificateAvailable: true,
+    domain: 'general'
+  },
+  {
+    id: 'communication-skills',
+    title: 'Effective Communication Skills',
+    description: 'Develop professional communication skills for the workplace.',
+    category: 'Professional Development',
+    instructor: 'Maria Garcia',
+    thumbnail: 'https://placehold.co/600x400/png',
+    duration: '3 hours',
+    modules: [],
+    certificateAvailable: true,
+    domain: 'general'
+  },
+  {
+    id: 'time-management',
+    title: 'Time Management Essentials',
+    description: 'Learn techniques to manage your time efficiently and boost productivity.',
+    category: 'Professional Development',
+    instructor: 'James Wilson',
+    thumbnail: 'https://placehold.co/600x400/png',
+    duration: '2 hours',
+    modules: [],
+    certificateAvailable: true,
+    domain: 'general'
+  },
+  {
+    id: 'conflict-resolution',
+    title: 'Conflict Resolution in the Workplace',
+    description: 'Develop strategies to handle conflicts professionally and effectively.',
+    category: 'Professional Development',
+    instructor: 'Sarah Miller',
+    thumbnail: 'https://placehold.co/600x400/png',
+    duration: '2.5 hours',
+    modules: [],
+    certificateAvailable: true,
+    domain: 'general'
+  },
+  {
+    id: 'remote-work',
+    title: 'Remote Work Best Practices',
+    description: 'Learn how to work effectively in remote and hybrid environments.',
+    category: 'Professional Development',
+    instructor: 'David Lee',
+    thumbnail: 'https://placehold.co/600x400/png',
+    duration: '3 hours',
+    modules: [],
+    certificateAvailable: true,
+    domain: 'general'
+  }
 ];
 
 // Combine all courses into one exported array
