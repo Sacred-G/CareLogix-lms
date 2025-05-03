@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Module } from '@/data/courseTypes';
+import { Module, ScenarioOption } from '@/data/courseTypes';
 import VideoPlayer from './VideoPlayer';
 import AudioPlayer from './AudioPlayer';
 import QuizSection from './QuizSection';
@@ -16,6 +16,15 @@ interface CourseContentProps {
   module: Module;
   onQuizComplete?: (score: number) => void;
   onContentComplete?: (type: 'video' | 'text' | 'audio') => void;
+}
+
+// Define a specific scenario type that matches what InteractiveScenario expects
+interface Scenario {
+  title: string;
+  description: string;
+  type: 'multiple-choice' | 'drag-drop' | 'dialogue';
+  options: ScenarioOption[];
+  content?: any;
 }
 
 export default function CourseContent({ module, onQuizComplete, onContentComplete }: CourseContentProps) {
@@ -85,10 +94,10 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
   ];
 
   // Example interactive scenario
-  const scenario = {
+  const scenario: Scenario = {
     title: "Client Privacy Scenario",
     description: "A family member calls and asks for detailed information about their adult relative's medical appointments and daily activities. What should you do?",
-    type: "multiple-choice" as const,
+    type: "multiple-choice",
     options: [
       {
         id: "1",
@@ -232,7 +241,15 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           />
           
           <InteractiveScenario 
-            scenario={module.interactiveScenario || scenario}
+            scenario={module.interactiveScenario ? 
+              {
+                title: module.interactiveScenario.title,
+                description: module.interactiveScenario.description,
+                type: module.interactiveScenario.type,
+                options: module.interactiveScenario.options || [],
+                content: module.interactiveScenario.content
+              } : scenario
+            }
           />
         </TabsContent>
         

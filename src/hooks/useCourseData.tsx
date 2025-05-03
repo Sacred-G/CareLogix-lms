@@ -75,20 +75,21 @@ export const useCourseData = () => {
   // Filter courses based on search query, category, and domain access
   const filteredCourses = React.useMemo(() => {
     // First filter by tab selection
-    let coursesToFilter;
+    let coursesToFilter: Course[] = [];
     
     if (activeTab === 'dsp') {
       coursesToFilter = [...dspCourses];
       console.log('DSP courses tab selected:', dspCourses);
     } else if (activeTab === 'micro') {
       coursesToFilter = [...microLearningCourses];
-      console.log('Micro learning courses:', microLearningCourses);
+      console.log('Micro learning courses tab selected:', microLearningCourses);
     } else if (activeTab === 'general') {
       coursesToFilter = [...generalCourses];
-      console.log('General courses:', generalCourses);
+      console.log('General courses tab selected:', generalCourses);
     } else {
       // 'all' tab - show all courses
       coursesToFilter = allDbAndStaticCourses;
+      console.log('All courses tab selected:', allDbAndStaticCourses);
     }
 
     // Apply search and category filters

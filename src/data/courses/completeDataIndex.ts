@@ -26,7 +26,7 @@ export const dspCourses: Course[] = [
   scenarioPracticeCourse,
 ];
 
-// Micro Learning Courses
+// Micro Learning Courses - Make sure we're exporting this array properly
 export const microLearningCourses: Course[] = [
   developmentalDisabilitiesCourse
 ];
