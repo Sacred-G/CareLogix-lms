@@ -81,6 +81,7 @@ export const useCourseData = () => {
       coursesToFilter = [...dspCourses];
       console.log('DSP courses tab selected:', dspCourses);
     } else if (activeTab === 'micro') {
+      // For micro learning tab, show all micro learning courses regardless of domain
       coursesToFilter = [...microLearningCourses];
       console.log('Micro learning courses tab selected:', microLearningCourses);
     } else if (activeTab === 'general') {
@@ -104,9 +105,10 @@ export const useCourseData = () => {
         categoryFilter === 'all' || 
         course.category === categoryFilter;
       
-      // Filter by domain - only if course has a domain restriction
-      // Static courses are always visible, domain-specific courses are filtered by user domain
+      // Filter by domain - only if course has a domain restriction and not on micro tab
+      // When in the 'micro' tab, we want to show all micro courses regardless of domain
       const hasDomainAccess = 
+        activeTab === 'micro' || // Always show all micro courses when on micro tab
         !course.domain || // Static courses don't have domain
         course.domain === 'general' || // General courses are visible to everyone
         course.domain === userProfile?.email_domain || // Domain matches user's domain

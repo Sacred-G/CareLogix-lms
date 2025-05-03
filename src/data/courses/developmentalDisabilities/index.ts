@@ -17,7 +17,7 @@ export const developmentalDisabilitiesCourse: Course = {
   instructor: 'Dr. Emily Chen',
   thumbnail: 'https://placehold.co/600x400/png',
   duration: '6 hours',
-  domain: 'healthcare',
+  domain: 'general', // Changed from 'healthcare' to 'general' to make it visible to all users
   modules: [
     introModule,
     personFirstModule,
