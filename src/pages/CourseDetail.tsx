@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 import CourseContent from '@/components/courses/CourseContent';
@@ -20,8 +20,20 @@ const CourseDetail = () => {
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("content");
   const { session } = useAuth();
+  const navigate = useNavigate();
   
+  // Find the course by ID
   const course = allCourses.find(c => c.id === courseId);
+  
+  useEffect(() => {
+    // Log for debugging purposes
+    console.log(`Looking for course with ID: ${courseId}`);
+    console.log(`Found course:`, course);
+    
+    if (course) {
+      console.log(`Course has ${course.modules?.length || 0} modules`);
+    }
+  }, [courseId, course]);
   
   // Fetch enrollment data if user is logged in
   const { data: enrollment, isLoading: isLoadingEnrollment } = useQuery({
@@ -29,16 +41,21 @@ const CourseDetail = () => {
     queryFn: async () => {
       if (!session?.user?.id || !courseId) return null;
       
-      // First check for database courses with UUID format
       try {
-        const { data: dbEnrollment, error: dbError } = await supabase
-          .from('enrollments')
-          .select('*')
-          .eq('user_id', session.user.id)
-          .eq('course_id', courseId)
-          .maybeSingle();
-          
-        if (dbEnrollment) return dbEnrollment;
+        // First check for database courses with UUID format
+        try {
+          const { data: dbEnrollment, error: dbError } = await supabase
+            .from('enrollments')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .eq('course_id', courseId)
+            .maybeSingle();
+            
+          if (dbEnrollment) return dbEnrollment;
+        } catch (err) {
+          console.error('Error checking for UUID enrollment:', err);
+          // Continue to checking for string IDs
+        }
         
         // For static courses with string IDs, check if the user has enrolled in one of our static courses
         const { data: staticEnrollments, error: staticError } = await supabase
@@ -122,7 +139,7 @@ const CourseDetail = () => {
       
       // Calculate new progress percentage
       // This is simplified - in a real app, you'd count completed items vs total items
-      const moduleCount = course?.modules.length || 1;
+      const moduleCount = course?.modules?.length || 1;
       const newProgress = Math.min(
         Math.round(((activeModuleIndex + (completed ? 1 : 0)) / moduleCount) * 100),
         100
@@ -166,6 +183,47 @@ const CourseDetail = () => {
               <Link to="/courses">Back to Courses</Link>
             </Button>
           </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+  
+  // Check if course has modules
+  if (!course.modules || course.modules.length === 0) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <section className="bg-gradient-to-r from-lms-blue-500 to-lms-teal-500 text-white py-12">
+            <div className="container px-4">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="flex-1">
+                  <Link to="/courses" className="inline-flex items-center text-white/80 hover:text-white mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                      <path d="m15 18-6-6 6-6"/>
+                    </svg>
+                    Back to Courses
+                  </Link>
+                  <Badge className="mb-4">{course.category}</Badge>
+                  <h1 className="text-3xl font-bold mb-2">{course.title}</h1>
+                  <p className="text-white/80 mb-4">{course.description}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <section className="py-16 container">
+            <div className="text-center p-8 border rounded-lg bg-muted/30">
+              <h2 className="text-xl font-semibold mb-4">Course Content Coming Soon</h2>
+              <p className="text-muted-foreground mb-6">
+                This course is currently under development. Check back later for content updates.
+              </p>
+              <Button asChild>
+                <Link to="/courses">Browse Other Courses</Link>
+              </Button>
+            </div>
+          </section>
         </main>
         <Footer />
       </div>
@@ -257,46 +315,53 @@ const CourseDetail = () => {
               </TabsList>
               
               <TabsContent value="content" className="space-y-8">
-                <CourseContent 
-                  module={activeModule} 
-                  onQuizComplete={(score) => {
-                    if (!session) {
-                      toast('Sign in to save your progress', {
-                        action: {
-                          label: 'Sign In',
-                          onClick: () => window.location.href = '/auth'
-                        }
+                {activeModule ? (
+                  <CourseContent 
+                    module={activeModule} 
+                    onQuizComplete={(score) => {
+                      if (!session) {
+                        toast('Sign in to save your progress', {
+                          action: {
+                            label: 'Sign In',
+                            onClick: () => navigate('/auth')
+                          }
+                        });
+                        return;
+                      }
+                      
+                      // Save progress to database
+                      const quizId = `${course.id}-quiz-${activeModuleIndex}`; // This would be a real ID in production
+                      updateProgressMutation.mutate({
+                        quizId,
+                        completed: true,
+                        score
                       });
-                      return;
-                    }
-                    
-                    // Save progress to database
-                    const quizId = `${course.id}-quiz-${activeModuleIndex}`; // This would be a real ID in production
-                    updateProgressMutation.mutate({
-                      quizId,
-                      completed: true,
-                      score
-                    });
-                  }}
-                  onContentComplete={(type) => {
-                    if (!session) {
-                      toast('Sign in to save your progress', {
-                        action: {
-                          label: 'Sign In',
-                          onClick: () => window.location.href = '/auth'
-                        }
+                    }}
+                    onContentComplete={(type) => {
+                      if (!session) {
+                        toast('Sign in to save your progress', {
+                          action: {
+                            label: 'Sign In',
+                            onClick: () => navigate('/auth')
+                          }
+                        });
+                        return;
+                      }
+                      
+                      // Save progress to database
+                      const lessonId = `${course.id}-${type}-${activeModuleIndex}`; // This would be a real ID in production
+                      updateProgressMutation.mutate({
+                        lessonId,
+                        completed: true
                       });
-                      return;
-                    }
-                    
-                    // Save progress to database
-                    const lessonId = `${course.id}-${type}-${activeModuleIndex}`; // This would be a real ID in production
-                    updateProgressMutation.mutate({
-                      lessonId,
-                      completed: true
-                    });
-                  }}
-                />
+                    }}
+                  />
+                ) : (
+                  <div className="p-8 text-center border rounded-lg bg-muted/30">
+                    <h3 className="font-medium mb-2">Module not found</h3>
+                    <p className="text-muted-foreground">The selected module could not be loaded.</p>
+                  </div>
+                )}
                 
                 <div className="flex justify-between">
                   <Button 
@@ -333,8 +398,8 @@ const CourseDetail = () => {
                     >
                       <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="font-medium">{module.title}</h3>
-                          <p className="text-sm text-muted-foreground">{module.description}</p>
+                          <h3 className="font-medium">{module.title || `Module ${index + 1}`}</h3>
+                          <p className="text-sm text-muted-foreground">{module.description || 'No description available'}</p>
                         </div>
                         {index === activeModuleIndex && (
                           <Badge variant="outline" className="ml-2">Current</Badge>

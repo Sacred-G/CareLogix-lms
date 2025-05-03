@@ -41,7 +41,28 @@ export const generalCourses: Course[] = [
     instructor: 'Alex Johnson',
     thumbnail: 'https://placehold.co/600x400/png',
     duration: '4 hours',
-    modules: [],
+    modules: [
+      {
+        id: 'web-a11y-intro',
+        title: 'Introduction to Web Accessibility',
+        description: 'Understanding the basics of web accessibility',
+        content: '# Introduction to Web Accessibility\n\nWeb accessibility means designing websites that can be used by everyone, including people with disabilities.\n\n## Why Accessibility Matters\n- It ensures equal access to information\n- It improves user experience for all users\n- It\'s often a legal requirement\n- It expands your audience',
+        questions: [
+          {
+            id: 'q1-a11y',
+            question: 'What is the main goal of web accessibility?',
+            options: [
+              'To make websites look more attractive',
+              'To ensure websites can be used by people with disabilities',
+              'To reduce server load',
+              'To improve SEO ranking'
+            ],
+            correctAnswer: 1,
+            explanation: 'The main goal of web accessibility is to ensure that websites can be used by everyone, including people with disabilities.'
+          }
+        ]
+      }
+    ],
     certificateAvailable: true,
     domain: 'general'
   },
@@ -53,7 +74,28 @@ export const generalCourses: Course[] = [
     instructor: 'Maria Garcia',
     thumbnail: 'https://placehold.co/600x400/png',
     duration: '3 hours',
-    modules: [],
+    modules: [
+      {
+        id: 'comm-basics',
+        title: 'Communication Fundamentals',
+        description: 'Learn the core principles of effective communication',
+        content: '# Communication Fundamentals\n\nEffective communication is essential for success in any professional environment.\n\n## Key Elements of Communication\n- Clear messaging\n- Active listening\n- Non-verbal communication\n- Feedback mechanisms',
+        questions: [
+          {
+            id: 'q1-comm',
+            question: 'Which of the following is NOT a key element of effective communication?',
+            options: [
+              'Active listening',
+              'Clear messaging',
+              'Avoiding feedback',
+              'Non-verbal communication'
+            ],
+            correctAnswer: 2,
+            explanation: 'Feedback is a crucial part of effective communication. Avoiding feedback prevents the communication cycle from completing successfully.'
+          }
+        ]
+      }
+    ],
     certificateAvailable: true,
     domain: 'general'
   },
@@ -65,7 +107,28 @@ export const generalCourses: Course[] = [
     instructor: 'James Wilson',
     thumbnail: 'https://placehold.co/600x400/png',
     duration: '2 hours',
-    modules: [],
+    modules: [
+      {
+        id: 'time-intro',
+        title: 'Introduction to Time Management',
+        description: 'Understanding the basics of effective time management',
+        content: '# Introduction to Time Management\n\nTime management is the process of planning and organizing how to divide your time between specific activities.\n\n## Key Principles\n- Setting clear goals\n- Prioritizing tasks\n- Eliminating distractions\n- Using productivity techniques',
+        questions: [
+          {
+            id: 'q1-time',
+            question: 'Which of the following is NOT a benefit of good time management?',
+            options: [
+              'Reduced stress',
+              'Increased productivity',
+              'More free time',
+              'Decreased need for planning'
+            ],
+            correctAnswer: 3,
+            explanation: 'Good time management actually requires more planning, not less. The planning process is essential to managing time effectively.'
+          }
+        ]
+      }
+    ],
     certificateAvailable: true,
     domain: 'general'
   }

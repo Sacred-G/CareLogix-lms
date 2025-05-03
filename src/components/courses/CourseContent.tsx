@@ -19,6 +19,17 @@ interface CourseContentProps {
 }
 
 export default function CourseContent({ module, onQuizComplete, onContentComplete }: CourseContentProps) {
+  // Early return with a placeholder if module is undefined
+  if (!module) {
+    console.error('Module is undefined in CourseContent');
+    return (
+      <div className="p-8 text-center">
+        <h3 className="text-lg font-medium">Module content unavailable</h3>
+        <p className="text-muted-foreground">This module content could not be loaded.</p>
+      </div>
+    );
+  }
+
   const [videoCompleted, setVideoCompleted] = useState(false);
   const [textCompleted, setTextCompleted] = useState(false);
   const [audioCompleted, setAudioCompleted] = useState(false);
@@ -129,8 +140,8 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-gradient-primary">{module.title}</h2>
-      <p className="text-muted-foreground text-lg">{module.description}</p>
+      <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Module'}</h2>
+      <p className="text-muted-foreground text-lg">{module.description || 'No description available'}</p>
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-3 mb-6">
@@ -152,7 +163,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               </h3>
               <VideoPlayer 
                 url={module.videoUrl} 
-                title={module.title}
+                title={module.title || 'Video Lesson'}
                 onVideoEnded={handleVideoEnd}
               />
             </div>
@@ -181,7 +192,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
             </CardHeader>
             <CardContent className="pt-6 px-6">
               <article className="prose max-w-none dark:prose-invert prose-headings:text-primary prose-a:text-secondary hover:prose-a:text-secondary/80 prose-img:rounded-lg prose-img:shadow-md prose-strong:text-foreground/90">
-                <ReactMarkdown>{module.content}</ReactMarkdown>
+                <ReactMarkdown>{module.content || '# No Content Available\n\nThis module does not have any reading content available.'}</ReactMarkdown>
               </article>
             </CardContent>
           </Card>
@@ -217,17 +228,17 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
         <TabsContent value="interactive" className="space-y-8 pt-4 animate-fade-in">
           <FlashcardSection 
             title="Key Terms" 
-            flashcards={flashcards} 
+            flashcards={module.flashcards || flashcards} 
           />
           
           <InteractiveScenario 
-            scenario={scenario}
+            scenario={module.interactiveScenario || scenario}
           />
         </TabsContent>
         
         <TabsContent value="resources" className="space-y-8 pt-4 animate-fade-in">
           <FAQSection 
-            faqs={faqs} 
+            faqs={module.faqs || faqs} 
           />
           
           <Card className="bg-card/50 backdrop-blur border-none shadow-md">
@@ -262,21 +273,6 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           </Card>
         </TabsContent>
       </Tabs>
-      
-      {module.interactiveScenario && (
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium">Interactive Scenario: {module.interactiveScenario.title}</h3>
-          <Card>
-            <CardContent className="pt-6">
-              <p>{module.interactiveScenario.description}</p>
-              {/* Interactive scenario component would be implemented here based on type */}
-              <div className="p-8 text-center text-muted-foreground">
-                <p>Interactive scenario placeholder</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
     </div>
   );
 }
