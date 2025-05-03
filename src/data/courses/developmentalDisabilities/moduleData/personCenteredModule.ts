@@ -26,12 +26,12 @@ Collaborate to build daily and weekly structures that reflect each person's pref
       question: 'Person-centered support means:',
       options: [
         'Following the support plan exactly as written',
-        'Making decisions based on what's most efficient',
-        'Focusing on the individual's preferences, strengths, and goals',
+        'Making decisions based on what\'s most efficient',
+        'Focusing on the individual\'s preferences, strengths, and goals',
         'Delivering the same support to everyone with the same diagnosis'
       ],
       correctAnswer: 2,
-      explanation: 'Person-centered support focuses on the individual's preferences, strengths, and goals rather than applying the same approach to everyone or focusing on efficiency alone.'
+      explanation: 'Person-centered support focuses on the individual\'s preferences, strengths, and goals rather than applying the same approach to everyone or focusing on efficiency alone.'
     }
   ]
 };
