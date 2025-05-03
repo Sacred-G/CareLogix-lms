@@ -12,6 +12,7 @@ import { boundariesEthicsCourse } from './courses/boundariesEthics';
 import { personalCareDignityCourse } from './courses/personalCareDignity';
 import { communityInclusionCourse } from './courses/communityInclusion';
 import { scenarioPracticeCourse } from './courses/scenarioPractice';
+import { developmentalDisabilitiesCourse } from './courses/developmentalDisabilities';
 
 // Create a primary array with the DSP-specific courses
 export const dspCourses: Course[] = [
@@ -24,10 +25,11 @@ export const dspCourses: Course[] = [
   boundariesEthicsCourse,
   personalCareDignityCourse,
   communityInclusionCourse,
-  scenarioPracticeCourse
+  scenarioPracticeCourse,
+  developmentalDisabilitiesCourse
 ];
 
-// Create placeholder general courses without importing non-existent files
+// Create placeholder general courses 
 export const generalCourses: Course[] = [
   {
     id: 'web-accessibility',
