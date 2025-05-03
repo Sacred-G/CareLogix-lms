@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Course } from '@/data/courseTypes';
-import { courses as staticCourses } from '@/data/courseData';
+import { allCourses } from '@/data/courses/completeDataIndex';
 
 export const useEnrollments = () => {
   const { user } = useAuth();
@@ -47,7 +47,7 @@ export const useEnrollments = () => {
     const dbCourse = enrollment.courses;
     if (!dbCourse) {
       // Find the course in static courses
-      const staticCourse = staticCourses.find(c => c.id === enrollment.course_id);
+      const staticCourse = allCourses.find(c => c.id === enrollment.course_id);
       return staticCourse || {
         id: enrollment.course_id,
         title: 'Unknown Course',
@@ -96,7 +96,7 @@ export const useEnrollments = () => {
   // Get recommended courses by excluding enrolled courses
   const enrolledCourseIds = enrollments?.map(e => e.course_id) || [];
   
-  const recommendedCourses = staticCourses
+  const recommendedCourses = allCourses
     .filter(course => !enrolledCourseIds.includes(course.id))
     .slice(0, 3);
   

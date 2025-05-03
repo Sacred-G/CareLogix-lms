@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Course } from '@/data/courseTypes';
 import { DatabaseCourse, convertDatabaseCourse } from '@/components/courses/utils/courseConverters';
-import { allCourses, dspCourses, microLearningCourses } from '@/data/courses/completeDataIndex';
+import { allCourses, dspCourses, microLearningCourses, generalCourses } from '@/data/courses/completeDataIndex';
 import { useAuth } from '@/hooks/useAuth';
 
 export const useCourseData = () => {
@@ -79,13 +79,13 @@ export const useCourseData = () => {
     
     if (activeTab === 'dsp') {
       coursesToFilter = [...dspCourses];
+      console.log('DSP courses tab selected:', dspCourses);
     } else if (activeTab === 'micro') {
       coursesToFilter = [...microLearningCourses];
       console.log('Micro learning courses:', microLearningCourses);
     } else if (activeTab === 'general') {
-      // Filter for general courses from allCourses
-      coursesToFilter = allDbAndStaticCourses.filter(course => 
-        course.domain === 'general' || course.category === 'General');
+      coursesToFilter = [...generalCourses];
+      console.log('General courses:', generalCourses);
     } else {
       // 'all' tab - show all courses
       coursesToFilter = allDbAndStaticCourses;
@@ -107,12 +107,13 @@ export const useCourseData = () => {
       // Static courses are always visible, domain-specific courses are filtered by user domain
       const hasDomainAccess = 
         !course.domain || // Static courses don't have domain
+        course.domain === 'general' || // General courses are visible to everyone
         course.domain === userProfile?.email_domain || // Domain matches user's domain
         !userProfile?.email_domain; // User has no domain - fallback to see all
       
       return matchesSearch && matchesCategory && hasDomainAccess;
     });
-  }, [allDbAndStaticCourses, searchQuery, categoryFilter, activeTab, userProfile]);
+  }, [allDbAndStaticCourses, searchQuery, categoryFilter, activeTab, userProfile, dspCourses, microLearningCourses, generalCourses]);
 
   const isLoading = isLoadingDbCourses;
 

@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 import CourseContent from '@/components/courses/CourseContent';
-import { courses } from '@/data/courseData';
+import { allCourses } from '@/data/courses/completeDataIndex';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
@@ -21,7 +21,7 @@ const CourseDetail = () => {
   const [activeTab, setActiveTab] = useState("content");
   const { session } = useAuth();
   
-  const course = courses.find(c => c.id === courseId);
+  const course = allCourses.find(c => c.id === courseId);
   
   // Fetch enrollment data if user is logged in
   const { data: enrollment, isLoading: isLoadingEnrollment } = useQuery({
@@ -29,21 +29,35 @@ const CourseDetail = () => {
     queryFn: async () => {
       if (!session?.user?.id || !courseId) return null;
       
-      const { data, error } = await supabase
-        .from('enrollments')
-        .select('*')
-        .eq('user_id', session.user.id)
-        .eq('course_id', courseId)
-        .single();
+      // First check for database courses with UUID format
+      try {
+        const { data: dbEnrollment, error: dbError } = await supabase
+          .from('enrollments')
+          .select('*')
+          .eq('user_id', session.user.id)
+          .eq('course_id', courseId)
+          .maybeSingle();
+          
+        if (dbEnrollment) return dbEnrollment;
         
-      if (error) {
-        if (error.code !== 'PGRST116') { // Not found error
-          console.error('Error fetching enrollment:', error);
+        // For static courses with string IDs, check if the user has enrolled in one of our static courses
+        const { data: staticEnrollments, error: staticError } = await supabase
+          .from('enrollments')
+          .select('*')
+          .eq('user_id', session.user.id);
+          
+        if (staticError) {
+          console.error('Error fetching enrollments:', staticError);
+          return null;
         }
+        
+        // Find an enrollment matching the current course ID string
+        const matchingEnrollment = staticEnrollments?.find(e => e.course_id === courseId);
+        return matchingEnrollment || null;
+      } catch (error) {
+        console.error('Error fetching enrollment:', error);
         return null;
       }
-      
-      return data;
     },
     enabled: !!session?.user?.id && !!courseId
   });
