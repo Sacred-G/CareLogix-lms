@@ -8,9 +8,10 @@ import { useToast } from '@/hooks/use-toast';
 interface QuizSectionProps {
   questions: Question[];
   onComplete?: (score: number) => void;
+  isMicroLearning?: boolean;
 }
 
-export default function QuizSection({ questions, onComplete }: QuizSectionProps) {
+export default function QuizSection({ questions, onComplete, isMicroLearning = false }: QuizSectionProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
@@ -101,9 +102,20 @@ export default function QuizSection({ questions, onComplete }: QuizSectionProps)
               <p>You didn't pass this time. Review the material and try again.</p>
             )}
           </div>
+          
+          {isMicroLearning && (
+            <div className="mt-4">
+              <p className="text-sm text-muted-foreground">
+                This is a micro learning module. You can continue to the next module or retake this quiz.
+              </p>
+            </div>
+          )}
         </CardContent>
-        <CardFooter className="flex justify-center">
+        <CardFooter className="flex justify-center gap-4">
           <Button onClick={handleRestartQuiz}>Restart Quiz</Button>
+          {isMicroLearning && (
+            <Button variant="outline">Next Module</Button>
+          )}
         </CardFooter>
       </Card>
     );
@@ -113,7 +125,9 @@ export default function QuizSection({ questions, onComplete }: QuizSectionProps)
     <Card className="mt-8">
       <CardHeader className="border-b">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-semibold">Knowledge Check</h3>
+          <h3 className="text-xl font-semibold">
+            {isMicroLearning ? 'Quick Knowledge Check' : 'Knowledge Check'}
+          </h3>
           <div className="text-sm text-muted-foreground">
             Question {currentQuestionIndex + 1} of {questions.length}
           </div>

@@ -15,8 +15,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useAuth } from '@/hooks/useAuth';
-import { courses as staticCourses } from '@/data/courseData';
+import { courses as staticCourses, microLearningCourses, dspCourses, generalCourses } from '@/data/courseData';
 import { Course } from '@/data/courseTypes';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // Type for database courses
 interface DatabaseCourse {
@@ -48,6 +49,7 @@ const convertDatabaseCourse = (dbCourse: DatabaseCourse): Course => {
 const Courses = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
+  const [activeTab, setActiveTab] = useState('all');
   const { user } = useAuth();
 
   // Get user profile to determine their email domain
@@ -111,7 +113,18 @@ const Courses = () => {
   
   // Filter courses based on search query, category, and domain access
   const filteredCourses = React.useMemo(() => {
-    return allCourses.filter(course => {
+    let coursesToFilter = allCourses;
+
+    // First filter by tab selection
+    if (activeTab === 'dsp') {
+      coursesToFilter = [...dspCourses];
+    } else if (activeTab === 'micro') {
+      coursesToFilter = [...microLearningCourses];
+    } else if (activeTab === 'general') {
+      coursesToFilter = [...generalCourses];
+    }
+
+    return coursesToFilter.filter(course => {
       // Filter by search query
       const matchesSearch = 
         (course.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -131,7 +144,7 @@ const Courses = () => {
       
       return matchesSearch && matchesCategory && hasDomainAccess;
     });
-  }, [allCourses, searchQuery, categoryFilter, userProfile]);
+  }, [allCourses, searchQuery, categoryFilter, activeTab, userProfile]);
 
   const isLoading = isLoadingDbCourses;
 
@@ -150,6 +163,20 @@ const Courses = () => {
                 <span className="font-medium"> for {userProfile.email_domain}</span>
               )}
             </p>
+          </div>
+        </section>
+        
+        {/* Course Type Tabs */}
+        <section className="border-b">
+          <div className="container px-4 py-4">
+            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <TabsList className="grid grid-cols-4 max-w-xl">
+                <TabsTrigger value="all">All Courses</TabsTrigger>
+                <TabsTrigger value="dsp">DSP Courses</TabsTrigger>
+                <TabsTrigger value="micro">Micro Learning</TabsTrigger>
+                <TabsTrigger value="general">General</TabsTrigger>
+              </TabsList>
+            </Tabs>
           </div>
         </section>
         

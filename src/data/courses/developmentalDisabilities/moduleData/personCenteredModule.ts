@@ -3,27 +3,27 @@ import { Module } from '../../../courseTypes';
 
 export const personCenteredModule: Module = {
   id: 'person-centered',
-  title: 'Person-Centered Support',
-  description: 'Deliver support that respects individual preferences and cultural background.',
+  title: 'Person-Centered Planning',
+  description: 'Apply person-centered approaches to support planning.',
   content: `
-# Person-Centered Support
+# Person-Centered Planning
 
-## Person-Centered Planning
+## What is Person-Centered Planning?
 
-Learn the core principles of tailoring services to the person's vision for their life—not just what others think they need.
+An approach that places the individual at the center of their support plan. It focuses on strengths, preferences, and goals rather than deficits and diagnoses.
 
-## Cultural Competency
+## Elements of Person-Centered Planning
 
-Respect diverse backgrounds, identities, family values, and belief systems. Learn how culture influences behavior, communication, and routines.
+Includes the individual as an active participant in planning, utilizes natural supports (friends, family, community), documents preferences, sets measurable goals, and regularly reviews progress.
 
-## Creating Individualized Routines
+## Using Person-Centered Language
 
-Collaborate to build daily and weekly structures that reflect each person's preferences, needs, and goals.
+Replace deficit-focused language with strength-based words. Examples: "Challenges with" vs. "Unable to", "Needs support with" vs. "Can't do", "Prefers" vs. "Non-compliant"
   `,
   questions: [
     {
-      id: 'pcs-q1',
-      question: 'Person-centered support means:',
+      id: 'person-q1',
+      question: 'Person-centered planning is primarily about:',
       options: [
         'Following the support plan exactly as written',
         'Making decisions based on what\'s most efficient',
@@ -31,7 +31,7 @@ Collaborate to build daily and weekly structures that reflect each person's pref
         'Delivering the same support to everyone with the same diagnosis'
       ],
       correctAnswer: 2,
-      explanation: 'Person-centered support focuses on the individual\'s preferences, strengths, and goals rather than applying the same approach to everyone or focusing on efficiency alone.'
+      explanation: 'Person-centered planning is about focusing on the individual\'s preferences, strengths, and goals. It recognizes each person as unique with their own desires and capabilities rather than taking a one-size-fits-all approach.'
     }
   ]
 };

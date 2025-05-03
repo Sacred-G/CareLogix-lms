@@ -12,8 +12,8 @@ import { communityInclusionCourse } from './communityInclusion';
 import { scenarioPracticeCourse } from './scenarioPractice';
 import { developmentalDisabilitiesCourse } from './developmentalDisabilities';
 
-// Combine all courses into one array
-export const allCourses: Course[] = [
+// Regular DSP Courses
+export const dspCourses: Course[] = [
   introDevDisabilitiesCourse,
   clientRightsCourse,
   medicationAdminCourse,
@@ -24,5 +24,15 @@ export const allCourses: Course[] = [
   personalCareDignityCourse,
   communityInclusionCourse,
   scenarioPracticeCourse,
+];
+
+// Micro Learning Courses
+export const microLearningCourses: Course[] = [
   developmentalDisabilitiesCourse
+];
+
+// Combine all courses into one array
+export const allCourses: Course[] = [
+  ...dspCourses,
+  ...microLearningCourses
 ];

@@ -26,6 +26,10 @@ export const dspCourses: Course[] = [
   personalCareDignityCourse,
   communityInclusionCourse,
   scenarioPracticeCourse,
+];
+
+// Create a separate array for micro learning courses
+export const microLearningCourses: Course[] = [
   developmentalDisabilitiesCourse
 ];
 
@@ -94,4 +98,4 @@ export const generalCourses: Course[] = [
 ];
 
 // Combine all courses into one exported array
-export const courses: Course[] = [...dspCourses, ...generalCourses];
+export const courses: Course[] = [...dspCourses, ...microLearningCourses, ...generalCourses];
