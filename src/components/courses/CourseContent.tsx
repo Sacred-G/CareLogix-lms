@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Module } from '@/data/courseData';
+import { Module } from '@/data/courseTypes';
 import VideoPlayer from './VideoPlayer';
 import AudioPlayer from './AudioPlayer';
 import QuizSection from './QuizSection';

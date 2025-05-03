@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Question } from '@/data/courseData';
+import { Question } from '@/data/courseTypes';
 import { useToast } from '@/hooks/use-toast';
 
 interface QuizSectionProps {
