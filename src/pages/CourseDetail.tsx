@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
@@ -12,6 +13,7 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Progress } from '@/components/ui/progress';
+import { Skeleton } from '@/components/ui/skeleton';
 import CompletedCourseActions from '@/components/courses/CompletedCourseActions';
 import ScormViewer from '@/components/courses/ScormViewer';
 import { ScormModule } from '@/data/scormTypes';
