@@ -12,12 +12,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Loader2, Upload, File } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { allCourses } from '@/data/courses/completeDataIndex';
-import { Course } from '@/data/courseTypes';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function ScormUploader() {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   
   const form = useForm({
     defaultValues: {
@@ -102,19 +103,46 @@ export default function ScormUploader() {
             description: values.description,
             course_id: values.course_id,
             file_path: filePath,
-            launch_path: values.launch_path || 'index.html'
+            launch_path: values.launch_path || 'index.html',
+            status: 'pending',
+            created_by: user?.id
           })
           .select();
           
         if (moduleError) throw moduleError;
         
+        // 4. Process the SCORM package
+        const response = await fetch('/api/process-scorm', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${(await supabase.auth.getSession()).data.session?.access_token}`
+          },
+          body: JSON.stringify({
+            scormPackageUrl: fileData.publicUrl,
+            moduleId: moduleData[0].id
+          })
+        });
+        
+        if (!response.ok) {
+          const error = await response.json();
+          console.error('SCORM processing failed:', error);
+          // We don't throw here because we want to show the upload as complete
+          // The edge function will update the module status
+          toast.error('SCORM package uploaded but processing may take some time');
+        } else {
+          toast.success('SCORM package uploaded and processing started');
+        }
+        
         return moduleData;
+      } catch (error) {
+        console.error('Error uploading SCORM package:', error);
+        throw error;
       } finally {
         setUploading(false);
       }
     },
     onSuccess: () => {
-      toast.success('SCORM package uploaded successfully');
       form.reset();
       setFile(null);
       queryClient.invalidateQueries({ queryKey: ['scorm-modules'] });

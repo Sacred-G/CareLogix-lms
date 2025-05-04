@@ -9,10 +9,12 @@ import { ScormModule, ScormProgressUpdate } from "@/data/scormTypes";
 import { useAuth } from "@/hooks/useAuth";
 
 interface ScormViewerProps {
-  moduleId: string;
+  moduleId?: string;
+  module?: ScormModule;
+  onComplete?: (progress: number) => void;
 }
 
-export default function ScormViewer({ moduleId }: ScormViewerProps) {
+export default function ScormViewer({ moduleId, module: propModule, onComplete }: ScormViewerProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -21,7 +23,12 @@ export default function ScormViewer({ moduleId }: ScormViewerProps) {
   const [moduleData, setModuleData] = useState<ScormModule | null>(null);
 
   useEffect(() => {
-    if (scormModules && moduleId) {
+    if (propModule) {
+      // If module is directly provided as a prop
+      setModuleData(propModule);
+      setIsLoading(false);
+    } else if (scormModules && moduleId) {
+      // If we need to find the module by ID
       const module = scormModules.find((m) => m.id === moduleId);
       if (module) {
         setModuleData(module);
@@ -32,19 +39,27 @@ export default function ScormViewer({ moduleId }: ScormViewerProps) {
       }
       setIsLoading(false);
     }
-  }, [scormModules, moduleId]);
+  }, [scormModules, moduleId, propModule]);
 
   // Handle SCORM API calls from the iframe
   useEffect(() => {
-    if (!user || !moduleId) return;
+    if (!user || !(moduleId || propModule)) return;
+    
+    const currentModuleId = moduleId || propModule?.id;
+    if (!currentModuleId) return;
 
     // Function to update SCORM progress data
     const handleScormUpdate = (data: ScormProgressUpdate) => {
       if (user) {
         updateProgress.mutate({
-          moduleId,
+          moduleId: currentModuleId,
           ...data
         });
+        
+        // If the module is completed and onComplete callback is provided
+        if (data.status === 'completed' && onComplete && data.percentage) {
+          onComplete(data.percentage);
+        }
       }
     };
 
@@ -55,7 +70,7 @@ export default function ScormViewer({ moduleId }: ScormViewerProps) {
       // Clean up the global function when component unmounts
       delete window.updateScormProgress;
     };
-  }, [moduleId, user, updateProgress]);
+  }, [moduleId, propModule, user, updateProgress, onComplete]);
 
   const handleIframeLoad = () => {
     setIsLoading(false);

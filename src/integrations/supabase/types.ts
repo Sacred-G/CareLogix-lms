@@ -289,7 +289,11 @@ export type Database = {
           file_path: string
           id: string
           launch_path: string
+          manifest_data: Json | null
           position: number | null
+          processed_at: string | null
+          public_url: string | null
+          status: string | null
           title: string
         }
         Insert: {
@@ -300,7 +304,11 @@ export type Database = {
           file_path: string
           id?: string
           launch_path?: string
+          manifest_data?: Json | null
           position?: number | null
+          processed_at?: string | null
+          public_url?: string | null
+          status?: string | null
           title: string
         }
         Update: {
@@ -311,7 +319,11 @@ export type Database = {
           file_path?: string
           id?: string
           launch_path?: string
+          manifest_data?: Json | null
           position?: number | null
+          processed_at?: string | null
+          public_url?: string | null
+          status?: string | null
           title?: string
         }
         Relationships: []

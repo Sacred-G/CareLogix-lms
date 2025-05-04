@@ -9,7 +9,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Skeleton } from '@/components/ui/skeleton';
 import { Edit, Trash2, Eye } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
-import { ScormModule } from '@/data/scormTypes';
+import { ScormModule, ScormProcessingStatus } from '@/data/scormTypes';
+import { Badge } from '@/components/ui/badge';
 
 export default function ScormManager() {
   const [selectedModule, setSelectedModule] = useState<ScormModule | null>(null);
@@ -29,7 +30,7 @@ export default function ScormManager() {
         throw error;
       }
       
-      return data || [];
+      return data as ScormModule[];
     }
   });
   
@@ -55,7 +56,7 @@ export default function ScormManager() {
       // Delete the file from storage
       if (module?.file_path) {
         const { error: storageError } = await supabase.storage
-          .from('scorm_packages')
+          .from('scorm-packages')
           .remove([module.file_path]);
           
         if (storageError) console.error('Error deleting storage file:', storageError);
@@ -72,6 +73,21 @@ export default function ScormManager() {
       toast.error('Failed to delete SCORM module');
     }
   });
+  
+  const getStatusBadge = (status?: ScormProcessingStatus) => {
+    switch(status) {
+      case 'pending':
+        return <Badge variant="outline">Pending</Badge>;
+      case 'processing':
+        return <Badge variant="secondary">Processing</Badge>;
+      case 'processed':
+        return <Badge variant="success" className="bg-green-100 text-green-800">Ready</Badge>;
+      case 'error':
+        return <Badge variant="destructive">Error</Badge>;
+      default:
+        return <Badge variant="outline">Unknown</Badge>;
+    }
+  };
   
   const handlePreviewScorm = (module: ScormModule) => {
     setSelectedModule(module);
@@ -107,6 +123,7 @@ export default function ScormManager() {
                   <TableHead>Title</TableHead>
                   <TableHead>Course</TableHead>
                   <TableHead>Created</TableHead>
+                  <TableHead>Status</TableHead>
                   <TableHead className="w-24 text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -116,12 +133,17 @@ export default function ScormManager() {
                     <TableRow key={module.id}>
                       <TableCell className="font-medium">{module.title}</TableCell>
                       <TableCell>{module.course_id}</TableCell>
-                      <TableCell>{new Date(module.created_at!).toLocaleDateString()}</TableCell>
+                      <TableCell>{module.created_at ? new Date(module.created_at).toLocaleDateString() : 'Unknown'}</TableCell>
+                      <TableCell>{getStatusBadge(module.status)}</TableCell>
                       <TableCell className="text-right space-x-1">
-                        <Button variant="ghost" size="icon" onClick={() => handlePreviewScorm(module)}>
-                          <Eye className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" 
+                        {module.public_url && (
+                          <Button variant="ghost" size="icon" onClick={() => handlePreviewScorm(module)}>
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                        )}
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
                           onClick={() => handleDeleteModule(module.id)}
                           className="text-destructive hover:text-destructive/90"
                         >
@@ -132,7 +154,7 @@ export default function ScormManager() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={4} className="text-center py-4">
+                    <TableCell colSpan={5} className="text-center py-4">
                       No SCORM modules found. Upload your first SCORM package to get started.
                     </TableCell>
                   </TableRow>
@@ -151,15 +173,19 @@ export default function ScormManager() {
             <DialogDescription>{selectedModule?.description}</DialogDescription>
           </DialogHeader>
           
-          {selectedModule && (
+          {selectedModule && selectedModule.public_url ? (
             <div className="flex-1 h-full">
               <iframe 
-                src={`${supabase.storage.from('scorm_packages').getPublicUrl(selectedModule.file_path).data.publicUrl}#${selectedModule.launch_path}`}
+                src={selectedModule.public_url}
                 className="w-full h-[60vh] border rounded"
                 title={selectedModule.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
+            </div>
+          ) : (
+            <div className="flex-1 h-[60vh] flex items-center justify-center">
+              <p className="text-muted-foreground">Preview not available. The module may still be processing.</p>
             </div>
           )}
           
