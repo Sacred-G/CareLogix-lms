@@ -55,7 +55,7 @@ const CourseDetail = () => {
           throw error;
         }
         
-        return data || [];
+        return data as unknown as ScormModule[];
       } catch (error) {
         console.error('Error in SCORM modules query:', error);
         return [];
@@ -465,10 +465,10 @@ const CourseDetail = () => {
                         <p className="text-muted-foreground">This course does not have any interactive SCORM content yet.</p>
                       </div>
                     ) : (
-                      scormModules.map((scormModule: ScormModule) => (
+                      scormModules.map((scormModule: any) => (
                         <ScormViewer 
                           key={scormModule.id}
-                          module={scormModule}
+                          module={scormModule as ScormModule}
                           onComplete={(progress) => {
                             // Update overall course progress when a SCORM module is completed
                             if (enrollment && progress === 100) {

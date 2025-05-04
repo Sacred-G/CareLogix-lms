@@ -28,7 +28,7 @@ export const useScormModules = (courseId?: string) => {
         .order('position');
         
       if (error) throw error;
-      return data as ScormModule[];
+      return data as unknown as ScormModule[];
     },
     enabled: !!courseId
   });

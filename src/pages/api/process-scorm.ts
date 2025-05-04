@@ -1,17 +1,22 @@
 
-import { NextApiRequest, NextApiResponse } from 'next';
 import { supabase } from '@/integrations/supabase/client';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: Request, res: Response) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed, use POST' });
+    return new Response(
+      JSON.stringify({ error: 'Method not allowed, use POST' }), 
+      { status: 405, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 
   try {
-    const { scormPackageUrl, moduleId } = req.body;
+    const { scormPackageUrl, moduleId } = await req.json();
 
     if (!scormPackageUrl || !moduleId) {
-      return res.status(400).json({ error: 'Missing required parameters' });
+      return new Response(
+        JSON.stringify({ error: 'Missing required parameters' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
     // Update the module status to processing
@@ -37,12 +42,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
         .eq('id', moduleId);
         
-      return res.status(500).json({ error: 'Failed to process SCORM package', details: error });
+      return new Response(
+        JSON.stringify({ error: 'Failed to process SCORM package', details: error }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
-    return res.status(200).json(data);
+    return new Response(
+      JSON.stringify(data),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
+    );
   } catch (error) {
     console.error('Error in process-scorm API:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return new Response(
+      JSON.stringify({ error: 'Internal server error' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }

@@ -1,22 +1,8 @@
 
+import { Json } from '@/integrations/supabase/types';
+
 export type ScormModuleStatus = 'not_started' | 'in_progress' | 'completed';
 export type ScormProcessingStatus = 'pending' | 'processing' | 'processed' | 'error';
-
-export interface ScormModule {
-  id: string;
-  title: string;
-  description?: string;
-  course_id: string;
-  file_path: string;
-  launch_path: string;
-  position: number;
-  created_at?: string;
-  created_by?: string;
-  processed_at?: string;
-  status?: ScormProcessingStatus;
-  public_url?: string;
-  manifest_data?: ScormManifest;
-}
 
 export interface ScormManifest {
   title: string;
@@ -41,6 +27,22 @@ export interface ScormResource {
   id: string;
   type: string;
   href: string;
+}
+
+export interface ScormModule {
+  id: string;
+  title: string;
+  description?: string;
+  course_id: string;
+  file_path: string;
+  launch_path: string;
+  position: number;
+  created_at?: string;
+  created_by?: string;
+  processed_at?: string;
+  status?: ScormProcessingStatus | string; // Accept string for Supabase compatibility
+  public_url?: string;
+  manifest_data?: ScormManifest | Json; // Accept Json for Supabase compatibility
 }
 
 export interface ScormProgress {

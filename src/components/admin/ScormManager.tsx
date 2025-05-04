@@ -30,7 +30,7 @@ export default function ScormManager() {
         throw error;
       }
       
-      return data as ScormModule[];
+      return data as unknown as ScormModule[];
     }
   });
   
@@ -74,14 +74,14 @@ export default function ScormManager() {
     }
   });
   
-  const getStatusBadge = (status?: ScormProcessingStatus) => {
+  const getStatusBadge = (status?: ScormProcessingStatus | string) => {
     switch(status) {
       case 'pending':
         return <Badge variant="outline">Pending</Badge>;
       case 'processing':
         return <Badge variant="secondary">Processing</Badge>;
       case 'processed':
-        return <Badge variant="success" className="bg-green-100 text-green-800">Ready</Badge>;
+        return <Badge variant="outline" className="bg-green-100 text-green-800">Ready</Badge>;
       case 'error':
         return <Badge variant="destructive">Error</Badge>;
       default:
