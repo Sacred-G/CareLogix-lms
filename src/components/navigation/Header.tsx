@@ -101,10 +101,7 @@ export default function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuItem asChild>
-                <Link to="/profile">Profile</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/profile">Settings</Link>
+                <Link to="/profile">My Profile</Link>
               </DropdownMenuItem>
               {isAdmin && (
                 <DropdownMenuItem asChild>

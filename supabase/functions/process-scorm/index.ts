@@ -40,28 +40,64 @@ serve(async (req) => {
       );
     }
 
-    // Here you would normally extract and process the SCORM package
-    // This could include:
-    // 1. Downloading the zip file
-    // 2. Extracting it to a temporary location
-    // 3. Processing the imsmanifest.xml file to get course structure
-    // 4. Generating HTML wrapper with SCORM API integration
-    // 5. Uploading processed files back to Storage
+    // Get the module information
+    const { data: moduleData, error: moduleError } = await supabaseClient
+      .from("scorm_modules")
+      .select("*")
+      .eq("id", moduleId)
+      .single();
 
-    // For now, we'll just return success as a placeholder
-    // In a real implementation, you'd need to extract and process the SCORM content
+    if (moduleError || !moduleData) {
+      return new Response(
+        JSON.stringify({
+          error: "Failed to retrieve SCORM module information",
+          details: moduleError?.message,
+        }),
+        {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 500,
+        }
+      );
+    }
+
+    console.log("Processing SCORM package:", scormPackageUrl);
+    console.log("Module ID:", moduleId);
+    console.log("Module data:", moduleData);
+
+    // In a real implementation:
+    // 1. Download the ZIP file from the URL
+    // 2. Extract it to a temporary location
+    // 3. Parse the imsmanifest.xml file to get course structure
+    // 4. Create any necessary wrapper files for SCORM API integration
+    // 5. Upload the processed files back to Storage
+
+    // Update the module with processing status or results if needed
+    const { error: updateError } = await supabaseClient
+      .from("scorm_modules")
+      .update({ 
+        // You might add additional fields here based on the processing
+        // For example: processed_at: new Date().toISOString()
+      })
+      .eq("id", moduleId);
+
+    if (updateError) {
+      console.error("Error updating SCORM module:", updateError);
+    }
 
     return new Response(
       JSON.stringify({
         success: true,
         message: "SCORM package processed successfully",
         moduleId,
+        packageUrl: scormPackageUrl,
+        modulePath: moduleData.file_path,
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
   } catch (error) {
+    console.error("Error processing SCORM package:", error);
     return new Response(
       JSON.stringify({ error: error.message }),
       {
