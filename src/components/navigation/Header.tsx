@@ -104,7 +104,7 @@ export default function Header() {
                 <Link to="/profile">Profile</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/settings">Settings</Link>
+                <Link to="/profile">Settings</Link>
               </DropdownMenuItem>
               {isAdmin && (
                 <DropdownMenuItem asChild>
