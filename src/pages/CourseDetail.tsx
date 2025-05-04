@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
@@ -465,7 +466,7 @@ const CourseDetail = () => {
                         <p className="text-muted-foreground">This course does not have any interactive SCORM content yet.</p>
                       </div>
                     ) : (
-                      scormModules.map((scormModule: any) => (
+                      scormModules.map((scormModule) => (
                         <ScormViewer 
                           key={scormModule.id}
                           module={scormModule as ScormModule}

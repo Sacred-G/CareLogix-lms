@@ -42,7 +42,7 @@ export interface ScormModule {
   processed_at?: string;
   status?: ScormProcessingStatus | string; // Accept string for Supabase compatibility
   public_url?: string;
-  manifest_data?: ScormManifest | Json; // Accept Json for Supabase compatibility
+  manifest_data?: ScormManifest | Json | null; // Accept Json for Supabase compatibility
 }
 
 export interface ScormProgress {
