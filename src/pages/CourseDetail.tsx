@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
@@ -14,6 +13,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Progress } from '@/components/ui/progress';
 import CompletedCourseActions from '@/components/courses/CompletedCourseActions';
+import ScormViewer from '@/components/courses/ScormViewer';
+import { ScormModule } from '@/data/scormTypes';
 
 const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -34,6 +35,33 @@ const CourseDetail = () => {
       console.log(`Course has ${course.modules?.length || 0} modules`);
     }
   }, [courseId, course]);
+  
+  // Fetch SCORM modules for this course
+  const { data: scormModules, isLoading: isLoadingScorm } = useQuery({
+    queryKey: ['scorm-modules', courseId],
+    queryFn: async () => {
+      if (!courseId) return [];
+      
+      try {
+        const { data, error } = await supabase
+          .from('scorm_modules')
+          .select('*')
+          .eq('course_id', courseId)
+          .order('position', { ascending: true });
+          
+        if (error) {
+          console.error('Error fetching SCORM modules:', error);
+          throw error;
+        }
+        
+        return data || [];
+      } catch (error) {
+        console.error('Error in SCORM modules query:', error);
+        return [];
+      }
+    },
+    enabled: !!courseId
+  });
   
   // Fetch enrollment data if user is logged in
   const { data: enrollment, isLoading: isLoadingEnrollment } = useQuery({
@@ -319,6 +347,9 @@ const CourseDetail = () => {
               <TabsList>
                 <TabsTrigger value="content">Course Content</TabsTrigger>
                 <TabsTrigger value="modules">Modules</TabsTrigger>
+                {scormModules && scormModules.length > 0 && (
+                  <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
+                )}
               </TabsList>
               
               <TabsContent value="content" className="space-y-8">
@@ -416,6 +447,41 @@ const CourseDetail = () => {
                   ))}
                 </div>
               </TabsContent>
+              
+              {scormModules && scormModules.length > 0 && (
+                <TabsContent value="scorm">
+                  <div className="space-y-6">
+                    <h2 className="text-xl font-semibold mb-4">Interactive SCORM Content</h2>
+                    
+                    {isLoadingScorm ? (
+                      <div className="space-y-4">
+                        <Skeleton className="h-[300px] w-full" />
+                        <Skeleton className="h-8 w-32" />
+                      </div>
+                    ) : scormModules.length === 0 ? (
+                      <div className="p-8 text-center border rounded-lg bg-muted/30">
+                        <h3 className="font-medium mb-2">No SCORM Content Available</h3>
+                        <p className="text-muted-foreground">This course does not have any interactive SCORM content yet.</p>
+                      </div>
+                    ) : (
+                      scormModules.map((scormModule: ScormModule) => (
+                        <ScormViewer 
+                          key={scormModule.id}
+                          module={scormModule}
+                          onComplete={(progress) => {
+                            // Update overall course progress when a SCORM module is completed
+                            if (enrollment && progress === 100) {
+                              // Here you could implement logic to update overall course progress
+                              // For simplicity, we're not implementing this now
+                              toast.success('SCORM module completed!');
+                            }
+                          }}
+                        />
+                      ))
+                    )}
+                  </div>
+                </TabsContent>
+              )}
             </Tabs>
           </div>
         </section>

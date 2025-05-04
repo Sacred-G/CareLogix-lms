@@ -11,6 +11,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Plus, Loader2, Save, Video, FileText, HelpCircle, Edit, X, Trash } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import ScormUploader from './ScormUploader';
+import ScormManager from './ScormManager';
 
 interface ModuleData {
   title: string;
@@ -28,6 +30,7 @@ interface CourseModuleEditorProps {
 export function CourseModuleEditor({ courseId, onClose, domain }: CourseModuleEditorProps) {
   const [modules, setModules] = useState<ModuleData[]>([]);
   const [currentModule, setCurrentModule] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState('basic'); // Add this state
   const queryClient = useQueryClient();
   
   const form = useForm<ModuleData>({
@@ -198,155 +201,172 @@ export function CourseModuleEditor({ courseId, onClose, domain }: CourseModuleEd
         </div>
       </Form>
       
-      <div className="border-t border-b py-4">
-        <h3 className="text-lg font-medium mb-2">Course Modules</h3>
-        <p className="text-sm text-muted-foreground mb-4">
-          Add modules to organize your course content
-        </p>
+      {/* Course Tabs */}
+      <Tabs defaultValue="modules" className="w-full">
+        <TabsList className="grid grid-cols-2 w-full">
+          <TabsTrigger value="modules">Modules</TabsTrigger>
+          <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
+        </TabsList>
         
-        {modules.length > 0 ? (
-          <Accordion type="single" collapsible className="w-full">
-            {modules.map((module, index) => (
-              <AccordionItem value={`module-${index}`} key={index}>
-                <AccordionTrigger className="hover:bg-muted/50 px-4 rounded-md">
-                  <div className="flex justify-between w-full pr-4">
-                    <span>{module.title}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pt-2">
-                  <div className="mb-2">
-                    <p className="text-sm text-muted-foreground">{module.description}</p>
-                  </div>
-                  <div className="flex space-x-2">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => handleEditModule(index)}
-                    >
-                      <Edit className="h-4 w-4 mr-2" /> Edit
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="text-destructive hover:text-destructive"
-                      onClick={() => handleDeleteModule(index)}
-                    >
-                      <Trash className="h-4 w-4 mr-2" /> Delete
-                    </Button>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        ) : (
-          <div className="text-center py-8 border border-dashed rounded-md">
-            <p className="text-muted-foreground">No modules added yet</p>
-          </div>
-        )}
-
-        <Button 
-          onClick={handleAddModule} 
-          className="mt-4"
-          variant="outline"
-        >
-          <Plus className="h-4 w-4 mr-2" /> Add Module
-        </Button>
-      </div>
-
-      {currentModule !== null && (
-        <Card className="mt-6 border-primary/50">
-          <CardHeader>
-            <CardTitle>{currentModule < modules.length ? 'Edit Module' : 'Add Module'}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Form {...form}>
-              <div className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="title"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Module Title</FormLabel>
-                      <FormControl>
-                        <Input {...field} />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="description"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Module Description</FormLabel>
-                      <FormControl>
-                        <Textarea {...field} className="h-20" />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="videoUrl"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Video URL (optional)</FormLabel>
-                      <FormControl>
-                        <div className="flex space-x-2">
-                          <Input {...field} placeholder="https://www.youtube.com/watch?v=..." />
-                          <Button type="button" variant="outline" size="icon">
-                            <Video className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </FormControl>
-                      <FormDescription>
-                        YouTube or Vimeo URL
-                      </FormDescription>
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="content"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Module Content</FormLabel>
-                      <FormControl>
-                        <Textarea {...field} className="min-h-32" />
-                      </FormControl>
-                      <FormDescription>
-                        Enter the main content for this module. Supports Markdown formatting.
-                      </FormDescription>
-                    </FormItem>
-                  )}
-                />
-                
-                <div className="flex justify-end space-x-2 pt-2">
-                  <Button 
-                    type="button" 
-                    variant="outline"
-                    onClick={() => {
-                      setCurrentModule(null);
-                      form.reset();
-                    }}
-                  >
-                    <X className="h-4 w-4 mr-2" /> Cancel
-                  </Button>
-                  <Button 
-                    type="button"
-                    onClick={() => handleSaveModule(currentModule)}
-                  >
-                    <Save className="h-4 w-4 mr-2" /> Save Module
-                  </Button>
-                </div>
+        <TabsContent value="modules">
+          <div className="border-t border-b py-4">
+            <h3 className="text-lg font-medium mb-2">Course Modules</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Add modules to organize your course content
+            </p>
+            
+            {modules.length > 0 ? (
+              <Accordion type="single" collapsible className="w-full">
+                {modules.map((module, index) => (
+                  <AccordionItem value={`module-${index}`} key={index}>
+                    <AccordionTrigger className="hover:bg-muted/50 px-4 rounded-md">
+                      <div className="flex justify-between w-full pr-4">
+                        <span>{module.title}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 pt-2">
+                      <div className="mb-2">
+                        <p className="text-sm text-muted-foreground">{module.description}</p>
+                      </div>
+                      <div className="flex space-x-2">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          onClick={() => handleEditModule(index)}
+                        >
+                          <Edit className="h-4 w-4 mr-2" /> Edit
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="text-destructive hover:text-destructive"
+                          onClick={() => handleDeleteModule(index)}
+                        >
+                          <Trash className="h-4 w-4 mr-2" /> Delete
+                        </Button>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            ) : (
+              <div className="text-center py-8 border border-dashed rounded-md">
+                <p className="text-muted-foreground">No modules added yet</p>
               </div>
-            </Form>
-          </CardContent>
-        </Card>
-      )}
+            )}
+
+            <Button 
+              onClick={handleAddModule} 
+              className="mt-4"
+              variant="outline"
+            >
+              <Plus className="h-4 w-4 mr-2" /> Add Module
+            </Button>
+          </div>
+
+          {currentModule !== null && (
+            <Card className="mt-6 border-primary/50">
+              <CardHeader>
+                <CardTitle>{currentModule < modules.length ? 'Edit Module' : 'Add Module'}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <div className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="title"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Module Title</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="description"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Module Description</FormLabel>
+                          <FormControl>
+                            <Textarea {...field} className="h-20" />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="videoUrl"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Video URL (optional)</FormLabel>
+                          <FormControl>
+                            <div className="flex space-x-2">
+                              <Input {...field} placeholder="https://www.youtube.com/watch?v=..." />
+                              <Button type="button" variant="outline" size="icon">
+                                <Video className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </FormControl>
+                          <FormDescription>
+                            YouTube or Vimeo URL
+                          </FormDescription>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="content"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Module Content</FormLabel>
+                          <FormControl>
+                            <Textarea {...field} className="min-h-32" />
+                          </FormControl>
+                          <FormDescription>
+                            Enter the main content for this module. Supports Markdown formatting.
+                          </FormDescription>
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <div className="flex justify-end space-x-2 pt-2">
+                      <Button 
+                        type="button" 
+                        variant="outline"
+                        onClick={() => {
+                          setCurrentModule(null);
+                          form.reset();
+                        }}
+                      >
+                        <X className="h-4 w-4 mr-2" /> Cancel
+                      </Button>
+                      <Button 
+                        type="button"
+                        onClick={() => handleSaveModule(currentModule)}
+                      >
+                        <Save className="h-4 w-4 mr-2" /> Save Module
+                      </Button>
+                    </div>
+                  </div>
+                </Form>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+        
+        <TabsContent value="scorm">
+          <div className="space-y-6">
+            <ScormUploader />
+            <ScormManager />
+          </div>
+        </TabsContent>
+      </Tabs>
       
       <div className="flex justify-between pt-6">
         <Button variant="outline" onClick={onClose}>

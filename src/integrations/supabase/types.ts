@@ -280,6 +280,86 @@ export type Database = {
           },
         ]
       }
+      scorm_modules: {
+        Row: {
+          course_id: string
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          file_path: string
+          id: string
+          launch_path: string
+          position: number | null
+          title: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          file_path: string
+          id?: string
+          launch_path?: string
+          position?: number | null
+          title: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          file_path?: string
+          id?: string
+          launch_path?: string
+          position?: number | null
+          title?: string
+        }
+        Relationships: []
+      }
+      scorm_progress: {
+        Row: {
+          completion_percentage: number | null
+          created_at: string | null
+          id: string
+          score: number | null
+          scorm_module_id: string
+          status: string
+          suspend_data: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          completion_percentage?: number | null
+          created_at?: string | null
+          id?: string
+          score?: number | null
+          scorm_module_id: string
+          status?: string
+          suspend_data?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          completion_percentage?: number | null
+          created_at?: string | null
+          id?: string
+          score?: number | null
+          scorm_module_id?: string
+          status?: string
+          suspend_data?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scorm_progress_scorm_module_id_fkey"
+            columns: ["scorm_module_id"]
+            isOneToOne: false
+            referencedRelation: "scorm_modules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       sections: {
         Row: {
           course_id: string | null
