@@ -20,6 +20,7 @@ const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("content");
+  const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
   const { session } = useAuth();
   
   // Find the course by ID
@@ -182,6 +183,54 @@ const CourseDetail = () => {
     }
   });
   
+  // Helper functions for quiz functionality
+  const checkAnswer = (questionId: string, selectedOptionIndex: number): boolean => {
+    if (!course) return false;
+    
+    // Find the current module
+    const currentModule = course.modules[activeModuleIndex];
+    if (!currentModule || !currentModule.questions) return false;
+    
+    // Find the question
+    const question = currentModule.questions.find(q => q.id === questionId);
+    if (!question) return false;
+    
+    // Update the user's answer
+    setQuizAnswers(prev => ({ ...prev, [questionId]: selectedOptionIndex }));
+    
+    // Check if the answer is correct
+    return selectedOptionIndex === question.correctAnswer;
+  };
+
+  const calculateModuleScore = (moduleId: string): number => {
+    if (!course) return 0;
+    
+    // Find the current module
+    const currentModule = course.modules[activeModuleIndex];
+    if (!currentModule || !currentModule.questions || currentModule.questions.length === 0) return 0;
+    
+    // Calculate score
+    let correctAnswers = 0;
+    currentModule.questions.forEach(question => {
+      if (quizAnswers[question.id] === question.correctAnswer) {
+        correctAnswers++;
+      }
+    });
+    
+    return Math.round((correctAnswers / currentModule.questions.length) * 100);
+  };
+
+  const updateProgress = (increment: number) => {
+    // Calculate progress
+    if (!enrollment || !course || !course.modules.length) return;
+    
+    // Update progress in database
+    updateProgressMutation.mutate({
+      lessonId: course.modules[activeModuleIndex].id,
+      completed: true
+    });
+  };
+  
   // Handle enrolling in course
   const handleEnroll = () => {
     enrollMutation.mutate();
@@ -223,13 +272,18 @@ const CourseDetail = () => {
             setActiveTab={setActiveTab}
             activeModuleIndex={activeModuleIndex}
             setActiveModuleIndex={setActiveModuleIndex}
-            scormModules={scormModules || null}
+            scormModules={scormModules}
             isLoadingScorm={isLoadingScorm}
             isEnrolled={isEnrolled}
             isCompleted={isCompleted}
             activeModule={activeModule}
             session={session}
             updateProgressMutation={updateProgressMutation}
+            quizAnswers={quizAnswers}
+            setQuizAnswers={setQuizAnswers}
+            checkAnswer={checkAnswer}
+            updateProgress={updateProgress}
+            calculateModuleScore={calculateModuleScore}
           />
         </section>
       </main>

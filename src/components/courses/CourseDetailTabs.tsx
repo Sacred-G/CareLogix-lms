@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Course, CourseModule } from '@/data/courseTypes';
+import { Course, Module } from '@/data/courseTypes';
 import { useToast } from '@/hooks/use-toast';
 import { ScormModule } from '@/data/scormTypes';
+import { UseMutationResult } from '@tanstack/react-query';
 
 // Add 'as const' to ensure type safety
 const progressIncrements = {
@@ -13,40 +15,50 @@ const progressIncrements = {
 
 interface CourseDetailTabsProps {
   course: Course;
-  scormModules?: ScormModule[];
+  scormModules?: ScormModule[] | null;
+  isLoadingScorm: boolean;
   isEnrolled: boolean;
   activeModuleIndex: number;
   setActiveModuleIndex: React.Dispatch<React.SetStateAction<number>>;
   activeTab: string;
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
-  quizAnswers: Record<string, number>;
-  setQuizAnswers: React.Dispatch<React.SetStateAction<Record<string, number>>>;
-  checkAnswer: (questionId: string, selectedOptionIndex: number) => boolean;
-  updateProgress: (increment: number) => void;
-  calculateModuleScore: (moduleId: string) => number;
-  handleCertificateDownload: () => void;
-  updateEnrollment: any;
+  quizAnswers?: Record<string, number>;
+  setQuizAnswers?: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+  checkAnswer?: (questionId: string, selectedOptionIndex: number) => boolean;
+  updateProgress?: (increment: number) => void;
+  calculateModuleScore?: (moduleId: string) => number;
+  handleCertificateDownload?: () => void;
+  updateEnrollment?: any;
   certificateUrl?: string;
-  handleScormLaunch: (scormModule: ScormModule) => void;
+  handleScormLaunch?: (scormModule: ScormModule) => void;
+  isCompleted: boolean;
+  activeModule: Module;
+  session: any;
+  updateProgressMutation: UseMutationResult<any, any, any, any>;
 }
 
 const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
   course,
-  scormModules = [],
+  scormModules = null,
+  isLoadingScorm = false,
   isEnrolled,
   activeModuleIndex,
   setActiveModuleIndex,
   activeTab,
   setActiveTab,
-  quizAnswers,
-  setQuizAnswers,
-  checkAnswer,
-  updateProgress,
-  calculateModuleScore,
-  handleCertificateDownload,
-  updateEnrollment,
+  quizAnswers = {},
+  setQuizAnswers = () => {},
+  checkAnswer = () => false,
+  updateProgress = () => {},
+  calculateModuleScore = () => 0,
+  handleCertificateDownload = () => {},
+  updateEnrollment = () => {},
   certificateUrl,
-  handleScormLaunch
+  handleScormLaunch = () => {},
+  isCompleted,
+  activeModule,
+  session,
+  updateProgressMutation
 }) => {
   const { toast } = useToast();
   const currentModule = course.modules[activeModuleIndex];

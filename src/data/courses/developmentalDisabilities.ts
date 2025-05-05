@@ -9,7 +9,7 @@ import {
   emergencyModule,
   personCenteredModule,
   professionalGrowthModule
-} from './developmentalDisabilities/moduleData';
+} from './developmentalDisabilities/moduleData/index';
 
 export const developmentalDisabilitiesCourse: Course = {
   id: "developmental-disabilities-micro",
