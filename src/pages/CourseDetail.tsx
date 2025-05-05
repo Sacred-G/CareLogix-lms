@@ -1,42 +1,29 @@
 
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import Header from '@/components/navigation/Header';
-import Footer from '@/components/navigation/Footer';
-import CourseContent from '@/components/courses/CourseContent';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { allCourses } from '@/data/courses/completeDataIndex';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
-import { toast } from 'sonner';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
-import { Progress } from '@/components/ui/progress';
-import { Skeleton } from '@/components/ui/skeleton';
-import CompletedCourseActions from '@/components/courses/CompletedCourseActions';
-import ScormViewer from '@/components/courses/ScormViewer';
+import { toast } from 'sonner';
 import { ScormModule } from '@/data/scormTypes';
+
+// Import the new components
+import Header from '@/components/navigation/Header';
+import Footer from '@/components/navigation/Footer';
+import CourseHeader from '@/components/courses/CourseHeader';
+import CourseDetailTabs from '@/components/courses/CourseDetailTabs';
+import CourseNotFound from '@/components/courses/CourseNotFound';
+import EmptyCourse from '@/components/courses/EmptyCourse';
 
 const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("content");
   const { session } = useAuth();
-  const navigate = useNavigate();
   
   // Find the course by ID
   const course = allCourses.find(c => c.id === courseId);
-  
-  useEffect(() => {
-    // Log for debugging purposes
-    console.log(`Looking for course with ID: ${courseId}`);
-    console.log(`Found course:`, course);
-    
-    if (course) {
-      console.log(`Course has ${course.modules?.length || 0} modules`);
-    }
-  }, [courseId, course]);
   
   // Fetch SCORM modules for this course
   const { data: scormModules, isLoading: isLoadingScorm } = useQuery({
@@ -113,14 +100,6 @@ const CourseDetail = () => {
   const enrollMutation = useMutation({
     mutationFn: async () => {
       if (!session?.user?.id || !courseId) throw new Error('User not logged in or course not found');
-      
-      // Get course metadata to store in enrollment
-      const courseForEnrollment = {
-        id: courseId,
-        title: course?.title || 'Unknown Course',
-        thumbnail: course?.thumbnail || '',
-        description: course?.description || ''
-      };
       
       const { data, error } = await supabase
         .from('enrollments')
@@ -209,62 +188,12 @@ const CourseDetail = () => {
   };
 
   if (!course) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Course Not Found</h1>
-            <p className="text-muted-foreground mb-6">The course you're looking for doesn't exist or has been removed.</p>
-            <Button asChild>
-              <Link to="/courses">Back to Courses</Link>
-            </Button>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
+    return <CourseNotFound />;
   }
   
   // Check if course has modules
   if (!course.modules || course.modules.length === 0) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">
-          <section className="bg-gradient-to-r from-lms-blue-500 to-lms-teal-500 text-white py-12">
-            <div className="container px-4">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="flex-1">
-                  <Link to="/courses" className="inline-flex items-center text-white/80 hover:text-white mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                      <path d="m15 18-6-6 6-6"/>
-                    </svg>
-                    Back to Courses
-                  </Link>
-                  <Badge className="mb-4">{course.category}</Badge>
-                  <h1 className="text-3xl font-bold mb-2">{course.title}</h1>
-                  <p className="text-white/80 mb-4">{course.description}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-          
-          <section className="py-16 container">
-            <div className="text-center p-8 border rounded-lg bg-muted/30">
-              <h2 className="text-xl font-semibold mb-4">Course Content Coming Soon</h2>
-              <p className="text-muted-foreground mb-6">
-                This course is currently under development. Check back later for content updates.
-              </p>
-              <Button asChild>
-                <Link to="/courses">Browse Other Courses</Link>
-              </Button>
-            </div>
-          </section>
-        </main>
-        <Footer />
-      </div>
-    );
+    return <EmptyCourse course={course} />;
   }
   
   const activeModule = course.modules[activeModuleIndex];
@@ -277,215 +206,31 @@ const CourseDetail = () => {
       <Header />
       
       <main className="flex-1">
-        {/* Course Header */}
-        <section className="bg-gradient-to-r from-lms-blue-500 to-lms-teal-500 text-white py-12">
-          <div className="container px-4">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="flex-1">
-                <Link to="/courses" className="inline-flex items-center text-white/80 hover:text-white mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                    <path d="m15 18-6-6 6-6"/>
-                  </svg>
-                  Back to Courses
-                </Link>
-                <Badge className="mb-4">{course.category}</Badge>
-                <h1 className="text-3xl font-bold mb-2">{course.title}</h1>
-                <p className="text-white/80 mb-4">{course.description}</p>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                    <span>{course.duration}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                      <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                    <span>{course.instructor}</span>
-                  </div>
-                </div>
-                
-                {session ? (
-                  isEnrolled ? (
-                    <div className="flex flex-col gap-2">
-                      <div className="flex justify-between text-sm mb-1">
-                        <span>Progress</span>
-                        <span>{courseProgress}%</span>
-                      </div>
-                      <Progress value={courseProgress} className="h-2 bg-white/20" />
-                    </div>
-                  ) : (
-                    <Button variant="secondary" onClick={handleEnroll} disabled={enrollMutation.isPending}>
-                      {enrollMutation.isPending ? 'Enrolling...' : 'Enroll in Course'}
-                    </Button>
-                  )
-                ) : (
-                  <Button variant="secondary" asChild>
-                    <Link to="/auth">Sign in to Enroll</Link>
-                  </Button>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
+        <CourseHeader 
+          course={course}
+          isEnrolled={isEnrolled}
+          courseProgress={courseProgress}
+          isLoadingEnrollment={isLoadingEnrollment}
+          enrollMutation={enrollMutation}
+          handleEnroll={handleEnroll}
+          session={session}
+        />
         
-        {/* Course Content */}
         <section className="py-8">
-          <div className="container px-4">
-            {/* Certificate Action for Completed Courses */}
-            {isEnrolled && isCompleted && (
-              <div className="mb-6">
-                <CompletedCourseActions 
-                  course={course} 
-                  isCompleted={isCompleted} 
-                />
-              </div>
-            )}
-          
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-              <TabsList>
-                <TabsTrigger value="content">Course Content</TabsTrigger>
-                <TabsTrigger value="modules">Modules</TabsTrigger>
-                {scormModules && scormModules.length > 0 && (
-                  <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
-                )}
-              </TabsList>
-              
-              <TabsContent value="content" className="space-y-8">
-                {activeModule ? (
-                  <CourseContent 
-                    module={activeModule} 
-                    onQuizComplete={(score) => {
-                      if (!session) {
-                        toast('Sign in to save your progress', {
-                          action: {
-                            label: 'Sign In',
-                            onClick: () => navigate('/auth')
-                          }
-                        });
-                        return;
-                      }
-                      
-                      // Save progress to database
-                      const quizId = `${course.id}-quiz-${activeModuleIndex}`; // This would be a real ID in production
-                      updateProgressMutation.mutate({
-                        quizId,
-                        completed: true,
-                        score
-                      });
-                    }}
-                    onContentComplete={(type) => {
-                      if (!session) {
-                        toast('Sign in to save your progress', {
-                          action: {
-                            label: 'Sign In',
-                            onClick: () => navigate('/auth')
-                          }
-                        });
-                        return;
-                      }
-                      
-                      // Save progress to database
-                      const lessonId = `${course.id}-${type}-${activeModuleIndex}`; // This would be a real ID in production
-                      updateProgressMutation.mutate({
-                        lessonId,
-                        completed: true
-                      });
-                    }}
-                  />
-                ) : (
-                  <div className="p-8 text-center border rounded-lg bg-muted/30">
-                    <h3 className="font-medium mb-2">Module not found</h3>
-                    <p className="text-muted-foreground">The selected module could not be loaded.</p>
-                  </div>
-                )}
-                
-                <div className="flex justify-between">
-                  <Button 
-                    variant="outline" 
-                    onClick={() => setActiveModuleIndex(prev => Math.max(0, prev - 1))}
-                    disabled={activeModuleIndex === 0}
-                  >
-                    Previous Module
-                  </Button>
-                  
-                  <Button 
-                    onClick={() => setActiveModuleIndex(prev => Math.min(course.modules.length - 1, prev + 1))}
-                    disabled={activeModuleIndex === course.modules.length - 1}
-                  >
-                    Next Module
-                  </Button>
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="modules">
-                <div className="space-y-4">
-                  <h2 className="text-xl font-semibold mb-4">Course Modules</h2>
-                  
-                  {course.modules.map((module, index) => (
-                    <div 
-                      key={module.id}
-                      className={`p-4 border rounded-lg cursor-pointer transition-colors ${
-                        index === activeModuleIndex ? 'bg-muted border-primary' : 'hover:bg-muted/50'
-                      }`}
-                      onClick={() => {
-                        setActiveModuleIndex(index);
-                        setActiveTab("content");
-                      }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="font-medium">{module.title || `Module ${index + 1}`}</h3>
-                          <p className="text-sm text-muted-foreground">{module.description || 'No description available'}</p>
-                        </div>
-                        {index === activeModuleIndex && (
-                          <Badge variant="outline" className="ml-2">Current</Badge>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-              
-              {scormModules && scormModules.length > 0 && (
-                <TabsContent value="scorm">
-                  <div className="space-y-6">
-                    <h2 className="text-xl font-semibold mb-4">Interactive SCORM Content</h2>
-                    
-                    {isLoadingScorm ? (
-                      <div className="space-y-4">
-                        <Skeleton className="h-[300px] w-full" />
-                        <Skeleton className="h-8 w-32" />
-                      </div>
-                    ) : scormModules.length === 0 ? (
-                      <div className="p-8 text-center border rounded-lg bg-muted/30">
-                        <h3 className="font-medium mb-2">No SCORM Content Available</h3>
-                        <p className="text-muted-foreground">This course does not have any interactive SCORM content yet.</p>
-                      </div>
-                    ) : (
-                      scormModules.map((scormModule) => (
-                        <ScormViewer 
-                          key={scormModule.id}
-                          module={scormModule as ScormModule}
-                          onComplete={(progress) => {
-                            // Update overall course progress when a SCORM module is completed
-                            if (enrollment && progress === 100) {
-                              // Here you could implement logic to update overall course progress
-                              // For simplicity, we're not implementing this now
-                              toast.success('SCORM module completed!');
-                            }
-                          }}
-                        />
-                      ))
-                    )}
-                  </div>
-                </TabsContent>
-              )}
-            </Tabs>
-          </div>
+          <CourseDetailTabs
+            course={course}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            activeModuleIndex={activeModuleIndex}
+            setActiveModuleIndex={setActiveModuleIndex}
+            scormModules={scormModules || null}
+            isLoadingScorm={isLoadingScorm}
+            isEnrolled={isEnrolled}
+            isCompleted={isCompleted}
+            activeModule={activeModule}
+            session={session}
+            updateProgressMutation={updateProgressMutation}
+          />
         </section>
       </main>
       
