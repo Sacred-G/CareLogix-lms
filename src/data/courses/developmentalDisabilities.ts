@@ -8,7 +8,8 @@ import {
   documentationModule,
   emergencyModule,
   personCenteredModule,
-  professionalGrowthModule
+  professionalGrowthModule,
+  medicationModule
 } from './developmentalDisabilities/moduleData/index';
 
 export const developmentalDisabilitiesCourse: Course = {
@@ -27,7 +28,8 @@ export const developmentalDisabilitiesCourse: Course = {
     documentationModule,
     emergencyModule,
     personCenteredModule,
-    professionalGrowthModule
+    professionalGrowthModule,
+    medicationModule
   ],
   certificateAvailable: true,
   domain: 'general'

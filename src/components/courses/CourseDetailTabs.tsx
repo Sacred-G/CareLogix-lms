@@ -1,11 +1,13 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Course, Module } from '@/data/courseTypes';
 import { useToast } from '@/hooks/use-toast';
 import { ScormModule } from '@/data/scormTypes';
 import { UseMutationResult } from '@tanstack/react-query';
+import CourseContent from './CourseContent';
+import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 
 // Add 'as const' to ensure type safety
 const progressIncrements = {
@@ -16,7 +18,7 @@ const progressIncrements = {
 interface CourseDetailTabsProps {
   course: Course;
   scormModules?: ScormModule[] | null;
-  isLoadingScorm: boolean;
+  isLoadingScorm?: boolean;
   isEnrolled: boolean;
   activeModuleIndex: number;
   setActiveModuleIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -37,7 +39,7 @@ interface CourseDetailTabsProps {
   updateProgressMutation: UseMutationResult<any, any, any, any>;
 }
 
-const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
+const CourseDetailTabs = ({
   course,
   scormModules = null,
   isLoadingScorm = false,
@@ -59,8 +61,18 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
   activeModule,
   session,
   updateProgressMutation
-}) => {
+}: CourseDetailTabsProps) => {
   const { toast } = useToast();
+  const [contentCompletionState, setContentCompletionState] = useState<{
+    video: boolean;
+    audio: boolean;
+    text: boolean;
+  }>({
+    video: false,
+    audio: false,
+    text: false
+  });
+  
   const currentModule = course.modules[activeModuleIndex];
   const hasNextModule = activeModuleIndex < course.modules.length - 1;
   const hasPrevModule = activeModuleIndex > 0;
@@ -77,7 +89,6 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
   // Handle module navigation
   const goToNextModule = () => {
     if (hasNextModule) {
-      // Fixed here - use a number directly instead of a function that returns a number
       setActiveModuleIndex(activeModuleIndex + 1);
       setActiveTab('content');
       updateProgress(progressIncrements.content);
@@ -87,25 +98,35 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
 
   const goToPrevModule = () => {
     if (hasPrevModule) {
-      // Fixed here - use a number directly instead of a function that returns a number
       setActiveModuleIndex(activeModuleIndex - 1);
       setActiveTab('content');
       window.scrollTo(0, 0);
     }
   };
 
-  // Handle quiz submission
-  const handleQuizSubmit = () => {
-    if (!currentModule.questions || currentModule.questions.length === 0) return;
+  // Handle content completion
+  const handleContentComplete = (type: 'video' | 'text' | 'audio') => {
+    setContentCompletionState(prev => ({
+      ...prev,
+      [type]: true
+    }));
+    
+    // Update progress in database
+    updateProgressMutation.mutate({
+      lessonId: currentModule.id,
+      completed: true
+    });
+  };
 
-    const moduleScore = calculateModuleScore(currentModule.id);
+  // Handle quiz completion
+  const handleQuizComplete = (score: number) => {
     const passThreshold = 70;
 
-    if (moduleScore >= passThreshold) {
+    if (score >= passThreshold) {
       updateProgress(progressIncrements.quiz);
       toast({
         title: "Quiz Completed!",
-        description: `You scored ${moduleScore}%. Great job!`,
+        description: `You scored ${score}%. Great job!`,
       });
 
       // If this is the last module, update the course completion status
@@ -115,11 +136,16 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
           title: "Course Completed!",
           description: "Congratulations on completing this course!",
         });
+      } else {
+        // Automatically move to the next module after passing a quiz
+        setTimeout(() => {
+          goToNextModule();
+        }, 2000);
       }
     } else {
       toast({
         title: "Quiz Result",
-        description: `You scored ${moduleScore}%. You need 70% to pass. Try again!`,
+        description: `You scored ${score}%. You need 70% to pass. Try again!`,
         variant: "destructive"
       });
     }
@@ -127,14 +153,16 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
 
   return (
     <div className="container px-4 py-8">
-      <div className="bg-card border rounded-lg overflow-hidden">
+      <div className="bg-card border rounded-lg overflow-hidden shadow-lg">
         {/* Module Navigation */}
         <div className="flex items-center justify-between bg-muted p-4 border-b">
           <Button 
             variant="outline" 
             onClick={goToPrevModule} 
             disabled={!hasPrevModule}
+            className="flex items-center gap-2"
           >
+            <ArrowLeft size={16} />
             Previous Module
           </Button>
           
@@ -146,8 +174,10 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
             variant="outline" 
             onClick={goToNextModule} 
             disabled={!hasNextModule}
+            className="flex items-center gap-2"
           >
             Next Module
+            <ArrowRight size={16} />
           </Button>
         </div>
 
@@ -156,142 +186,50 @@ const CourseDetailTabs: React.FC<CourseDetailTabsProps> = ({
           Module {activeModuleIndex + 1}: {currentModule.title}
         </h2>
         
-        {/* Module Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="bg-background border-b border-border p-0">
-            <TabsTrigger 
-              value="content" 
-              className="rounded-none data-[state=active]:bg-background data-[state=active]:border-b-2 data-[state=active]:border-primary py-3 px-6"
-            >
-              Content
-            </TabsTrigger>
-            
-            {currentModule.videoUrl && (
-              <TabsTrigger 
-                value="video"
-                className="rounded-none data-[state=active]:bg-background data-[state=active]:border-b-2 data-[state=active]:border-primary py-3 px-6"
-              >
-                Video
-              </TabsTrigger>
-            )}
-            
-            {currentModule.audioUrl && (
-              <TabsTrigger 
-                value="audio"
-                className="rounded-none data-[state=active]:bg-background data-[state=active]:border-b-2 data-[state=active]:border-primary py-3 px-6"
-              >
-                Audio
-              </TabsTrigger>
-            )}
-            
-            {currentModule.questions && currentModule.questions.length > 0 && (
-              <TabsTrigger 
-                value="quiz"
-                className="rounded-none data-[state=active]:bg-background data-[state=active]:border-b-2 data-[state=active]:border-primary py-3 px-6"
-                disabled={!isEnrolled}
-              >
-                Quiz
-              </TabsTrigger>
-            )}
-            
-            {scormModules && scormModules.length > 0 && (
-              <TabsTrigger 
-                value="scorm"
-                className="rounded-none data-[state=active]:bg-background data-[state=active]:border-b-2 data-[state=active]:border-primary py-3 px-6"
-                disabled={!isEnrolled}
-              >
-                Interactive
-              </TabsTrigger>
-            )}
-          </TabsList>
+        {/* Module Content using CourseContent component */}
+        <div className="p-6">
+          <CourseContent 
+            module={currentModule}
+            onQuizComplete={handleQuizComplete}
+            onContentComplete={handleContentComplete}
+          />
+        </div>
+        
+        {/* Module Navigation Footer */}
+        <div className="flex items-center justify-between p-4 border-t bg-muted/30">
+          <Button 
+            variant="outline" 
+            onClick={goToPrevModule} 
+            disabled={!hasPrevModule}
+            size="sm"
+            className="flex items-center gap-1"
+          >
+            <ArrowLeft size={14} />
+            Previous
+          </Button>
           
-          {/* Content Sections */}
-          <TabsContent value="content" className="p-6 space-y-4">
-            <h3 className="text-xl font-semibold">{currentModule.title}</h3>
-            <p className="text-muted-foreground">{currentModule.description}</p>
-            <div dangerouslySetInnerHTML={{ __html: currentModule.content || '' }} />
-          </TabsContent>
-
-          {currentModule.videoUrl && (
-            <TabsContent value="video" className="p-6">
-              <div className="aspect-w-16 aspect-h-9">
-                <iframe 
-                  src={currentModule.videoUrl} 
-                  title="Module Video" 
-                  allowFullScreen
-                  className="rounded-lg"
-                />
-              </div>
-            </TabsContent>
-          )}
-
-          {currentModule.audioUrl && (
-            <TabsContent value="audio" className="p-6">
-              <audio controls className="w-full">
-                <source src={currentModule.audioUrl} type="audio/mp3" />
-                Your browser does not support the audio element.
-              </audio>
-              {currentModule.transcript && (
-                <details>
-                  <summary className="text-sm font-medium cursor-pointer">Transcript</summary>
-                  <p className="text-sm text-muted-foreground mt-2">{currentModule.transcript}</p>
-                </details>
-              )}
-            </TabsContent>
-          )}
-
-          {currentModule.questions && currentModule.questions.length > 0 && (
-            <TabsContent value="quiz" className="p-6 space-y-4">
-              <h3 className="text-xl font-semibold">Module Quiz</h3>
-              {currentModule.questions.map((question, index) => (
-                <div key={question.id} className="space-y-2">
-                  <p className="font-medium">{index + 1}. {question.question}</p>
-                  {question.options.map((option, optionIndex) => (
-                    <label key={optionIndex} className="flex items-center space-x-2">
-                      <input
-                        type="radio"
-                        name={`question-${question.id}`}
-                        value={optionIndex}
-                        checked={quizAnswers[question.id] === optionIndex}
-                        onChange={() => checkAnswer(question.id, optionIndex)}
-                        className="cursor-pointer"
-                      />
-                      <span>{option}</span>
-                    </label>
-                  ))}
-                  {quizAnswers[question.id] !== undefined && (
-                    <p className="text-sm mt-1">
-                      {checkAnswer(question.id, quizAnswers[question.id])
-                        ? <span className="text-green-500">Correct!</span>
-                        : <span className="text-red-500">Incorrect.</span>}
-                      {question.explanation && (
-                        <>
-                          <br />
-                          <span className="text-muted-foreground">{question.explanation}</span>
-                        </>
-                      )}
-                    </p>
-                  )}
-                </div>
-              ))}
-              <Button onClick={handleQuizSubmit}>Submit Quiz</Button>
-            </TabsContent>
-          )}
-
-          {scormModules && scormModules.length > 0 && (
-            <TabsContent value="scorm" className="p-6">
-              {scormModules.map((scormModule) => (
-                <div key={scormModule.id} className="space-y-4">
-                  <h3 className="text-xl font-semibold">{scormModule.title}</h3>
-                  <p className="text-muted-foreground">{scormModule.description}</p>
-                  <Button onClick={() => handleScormLaunch(scormModule)}>
-                    Launch Interactive Module
-                  </Button>
-                </div>
-              ))}
-            </TabsContent>
-          )}
-        </Tabs>
+          <div className="flex items-center">
+            <span className="text-sm text-muted-foreground">
+              Module {activeModuleIndex + 1} of {course.modules.length}
+            </span>
+            {isCompleted && (
+              <span className="ml-2 inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800">
+                <CheckCircle size={12} className="mr-1" /> Completed
+              </span>
+            )}
+          </div>
+          
+          <Button 
+            variant="outline" 
+            onClick={goToNextModule} 
+            disabled={!hasNextModule}
+            size="sm"
+            className="flex items-center gap-1"
+          >
+            Next
+            <ArrowRight size={14} />
+          </Button>
+        </div>
       </div>
     </div>
   );

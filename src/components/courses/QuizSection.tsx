@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Question } from '@/data/courseTypes';
 import { useToast } from '@/hooks/use-toast';
+import { CheckCircle, AlertTriangle } from 'lucide-react';
 
 interface QuizSectionProps {
   questions: Question[];
@@ -17,6 +18,7 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
   const [showExplanation, setShowExplanation] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [answeredQuestions, setAnsweredQuestions] = useState<Record<string, number>>({});
   const { toast } = useToast();
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -36,6 +38,13 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
       setShowExplanation(true);
       
       const isCorrect = selectedOption === currentQuestion.correctAnswer;
+      
+      // Update answers tracking
+      setAnsweredQuestions({
+        ...answeredQuestions,
+        [currentQuestion.id]: selectedOption
+      });
+      
       if (isCorrect) {
         setCorrectAnswers(correctAnswers + 1);
         toast({
@@ -75,6 +84,12 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
     setShowExplanation(false);
     setCorrectAnswers(0);
     setQuizCompleted(false);
+    setAnsweredQuestions({});
+  };
+
+  // Function to get progress percentage
+  const getProgressPercentage = () => {
+    return Math.round(((currentQuestionIndex + (showExplanation ? 1 : 0)) / questions.length) * 100);
   };
 
   // If quiz is completed, show the results
@@ -83,24 +98,63 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
     const passed = score >= 70;
     
     return (
-      <Card className="mt-8">
-        <CardHeader>
+      <Card className="mt-8 border-none shadow-lg overflow-hidden">
+        <CardHeader className={`${passed ? 'bg-green-500/10' : 'bg-amber-500/10'} border-b`}>
           <h3 className="text-xl font-semibold">Quiz Completed!</h3>
         </CardHeader>
-        <CardContent className="space-y-4 text-center">
+        <CardContent className="space-y-8 text-center pt-8">
           <div className="py-6">
-            <div className="text-5xl font-bold mb-2">{score}%</div>
+            <div className={`text-6xl font-bold mb-2 ${passed ? 'text-green-500' : 'text-amber-500'}`}>{score}%</div>
             <p className="text-muted-foreground">
               You answered {correctAnswers} out of {questions.length} questions correctly.
             </p>
           </div>
           
-          <div className={`py-4 rounded-lg ${passed ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
-            {passed ? (
-              <p>Congratulations! You passed the quiz.</p>
-            ) : (
-              <p>You didn't pass this time. Review the material and try again.</p>
-            )}
+          <div className={`py-6 px-4 rounded-lg ${passed ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+            <div className="flex items-center justify-center mb-2">
+              {passed ? (
+                <CheckCircle className="w-8 h-8 mr-2" />
+              ) : (
+                <AlertTriangle className="w-8 h-8 mr-2" />
+              )}
+              <h4 className="text-lg font-medium">
+                {passed ? 'Congratulations!' : 'Almost there!'}
+              </h4>
+            </div>
+            
+            <p>
+              {passed 
+                ? "You've successfully passed this quiz and demonstrated your understanding of the material."
+                : "You didn't pass this time, but don't worry. Review the material and try again."
+              }
+            </p>
+          </div>
+          
+          {/* Question review summary */}
+          <div className="border rounded-lg p-4">
+            <h4 className="font-medium mb-4 text-left">Question Review</h4>
+            <div className="space-y-3 text-left">
+              {questions.map((q, i) => {
+                const wasAnswered = answeredQuestions[q.id] !== undefined;
+                const wasCorrect = answeredQuestions[q.id] === q.correctAnswer;
+                
+                return (
+                  <div key={q.id} className="flex items-center">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-2 text-xs ${wasAnswered ? (wasCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800') : 'bg-gray-100 text-gray-800'}`}>
+                      {i + 1}
+                    </div>
+                    <div className="truncate flex-1">{q.question}</div>
+                    {wasAnswered && (
+                      wasCorrect ? (
+                        <CheckCircle size={16} className="text-green-500 ml-2" />
+                      ) : (
+                        <span className="text-red-500 ml-2 text-sm">Incorrect</span>
+                      )
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
           
           {isMicroLearning && (
@@ -111,10 +165,10 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex justify-center gap-4">
-          <Button onClick={handleRestartQuiz}>Restart Quiz</Button>
+        <CardFooter className="flex justify-center gap-4 border-t">
+          <Button onClick={handleRestartQuiz} variant="outline">Restart Quiz</Button>
           {isMicroLearning && (
-            <Button variant="outline">Next Module</Button>
+            <Button>Next Module</Button>
           )}
         </CardFooter>
       </Card>
@@ -122,8 +176,8 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
   }
 
   return (
-    <Card className="mt-8">
-      <CardHeader className="border-b">
+    <Card className="mt-8 border-none shadow-lg overflow-hidden">
+      <CardHeader className="border-b bg-muted/30">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold">
             {isMicroLearning ? 'Quick Knowledge Check' : 'Knowledge Check'}
@@ -132,9 +186,16 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
             Question {currentQuestionIndex + 1} of {questions.length}
           </div>
         </div>
+        {/* Progress bar */}
+        <div className="w-full h-1 bg-muted rounded-full overflow-hidden mt-4">
+          <div 
+            className="h-full bg-primary transition-all duration-300 ease-out" 
+            style={{width: `${getProgressPercentage()}%`}}
+          />
+        </div>
       </CardHeader>
-      <CardContent className="pt-6">
-        <h4 className="text-lg font-medium mb-4">{currentQuestion.question}</h4>
+      <CardContent className="pt-8">
+        <h4 className="text-lg font-medium mb-6">{currentQuestion.question}</h4>
         <div className="space-y-3">
           {currentQuestion.options.map((option, index) => (
             <div
@@ -150,31 +211,39 @@ export default function QuizSection({ questions, onComplete, isMicroLearning = f
                   : "bg-background"
               }`}
             >
-              {option}
+              <div className="flex items-center">
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3 ${
+                  selectedOption === index ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
+                }`}>
+                  {String.fromCharCode(65 + index)} {/* Converts 0->A, 1->B, etc. */}
+                </div>
+                <span>{option}</span>
+              </div>
+              
               {showExplanation && index === currentQuestion.correctAnswer && (
                 <div className="absolute top-1/2 -translate-y-1/2 right-4 text-green-600 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span className="ml-2 font-medium">Correct Answer</span>
+                  <CheckCircle size={20} className="mr-1" />
+                  <span className="font-medium">Correct Answer</span>
                 </div>
               )}
               {showExplanation && selectedOption === index && index !== currentQuestion.correctAnswer && (
                 <div className="absolute top-1/2 -translate-y-1/2 right-4 text-red-600 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                  <span className="ml-2 font-medium">Incorrect</span>
+                  <AlertTriangle size={20} className="mr-1" />
+                  <span className="font-medium">Incorrect</span>
                 </div>
               )}
             </div>
           ))}
         </div>
         
-        {showExplanation && (
+        {showExplanation && currentQuestion.explanation && (
           <div className="mt-6 p-4 bg-muted rounded-lg">
             <h5 className="font-medium mb-1">Explanation</h5>
             <p className="text-muted-foreground">{currentQuestion.explanation}</p>
           </div>
         )}
       </CardContent>
-      <CardFooter className="border-t">
+      <CardFooter className="border-t p-4">
         <Button 
           onClick={handleSubmitAnswer} 
           disabled={selectedOption === null}

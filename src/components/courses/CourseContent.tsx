@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Module, ScenarioOption } from '@/data/courseTypes';
 import VideoPlayer from './VideoPlayer';
 import AudioPlayer from './AudioPlayer';
@@ -11,6 +11,8 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button';
 import ReactMarkdown from 'react-markdown';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AlertTriangle, CheckCircle, Lock } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface CourseContentProps {
   module: Module;
@@ -19,7 +21,6 @@ interface CourseContentProps {
 }
 
 // Define a local scenario type that matches what InteractiveScenario expects
-// Note: Remove 'drag-drop' since it's not supported by InteractiveScenario component
 interface LocalScenario {
   title: string;
   description: string;
@@ -29,6 +30,8 @@ interface LocalScenario {
 }
 
 export default function CourseContent({ module, onQuizComplete, onContentComplete }: CourseContentProps) {
+  const { toast } = useToast();
+  
   // Early return with a placeholder if module is undefined
   if (!module) {
     console.error('Module is undefined in CourseContent');
@@ -40,95 +43,63 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
     );
   }
 
+  // Track completion status for different content types
   const [videoCompleted, setVideoCompleted] = useState(false);
   const [textCompleted, setTextCompleted] = useState(false);
   const [audioCompleted, setAudioCompleted] = useState(false);
   const [activeTab, setActiveTab] = useState('content');
+  
+  // Track attempted quiz access
+  const [attemptedQuizAccess, setAttemptedQuizAccess] = useState(false);
 
-  // Example flashcards for demonstration
-  const flashcards = [
-    { 
-      id: "1", 
-      term: "Client Rights", 
-      definition: "Legal and ethical guarantees that ensure dignity, choice, and independence for individuals receiving support services."
-    },
-    { 
-      id: "2", 
-      term: "Self-Advocacy", 
-      definition: "The ability to speak-up for oneself and make decisions about one's own life."
-    },
-    { 
-      id: "3", 
-      term: "Informed Consent", 
-      definition: "Permission granted with full knowledge of the possible consequences, typically for medical treatment or release of personal information."
-    },
-    { 
-      id: "4", 
-      term: "Confidentiality", 
-      definition: "The ethical principle and legal right that a professional will hold client information in confidence."
-    },
-    {
-      id: "5",
-      term: "Person-Centered Support",
-      definition: "An approach that places the person at the center of the planning process and recognizes their right to make choices about their life."
+  // Calculate if quiz is unlocked
+  const isVideoRequired = !!module.videoUrl;
+  const isAudioRequired = !!module.audioUrl;
+  
+  const isQuizUnlocked = 
+    (!isVideoRequired || videoCompleted) && 
+    (!isAudioRequired || audioCompleted) &&
+    textCompleted;
+
+  // Load completion status from localStorage on component mount
+  useEffect(() => {
+    if (!module.id) return;
+    
+    const storagePrefix = `course_content_${module.id}_`;
+    const storedVideoStatus = localStorage.getItem(`${storagePrefix}video`);
+    const storedTextStatus = localStorage.getItem(`${storagePrefix}text`);
+    const storedAudioStatus = localStorage.getItem(`${storagePrefix}audio`);
+    
+    if (storedVideoStatus === 'completed') setVideoCompleted(true);
+    if (storedTextStatus === 'completed') setTextCompleted(true);
+    if (storedAudioStatus === 'completed') setAudioCompleted(true);
+  }, [module.id]);
+
+  // Save completion status to localStorage when it changes
+  useEffect(() => {
+    if (!module.id) return;
+    
+    const storagePrefix = `course_content_${module.id}_`;
+    
+    if (videoCompleted) {
+      localStorage.setItem(`${storagePrefix}video`, 'completed');
     }
-  ];
-
-  // Example FAQs for demonstration
-  const faqs = [
-    {
-      question: "What should I do if a client's rights are violated?",
-      answer: "Document the incident thoroughly, report it immediately to your supervisor, and follow your organization's formal reporting procedures. In cases of abuse or neglect, you may also be required to report to external authorities as a mandated reporter."
-    },
-    {
-      question: "How do I support a client who has difficulty communicating their preferences?",
-      answer: "Utilize alternative communication methods (visual aids, communication boards), observe non-verbal cues, involve people who know them well, offer clear choices, and be patient while confirming understanding."
-    },
-    {
-      question: "Can clients refuse care even if it seems necessary?",
-      answer: "Yes, competent adults have the right to refuse care even when medically advised. DSPs should document the refusal, ensure the client understands the consequences, notify appropriate team members, and continue offering support in acceptable ways."
-    },
-    {
-      question: "What information about clients can I share with their family members?",
-      answer: "You may only share information with family members that the client has explicitly authorized you to share. Always verify what information can be disclosed and to whom by checking the client's consent forms and privacy preferences."
+    
+    if (textCompleted) {
+      localStorage.setItem(`${storagePrefix}text`, 'completed');
     }
-  ];
-
-  // Example interactive scenario
-  const scenario: LocalScenario = {
-    title: "Client Privacy Scenario",
-    description: "A family member calls and asks for detailed information about their adult relative's medical appointments and daily activities. What should you do?",
-    type: "multiple-choice",
-    options: [
-      {
-        id: "1",
-        text: "Share all the information since they are family",
-        isCorrect: false,
-        feedback: "Family relationship doesn't automatically grant access to confidential information. You must respect the client's privacy and follow proper consent protocols."
-      },
-      {
-        id: "2",
-        text: "Tell them you can't share any information and hang up",
-        isCorrect: false,
-        feedback: "While protecting privacy is important, abruptly ending the conversation isn't professional. It's better to explain the confidentiality policy respectfully."
-      },
-      {
-        id: "3",
-        text: "Explain confidentiality policies and check if the client has authorized information sharing with this person",
-        isCorrect: true,
-        feedback: "Correct! You should explain privacy policies politely and verify if the client has given consent to share information with this specific family member."
-      },
-      {
-        id: "4",
-        text: "Share only general information but no specific details",
-        isCorrect: false,
-        feedback: "Even sharing general information without consent may violate privacy regulations. Always check for authorization before sharing any information."
-      }
-    ]
-  };
+    
+    if (audioCompleted) {
+      localStorage.setItem(`${storagePrefix}audio`, 'completed');
+    }
+  }, [module.id, videoCompleted, textCompleted, audioCompleted]);
 
   const handleVideoEnd = () => {
     setVideoCompleted(true);
+    toast({
+      title: "Video Completed",
+      description: "Great job! You've completed the video lesson."
+    });
     if (onContentComplete) {
       onContentComplete('video');
     }
@@ -136,6 +107,10 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
 
   const handleTextComplete = () => {
     setTextCompleted(true);
+    toast({
+      title: "Reading Completed",
+      description: "You've marked the reading material as complete."
+    });
     if (onContentComplete) {
       onContentComplete('text');
     }
@@ -143,9 +118,28 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
 
   const handleAudioEnd = () => {
     setAudioCompleted(true);
+    toast({
+      title: "Audio Completed",
+      description: "Great job! You've completed the audio lesson."
+    });
     if (onContentComplete) {
       onContentComplete('audio');
     }
+  };
+
+  const handleTabChange = (value: string) => {
+    // If trying to access quiz tab but content not completed
+    if (value === 'quiz' && !isQuizUnlocked) {
+      setAttemptedQuizAccess(true);
+      toast({
+        title: "Quiz Locked",
+        description: `Complete ${!videoCompleted && isVideoRequired ? 'video, ' : ''}${!audioCompleted && isAudioRequired ? 'audio, ' : ''}${!textCompleted ? 'reading ' : ''}first.`,
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setActiveTab(value);
   };
 
   return (
@@ -153,11 +147,51 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
       <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Module'}</h2>
       <p className="text-muted-foreground text-lg">{module.description || 'No description available'}</p>
       
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-6">
-          <TabsTrigger value="content" className="text-base py-3">Lesson Content</TabsTrigger>
+      {/* Progress indicators */}
+      <div className="flex flex-wrap gap-4 p-4 bg-muted/30 rounded-lg">
+        {module.videoUrl && (
+          <div className="flex items-center gap-2">
+            <div className={`w-3 h-3 rounded-full ${videoCompleted ? 'bg-green-500' : 'bg-amber-500'}`}></div>
+            <span className="text-sm">Video: {videoCompleted ? 'Completed' : 'Pending'}</span>
+          </div>
+        )}
+        {module.audioUrl && (
+          <div className="flex items-center gap-2">
+            <div className={`w-3 h-3 rounded-full ${audioCompleted ? 'bg-green-500' : 'bg-amber-500'}`}></div>
+            <span className="text-sm">Audio: {audioCompleted ? 'Completed' : 'Pending'}</span>
+          </div>
+        )}
+        <div className="flex items-center gap-2">
+          <div className={`w-3 h-3 rounded-full ${textCompleted ? 'bg-green-500' : 'bg-amber-500'}`}></div>
+          <span className="text-sm">Reading: {textCompleted ? 'Completed' : 'Pending'}</span>
+        </div>
+        <div className="flex items-center gap-2 ml-auto">
+          <div className={`w-3 h-3 rounded-full ${isQuizUnlocked ? 'bg-green-500' : 'bg-red-500'}`}></div>
+          <span className="text-sm flex items-center">
+            Quiz: {isQuizUnlocked ? 'Unlocked' : (
+              <span className="flex items-center">
+                <Lock size={14} className="mr-1" /> Locked
+              </span>
+            )}
+          </span>
+        </div>
+      </div>
+      
+      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+        <TabsList className="grid w-full grid-cols-4 mb-6">
+          <TabsTrigger value="content" className="text-base py-3">Lesson</TabsTrigger>
           <TabsTrigger value="interactive" className="text-base py-3">Interactive</TabsTrigger>
           <TabsTrigger value="resources" className="text-base py-3">Resources</TabsTrigger>
+          <TabsTrigger 
+            value="quiz" 
+            className={`text-base py-3 ${!isQuizUnlocked ? 'relative' : ''}`}
+            disabled={!isQuizUnlocked}
+          >
+            Quiz
+            {!isQuizUnlocked && (
+              <Lock size={14} className="ml-1 inline-block" />
+            )}
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="content" className="space-y-8 pt-4 animate-fade-in">
@@ -167,7 +201,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                 Video Lesson
                 {videoCompleted && (
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 ml-auto">
-                    Completed
+                    <CheckCircle size={14} className="mr-1" /> Completed
                   </span>
                 )}
               </h3>
@@ -195,7 +229,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                 )}
                 {textCompleted && (
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    Completed
+                    <CheckCircle size={14} className="mr-1" /> Completed
                   </span>
                 )}
               </div>
@@ -213,7 +247,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                 Audio Lesson
                 {audioCompleted && (
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 ml-auto">
-                    Completed
+                    <CheckCircle size={14} className="mr-1" /> Completed
                   </span>
                 )}
               </h3>
@@ -224,39 +258,30 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               />
             </div>
           )}
-          
-          {module.questions && module.questions.length > 0 && (
-            <div className="pt-6">
-              <QuizSection 
-                questions={module.questions}
-                onComplete={onQuizComplete}
-              />
-            </div>
-          )}
         </TabsContent>
         
         <TabsContent value="interactive" className="space-y-8 pt-4 animate-fade-in">
           <FlashcardSection 
             title="Key Terms" 
-            flashcards={module.flashcards || flashcards} 
+            flashcards={module.flashcards || []} 
           />
           
-          <InteractiveScenario 
-            scenario={module.interactiveScenario ? 
-              {
+          {module.interactiveScenario && (
+            <InteractiveScenario 
+              scenario={{
                 title: module.interactiveScenario.title,
                 description: module.interactiveScenario.description,
                 type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
                 options: module.interactiveScenario.options || [],
                 content: module.interactiveScenario.content
-              } : scenario
-            }
-          />
+              }}
+            />
+          )}
         </TabsContent>
         
         <TabsContent value="resources" className="space-y-8 pt-4 animate-fade-in">
           <FAQSection 
-            faqs={module.faqs || faqs} 
+            faqs={module.faqs || []} 
           />
           
           <Card className="bg-card/50 backdrop-blur border-none shadow-md">
@@ -289,6 +314,37 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
+        
+        <TabsContent value="quiz" className="space-y-8 pt-4 animate-fade-in">
+          {isQuizUnlocked ? (
+            module.questions && module.questions.length > 0 ? (
+              <QuizSection 
+                questions={module.questions}
+                onComplete={onQuizComplete}
+                isMicroLearning={true}
+              />
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No quiz available for this module.</p>
+              </div>
+            )
+          ) : (
+            <div className="text-center py-12 space-y-4">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto">
+                <Lock size={32} className="text-muted-foreground" />
+              </div>
+              <h3 className="text-xl font-medium">Quiz Locked</h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                You need to complete the following before accessing the quiz:
+                <ul className="mt-4 space-y-2 list-disc text-left pl-8">
+                  {isVideoRequired && !videoCompleted && <li>Watch the video lesson</li>}
+                  {isAudioRequired && !audioCompleted && <li>Listen to the audio lesson</li>}
+                  {!textCompleted && <li>Complete the reading material</li>}
+                </ul>
+              </p>
+            </div>
+          )}
         </TabsContent>
       </Tabs>
     </div>

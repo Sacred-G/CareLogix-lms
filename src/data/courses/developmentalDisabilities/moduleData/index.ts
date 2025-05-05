@@ -7,3 +7,4 @@ export { personCenteredModule } from './personCenteredModule';
 export { communicationModule } from './communicationModule';
 export { emergencyModule } from './emergencyModule';
 export { professionalGrowthModule } from './professionalGrowthModule';
+export { medicationModule } from './medicationModule';
