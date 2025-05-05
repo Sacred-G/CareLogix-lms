@@ -25,7 +25,8 @@ export default function ScormUploader() {
       title: '',
       description: '',
       course_id: '',
-      launch_path: 'index.html'
+      launch_path: 'index.html',
+      domain: ''
     }
   });
   
@@ -40,6 +41,24 @@ export default function ScormUploader() {
       
       if (error) throw error;
       return data || [];
+    }
+  });
+  
+  // Fetch domains for dropdown
+  const { data: domains, isLoading: isLoadingDomains } = useQuery({
+    queryKey: ['domains-for-scorm'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('email_domain')
+        .not('email_domain', 'is', null)
+        .order('email_domain');
+      
+      if (error) throw error;
+      
+      // Get unique domains
+      const uniqueDomains = [...new Set(data.map(item => item.email_domain))];
+      return uniqueDomains.filter(Boolean).map(domain => ({ domain }));
     }
   });
   
@@ -105,7 +124,8 @@ export default function ScormUploader() {
             file_path: filePath,
             launch_path: values.launch_path || 'index.html',
             status: 'pending',
-            created_by: user?.id
+            created_by: user?.id,
+            domain: values.domain || null
           })
           .select();
           
@@ -191,6 +211,37 @@ export default function ScormUploader() {
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
+                </FormItem>
+              )}
+            />
+            
+            <FormField
+              control={form.control}
+              name="domain"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Restrict to Domain (Optional)</FormLabel>
+                  <Select 
+                    onValueChange={field.onChange} 
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a domain (or leave empty for all)" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="">Available to all domains</SelectItem>
+                      {domains?.map((item) => (
+                        <SelectItem key={item.domain} value={item.domain}>
+                          {item.domain}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>
+                    If selected, this SCORM module will only be available to users from this domain
+                  </FormDescription>
                 </FormItem>
               )}
             />

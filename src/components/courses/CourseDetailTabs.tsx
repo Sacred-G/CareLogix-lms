@@ -151,6 +151,12 @@ const CourseDetailTabs = ({
     }
   };
 
+  // Add courseId to the module for SCORM modules
+  const enhancedModule = {
+    ...currentModule,
+    courseId: course.id
+  };
+
   return (
     <div className="container px-4 py-8">
       <div className="bg-card border rounded-lg overflow-hidden shadow-lg">
@@ -189,7 +195,7 @@ const CourseDetailTabs = ({
         {/* Module Content using CourseContent component */}
         <div className="p-6">
           <CourseContent 
-            module={currentModule}
+            module={enhancedModule}
             onQuizComplete={handleQuizComplete}
             onContentComplete={handleContentComplete}
           />

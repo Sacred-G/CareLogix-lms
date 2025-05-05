@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Module, ScenarioOption } from '@/data/courseTypes';
 import VideoPlayer from './VideoPlayer';
 import AudioPlayer from './AudioPlayer';
@@ -7,12 +7,14 @@ import QuizSection from './QuizSection';
 import FlashcardSection from './FlashcardSection';
 import FAQSection from './FAQSection';
 import InteractiveScenario from './InteractiveScenario';
+import ScormViewer from './ScormViewer';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import ReactMarkdown from 'react-markdown';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertTriangle, CheckCircle, Lock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useScormModules } from '@/hooks/useScormModules';
 
 interface CourseContentProps {
   module: Module;
@@ -22,6 +24,7 @@ interface CourseContentProps {
 
 export default function CourseContent({ module, onQuizComplete, onContentComplete }: CourseContentProps) {
   const { toast } = useToast();
+  const { scormModules, isLoading: loadingScormModules } = useScormModules(module.courseId);
   
   // Early return with a placeholder if module is undefined
   if (!module) {
@@ -34,56 +37,19 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
     );
   }
 
-  // Track completion status for different content types
   const [videoCompleted, setVideoCompleted] = useState(false);
   const [textCompleted, setTextCompleted] = useState(false);
   const [audioCompleted, setAudioCompleted] = useState(false);
   const [activeTab, setActiveTab] = useState('content');
-  
-  // Track attempted quiz access
-  const [attemptedQuizAccess, setAttemptedQuizAccess] = useState(false);
+  const [selectedScormModuleId, setSelectedScormModuleId] = useState<string | null>(null);
 
-  // Calculate if quiz is unlocked
+  // Calculate if quiz is unlocked (both video and audio completed)
   const isVideoRequired = !!module.videoUrl;
   const isAudioRequired = !!module.audioUrl;
   
   const isQuizUnlocked = 
     (!isVideoRequired || videoCompleted) && 
-    (!isAudioRequired || audioCompleted) &&
-    textCompleted;
-
-  // Load completion status from localStorage on component mount
-  useEffect(() => {
-    if (!module.id) return;
-    
-    const storagePrefix = `course_content_${module.id}_`;
-    const storedVideoStatus = localStorage.getItem(`${storagePrefix}video`);
-    const storedTextStatus = localStorage.getItem(`${storagePrefix}text`);
-    const storedAudioStatus = localStorage.getItem(`${storagePrefix}audio`);
-    
-    if (storedVideoStatus === 'completed') setVideoCompleted(true);
-    if (storedTextStatus === 'completed') setTextCompleted(true);
-    if (storedAudioStatus === 'completed') setAudioCompleted(true);
-  }, [module.id]);
-
-  // Save completion status to localStorage when it changes
-  useEffect(() => {
-    if (!module.id) return;
-    
-    const storagePrefix = `course_content_${module.id}_`;
-    
-    if (videoCompleted) {
-      localStorage.setItem(`${storagePrefix}video`, 'completed');
-    }
-    
-    if (textCompleted) {
-      localStorage.setItem(`${storagePrefix}text`, 'completed');
-    }
-    
-    if (audioCompleted) {
-      localStorage.setItem(`${storagePrefix}audio`, 'completed');
-    }
-  }, [module.id, videoCompleted, textCompleted, audioCompleted]);
+    (!isAudioRequired || audioCompleted);
 
   const handleVideoEnd = () => {
     setVideoCompleted(true);
@@ -118,19 +84,25 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
     }
   };
 
-  const handleTabChange = (value: string) => {
-    // If trying to access quiz tab but content not completed
-    if (value === 'quiz' && !isQuizUnlocked) {
-      setAttemptedQuizAccess(true);
+  const handleQuizTabClick = () => {
+    if (!isQuizUnlocked) {
       toast({
         title: "Quiz Locked",
-        description: `Complete ${!videoCompleted && isVideoRequired ? 'video, ' : ''}${!audioCompleted && isAudioRequired ? 'audio, ' : ''}${!textCompleted ? 'reading ' : ''}first.`,
+        description: "You need to complete the video and audio lessons first.",
         variant: "destructive"
       });
-      return;
     }
-    
-    setActiveTab(value);
+  };
+
+  const handleScormModuleSelect = (moduleId: string) => {
+    setSelectedScormModuleId(moduleId);
+  };
+
+  const handleScormComplete = (progress: number) => {
+    toast({
+      title: "SCORM Module Completed",
+      description: `You've completed ${progress}% of this SCORM module.`
+    });
   };
 
   return (
@@ -158,31 +130,23 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
         </div>
         <div className="flex items-center gap-2 ml-auto">
           <div className={`w-3 h-3 rounded-full ${isQuizUnlocked ? 'bg-green-500' : 'bg-red-500'}`}></div>
-          <span className="text-sm flex items-center">
-            Quiz: {isQuizUnlocked ? 'Unlocked' : (
-              <span className="flex items-center">
-                <Lock size={14} className="mr-1" /> Locked
-              </span>
-            )}
-          </span>
+          <span className="text-sm">Quiz: {isQuizUnlocked ? 'Unlocked' : 'Locked'}</span>
         </div>
       </div>
       
-      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 mb-6">
-          <TabsTrigger value="content" className="text-base py-3">Lesson</TabsTrigger>
-          <TabsTrigger value="interactive" className="text-base py-3">Interactive</TabsTrigger>
-          <TabsTrigger value="resources" className="text-base py-3">Resources</TabsTrigger>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsTrigger value="content" className="text-base py-3">Lesson Content</TabsTrigger>
           <TabsTrigger 
             value="quiz" 
-            className={`text-base py-3 ${!isQuizUnlocked ? 'relative' : ''}`}
+            className="text-base py-3"
             disabled={!isQuizUnlocked}
+            onClick={handleQuizTabClick}
           >
+            {!isQuizUnlocked && <Lock className="h-3 w-3 mr-2" />}
             Quiz
-            {!isQuizUnlocked && (
-              <Lock size={14} className="ml-1 inline-block" />
-            )}
           </TabsTrigger>
+          <TabsTrigger value="interactive" className="text-base py-3">Interactive</TabsTrigger>
         </TabsList>
         
         <TabsContent value="content" className="space-y-8 pt-4 animate-fade-in">
@@ -209,12 +173,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-medium">Reading Material</h3>
                 {!textCompleted && (
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={handleTextComplete}
-                    className="bg-primary/10 hover:bg-primary/20"
-                  >
+                  <Button size="sm" variant="outline" onClick={handleTextComplete}>
                     Mark as Read
                   </Button>
                 )}
@@ -225,16 +184,16 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                 )}
               </div>
             </CardHeader>
-            <CardContent className="pt-6 px-6">
-              <article className="prose max-w-none dark:prose-invert prose-headings:text-primary prose-a:text-secondary hover:prose-a:text-secondary/80 prose-img:rounded-lg prose-img:shadow-md prose-strong:text-foreground/90">
-                <ReactMarkdown>{module.content || '# No Content Available\n\nThis module does not have any reading content available.'}</ReactMarkdown>
-              </article>
+            <CardContent className="pt-6 pb-2 px-6">
+              <div className="prose dark:prose-invert prose-headings:scroll-mt-8 max-w-none">
+                <ReactMarkdown>{module.content}</ReactMarkdown>
+              </div>
             </CardContent>
           </Card>
           
           {module.audioUrl && (
             <div className="space-y-4">
-              <h3 className="text-lg font-medium flex items-center gap-2 border-l-4 border-secondary pl-3 py-1">
+              <h3 className="text-lg font-medium flex items-center gap-2 border-l-4 border-primary pl-3 py-1">
                 Audio Lesson
                 {audioCompleted && (
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 ml-auto">
@@ -244,97 +203,133 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               </h3>
               <AudioPlayer 
                 url={module.audioUrl} 
+                title={module.title || 'Audio Lesson'}
                 transcript={module.transcript}
-                onAudioEnded={handleAudioEnd} 
+                onAudioEnded={handleAudioEnd}
               />
             </div>
           )}
         </TabsContent>
         
-        <TabsContent value="interactive" className="space-y-8 pt-4 animate-fade-in">
-          <FlashcardSection 
-            title="Key Terms" 
-            flashcards={module.flashcards || []} 
-          />
-          
-          {module.interactiveScenario && (
-            <InteractiveScenario 
-              scenario={{
-                title: module.interactiveScenario.title,
-                description: module.interactiveScenario.description,
-                type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
-                options: module.interactiveScenario.options || []
-              }}
+        <TabsContent value="quiz" className="pt-4 animate-fade-in">
+          {!isQuizUnlocked ? (
+            <Card className="border-destructive">
+              <CardContent className="pt-6">
+                <div className="flex flex-col items-center justify-center text-center p-6">
+                  <AlertTriangle className="h-12 w-12 text-destructive mb-4" />
+                  <h3 className="text-xl font-medium mb-2">Quiz Locked</h3>
+                  <p className="text-muted-foreground mb-4">
+                    You need to complete both the video and audio content before taking the quiz.
+                  </p>
+                  <Button onClick={() => setActiveTab('content')}>Return to Content</Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <QuizSection 
+              questions={module.questions}
+              onQuizComplete={onQuizComplete}
             />
           )}
         </TabsContent>
         
-        <TabsContent value="resources" className="space-y-8 pt-4 animate-fade-in">
-          <FAQSection 
-            faqs={module.faqs || []} 
-          />
-          
-          <Card className="bg-card/50 backdrop-blur border-none shadow-md">
-            <CardHeader>
-              <h3 className="text-lg font-medium">Additional Resources</h3>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="p-4 border border-border/50 rounded-lg bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors">
-                <div>
-                  <div className="font-medium">Client Rights Guide</div>
-                  <div className="text-sm text-muted-foreground">PDF handbook with detailed rights information</div>
-                </div>
-                <Button variant="outline" size="sm" className="bg-primary/10 hover:bg-primary/20">Download</Button>
+        <TabsContent value="interactive" className="pt-4 animate-fade-in">
+          <div className="space-y-8">
+            {/* SCORM modules section */}
+            {scormModules && scormModules.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                  Interactive SCORM Modules
+                </h3>
+                
+                {selectedScormModuleId ? (
+                  <div className="space-y-4">
+                    <Button 
+                      variant="outline" 
+                      onClick={() => setSelectedScormModuleId(null)}
+                      className="mb-4"
+                    >
+                      Back to Module List
+                    </Button>
+                    <ScormViewer 
+                      moduleId={selectedScormModuleId} 
+                      onComplete={handleScormComplete}
+                    />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {scormModules.map(scormModule => (
+                      <Card key={scormModule.id} className="cursor-pointer hover:shadow-md transition-shadow">
+                        <CardHeader>
+                          <h4 className="text-md font-medium">{scormModule.title}</h4>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">
+                            {scormModule.description || "Interactive SCORM module"}
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <Button 
+                            onClick={() => handleScormModuleSelect(scormModule.id)}
+                            disabled={!scormModule.public_url}
+                            className="w-full"
+                          >
+                            {scormModule.public_url ? "Launch Module" : "Module Processing..."}
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    ))}
+                  </div>
+                )}
               </div>
-              
-              <div className="p-4 border border-border/50 rounded-lg bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors">
-                <div>
-                  <div className="font-medium">Decision-Making Support Tools</div>
-                  <div className="text-sm text-muted-foreground">Visual aids for helping clients make choices</div>
-                </div>
-                <Button variant="outline" size="sm" className="bg-primary/10 hover:bg-primary/20">Download</Button>
+            )}
+
+            {/* Interactive Scenario */}
+            {module.interactiveScenario && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                  Interactive Scenario
+                </h3>
+                <InteractiveScenario 
+                  scenario={{
+                    title: module.interactiveScenario.title,
+                    description: module.interactiveScenario.description,
+                    type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
+                    options: module.interactiveScenario.options || []
+                  }}
+                />
               </div>
-              
-              <div className="p-4 border border-border/50 rounded-lg bg-muted/30 flex items-center justify-between hover:bg-muted/50 transition-colors">
-                <div>
-                  <div className="font-medium">Advocacy Organizations</div>
-                  <div className="text-sm text-muted-foreground">List of local and national advocacy resources</div>
-                </div>
-                <Button variant="outline" size="sm" className="bg-primary/10 hover:bg-primary/20">View</Button>
+            )}
+            
+            {/* Flashcards Section */}
+            {module.flashcards && module.flashcards.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                  Flashcards
+                </h3>
+                <FlashcardSection flashcards={module.flashcards} />
               </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="quiz" className="space-y-8 pt-4 animate-fade-in">
-          {isQuizUnlocked ? (
-            module.questions && module.questions.length > 0 ? (
-              <QuizSection 
-                questions={module.questions}
-                onComplete={onQuizComplete}
-                isMicroLearning={true}
-              />
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No quiz available for this module.</p>
+            )}
+            
+            {/* FAQs Section */}
+            {module.faqs && module.faqs.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                  Frequently Asked Questions
+                </h3>
+                <FAQSection faqs={module.faqs} />
               </div>
-            )
-          ) : (
-            <div className="text-center py-12 space-y-4">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto">
-                <Lock size={32} className="text-muted-foreground" />
+            )}
+            
+            {!module.interactiveScenario && 
+             (!module.flashcards || module.flashcards.length === 0) && 
+             (!module.faqs || module.faqs.length === 0) && 
+             (!scormModules || scormModules.length === 0) && (
+              <div className="text-center py-8">
+                <p className="text-muted-foreground">No interactive content available for this module.</p>
               </div>
-              <h3 className="text-xl font-medium">Quiz Locked</h3>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                You need to complete the following before accessing the quiz:
-                <ul className="mt-4 space-y-2 list-disc text-left pl-8">
-                  {isVideoRequired && !videoCompleted && <li>Watch the video lesson</li>}
-                  {isAudioRequired && !audioCompleted && <li>Listen to the audio lesson</li>}
-                  {!textCompleted && <li>Complete the reading material</li>}
-                </ul>
-              </p>
-            </div>
-          )}
+            )}
+          </div>
         </TabsContent>
       </Tabs>
     </div>

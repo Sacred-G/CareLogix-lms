@@ -7,23 +7,74 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Edit, Trash2, Eye } from 'lucide-react';
+import { Edit, Trash2, Eye, Filter } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { ScormModule, ScormProcessingStatus } from '@/data/scormTypes';
 import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/hooks/useAuth';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function ScormManager() {
   const [selectedModule, setSelectedModule] = useState<ScormModule | null>(null);
   const [previewDialogOpen, setPreviewDialogOpen] = useState(false);
+  const [domainFilter, setDomainFilter] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState('');
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   
-  const { data: scormModules, isLoading } = useQuery({
-    queryKey: ['scorm-modules'],
+  // Get user profile to determine domain
+  const { data: userProfile } = useQuery({
+    queryKey: ['user-profile-for-scorm', user?.id],
+    queryFn: async () => {
+      if (!user) return null;
+      
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!user
+  });
+
+  // Fetch domains for filter
+  const { data: domains } = useQuery({
+    queryKey: ['domains-for-scorm-filter'],
     queryFn: async () => {
       const { data, error } = await supabase
+        .from('profiles')
+        .select('email_domain')
+        .not('email_domain', 'is', null)
+        .order('email_domain');
+      
+      if (error) throw error;
+      
+      // Get unique domains
+      const uniqueDomains = [...new Set(data.map(item => item.email_domain))];
+      return uniqueDomains.filter(Boolean);
+    }
+  });
+  
+  const { data: scormModules, isLoading } = useQuery({
+    queryKey: ['scorm-modules', domainFilter, userProfile?.role],
+    queryFn: async () => {
+      let query = supabase
         .from('scorm_modules')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .select('*');
+      
+      // Apply domain filter if set
+      if (domainFilter) {
+        query = query.eq('domain', domainFilter);
+      } else if (userProfile?.role !== 'admin') {
+        // If not admin, only show modules for user's domain or with no domain restriction
+        query = query.or(`domain.eq.${userProfile?.email_domain},domain.is.null`);
+      }
+      
+      const { data, error } = await query.order('created_at', { ascending: false });
       
       if (error) {
         console.error('Error fetching SCORM modules:', error);
@@ -31,8 +82,16 @@ export default function ScormManager() {
       }
       
       return data as unknown as ScormModule[];
-    }
+    },
+    enabled: !!userProfile
   });
+  
+  // Filter modules by search query
+  const filteredModules = scormModules?.filter(module => 
+    module.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    module.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    module.course_id.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   
   const deleteModuleMutation = useMutation({
     mutationFn: async (moduleId: string) => {
@@ -104,10 +163,45 @@ export default function ScormManager() {
     <>
       <Card>
         <CardHeader>
-          <CardTitle>SCORM Modules</CardTitle>
-          <CardDescription>
-            Manage your uploaded SCORM modules
-          </CardDescription>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <CardTitle>SCORM Modules</CardTitle>
+              <CardDescription>
+                Manage your uploaded SCORM modules
+              </CardDescription>
+            </div>
+            
+            {userProfile?.role === 'admin' && (
+              <div className="flex gap-2">
+                <Select 
+                  value={domainFilter} 
+                  onValueChange={setDomainFilter}
+                >
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Filter by domain" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">All Domains</SelectItem>
+                    {domains?.map(domain => (
+                      <SelectItem key={domain} value={domain}>
+                        {domain}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+          </div>
+          
+          <div className="mt-4">
+            <Input
+              type="search"
+              placeholder="Search modules..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="max-w-sm"
+            />
+          </div>
         </CardHeader>
         <CardContent>
           {isLoading ? (
@@ -124,17 +218,26 @@ export default function ScormManager() {
                   <TableHead>Course</TableHead>
                   <TableHead>Created</TableHead>
                   <TableHead>Status</TableHead>
+                  {userProfile?.role === 'admin' && <TableHead>Domain</TableHead>}
                   <TableHead className="w-24 text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {scormModules && scormModules.length > 0 ? (
-                  scormModules.map((module) => (
+                {filteredModules && filteredModules.length > 0 ? (
+                  filteredModules.map((module) => (
                     <TableRow key={module.id}>
                       <TableCell className="font-medium">{module.title}</TableCell>
                       <TableCell>{module.course_id}</TableCell>
                       <TableCell>{module.created_at ? new Date(module.created_at).toLocaleDateString() : 'Unknown'}</TableCell>
                       <TableCell>{getStatusBadge(module.status)}</TableCell>
+                      {userProfile?.role === 'admin' && (
+                        <TableCell>
+                          {module.domain ? 
+                            <Badge variant="outline">{module.domain}</Badge> : 
+                            <span className="text-muted-foreground text-sm">All domains</span>
+                          }
+                        </TableCell>
+                      )}
                       <TableCell className="text-right space-x-1">
                         {module.public_url && (
                           <Button variant="ghost" size="icon" onClick={() => handlePreviewScorm(module)}>
@@ -154,8 +257,10 @@ export default function ScormManager() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={5} className="text-center py-4">
-                      No SCORM modules found. Upload your first SCORM package to get started.
+                    <TableCell colSpan={userProfile?.role === 'admin' ? 6 : 5} className="text-center py-4">
+                      {searchQuery ? 
+                        'No SCORM modules found matching your search.' : 
+                        'No SCORM modules found. Upload your first SCORM package to get started.'}
                     </TableCell>
                   </TableRow>
                 )}

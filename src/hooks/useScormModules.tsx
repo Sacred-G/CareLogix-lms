@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -10,26 +11,52 @@ export const useScormModules = (courseId?: string) => {
   const queryClient = useQueryClient();
   const [isUploading, setIsUploading] = useState(false);
 
-  // Fetch SCORM modules for a course
+  // Get user profile to determine domain
+  const { data: userProfile } = useQuery({
+    queryKey: ['user-profile-for-hook', user?.id],
+    queryFn: async () => {
+      if (!user) return null;
+      
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!user
+  });
+
+  // Fetch SCORM modules for a course with domain filter
   const { 
     data: scormModules, 
     isLoading: isLoadingModules,
     error: modulesError
   } = useQuery({
-    queryKey: ['scorm-modules', courseId],
+    queryKey: ['scorm-modules', courseId, userProfile?.email_domain, userProfile?.role],
     queryFn: async () => {
       if (!courseId) return [];
       
-      const { data, error } = await supabase
+      let query = supabase
         .from('scorm_modules')
         .select('*')
-        .eq('course_id', courseId)
-        .order('position');
+        .eq('course_id', courseId);
+        
+      // Filter by domain unless user is admin
+      if (userProfile?.role !== 'admin') {
+        query = query.or(`domain.eq.${userProfile?.email_domain},domain.is.null`);
+      }
+      
+      query = query.order('position');
+      
+      const { data, error } = await query;
         
       if (error) throw error;
       return data as unknown as ScormModule[];
     },
-    enabled: !!courseId
+    enabled: !!courseId && !!userProfile
   });
 
   // Fetch user progress for SCORM modules
@@ -65,7 +92,7 @@ export const useScormModules = (courseId?: string) => {
   }) || [];
 
   // Upload a SCORM package
-  const uploadPackage = async (file: File, title: string, description: string, position: number) => {
+  const uploadPackage = async (file: File, title: string, description: string, position: number, domain?: string) => {
     if (!courseId) throw new Error('Course ID is required');
     setIsUploading(true);
     
@@ -90,7 +117,8 @@ export const useScormModules = (courseId?: string) => {
           file_path: filePath,
           launch_path: 'index.html',
           position,
-          created_by: user?.id
+          created_by: user?.id,
+          domain: domain || null
         })
         .select()
         .single();
@@ -195,6 +223,7 @@ export const useScormModules = (courseId?: string) => {
     isUploading,
     error: modulesError,
     uploadPackage,
-    updateProgress
+    updateProgress,
+    userProfile
   };
 };

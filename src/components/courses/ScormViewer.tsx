@@ -7,6 +7,8 @@ import { AlertCircle } from "lucide-react";
 import { useScormModules } from "@/hooks/useScormModules";
 import { ScormModule, ScormProgressUpdate } from "@/data/scormTypes";
 import { useAuth } from "@/hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ScormViewerProps {
   moduleId?: string;
@@ -22,24 +24,61 @@ export default function ScormViewer({ moduleId, module: propModule, onComplete }
   const { user } = useAuth();
   const [moduleData, setModuleData] = useState<ScormModule | null>(null);
 
+  // Fetch user profile to check domain
+  const { data: userProfile } = useQuery({
+    queryKey: ['user-profile-for-scorm-viewer', user?.id],
+    queryFn: async () => {
+      if (!user) return null;
+      
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!user
+  });
+
   useEffect(() => {
     if (propModule) {
-      // If module is directly provided as a prop
-      setModuleData(propModule);
-      setIsLoading(false);
+      // If module is directly provided as a prop, check domain access
+      checkDomainAccess(propModule);
     } else if (scormModules && moduleId) {
       // If we need to find the module by ID
       const module = scormModules.find((m) => m.id === moduleId);
       if (module) {
-        setModuleData(module);
-        // Reset error when module is found
-        setErrorMessage(null);
+        checkDomainAccess(module);
       } else {
         setErrorMessage("SCORM module not found");
+        setIsLoading(false);
       }
-      setIsLoading(false);
     }
-  }, [scormModules, moduleId, propModule]);
+  }, [scormModules, moduleId, propModule, userProfile]);
+
+  // Check if user has access to this module based on domain
+  const checkDomainAccess = (module: ScormModule) => {
+    // If no domain restriction on module or user is admin, allow access
+    if (!module.domain || userProfile?.role === 'admin') {
+      setModuleData(module);
+      setErrorMessage(null);
+      setIsLoading(false);
+      return;
+    }
+    
+    // If module has domain restriction, check user's domain
+    if (module.domain === userProfile?.email_domain) {
+      setModuleData(module);
+      setErrorMessage(null);
+    } else {
+      setModuleData(null);
+      setErrorMessage("You do not have access to this SCORM module");
+    }
+    
+    setIsLoading(false);
+  };
 
   // Handle SCORM API calls from the iframe
   useEffect(() => {

@@ -36,6 +36,7 @@ export interface Module {
   questions: Question[];
   flashcards?: Flashcard[];
   faqs?: FAQ[];
+  courseId?: string; // Added for SCORM module support
   interactiveScenario?: {
     title: string;
     description: string;
