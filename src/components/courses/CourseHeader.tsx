@@ -79,6 +79,17 @@ const CourseHeader: React.FC<CourseHeaderProps> = ({
               </Button>
             )}
           </div>
+          
+          {/* Course Thumbnail Image */}
+          <div className="hidden md:block md:w-1/3 lg:w-1/4">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src={course.thumbnail || 'https://placehold.co/600x400/png'} 
+                alt={course.title} 
+                className="w-full h-full object-cover aspect-video"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

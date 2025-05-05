@@ -39,7 +39,7 @@ export const generalCourses: Course[] = [
     description: 'Learn how to make websites accessible to all users, including those with disabilities.',
     category: 'Technology',
     instructor: 'Alex Johnson',
-    thumbnail: 'https://placehold.co/600x400/png',
+    thumbnail: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=1200',
     duration: '4 hours',
     modules: [
       {
@@ -72,7 +72,7 @@ export const generalCourses: Course[] = [
     description: 'Develop professional communication skills for the workplace.',
     category: 'Professional Development',
     instructor: 'Maria Garcia',
-    thumbnail: 'https://placehold.co/600x400/png',
+    thumbnail: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=1200',
     duration: '3 hours',
     modules: [
       {
@@ -105,7 +105,7 @@ export const generalCourses: Course[] = [
     description: 'Learn techniques to manage your time efficiently and boost productivity.',
     category: 'Professional Development',
     instructor: 'James Wilson',
-    thumbnail: 'https://placehold.co/600x400/png',
+    thumbnail: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=1200',
     duration: '2 hours',
     modules: [
       {

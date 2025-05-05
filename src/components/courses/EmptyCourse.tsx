@@ -30,6 +30,17 @@ const EmptyCourse: React.FC<EmptyCourseProps> = ({ course }) => {
                 <h1 className="text-3xl font-bold mb-2">{course.title}</h1>
                 <p className="text-white/80 mb-4">{course.description}</p>
               </div>
+              
+              {/* Course Thumbnail Image */}
+              <div className="hidden md:block md:w-1/3 lg:w-1/4">
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src={course.thumbnail || 'https://placehold.co/600x400/png'} 
+                    alt={course.title} 
+                    className="w-full h-full object-cover aspect-video"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>

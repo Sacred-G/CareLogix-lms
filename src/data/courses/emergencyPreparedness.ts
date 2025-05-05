@@ -7,7 +7,7 @@ export const emergencyPreparedness: Course = {
   description: "Learn essential skills for emergency response and disaster preparedness when supporting individuals with developmental disabilities.",
   category: "Safety",
   instructor: "Michael Torres, Emergency Response Specialist",
-  thumbnail: "https://images.unsplash.com/photo-1503266980949-bd30d04d0b75",
+  thumbnail: "https://images.unsplash.com/photo-1503266980949-bd30d04d0b75?auto=format&fit=crop&q=80&w=1200",
   duration: "2 hours",
   modules: [
     {
