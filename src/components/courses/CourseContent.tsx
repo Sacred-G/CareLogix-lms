@@ -20,15 +20,6 @@ interface CourseContentProps {
   onContentComplete?: (type: 'video' | 'text' | 'audio') => void;
 }
 
-// Define a local scenario type that matches what InteractiveScenario expects
-interface LocalScenario {
-  title: string;
-  description: string;
-  type: 'multiple-choice' | 'dialogue';
-  options: ScenarioOption[];
-  content?: any;
-}
-
 export default function CourseContent({ module, onQuizComplete, onContentComplete }: CourseContentProps) {
   const { toast } = useToast();
   
@@ -272,8 +263,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                 title: module.interactiveScenario.title,
                 description: module.interactiveScenario.description,
                 type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
-                options: module.interactiveScenario.options || [],
-                content: module.interactiveScenario.content
+                options: module.interactiveScenario.options || []
               }}
             />
           )}
