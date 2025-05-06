@@ -10,6 +10,8 @@ import AdminStats from '@/components/admin/AdminStats';
 import UserManagement from '@/components/admin/UserManagement';
 import CourseStats from '@/components/admin/CourseStats';
 import EnrollmentsTable from '@/components/admin/EnrollmentsTable';
+import ScormUploader from '@/components/admin/ScormUploader';
+import ScormManager from '@/components/admin/ScormManager';
 import { Button } from '@/components/ui/button';
 import { BookOpen } from 'lucide-react';
 
@@ -69,10 +71,11 @@ export default function AdminDashboard() {
             />
             
             <Tabs defaultValue="users" className="w-full">
-              <TabsList className="grid grid-cols-3 w-full mb-6 max-w-md">
+              <TabsList className="grid grid-cols-4 w-full mb-6 max-w-md">
                 <TabsTrigger value="users">Users</TabsTrigger>
                 <TabsTrigger value="courses">Course Stats</TabsTrigger>
                 <TabsTrigger value="enrollments">Enrollments</TabsTrigger>
+                <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
               </TabsList>
               
               {/* Users Tab */}
@@ -103,6 +106,14 @@ export default function AdminDashboard() {
                   enrollments={enrollments}
                   loadingEnrollments={loadingEnrollments}
                 />
+              </TabsContent>
+              
+              {/* SCORM Content Tab */}
+              <TabsContent value="scorm">
+                <div className="space-y-6">
+                  <ScormUploader />
+                  <ScormManager />
+                </div>
               </TabsContent>
             </Tabs>
           </div>

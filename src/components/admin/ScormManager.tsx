@@ -41,7 +41,7 @@ export default function ScormManager() {
     enabled: !!user
   });
 
-  // Fetch domains for filter
+  // Fetch domains for filter - fixing the type issue here
   const { data: domains } = useQuery({
     queryKey: ['domains-for-scorm-filter'],
     queryFn: async () => {
@@ -53,9 +53,9 @@ export default function ScormManager() {
       
       if (error) throw error;
       
-      // Get unique domains
-      const uniqueDomains = [...new Set(data.map(item => item.email_domain))];
-      return uniqueDomains.filter(Boolean) as string[];
+      // Get unique domains with explicit type casting
+      const uniqueDomains: string[] = [...new Set(data.map(item => item.email_domain))].filter(Boolean) as string[];
+      return uniqueDomains;
     }
   });
   

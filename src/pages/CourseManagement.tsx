@@ -8,6 +8,8 @@ import { AdminRoute } from '@/components/auth/AdminRoute';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CreateCourse from '@/components/admin/CreateCourse';
 import ManageCourses from '@/components/admin/ManageCourses';
+import ScormUploader from '@/components/admin/ScormUploader';
+import ScormManager from '@/components/admin/ScormManager';
 import { useAuth } from '@/hooks/useAuth';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
@@ -67,9 +69,10 @@ export default function CourseManagement() {
               </div>
             ) : (
               <Tabs defaultValue="create" className="w-full">
-                <TabsList className="grid grid-cols-2 w-full mb-6 max-w-md">
+                <TabsList className="grid grid-cols-3 w-full mb-6 max-w-md">
                   <TabsTrigger value="create">Create Course</TabsTrigger>
                   <TabsTrigger value="manage">Manage Courses</TabsTrigger>
+                  <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
                 </TabsList>
                 
                 {/* Create Course Tab */}
@@ -80,6 +83,14 @@ export default function CourseManagement() {
                 {/* Manage Courses Tab */}
                 <TabsContent value="manage">
                   <ManageCourses />
+                </TabsContent>
+                
+                {/* SCORM Content Tab */}
+                <TabsContent value="scorm">
+                  <div className="space-y-6">
+                    <ScormUploader />
+                    <ScormManager />
+                  </div>
                 </TabsContent>
               </Tabs>
             )}
