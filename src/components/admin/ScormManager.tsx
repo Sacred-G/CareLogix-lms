@@ -18,7 +18,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 export default function ScormManager() {
   const [selectedModule, setSelectedModule] = useState<ScormModule | null>(null);
   const [previewDialogOpen, setPreviewDialogOpen] = useState(false);
-  const [domainFilter, setDomainFilter] = useState<string>('all'); // Changed from empty string to 'all'
+  const [domainFilter, setDomainFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const queryClient = useQueryClient();
   const { user } = useAuth();
@@ -41,7 +41,7 @@ export default function ScormManager() {
     enabled: !!user
   });
 
-  // Fetch domains for filter - fixing the type issue here
+  // Fetch domains for filter
   const { data: domains } = useQuery({
     queryKey: ['domains-for-scorm-filter'],
     queryFn: async () => {
@@ -54,7 +54,7 @@ export default function ScormManager() {
       if (error) throw error;
       
       // Get unique domains with explicit type casting
-      const uniqueDomains: string[] = [...new Set(data.map(item => item.email_domain))].filter(Boolean) as string[];
+      const uniqueDomains = [...new Set(data.map(item => item.email_domain).filter(Boolean))] as string[];
       return uniqueDomains;
     }
   });
@@ -67,7 +67,7 @@ export default function ScormManager() {
         .select('*');
       
       // Apply domain filter if set
-      if (domainFilter !== 'all') {  // Changed comparison from empty string to 'all'
+      if (domainFilter !== 'all') {
         query = query.eq('domain', domainFilter);
       } else if (userProfile?.role !== 'admin') {
         // If not admin, only show modules for user's domain or with no domain restriction
@@ -133,7 +133,7 @@ export default function ScormManager() {
     }
   });
   
-  const getStatusBadge = (status?: ScormProcessingStatus | string) => {
+  const getStatusBadge = (status: ScormProcessingStatus) => {
     switch(status) {
       case 'pending':
         return <Badge variant="outline">Pending</Badge>;

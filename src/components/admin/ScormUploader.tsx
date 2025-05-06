@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -26,7 +26,7 @@ export default function ScormUploader() {
       description: '',
       course_id: '',
       launch_path: 'index.html',
-      domain: 'all'  // Changed default value from empty string to 'all'
+      domain: 'all'
     }
   });
   
@@ -57,8 +57,11 @@ export default function ScormUploader() {
       if (error) throw error;
       
       // Get unique domains
-      const uniqueDomains = [...new Set(data.map(item => item.email_domain))];
-      return uniqueDomains.filter(Boolean).map(domain => ({ domain }));
+      const uniqueDomains = [...new Set(data
+        .map(item => item.email_domain)
+        .filter(Boolean))] as string[];
+      
+      return uniqueDomains;
     }
   });
   
@@ -125,7 +128,7 @@ export default function ScormUploader() {
             launch_path: values.launch_path || 'index.html',
             status: 'pending',
             created_by: user?.id,
-            domain: values.domain === 'all' ? null : values.domain  // Use null for 'all' domains
+            domain: values.domain === 'all' ? null : values.domain
           })
           .select();
           
@@ -168,7 +171,7 @@ export default function ScormUploader() {
         description: '',
         course_id: '',
         launch_path: 'index.html',
-        domain: 'all'  // Reset to 'all' instead of empty string
+        domain: 'all'
       });
       setFile(null);
       queryClient.invalidateQueries({ queryKey: ['scorm-modules'] });
@@ -229,7 +232,7 @@ export default function ScormUploader() {
                   <FormLabel>Restrict to Domain (Optional)</FormLabel>
                   <Select 
                     onValueChange={field.onChange} 
-                    defaultValue={field.value}
+                    value={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -238,9 +241,9 @@ export default function ScormUploader() {
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="all">Available to all domains</SelectItem>
-                      {domains?.map((item) => (
-                        <SelectItem key={item.domain} value={item.domain}>
-                          {item.domain}
+                      {domains?.map((domain) => (
+                        <SelectItem key={domain} value={domain}>
+                          {domain}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -261,7 +264,7 @@ export default function ScormUploader() {
                   <FormLabel>Course</FormLabel>
                   <Select 
                     onValueChange={field.onChange} 
-                    defaultValue={field.value}
+                    value={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
