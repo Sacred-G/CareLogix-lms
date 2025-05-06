@@ -1,7 +1,4 @@
 
-export type ScormProcessingStatus = 'pending' | 'processing' | 'processed' | 'error';
-export type ScormModuleStatus = 'not_started' | 'in_progress' | 'completed';
-
 export interface ScormModule {
   id: string;
   title: string;
@@ -9,21 +6,22 @@ export interface ScormModule {
   course_id: string;
   file_path: string;
   launch_path: string;
-  status?: ScormProcessingStatus;
   public_url?: string;
+  status: ScormProcessingStatus;
   created_at?: string;
-  processed_at?: string;
+  updated_at?: string;
   created_by?: string;
+  domain?: string | null;
   position?: number;
-  manifest_data?: any;
-  domain?: string;
 }
+
+export type ScormProcessingStatus = 'pending' | 'processing' | 'processed' | 'error';
 
 export interface ScormProgress {
   id: string;
   user_id: string;
   scorm_module_id: string;
-  status: ScormModuleStatus;
+  status: 'not_started' | 'in_progress' | 'completed';
   completion_percentage: number;
   score?: number;
   suspend_data?: string;
@@ -36,7 +34,8 @@ export interface ScormModuleWithProgress extends ScormModule {
 }
 
 export interface ScormProgressUpdate {
-  status?: ScormModuleStatus;
+  moduleId: string;
+  status?: 'not_started' | 'in_progress' | 'completed';
   percentage?: number;
   score?: number;
   suspendData?: string;

@@ -26,7 +26,7 @@ export default function ScormUploader() {
       description: '',
       course_id: '',
       launch_path: 'index.html',
-      domain: ''
+      domain: 'all'  // Changed default value from empty string to 'all'
     }
   });
   
@@ -125,7 +125,7 @@ export default function ScormUploader() {
             launch_path: values.launch_path || 'index.html',
             status: 'pending',
             created_by: user?.id,
-            domain: values.domain || null
+            domain: values.domain === 'all' ? null : values.domain  // Use null for 'all' domains
           })
           .select();
           
@@ -163,7 +163,13 @@ export default function ScormUploader() {
       }
     },
     onSuccess: () => {
-      form.reset();
+      form.reset({
+        title: '',
+        description: '',
+        course_id: '',
+        launch_path: 'index.html',
+        domain: 'all'  // Reset to 'all' instead of empty string
+      });
       setFile(null);
       queryClient.invalidateQueries({ queryKey: ['scorm-modules'] });
     },
@@ -227,11 +233,11 @@ export default function ScormUploader() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a domain (or leave empty for all)" />
+                        <SelectValue placeholder="Select a domain (or all domains)" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="">Available to all domains</SelectItem>
+                      <SelectItem value="all">Available to all domains</SelectItem>
                       {domains?.map((item) => (
                         <SelectItem key={item.domain} value={item.domain}>
                           {item.domain}

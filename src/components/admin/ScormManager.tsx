@@ -18,7 +18,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 export default function ScormManager() {
   const [selectedModule, setSelectedModule] = useState<ScormModule | null>(null);
   const [previewDialogOpen, setPreviewDialogOpen] = useState(false);
-  const [domainFilter, setDomainFilter] = useState<string>('');
+  const [domainFilter, setDomainFilter] = useState<string>('all'); // Changed from empty string to 'all'
   const [searchQuery, setSearchQuery] = useState('');
   const queryClient = useQueryClient();
   const { user } = useAuth();
@@ -67,7 +67,7 @@ export default function ScormManager() {
         .select('*');
       
       // Apply domain filter if set
-      if (domainFilter) {
+      if (domainFilter !== 'all') {  // Changed comparison from empty string to 'all'
         query = query.eq('domain', domainFilter);
       } else if (userProfile?.role !== 'admin') {
         // If not admin, only show modules for user's domain or with no domain restriction
@@ -181,7 +181,7 @@ export default function ScormManager() {
                     <SelectValue placeholder="Filter by domain" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Domains</SelectItem>
+                    <SelectItem value="all">All Domains</SelectItem>
                     {domains?.map(domain => (
                       <SelectItem key={domain} value={domain}>
                         {domain}

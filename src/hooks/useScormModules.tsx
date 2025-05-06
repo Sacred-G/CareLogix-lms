@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { ScormModule, ScormProgress, ScormModuleWithProgress, ScormProgressUpdate } from '@/data/scormTypes';
+import { ScormModule, ScormProgress, ScormModuleWithProgress, ScormProgressUpdate, ScormProcessingStatus } from '@/data/scormTypes';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 
