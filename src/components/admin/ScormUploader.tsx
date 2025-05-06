@@ -148,15 +148,22 @@ export default function ScormUploader() {
         });
         
         if (!response.ok) {
-          const error = await response.json();
-          console.error('SCORM processing failed:', error);
+          // Parse error response if available
+          let errorData;
+          try {
+            errorData = await response.json();
+          } catch (e) {
+            errorData = { message: `HTTP error ${response.status}` };
+          }
+          
+          console.error('SCORM processing failed:', errorData);
           // We don't throw here because we want to show the upload as complete
           // The edge function will update the module status
-          toast.error('SCORM package uploaded but processing may take some time');
-        } else {
-          toast.success('SCORM package uploaded and processing started');
+          toast.error(`SCORM package uploaded but processing failed: ${errorData.error || 'Unknown error'}`);
+          return moduleData;
         }
         
+        toast.success('SCORM package uploaded and processing started');
         return moduleData;
       } catch (error) {
         console.error('Error uploading SCORM package:', error);
