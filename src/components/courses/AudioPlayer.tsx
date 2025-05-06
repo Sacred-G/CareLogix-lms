@@ -6,9 +6,10 @@ interface AudioPlayerProps {
   url: string;
   transcript?: string;
   onAudioEnded?: () => void;
+  title?: string; // Added title prop
 }
 
-export default function AudioPlayer({ url, transcript, onAudioEnded }: AudioPlayerProps) {
+export default function AudioPlayer({ url, transcript, onAudioEnded, title }: AudioPlayerProps) {
   const [showTranscript, setShowTranscript] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 

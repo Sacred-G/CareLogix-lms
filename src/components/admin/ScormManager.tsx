@@ -55,7 +55,7 @@ export default function ScormManager() {
       
       // Get unique domains
       const uniqueDomains = [...new Set(data.map(item => item.email_domain))];
-      return uniqueDomains.filter(Boolean);
+      return uniqueDomains.filter(Boolean) as string[];
     }
   });
   

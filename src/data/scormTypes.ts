@@ -1,5 +1,6 @@
 
 export type ScormProcessingStatus = 'pending' | 'processing' | 'processed' | 'error';
+export type ScormModuleStatus = 'not_started' | 'in_progress' | 'completed';
 
 export interface ScormModule {
   id: string;
@@ -22,7 +23,7 @@ export interface ScormProgress {
   id: string;
   user_id: string;
   scorm_module_id: string;
-  status: 'not_started' | 'in_progress' | 'completed';
+  status: ScormModuleStatus;
   completion_percentage: number;
   score?: number;
   suspend_data?: string;
@@ -35,7 +36,7 @@ export interface ScormModuleWithProgress extends ScormModule {
 }
 
 export interface ScormProgressUpdate {
-  status?: 'not_started' | 'in_progress' | 'completed';
+  status?: ScormModuleStatus;
   percentage?: number;
   score?: number;
   suspendData?: string;

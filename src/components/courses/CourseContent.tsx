@@ -203,7 +203,6 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               </h3>
               <AudioPlayer 
                 url={module.audioUrl} 
-                title={module.title || 'Audio Lesson'}
                 transcript={module.transcript}
                 onAudioEnded={handleAudioEnd}
               />
@@ -228,7 +227,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           ) : (
             <QuizSection 
               questions={module.questions}
-              onQuizComplete={onQuizComplete}
+              onComplete={onQuizComplete}
             />
           )}
         </TabsContent>
@@ -307,7 +306,10 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                 <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
                   Flashcards
                 </h3>
-                <FlashcardSection flashcards={module.flashcards} />
+                <FlashcardSection 
+                  flashcards={module.flashcards} 
+                  title="Course Flashcards"
+                />
               </div>
             )}
             

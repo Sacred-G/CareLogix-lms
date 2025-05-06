@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { ScormModule, ScormProgress, ScormModuleWithProgress, ScormProgressUpdate, ScormModuleStatus } from '@/data/scormTypes';
+import { ScormModule, ScormProgress, ScormModuleWithProgress, ScormProgressUpdate } from '@/data/scormTypes';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 
@@ -164,7 +164,7 @@ export const useScormModules = (courseId?: string) => {
     mutationFn: async (
       progress: { 
         moduleId: string, 
-        status?: ScormModuleStatus, 
+        status?: 'not_started' | 'in_progress' | 'completed', 
         percentage?: number,
         score?: number,
         suspendData?: string
