@@ -1,0 +1,589 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Transportation Policies &amp; Authorizations" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Vehicle Safety &amp; Pre-Trip Checks" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Safe Driving Practices" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Client Safety During Transport" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Managing Challenges During Transport" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Emergency Procedures During Transport" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="390" width="791" x="4" y="51" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Transportation Safety &amp; Procedures</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Transportation Policies & Authorizations</li><li>Vehicle Safety & Pre-Trip Checks</li><li>Safe Driving Practices</li><li>Client Safety During Transport</li><li>Managing Challenges During Transport</li><li>Emergency Procedures During Transport</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="387" y="97" start="0" stop="400" width="682" height="780" mirror="true">video/man50s_hello and welcome_L.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall9.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Transportation Policies &amp; Authorizations</Section>
+		<Content height="481" width="407" x="86" y="70" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Transportation Policies &amp; Authorizations</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Transportation policies and authorizations are fundamental to ensuring safe and compliant client transport. These policies define the circumstances under which client transport is authorized, such as specific activities or appointments linked to Individualized Support Plan (ISP) goals. They also outline approved destinations and specify any locations that are prohibited for client transport.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f6164c88.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="859" x="170" y="104" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The use of agency vehicles versus personal vehicles is a critical aspect of transportation policies. Agencies require that personal vehicles meet specific insurance requirements and provide proof of maintenance. Additionally, policies often include guidelines for mileage reimbursement and the necessary documentation, such as trip logs and mileage forms, to ensure accurate record-keeping.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/aMMf9RNJhZ6AyzZ5Xh7oEKB7saUjnbHjWSvKR3rC.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="86" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Client-specific transport needs or restrictions, as outlined in their ISPs, must be strictly adhered to. This ensures that each client's unique requirements are met during transport. Proper documentation and adherence to these policies are crucial for maintaining safety and compliance with agency standards.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453117-209.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Vehicle Safety &amp; Pre-Trip Checks</Section>
+		<Content height="225" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Vehicle Safety &amp; Pre-Trip Checks</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Conducting a thorough pre-trip vehicle inspection is vital to ensuring the safety and readiness of the vehicle. This process involves a detailed visual examination of key components such as tires, lights, and mirrors. Ensuring that fluid levels are adequate and that there are no visible leaks or damages is also a crucial part of the check.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/yqSwJN3wT78t31EYnLFYVHJVW15lpPfjkz99BAHX.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="551" x="2" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Safety equipment plays a critical role in preparing for emergencies during transportation. A complete first aid kit, a functional fire extinguisher, and an updated list of emergency contacts should be present and accessible in the vehicle. These items must be checked regularly to ensure they are in good condition and ready for use.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/obMO2J9Im1fQBOoURmcMCr5Qlfo0O4pfE2ffkZ7Z.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="611" x="418" y="179" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Reporting any vehicle malfunctions or safety concerns promptly is essential to maintaining safety standards. Drivers should be trained to identify common vehicle issues and know the procedure for reporting them to a supervisor. Immediate reporting helps prevent potential accidents and ensures timely maintenance and repair.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e06e5b0b.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="462" x="0" y="150" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining vehicle cleanliness is an often-overlooked aspect of vehicle safety checks. A clean vehicle interior reduces distractions and provides a more comfortable environment for passengers. Regular cleaning should be part of the routine inspection to ensure a pleasant and safe journey.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fdc81f1980.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Safe Driving Practices</Section>
+		<Content height="350" width="462" x="0" y="108" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Safe Driving Practices</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Safe driving practices are essential for minimizing risks and ensuring the safety of all vehicle occupants. Defensive driving involves being aware of your surroundings and anticipating the actions of other drivers. Maintaining a safe distance from other vehicles allows for adequate reaction time in case of sudden stops or emergencies.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/aIvfMeAzJpxaUvvMbjZotShYfuYR5UNFdWp3Jixr.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="581" x="448" y="37" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Strict adherence to traffic laws is crucial for safe driving. This includes obeying speed limits, stopping at red lights, and yielding to pedestrians. Such practices not only prevent accidents but also promote a culture of safety and responsibility on the road.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="323.000" y="143.583" width="67" height="67" swfSizing="stage">swf/Element_led_light_orange.swf</Image>
+
+		<Video/>
+		<Background>images/OVEmagYvB5bUAc7486StsIQzKEn2guvb0rkQzQiZ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1024" x="5" y="419" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Minimizing distractions is vital for maintaining focus while driving. Agency policies often enforce a zero-tolerance stance on handheld cell phone use to prevent accidents. Drivers are encouraged to minimize other distractions by keeping the vehicle environment calm and organized.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="410.000" y="276.583" width="18" height="18" swfSizing="stage">swf/Element_led_light_red.swf</Image>
+
+		<Video/>
+		<Background>images/fj9LHTF57W5ZawQmyacOMzhNVc4Wweszl5YSQCap.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">403</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Driving techniques must be adapted to adverse weather conditions to ensure safety. In rain, snow, or fog, reducing speed and increasing following distance are recommended. Using headlights and wipers appropriately enhances visibility and vehicle control during these conditions.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fdc7cbb238.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Client Safety During Transport</Section>
+		<Content height="319" width="448" x="576" y="118" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Client Safety During Transport</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Ensuring client safety during transport begins with the mandatory use of seatbelts for all occupants. This fundamental practice significantly reduces the risk of injury in case of sudden stops or accidents. It is crucial to double-check that each seatbelt is properly fastened and secure before beginning the journey.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/OepZE0IQEX6auB1MMNvLFAf9b8xpnHtNmKnJWeOT.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="86" y="146" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Assisting clients with varying mobility levels requires specific techniques to ensure their safe entry and exit from the vehicle. Staff should be trained in these techniques to prevent any injuries to themselves or the clients. Using supportive equipment or aids can further enhance the safety and comfort of the clients during these transitions.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453144-1000.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="483" width="302" x="8" y="39" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">For clients in wheelchairs, securing both the wheelchair and the occupant is a detailed procedure that often necessitates hands-on training. Proper securement prevents movement during transport, ensuring the safety and comfort of the client. This process should be executed with precision, following detailed guidelines and using appropriate equipment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="137.000" y="-162.833" width="330" height="341" swfSizing="stage">swf/Element_sky_sun_flare_1.swf</Image>
+
+		<Video/>
+		<Background>images/67a5cc8c2c3a6.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="462" x="567" y="151" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Comfort during transport is also about maintaining an appropriate environment within the vehicle. Attention to factors such as temperature, seating arrangement, and client preferences can make a significant difference. Ensuring clients feel secure and comfortable can reduce anxiety and improve their overall experience during the trip.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453131-585.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is necessary for using personal vehicles for client transport?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[No documentation needed]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Insurance and documentation are required. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Only a driver's license]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Insurance and documentation are required. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Insurance and mileage documentation]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Insurance and documentation are essential.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">Why are pre-trip vehicle checks important?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To improve fuel efficiency]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. They ensure vehicle safety and readiness. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To clean the vehicle]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. They ensure vehicle safety and readiness. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To prevent breakdowns and ensure safety]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! They help prevent breakdowns and accidents.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key rule for safe driving practices?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Avoiding distractions such as cell phones]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Avoiding distractions is crucial.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Driving at high speeds]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Avoiding distractions is important. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Listening to loud music]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Avoiding distractions is important. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Managing Challenges During Transport</Section>
+		<Content height="388" width="462" x="0" y="89" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Managing Challenges During Transport</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Managing challenges during transport requires a calm and composed approach to ensure everyone’s safety. When a client exhibits anxiety or agitation, it is crucial to respond with calming communication techniques. Pulling over safely if necessary can prevent further escalation and allow for a more focused approach to addressing the client's needs.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453189-203.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="871" x="79" y="233" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Pre-planning strategies are essential for clients known to find transport difficult. This involves understanding individual triggers and preparing appropriate coping strategies to mitigate stress. Effective communication strategies while driving should be brief and clear, ensuring that the driver maintains focus on the road.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453174-934.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In situations where a client becomes challenging, distraction techniques can be beneficial. These techniques may include engaging the client in conversation or providing soothing music. The goal is to create a serene atmosphere that reduces tension and promotes a positive transport experience.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453158-977.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Emergency Procedures During Transport</Section>
+		<Content height="194" width="859" x="170" y="108" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Emergency Procedures During Transport</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In the event of a roadside emergency, knowing the correct procedures can significantly reduce stress and ensure safety. The first step is to assess the situation calmly and ensure the safety of all passengers. If necessary, call emergency services immediately to handle any injuries or hazards.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/66ffd30463914.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="871" x="79" y="233" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">For vehicle breakdowns, it is crucial to pull over safely to a secure location away from traffic. Activate hazard lights to alert other drivers and make the vehicle visible. Contact a supervisor or roadside assistance to report the breakdown and receive further instructions.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453204-210.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="0" y="330" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Each vehicle should be equipped with a first aid kit, which must be accessible in case of minor injuries. Familiarity with the contents and their use is essential for providing immediate care. Knowing how to exchange information with other parties involved in an accident is also important.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/yrgpuecwtkUsvxHqt7eZoGkLoUr5dtsDNXaeCHg7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">703</screen_id>
+		<Template>4</Template>
+		
+		<Content height="109" width="1025" x="4" y="36" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Agency incident reporting requirements must be followed after any vehicle-related events. Documentation should include details of the incident, parties involved, and any actions taken. This information is vital for insurance purposes and to improve safety protocols in the future.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/06bOzda73nbqF9ItJ1FUTQ08UnMGWJXvwXF89J6i.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="421" width="709" x="321" y="79" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Transportation Safety &amp; Procedures</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Transportation Policies & Authorizations</li><li>Vehicle Safety & Pre-Trip Checks</li><li>Safe Driving Practices</li><li>Client Safety During Transport</li><li>Managing Challenges During Transport</li><li>Emergency Procedures During Transport</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="143" start="0" stop="400" width="443" height="507" mirror="false">video/man50s_well done training completed_L.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall17.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>9</screen_scorm_finish>
+		<scorm_frame>8</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Transportation Safety &amp; Procedures]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

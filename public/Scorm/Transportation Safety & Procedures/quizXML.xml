@@ -1,0 +1,202 @@
+<Quizes>
+	<Quiz identifier="MI00" Type="exam">
+	<Question QuestionID="MI01" QuestionType="exam" Title="" CommentBox="0" qType="MC" image="">
+		<Text>What is included in the transportation policies and authorizations?</Text>
+		<Answers>
+			<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+				<Text>Use of personal vehicles without insurance</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+				<Text>Transport to any location without restrictions</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="3" Correct="1" Score="10" Order="3" TaskSeverity="0" ActionByID="0">
+				<Text>Specific activities and appointments linked to ISP goals</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="4" Correct="0" Score="0" Order="4" TaskSeverity="0" ActionByID="0">
+				<Text>Transport without any documentation</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+		</Answers>
+	</Question>
+	<Question QuestionID="MI02" QuestionType="exam" Title="" CommentBox="0" qType="MC" image="">
+		<Text>What is the purpose of pre-trip vehicle checks?</Text>
+		<Answers>
+			<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+				<Text>To enhance the vehicle's appearance</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="2" Correct="1" Score="10" Order="2" TaskSeverity="0" ActionByID="0">
+				<Text>To prevent breakdowns and ensure safety</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+				<Text>To reduce fuel consumption</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="4" Correct="0" Score="0" Order="4" TaskSeverity="0" ActionByID="0">
+				<Text>To avoid traffic fines</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+		</Answers>
+	</Question>
+	<Question QuestionID="MI03" QuestionType="exam" Title="" CommentBox="0" qType="MC" image="">
+		<Text>Which of the following is a key principle of defensive driving?</Text>
+		<Answers>
+			<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+				<Text>Ignoring weather conditions</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+				<Text>Speeding to save time</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="3" Correct="1" Score="10" Order="3" TaskSeverity="0" ActionByID="0">
+				<Text>Maintaining awareness and anticipation</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="4" Correct="0" Score="0" Order="4" TaskSeverity="0" ActionByID="0">
+				<Text>Using a handheld phone while driving</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+		</Answers>
+	</Question>
+	<Question QuestionID="MI04" QuestionType="exam" Title="" CommentBox="0" qType="MC" image="">
+		<Text>How should clients in wheelchairs be secured during transport?</Text>
+		<Answers>
+			<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+				<Text>By leaving them unsecured for comfort</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+				<Text>Using regular seatbelts</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="3" Correct="1" Score="10" Order="3" TaskSeverity="0" ActionByID="0">
+				<Text>With specialized restraints and securement techniques</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="4" Correct="0" Score="0" Order="4" TaskSeverity="0" ActionByID="0">
+				<Text>By positioning them near the doors</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+		</Answers>
+	</Question>
+	<Question QuestionID="MI05" QuestionType="exam" Title="" CommentBox="0" qType="MC" image="">
+		<Text>What is an appropriate response if a client exhibits challenging behavior during transport?</Text>
+		<Answers>
+			<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+				<Text>Ignore the client and continue driving</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+				<Text>Increase the speed to reach the destination faster</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="3" Correct="1" Score="10" Order="3" TaskSeverity="0" ActionByID="0">
+				<Text>Pull over safely and use calming communication</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="4" Correct="0" Score="0" Order="4" TaskSeverity="0" ActionByID="0">
+				<Text>Stop the vehicle abruptly without warning</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+		</Answers>
+	</Question>
+	<Question QuestionID="MI06" QuestionType="exam" Title="" CommentBox="0" qType="MC" image="">
+		<Text>What should be done in case of a vehicle breakdown during transport?</Text>
+		<Answers>
+			<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+				<Text>Continue driving until the next service station</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+				<Text>Abandon the vehicle immediately</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="3" Correct="1" Score="10" Order="3" TaskSeverity="0" ActionByID="0">
+				<Text>Pull over safely, use hazard lights, and contact roadside assistance</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+			<Answer AnswerID="4" Correct="0" Score="0" Order="4" TaskSeverity="0" ActionByID="0">
+				<Text>Ignore the problem and wait for it to resolve itself</Text>
+				<TaskName/>
+				<Feedback></Feedback>
+				<Match/>
+				<TaskDescription/>
+			</Answer>
+		</Answers>
+	</Question>
+	</Quiz>
+</Quizes>

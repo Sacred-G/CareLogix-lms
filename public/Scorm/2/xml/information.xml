@@ -1,0 +1,848 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Our Mission and Vision" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Understanding Developmental Disabilities" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Person-First Language and Respectful Communication" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Role of a Direct Support Professional" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Importance of Documentation and Reporting" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Person-Centered Support" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Effective Communication Strategies" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Emergency Response and Crisis Management" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Professional Growth and Teamwork" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="484" width="756" x="273" y="68" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>IMTP Univ: Supporting Individuals with Disabilities</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Our Mission and Vision</li><li>Understanding Developmental Disabilities</li><li>Person-First Language and Respectful Communication</li><li>Role of a Direct Support Professional</li><li>Importance of Documentation and Reporting</li><li>Person-Centered Support</li><li>Effective Communication Strategies</li><li>Emergency Response and Crisis Management</li><li>Professional Growth and Teamwork</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="143" start="0" stop="400" width="325" height="507" mirror="false">video/woman40s_welcome_to_elearning.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall2.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Our Mission and Vision</Section>
+		<Content height="350" width="462" x="0" y="108" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Our Mission and Vision</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The mission of Include Me Too Please is to empower individuals with disabilities by promoting independence and stability. We aim to create a supportive environment where every person can realize their full potential. Our commitment extends to families and support systems, ensuring that individuals become their most independent and successful selves.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fdb25d5707.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="496" x="525" y="133" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Our vision is to build inclusive communities where individuals with disabilities are not only integrated but celebrated for their unique strengths. We believe in fostering environments where empowerment, respect, and compassion are at the forefront. By promoting these values, we aim to create a society where everyone feels valued and has a voice.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e9b0aea1.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="250" y="286" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Core values such as inclusion, respect, empowerment, compassion, and teamwork guide our mission. Inclusion ensures everyone belongs and is heard, while respect honors the dignity of each person. Empowerment supports self-determination, and teamwork encourages collaboration with individuals, families, and professionals.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/AoGAleOgq0LOnxfuKt0ccQB17wtxIykGtbVT1GLm.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Understanding Developmental Disabilities</Section>
+		<Content height="450" width="407" x="585" y="68" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding Developmental Disabilities</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Developmental disabilities encompass a range of conditions that manifest early in life, typically before the age of 22. These conditions can lead to lifelong challenges in areas such as physical development, learning, language, and behavior. Despite the commonalities, each individual's experience and needs are unique, requiring personalized support strategies.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/People_sad_failure.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746202304-725.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="86" y="162" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The impact of developmental disabilities can be observed in various aspects of daily life. Challenges in communication and social interaction are common, affecting relationships and community participation. Mobility and self-care can also be affected, necessitating adaptations and support to promote independence.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/dQp2FBOutD50nZHgNKCpajgrIKRQMzNUE9FcS5tb.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Developmental disabilities can be congenital, such as those present at birth, or acquired due to early illness, injury, or genetic factors. Conditions like Cerebral Palsy, Autism Spectrum Disorder, and Down Syndrome are examples that illustrate the diversity within this group. Understanding these conditions is crucial for providing effective and respectful support.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/v6Zs8FhD8obOtp7u974ctDfVqWhy6Gk4TuqIqwxs.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="585" y="144" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-centered approaches are essential in supporting individuals with developmental disabilities. This involves recognizing the person beyond their diagnosis and focusing on their strengths and preferences. Such approaches promote dignity, respect, and a sense of belonging within inclusive communities.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/People_sad_failure.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746202287-276.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Person-First Language and Respectful Communication</Section>
+		<Content height="194" width="859" x="170" y="108" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Person-First Language and Respectful Communication</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-first language is a communication approach that emphasizes the individual before their disability. This method acknowledges that a disability is only one aspect of a person's identity. By focusing on the person, it promotes dignity and reduces the stigma associated with disabilities.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fda9334fab.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1024" x="5" y="404" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Using person-first language is crucial for fostering respect and inclusion in interactions. It helps build stronger, more positive relationships by acknowledging the individuality of each person. This approach encourages seeing the person as a whole, rather than defining them by their disability.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="905.000" y="53.583" width="80" height="80" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/7FdtCmOqyVNPHYORsdy8XlxDQse8vWTuZJ8DwpIY.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">To effectively use person-first language, always address the individual directly and respect their preferred communication methods. This includes being attentive to nonverbal cues and alternative communication tools. Such practices demonstrate empathy and understanding, essential for respectful communication.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd931c1049.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Role of a Direct Support Professional</Section>
+		<Content height="225" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Role of a Direct Support Professional</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Direct Support Professionals (DSPs) play a crucial role in the lives of individuals with developmental disabilities by fostering respectful and supportive relationships. They maintain professional boundaries to ensure that interactions remain healthy and productive. Consistency, respect, and professionalism are essential in every interaction to build trust and promote independence.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/qBPIZJuiqoPr3hoRAHA7bbAB4rt1TmzWWpCYnLhX.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="608" width="215" x="0" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">DSPs are responsible for ensuring the health and safety of those they support, including tasks like hygiene, medication assistance, and safe transfers. They conduct regular environmental checks to prevent injury and illness. As the first line of defense, DSPs must be vigilant and proactive in maintaining a safe environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="431.000" y="161.583" width="77" height="77" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/zD226iU9ac8ttCnE6BmcF7jrmtTRugoezjY2tpEg.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Confidentiality is a key responsibility for DSPs, who must protect personal health information in compliance with HIPAA regulations. Handling sensitive data appropriately is crucial to maintaining trust and legal compliance. DSPs must be trained in the ethical and legal aspects of confidentiality to ensure they uphold these standards.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746202317-706.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="414" x="615" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Supporting independence and self-determination is at the heart of a DSP's role. Encouraging individuals to make choices and take reasonable risks helps them take charge of their lives. DSPs empower individuals by providing guidance and support, fostering an environment where they can thrive.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="444.000" y="154.583" width="38" height="38" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/bcG6QOmZFzTjRta2rKbempORMZd9i27pTdmNjRfW.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a core value of Include Me Too Please?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Isolation]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Remember, inclusion is vital. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Inclusion]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Inclusion is a key value.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Exclusion]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Remember, inclusion is vital. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What do developmental disabilities often affect?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Only physical health]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. They impact daily life functioning. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Financial stability]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. They impact daily life functioning. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Day-to-day functioning]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! They affect day-to-day functioning.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How does person-first language benefit individuals?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It promotes dignity]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It promotes dignity and respect.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It focuses on diagnosis]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It emphasizes dignity and respect. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It labels individuals]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It emphasizes dignity and respect. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Importance of Documentation and Reporting</Section>
+		<Content height="225" width="667" x="1" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Importance of Documentation and Reporting</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Accurate documentation is a cornerstone of effective support for individuals with disabilities. It ensures that all team members are informed about the individual's needs and progress. This practice not only supports accountability but also enhances the quality of care provided.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="866.000" y="129.583" width="93" height="93" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/pUwnoLPKbQJNPfGmPjlxVYEKpkqMxR225jVJTKzv.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="109" width="1030" x="0" y="118" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Daily logs and service notes must be written clearly and objectively. These records capture significant events and interactions, providing a comprehensive overview of the individual's day. They serve as a vital tool for tracking progress and identifying areas needing attention.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f4d1ffcc.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="170" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Special Incident Reporting (SIR) is a critical component of documentation. Understanding what qualifies as a reportable incident and adhering to timelines is essential. Clear and urgent reporting helps ensure the safety and well-being of individuals under care.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/h2WnQvfdGajKh0IIlBewlFg7YgqSdw8DnWRmIhEa.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Person-Centered Support</Section>
+		<Content height="412" width="407" x="86" y="104" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Person-Centered Support</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-centered support is about tailoring services to fit the unique needs and preferences of each individual. It emphasizes the importance of understanding a person's history, goals, and cultural background. This approach ensures that support plans are not just generic solutions but are truly reflective of what the individual values and desires.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd9cb1e86e.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="86" y="162" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Creating individualized routines is a core component of person-centered support. These routines should align with the individual's daily habits and long-term aspirations. By collaborating with the person, support providers can develop structures that enhance the individual's quality of life and promote independence.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="609" y="132" width="367" height="367" swfSizing="stage">swf/Element_icon_person2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746202334-539.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Cultural competency is essential in delivering person-centered support. It involves respecting and acknowledging diverse backgrounds, identities, and belief systems. Understanding cultural influences on behavior and communication can lead to more effective and meaningful interactions with individuals.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Tky6PfdeetYJFmaGNv48fbMJvKMgIGmmKCdzm30S.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>Effective Communication Strategies</Section>
+		<Content height="388" width="389" x="201" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Effective Communication Strategies</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Effective communication strategies are essential in supporting individuals with diverse needs. Understanding both verbal and nonverbal cues is crucial for clear interactions. By mastering these skills, one can create a more inclusive and supportive environment.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="634.000" y="154.583" width="121.6" height="121.6" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/FlShy8MZt67xVF03MnERzawXwRYKmMRC3c0VbCJd.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Augmentative and Alternative Communication (AAC) tools are vital for those who do not use verbal speech. These tools, such as picture boards and communication apps, provide a voice to individuals who might otherwise struggle to express themselves. Implementing AAC effectively requires patience and understanding from support professionals.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="609" y="132" width="367" height="367" swfSizing="stage">swf/Element_chat_bubble_talk2_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746202349-53.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="462" x="0" y="166" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Listening for understanding goes beyond hearing words; it involves interpreting behaviors and emotions. Recognizing that behavior is a form of communication helps in addressing the underlying needs of individuals. This approach fosters trust and encourages open, honest interactions.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/LxEbDSMWzCJOSPo1UfIYoxXKXuERPuZf4UJrTHtM.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Emergency Response and Crisis Management</Section>
+		<Content height="388" width="549" x="5" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Emergency Response and Crisis Management</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Emergency response and crisis management require a calm and composed approach, especially in high-pressure situations. Direct Support Professionals must be trained to identify potential triggers and employ de-escalation techniques effectively. This involves maintaining a non-threatening body language and using a calm, reassuring tone to help individuals regain their emotional balance.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f0fac70d.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Medical emergencies demand quick thinking and a thorough understanding of basic first aid protocols. DSPs should be familiar with procedures for handling seizures, choking, and falls, ensuring safety until professional medical help arrives. Knowing when to call emergency services is crucial to prevent further harm and provide timely assistance.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/yrgpuecwtkUsvxHqt7eZoGkLoUr5dtsDNXaeCHg7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="86" y="146" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Recognizing signs of abuse or neglect is a critical responsibility for DSPs, who are mandated reporters. This involves being vigilant about physical, emotional, or financial abuse indicators and understanding the legal obligations for reporting. Training in this area ensures that DSPs can protect the well-being of the individuals they support.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/NnotOjkdJOpD9lMesLCtAtEqm3SfgstOY5mUlOHz.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="297" x="732" y="75" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Interactive simulations and drills are valuable tools for preparing DSPs for real-life emergencies. These exercises help reinforce knowledge and build confidence in handling crises effectively. Practicing response steps in a controlled environment ensures that DSPs are ready to act swiftly and appropriately when needed.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="132.000" y="40.583" width="57" height="57" swfSizing="stage">swf/Element_cobweb_spider_web.swf</Image>
+
+		<Video/>
+		<Background>images/XbRa1bwvvn6zuT5dNlaiFZNPrW4KEowz2WQqmAmE.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key responsibility of a DSP?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Overstepping boundaries]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Professional boundaries are essential. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Maintaining boundaries]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Maintaining professional boundaries is crucial.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignoring boundaries]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Professional boundaries are essential. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">Why is documentation important?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To ensure accountability]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It ensures accountability.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To confuse staff]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Documentation ensures accountability. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To increase paperwork]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Documentation ensures accountability. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">906</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What does person-centered support emphasize?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Individual preferences]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It emphasizes individual preferences.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Staff needs]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It focuses on individual preferences. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Community needs]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It focuses on individual preferences. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Professional Growth and Teamwork</Section>
+		<Content height="388" width="462" x="0" y="89" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Professional Growth and Teamwork</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Professional growth is essential for individuals seeking to advance their careers and enhance their skills. It involves continuous learning through workshops, certifications, and educational opportunities. Engaging in professional development helps individuals stay updated with industry trends and improve their expertise.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd9e2809d6.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="462" x="0" y="166" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Teamwork is a fundamental aspect of achieving success in any organization. It requires effective communication, mutual respect, and collaboration among team members. By working together, teams can solve complex problems and achieve common goals more efficiently.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd726a0214.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="170" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Seeking help and utilizing supervision effectively are crucial for personal and professional development. Supervision should be viewed as a tool for growth rather than a sign of failure. It provides guidance, feedback, and support to help individuals overcome challenges and improve their performance.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_icon_people.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746202363-896.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="515" width="725" x="304" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>IMTP Univ: Supporting Individuals with Disabilities</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Our Mission and Vision</li><li>Understanding Developmental Disabilities</li><li>Person-First Language and Respectful Communication</li><li>Role of a Direct Support Professional</li><li>Importance of Documentation and Reporting</li><li>Person-Centered Support</li><li>Effective Communication Strategies</li><li>Emergency Response and Crisis Management</li><li>Professional Growth and Teamwork</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="87" start="0" stop="400" width="360" height="562" mirror="false">video/woman40s_well_done.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall13.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>12</screen_scorm_finish>
+		<scorm_frame>11</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[IMTP Univ: Supporting Individuals with Disabilities]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

@@ -1,0 +1,1205 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Introduction to Developmental Disabilities" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Common Myths and Facts" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Person-Centered Practices" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Effective Communication Strategies" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Understanding Neurodiversity" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Promoting Independence" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="The Role of Support Workers" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Community Inclusion" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Behavior as Communication" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="Adaptive Communication Techniques" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Person-Centered Planning" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="13" item_label="Conclusion and Resources" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="14" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="15" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="577" width="666" x="363" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Understanding Developmental Disabilities</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Introduction to Developmental Disabilities</li><li>Common Myths and Facts</li><li>Person-Centered Practices</li><li>Effective Communication Strategies</li><li>Understanding Neurodiversity</li><li>Promoting Independence</li><li>The Role of Support Workers</li><li>Community Inclusion</li><li>Behavior as Communication</li><li>Adaptive Communication Techniques</li><li>Person-Centered Planning</li><li>Conclusion and Resources</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="105" start="0" stop="400" width="362" height="544" mirror="false">video/Sakura_start.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall15.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Introduction to Developmental Disabilities</Section>
+		<Content height="388" width="462" x="567" y="105" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Introduction to Developmental Disabilities</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Developmental disabilities (DD) encompass a variety of chronic conditions that impact cognitive, physical, and/or behavioral functioning. These conditions begin in childhood and vary greatly in their effects on individuals. Examples include Autism Spectrum Disorder (ASD), Intellectual Disability (ID), Cerebral Palsy (CP), and Down Syndrome (DS).</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/N0qvy8cqghOD5NYoFspKF08uhDZJy7BVL7G2EMCc.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="498" width="289" x="740" y="35" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Each developmental disability has unique characteristics, but individuals with these conditions also have unique abilities and needs. ASD, for instance, can create challenges in social communication and behavior, while CP primarily affects movement, muscle tone, and balance due to early brain injury. Down Syndrome, a genetic condition, often results in mild to moderate intellectual disability alongside certain physical traits.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="15.667" y="-125.333" width="650" height="402" swfSizing="stage">swf/element_sun_rays_divine.swf</Image>
+
+		<Video/>
+		<Background>images/IX4OOpVihooEF3uSU891QfrDwYia4KAT7Mt2puT5.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="566" x="221" y="214" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The concept of neurodiversity reframes these differences as natural variations in brain development rather than deficits. This perspective emphasizes recognizing individual strengths and abilities rather than focusing solely on limitations. Neurodiversity encourages a more inclusive approach, viewing traits associated with conditions like ASD as potential strengths.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/AvKcyXS8LqTAUT2fHVYoTlDQxXAff4FCz36AVCjg.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">203</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="1028" x="1" y="376" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Support needs for individuals with DD vary widely, with some people living independently and others requiring more intensive support. Many individuals with DD can attend school, work, form relationships, and contribute to their communities when provided with appropriate supports. It's crucial to understand that developmental disabilities do not always coincide with intellectual disability, as some conditions are primarily physical.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/BupN1eMYcm9ll0Z6u6766LOYBZVQ8wKESFiK3vkI.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">204</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="779" x="0" y="299" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The presence of co-occurring conditions is common among individuals with developmental disabilities. For example, a person with Down Syndrome might also have autism, or someone with an intellectual disability might have a mental health condition. Despite higher risks for certain medical issues, many people with developmental disabilities lead long, healthy lives.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/h2WnQvfdGajKh0IIlBewlFg7YgqSdw8DnWRmIhEa.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Common Myths and Facts</Section>
+		<Content height="444" width="407" x="86" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Common Myths and Facts</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Developmental disabilities (DD) encompass a diverse range of chronic conditions that manifest during childhood and can affect cognitive, physical, and behavioral functions. Examples include Autism Spectrum Disorder (ASD), Intellectual Disability (ID), Cerebral Palsy (CP), and Down Syndrome (DS). Each condition presents unique characteristics, but all individuals have distinct abilities and needs.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/5hpGakdhwsa3vN3Ie2YVZ8H1E5pERnptJKNVuAVG.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="779" x="250" y="254" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Autism Spectrum Disorder is characterized by challenges in social communication and behavior, while Cerebral Palsy primarily affects movement, muscle tone, and balance due to early brain injury. Intellectual disability involves limitations in mental abilities affecting learning and daily life skills, with severity ranging from mild to severe. Down Syndrome, a genetic condition, results in mild to moderate intellectual disability alongside specific health and physical traits.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746393166-185.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1023" x="6" y="416" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The concept of neurodiversity frames these variations in brain development as normal rather than deficits. This perspective emphasizes recognizing each individual's strengths and talents, rather than focusing solely on challenges. The aim is to appreciate the natural diversity in human brain function, which can present both strengths and challenges depending on the context.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="424.000" y="35.583" width="96.6" height="96.6" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/N7BqOJauPD3B3tAdGHPpDtBVEokqCTAVP5bMZ0zj.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Support needs for individuals with developmental disabilities vary widely. Some individuals live independently or semi-independently with minimal assistance, while others require more intensive support. Many can attend school, work, form relationships, and contribute to their communities when provided with appropriate supports.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670ce9f025d25.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Person-Centered Practices</Section>
+		<Content height="412" width="462" x="567" y="93" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Person-Centered Practices</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-centered practices focus on tailoring support to the unique needs and preferences of individuals with developmental disabilities. This approach emphasizes the importance of understanding each person's desires, strengths, and goals to create a supportive environment. By centering planning around the individual, support systems can enhance personal autonomy and satisfaction.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fde1d365af.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The process of person-centered planning involves collaboration among the individual, their family, and professionals. It starts with conversations about the person's dreams and preferences, ensuring their voice is central to decision-making. This collaborative effort helps in formulating goals that align with the individual's aspirations and needs.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/OqbyNJ73Kq5McePPXEOI1c4CAohvQls2Kj23t9Vn.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="732" x="297" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">A key principle in person-centered practices is balancing what is important to the person with what is important for them. Important 'to' aspects include personal interests and happiness, while important 'for' aspects focus on health and safety. Achieving this balance ensures that individuals receive comprehensive support that respects their personal values and promotes well-being.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="-27.000" y="154.667" width="158" height="158" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/67114e41c077b.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Effective Communication Strategies</Section>
+		<Content height="288" width="655" x="0" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Effective Communication Strategies</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Effective communication is essential in supporting individuals with developmental disabilities, as it ensures both understanding and being understood. Each person may have a unique communication style, which could include verbal, non-verbal, or the use of assistive technology. Adapting communication strategies to meet individual needs fosters trust and enhances the quality of support provided.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="754.667" y="58.667" width="11" height="11" swfSizing="stage">swf/Element_led_light_green.swf</Image>
+
+		<Video/>
+		<Background>images/boBPJIR93Svq1QbqwarZHW57jGKW40uyXxJG7SH7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="462" x="0" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Verbal communication involves speaking clearly and respectfully, using language that matches the individual's comprehension level. It is important to avoid condescending tones or baby talk, especially when addressing adults. Non-verbal cues such as gestures, facial expressions, and body language also play a significant role in conveying messages and emotions.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/k2j4NHykTePb5uBegt1LMsOShn9464NA4l2ktBTE.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Active listening is a crucial component of effective communication, requiring full attention and feedback to ensure the message is understood. Techniques like paraphrasing can help validate the person's feelings and confirm comprehension. Observing non-verbal signals, such as fidgeting or avoiding eye contact, can provide insights into a person's emotional state.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/9KEf6ut1CTdIc3eYFQJu2CEIfqcMmuYw4IbRA2dv.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Augmentative and Alternative Communication (AAC) systems are invaluable for individuals who communicate non-verbally. These systems range from low-tech options like picture cards to high-tech devices such as speech-generating apps. Familiarity with these tools and ensuring their accessibility at all times is vital for supporting effective communication.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="609" y="132" width="367" height="367" swfSizing="stage">swf/Element_chat_bubbles_two_green_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393177-864.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="462" x="567" y="151" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Creating an environment conducive to communication involves minimizing distractions and ensuring comfort. Reducing background noise and ensuring proper lighting can help individuals focus better on interactions. Patience and empathy are essential, as they encourage individuals to express themselves without fear of judgment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd9e7283fa.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key characteristic of developmental disabilities?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-4.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They affect cognitive, physical, or behavioral functioning.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Developmental disabilities impact cognitive, physical, or behavioral functioning.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They always cause physical limitations.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Developmental disabilities are diverse and affect different aspects of functioning. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They are temporary conditions.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Developmental disabilities are diverse and affect different aspects of functioning. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How does neurodiversity view developmental disabilities?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-4.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As solely intellectual impairments.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Neurodiversity considers these as natural variations. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As normal variations in brain development.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Well done! Neurodiversity sees these as normal variations in brain development.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As defects to be corrected.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Neurodiversity considers these as natural variations. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">507</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a common myth about people with DD?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-4.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They cannot live independently.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It's a myth that they cannot live independently.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They have diverse abilities.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Many with DD can live independently. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They can form relationships.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Many with DD can live independently. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Understanding Neurodiversity</Section>
+		<Content height="319" width="608" x="7" y="123" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding Neurodiversity</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Neurodiversity is a concept that regards neurological differences as natural variations of the human genome. These differences include conditions such as autism, ADHD, and dyslexia, which affect how individuals process information and interact with the world. Rather than viewing these as deficits, neurodiversity emphasizes understanding and celebrating the unique strengths and perspectives that these variations bring.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f16db391.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="250" y="286" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">By embracing neurodiversity, society can benefit from the diverse talents and innovative thinking of neurodivergent individuals. People with autism, for example, may excel in areas requiring attention to detail and pattern recognition. Recognizing these strengths allows for more inclusive environments where everyone can contribute meaningfully.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd9bccd1f5.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="871" x="79" y="218" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Challenges faced by neurodivergent individuals often arise from societal barriers rather than the conditions themselves. These barriers include lack of understanding, inadequate support systems, and environments that do not accommodate different needs. By addressing these issues, we can create a world where neurodivergent individuals thrive and their contributions are valued.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Ln3vzT9X1Cpeia68iZZgVG9OVEHAQJ2kIxUn85Fc.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Promoting Independence</Section>
+		<Content height="225" width="871" x="79" y="191" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Promoting Independence</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Promoting independence in individuals with developmental disabilities involves encouraging them to perform tasks on their own, even if it takes longer or is imperfect. This approach not only boosts their confidence but also fosters skill development. It is essential to balance support and independence to prevent learned helplessness and promote self-reliance.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="463" y="464" width="137" height="137" swfSizing="stage">swf/Element_target_darts.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393189-90.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="483" width="257" x="772" y="42" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Using a prompt hierarchy can effectively support individuals in achieving independence. This technique starts with minimal assistance and gradually increases support only as needed. By allowing individuals to attempt tasks independently, they learn through experience and develop essential life skills.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="579.000" y="44.583" width="66.6" height="66.6" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/Q1JXSUt20OOiDPh3DokN82uVAKJ9FeR00UITdvM9.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="490" width="215" x="0" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Adaptive tools and technologies play a significant role in promoting independence. These tools can range from simple modifications to advanced assistive devices, tailored to individual needs. With the right supports, individuals can perform tasks that were once challenging, enhancing their autonomy and quality of life.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="431.000" y="161.583" width="77" height="77" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/zD226iU9ac8ttCnE6BmcF7jrmtTRugoezjY2tpEg.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>The Role of Support Workers</Section>
+		<Content height="256" width="779" x="0" y="272" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>The Role of Support Workers</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Support workers play a crucial role in enhancing the quality of life for individuals with developmental disabilities. They are responsible for implementing person-centered plans, which focus on the individual's unique needs and preferences. By building strong relationships based on trust and understanding, support workers help individuals achieve their personal goals.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="586" y="50" width="269" height="269" swfSizing="stage">swf/Element_site_team_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393224-850.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">A key responsibility of support workers is to facilitate independence while providing necessary support. This involves using techniques like the prompt hierarchy, starting with minimal assistance, and gradually increasing support only as needed. Through this approach, support workers empower individuals to develop skills and confidence in their abilities.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_site_team_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393213-422.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="566" x="221" y="214" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Support workers also act as advocates, ensuring that individuals have access to resources and opportunities for community inclusion. They help identify barriers to participation and work to create inclusive environments where individuals can thrive. By promoting understanding and acceptance, support workers contribute to a more inclusive society.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="757" y="39" width="223" height="223" swfSizing="stage">swf/Element_site_team_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393200-701.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Community Inclusion</Section>
+		<Content height="256" width="779" x="0" y="272" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Community Inclusion</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Community inclusion is essential for enabling individuals with developmental disabilities to lead fulfilling lives. It involves integrating individuals into mainstream society, ensuring they have access to the same opportunities and experiences as others. This includes participating in community activities, accessing public services, and forming social connections.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Irxe5OZRoXetaoveB7DPlb1V1JarRmWe1rmc41eM.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="86" y="146" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Promoting community inclusion requires identifying and utilizing accessible resources within the local area. This can include recreation programs, libraries, and community centers that offer inclusive or adaptive activities. Support workers play a critical role in facilitating these connections and ensuring individuals are welcomed and accommodated.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd856672d6.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="425" x="604" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Safety and social skills are crucial for successful community inclusion. Individuals may need support in developing skills such as navigating public spaces, interacting with strangers, and managing money. Planning and preparation are key to ensuring community outings are safe and enjoyable experiences.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="251.000" y="86.583" width="77" height="77" swfSizing="stage">swf/Element_led_light_red.swf</Image>
+
+		<Video/>
+		<Background>images/bVsAeZRNVm6q9DdMAXkIVLZeCwUitaURfGub7pqC.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Community inclusion is not just about physical presence; it’s about meaningful participation and belonging. This means encouraging individuals to take on valued social roles, such as volunteering or joining clubs. Building natural support networks within the community can enhance social connections and foster a sense of belonging.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/lxHqz84QuTlOhaM7hAmqyXXmX3WqWfbKekf8oUte.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the focus of person-centered planning?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-6.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Professional opinions.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It focuses on the individual's goals and strengths. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[System efficiency.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It focuses on the individual's goals and strengths. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Individual desires and strengths.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Great! It focuses on individual desires and strengths.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What should support workers adapt to when communicating?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-6.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[A standard communication method.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Adaptation to the individual's style is key. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Their own preferred style.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Adaptation to the individual's style is key. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[The individual's communication style.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Adapt to the individual's communication style.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">906</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is an example of an adaptive communication tool?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-6.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Picture cards.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Yes! Picture cards are adaptive tools.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Complex jargon.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Picture cards are adaptive tools. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Condescending tone.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Picture cards are adaptive tools. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Behavior as Communication</Section>
+		<Content height="225" width="1030" x="0" y="376" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Behavior as Communication</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Behavior is a powerful form of communication, especially for individuals who may have limited verbal skills. When traditional communication methods are not available or effective, behavior becomes a primary way to express needs, desires, and emotions. Recognizing this helps caregivers and support workers respond appropriately to the underlying message rather than just the behavior itself.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Eygcbp3b88FaqS22vcGLJrzSGzN7lpH5qHsbiDHF.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Challenging behaviors often signal unmet needs or frustrations, such as pain, boredom, or sensory overload. By identifying triggers and understanding the context, support workers can develop strategies to address these needs. This approach not only improves behavior but also enhances the individual's overall well-being and quality of life.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="380" y="241" width="293" height="293" swfSizing="stage">swf/Element_handshake_a2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393248-163.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Interpreting behavior as communication requires patience and a willingness to investigate the root causes. Support workers should observe patterns, consider environmental factors, and engage in problem-solving to decode what the individual is trying to convey. This empathetic approach fosters a supportive environment where individuals feel heard and understood.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/I2uobhXs4KbpYUyJZxCcEvKiSBnu4yrIh8MPleMz.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1003</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="566" x="221" y="198" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Training in behavior analysis and communication strategies can equip support workers with the skills needed to interpret and respond to behaviors effectively. By using positive reinforcement, teaching alternative communication methods, and providing a supportive environment, challenging behaviors can be transformed into opportunities for growth. This proactive approach benefits both the individual and the support team.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="757" y="39" width="223" height="223" swfSizing="stage">swf/Element_handshake_a2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393235-243.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>4</Template>
+		<Section>Adaptive Communication Techniques</Section>
+		<Content height="350" width="566" x="221" y="171" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Adaptive Communication Techniques</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Adaptive communication techniques are vital tools for individuals who have difficulties with traditional speech. These methods include both low-tech options, like picture cards and communication boards, and high-tech solutions, such as speech-generating devices and communication apps on tablets. The goal is to ensure that everyone has the ability to express their needs and thoughts effectively, regardless of their verbal abilities.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/YDHBUjTTJf6JlYlSIvFsCkNyXi2OFXEoOq7rtJ4B.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1101</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="859" x="86" y="41" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Augmentative and Alternative Communication (AAC) systems are designed to supplement or replace speech for individuals with communication challenges. AAC can be as simple as using gestures or as advanced as utilizing sophisticated devices that generate speech. These systems empower individuals to communicate more independently and engage meaningfully with those around them.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="380" y="241" width="293" height="293" swfSizing="stage">swf/Element_handshake_a2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393269-192.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1102</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="462" x="0" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Support workers play a critical role in facilitating the use of adaptive communication techniques. They must be familiar with the specific tools an individual uses and ensure these aids are always accessible and functional. By modeling the use of these tools and encouraging their consistent application, support workers help individuals gain confidence in their communication abilities.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="563" y="83" width="398" height="398" swfSizing="stage">swf/Element_handshake_a2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393258-58.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Person-Centered Planning</Section>
+		<Content height="544" width="287" x="742" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Person-Centered Planning</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-centered planning is a holistic approach that places the individual at the forefront of decision-making. It emphasizes understanding the unique desires, strengths, and needs of each person. This approach empowers individuals by focusing on their personal goals rather than solely on professional or systemic objectives.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="357.667" y="15.667" width="20" height="18" swfSizing="stage">swf/Element_led_light_white.swf</Image>
+
+		<Video/>
+		<Background>images/66ffe75671528.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="317" x="4" y="71" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The process involves collaboration among the individual, their family, friends, and professionals, forming a supportive network. This team works together to identify what is important to and for the individual. The aim is to create a balanced plan that ensures safety and well-being while respecting personal preferences and aspirations.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="776.000" y="42.583" width="97.4" height="97.4" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+		<Image_1 x="776.000" y="42.583" width="97.4" height="97.4" swfSizing="stage">swf/Element_time_clock_white.swf</Image_1>
+
+		<Video/>
+		<Background>images/mLyOaAQEyKhTW4qFskKYMEs9fCKOAtJ4oP01z48B.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="546" width="251" x="0" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">A well-crafted person-centered plan typically includes sections like an introduction, vision for the future, strengths, support needs, and desired outcomes. This document serves as a living agreement that evolves with the individual's changing goals and circumstances. It is reviewed regularly to ensure it remains relevant and effective.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/rUAmoUne5ZXAaE2pHg2fcOWXckjvQPXFjzdveauF.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1203</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Direct support workers play a crucial role in implementing person-centered plans. They gather insights about the individual's preferences and communicate these to the planning team. By focusing on the individual's capacities and fostering their strengths, support workers help realize the person's vision for a fulfilling life.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/Element_target_roadmap_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746393281-275.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">13</screen_id>
+		<Template>4</Template>
+		<Section>Conclusion and Resources</Section>
+		<Content height="256" width="859" x="170" y="77" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Conclusion and Resources</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The conclusion of our course on understanding developmental disabilities emphasizes the importance of continued learning and application of person-centered practices. By integrating the knowledge gained, support workers can enhance the quality of life for individuals with developmental disabilities. This involves recognizing the unique strengths and needs of each person and tailoring support accordingly.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67115180865e8.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="440" x="2" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Resources play a crucial role in supporting individuals with developmental disabilities. Access to reliable information and tools can empower both support workers and individuals themselves. Utilizing resources such as fact sheets, personal stories, and instructional videos can provide valuable insights and foster a deeper understanding.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="754.000" y="174.583" width="62" height="62" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/6L8i68wX7ud1ogiqbZrTdqONT2stSJVyLKUFke58.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1030" x="0" y="102" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The journey of promoting inclusion and independence is ongoing. As societal awareness grows, so does the availability of inclusive opportunities and adaptive technologies. Embracing these advancements can significantly improve the ability of individuals with developmental disabilities to participate fully in community life.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e8b9a004.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1303</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What role do support workers play in community inclusion?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI010" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Facilitating access to resources.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! They facilitate access to resources.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Limiting engagement.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. They help individuals access community resources. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Isolating individuals.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. They help individuals access community resources. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1304</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How should behavior be viewed in communication?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI011" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As disruptive only.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Behavior is a form of communication. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As signals of unmet needs.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Well done! Behavior often signals unmet needs.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As random actions.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Behavior is a form of communication. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1305</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a goal of promoting independence?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI012" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Doing everything for them.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Independence involves using minimal support. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Avoiding all risks.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Independence involves using minimal support. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Using least intrusive support.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Right! Use the least intrusive support necessary.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">14</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">15</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="608" width="791" x="4" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Understanding Developmental Disabilities</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Introduction to Developmental Disabilities</li><li>Common Myths and Facts</li><li>Person-Centered Practices</li><li>Effective Communication Strategies</li><li>Understanding Neurodiversity</li><li>Promoting Independence</li><li>The Role of Support Workers</li><li>Community Inclusion</li><li>Behavior as Communication</li><li>Adaptive Communication Techniques</li><li>Person-Centered Planning</li><li>Conclusion and Resources</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="550" y="97" start="0" stop="400" width="519" height="780" mirror="true">video/Sakura_end.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall9.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>15</screen_scorm_finish>
+		<scorm_frame>14</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Understanding Developmental Disabilities]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

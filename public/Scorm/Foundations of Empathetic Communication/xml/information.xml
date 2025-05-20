@@ -1,0 +1,991 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Welcome &amp; Introduction" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Understanding Empathetic Communication" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Active Listening" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Validation of Feelings" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Person-Centered Language" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Non-Verbal Communication" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Barriers to Empathetic Communication" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Applying Empathetic Communication" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Conclusion &amp; Commitment to Practice" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="484" width="666" x="363" y="70" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Foundations of Empathetic Communication</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Welcome & Introduction</li><li>Understanding Empathetic Communication</li><li>Active Listening</li><li>Validation of Feelings</li><li>Person-Centered Language</li><li>Non-Verbal Communication</li><li>Barriers to Empathetic Communication</li><li>Applying Empathetic Communication</li><li>Conclusion & Commitment to Practice</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="105" start="0" stop="400" width="349" height="544" mirror="false">video/woman40s_Hello.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall15.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Welcome &amp; Introduction</Section>
+		<Content height="319" width="779" x="250" y="212" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Welcome &amp; Introduction</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The introductory module begins with a warm welcome from the facilitator, who sets a positive tone for the session. Participants are encouraged to introduce themselves, fostering a sense of community and openness. An engaging icebreaker activity follows, where everyone shares a word that comes to mind when they think of effective communication. This activity not only breaks the ice but also highlights the diverse perspectives within the group. The facilitator emphasizes the importance of empathetic communication, setting the stage for the learning journey ahead.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/aIy70ITzqipgswG1dc90rh1Gp3p8oGohqaeVdgj8.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="452" width="462" x="0" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The facilitator outlines the course objectives, providing a clear roadmap of what participants can expect to learn. Empathetic communication is defined as a crucial skill for supporting individuals with developmental disabilities. Participants will aim to understand and practice core elements of empathetic communication throughout the course. The facilitator stresses the significance of these skills in building stronger, more supportive relationships. This overview helps participants align their expectations and prepares them for the upcoming modules.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="563" y="83" width="398" height="398" swfSizing="stage">swf/Element_person_microphone_speaking.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746734500-561.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="1022" x="7" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">To create a safe and respectful learning environment, the facilitator establishes ground rules for discussion. These rules ensure that all participants feel comfortable sharing their thoughts and experiences. Emphasis is placed on active listening and respectful engagement during discussions. This foundational step is crucial for fostering an inclusive atmosphere where everyone can contribute meaningfully. By setting these expectations, the facilitator encourages a collaborative and supportive learning experience.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="225.000" y="142.583" width="91" height="91" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+		<Image_1 x="225.000" y="142.583" width="91" height="91" swfSizing="stage">swf/Element_time_clock_white.swf</Image_1>
+
+		<Video/>
+		<Background>images/VHNU6jdWSvyH3MFfjQxWLJQZJHyJmJt3QyBG6RJE.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Understanding Empathetic Communication</Section>
+		<Content height="381" width="779" x="250" y="181" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding Empathetic Communication</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Empathetic communication is a fundamental skill that involves deeply understanding another person's perspective and expressing that understanding through our interactions. It is more than just listening; it requires us to connect with the emotions and experiences of others. This type of communication is especially crucial when supporting individuals with developmental disabilities, as it helps in building trust and fostering a supportive environment. By distinguishing empathy from sympathy, we can better engage with others on a meaningful level. Empathy involves feeling with someone, while sympathy is feeling for someone, which can sometimes create a barrier rather than a bridge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/VvuTdWpCWDl1u3vRiTYLfmW6wq6w9Z7qkbrhSquQ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="0" y="268" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Understanding empathetic communication begins with recognizing the benefits it brings to our interactions. It builds trust and rapport, making individuals feel valued and understood. This approach can significantly reduce anxiety and distress, encouraging cooperation and engagement. Moreover, empathetic communication promotes self-advocacy and boosts self-esteem, empowering individuals to express their needs and preferences. By practicing empathy, we can also de-escalate challenging situations, leading to better outcomes for everyone involved.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/2EDrPClX3blofO2ttnPOiPyS6xmlb6gIP7vqUtLn.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="871" x="79" y="171" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Empathetic communication is deeply connected to core values such as respect, dignity, and person-centered support. When we communicate empathetically, we acknowledge the worth of each individual and their unique experiences. This approach aligns with the principles of person-centered care, where the individual's preferences and needs are prioritized. Through empathetic communication, we can create an environment that respects and upholds the dignity of those we support. It is a continuous journey of learning and adapting to better meet the needs of those around us.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/OsSITJGYvgsRNeGO4HmL9d6yx2unhXT7dDmVJGQR.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Active Listening</Section>
+		<Content height="350" width="779" x="250" y="196" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Active Listening</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Active listening is a crucial skill that involves fully concentrating on what the speaker is saying, rather than passively hearing the words. It requires the listener to pay attention not only to the spoken words but also to the emotions and meanings behind them. This means being attentive to the speaker's tone, pace, and non-verbal cues, such as facial expressions and body language. Active listening fosters better understanding and helps build trust and rapport between individuals. It is especially important in contexts where clear and empathetic communication is needed, such as in supporting individuals with developmental disabilities.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746734534-633.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="0" y="268" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">One of the key components of active listening is giving undivided attention to the speaker. This involves minimizing distractions, such as putting away phones and turning off other devices that may interrupt the conversation. Positioning oneself to listen effectively is also important, which might mean turning away from a computer or other tasks to face the speaker directly. By doing so, the listener shows respect and genuine interest in what the speaker has to say. This creates a more conducive environment for open and honest communication.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/eUX4CmIoqXMpGtUXdmzugh5vM6x1Dminqx9f7ODr.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="1023" x="4" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Using appropriate eye contact is another essential aspect of active listening, though it must be adapted to individual preferences and cultural norms. Some individuals may find direct eye contact uncomfortable, so it's important to gauge what feels comfortable for the person speaking. The listener should aim to look towards the speaker to show engagement, even if not directly into their eyes. This non-verbal cue can significantly enhance the connection between the speaker and listener. It signals attentiveness and helps convey empathy and understanding.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/IsDcOP2alvw8vmHkysN4hAk4WyNDtb7ksRLqv2lH.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">403</screen_id>
+		<Template>4</Template>
+		
+		<Content height="515" width="466" x="563" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Being aware of non-verbal cues, both from the speaker and oneself, is critical in active listening. Observing the speaker's body language, facial expressions, and tone can provide valuable insights into their emotions and thoughts. At the same time, listeners should be mindful of their own non-verbal signals, ensuring they align with the verbal message being conveyed. For instance, open posture and nodding can indicate agreement and encouragement. This alignment between verbal and non-verbal communication helps prevent misunderstandings and reinforces the listener's commitment to understanding the speaker.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="520.667" y="86.667" width="15.4" height="16.6" swfSizing="stage">swf/Element_led_light_white.swf</Image>
+
+		<Video/>
+		<Background>images/671150934edc4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">404</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="871" x="79" y="171" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Avoiding interruptions is a fundamental practice in active listening, allowing the speaker to express their thoughts fully. Even if the speaker takes time to articulate their message or uses assistive communication devices, it's important to be patient and resist the urge to finish their sentences. This patience demonstrates respect for the speaker's pace and communication style. Providing verbal and non-verbal feedback, such as nodding or using encouragers like 'Uh-huh' or 'I see,' also supports the speaker. These actions affirm the listener's engagement and encourage the speaker to share more openly.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746734521-299.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Validation of Feelings</Section>
+		<Content height="288" width="779" x="0" y="257" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Validation of Feelings</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Validation of feelings is a crucial component of empathetic communication. It involves acknowledging and accepting another person's emotions without judgment. This practice helps individuals feel understood and valued, which can significantly enhance their emotional well-being. By recognizing emotions, we communicate that their feelings are important and worthy of attention. This approach fosters a supportive and trusting environment, essential for effective communication.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/k2eAeJv31P89qQWYSSXcqFViwC2nLOpcBly8GLOE.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="502" width="231" x="798" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">To validate someone's feelings, it is important to listen actively and attentively. This means focusing on the speaker, observing their non-verbal cues, and responding appropriately. Validation does not mean agreeing with everything the person says, but rather understanding their perspective. It involves acknowledging their emotions and expressing empathy. This can be done through verbal affirmations or simply being present and attentive.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="468.000" y="436.583" width="200" height="200" swfSizing="stage">swf/Element_dog_puppy.swf</Image>
+
+		<Video/>
+		<Background>images/PDN7YTWzTs6VOEW5fc1Yt5XlMBC2P4Eq3jwux218.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="514" x="515" y="145" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Avoiding dismissive statements is key to effective validation. Phrases like 'it's not a big deal' or 'you'll get over it' can invalidate a person's feelings. Instead, use language that acknowledges their emotions, such as 'I can see why you feel that way.' This approach helps to build rapport and trust. It shows that you respect their feelings and are willing to support them.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/6711503b78e48.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="871" x="79" y="218" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Validation also involves separating the emotion from the behavior. It's possible to understand why someone feels a certain way without condoning their actions. For example, you might say, 'I understand you're upset, but let's find a better way to express that.' This distinction is important in maintaining boundaries while still being empathetic. It allows for constructive communication and problem-solving.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746734561-724.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="779" x="0" y="284" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Incorporating validation into everyday interactions requires practice and self-awareness. Reflecting on your communication style and seeking feedback can help improve your validation skills. It's important to be patient and open-minded, as everyone experiences emotions differently. By committing to ongoing learning and reflection, you can enhance your ability to validate others' feelings. This not only benefits your relationships but also contributes to a more empathetic and understanding community.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746734548-451.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the main objective of empathetic communication?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To understand others' perspectives]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Understanding others is key.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To provide quick solutions]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Remember, it's about understanding perspectives. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To share personal stories]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Remember, it's about understanding perspectives. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">Why is empathy different from sympathy?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Sympathy involves shared experiences]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Empathy is about shared feelings. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Empathy involves shared understanding]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Well done! Empathy involves shared understanding.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Empathy means feeling sorry]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Empathy is about shared feelings. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">507</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a benefit of empathetic communication?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It builds trust and rapport]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Great! It builds trust and rapport.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It creates confusion]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Empathy builds trust. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It increases anxiety]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Empathy builds trust. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Person-Centered Language</Section>
+		<Content height="467" width="407" x="86" y="77" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Person-Centered Language</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-centered language is a communication approach that emphasizes the humanity and individuality of each person. It involves using terminology that places the person before their disability, highlighting their identity beyond any limitations. This approach respects the preferences of individuals, acknowledging that some may prefer identity-first language while others favor person-first language. The key is to prioritize the person over the diagnosis, ensuring that communication reflects respect and dignity. By doing so, we foster an environment where individuals feel valued and understood.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="609" y="132" width="367" height="367" swfSizing="stage">swf/Element_person_microphone_speaking.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746734587-411.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="0" y="268" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Using respectful, age-appropriate terminology is crucial in person-centered language. It involves avoiding childlike language when addressing adults and using terms that the individual prefers. This approach also includes steering clear of outdated or offensive terms that may carry negative connotations. By focusing on language that respects the individual's age and preferences, we promote an atmosphere of equality and respect. Such language choices can significantly impact how individuals perceive themselves and are perceived by others.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="586" y="50" width="269" height="269" swfSizing="stage">swf/Element_person_microphone_speaking.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746734573-309.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="390" width="501" x="0" y="84" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Person-centered language also involves avoiding unnecessary medicalized language, especially when it detracts from the person's identity. The focus should be on the person, not just their diagnosis or symptoms. Using plain language that highlights the individual's abilities alongside their support needs is essential. This approach acknowledges their strengths and talents, ensuring that challenges do not define them. By emphasizing abilities, we encourage a more holistic understanding of the person.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/6711506f49885.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">603</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Highlighting a person's strengths and talents is a core aspect of person-centered language. This involves recognizing and celebrating what individuals can do, rather than focusing solely on their limitations. By acknowledging their preferences and abilities, we create a more balanced and positive narrative. This approach empowers individuals, promoting self-esteem and encouraging self-advocacy. It shifts the focus from what individuals cannot do to what they can achieve.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/aVPJ2nmV00pgHVAltbR77Oayd1Ao1scKngK0rYEe.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">604</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="1030" x="0" y="93" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Incorporating person-centered language into everyday interactions requires mindfulness and a commitment to ongoing learning. It involves being open to feedback and willing to adapt language based on individual preferences. Practicing this approach helps build stronger, more respectful relationships. It also requires a conscious effort to challenge stereotypes and assumptions, fostering a more inclusive environment. Through consistent practice, person-centered language becomes a natural part of communication.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e4707f3a.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Non-Verbal Communication</Section>
+		<Content height="319" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Non-Verbal Communication</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Non-verbal communication often speaks louder than words, especially in interactions with individuals with developmental disabilities. It encompasses various elements such as facial expressions, body language, gestures, and eye contact, all of which convey emotions and intentions. Understanding these cues is crucial as they can either reinforce or contradict verbal messages. For instance, a warm smile paired with a gentle tone can convey empathy and understanding. Conversely, crossed arms and a frown might suggest disinterest or disapproval, regardless of the spoken words.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/MoG8TGIo6AzuiO1h2r7rgbC88MhY0pEpv7Qn7sON.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Facial expressions are a fundamental aspect of non-verbal communication, capable of expressing a wide range of emotions without a single word. A smile can indicate friendliness and openness, while a furrowed brow might suggest confusion or concern. It's important to ensure that facial expressions align with verbal communication to avoid sending mixed signals. In interactions with individuals with developmental disabilities, maintaining a calm and reassuring expression can help create a supportive atmosphere. This alignment fosters trust and encourages open communication.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fe3aeb3e82.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="338" x="352" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Body language plays a significant role in how messages are perceived, often revealing more than the spoken word. Open body language, such as uncrossed arms and a relaxed posture, signals receptiveness and attentiveness. In contrast, closed body language, like turning away or crossing arms, can be perceived as defensive or uninterested. Being mindful of one's posture and gestures can greatly enhance the effectiveness of communication. For individuals with developmental disabilities, clear and supportive body language can make interactions more comfortable and engaging.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="295.667" y="2.667" width="831" height="476" swfSizing="stage">swf/element_sun_rays_divine.swf</Image>
+
+		<Video/>
+		<Background>images/WAOrfQIdfLg9o3Rnl0AAPHgoRNdzAN6ncanh9Zgr.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">703</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="859" x="170" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Gestures, both intentional and subconscious, add another layer to non-verbal communication. Simple gestures like nodding can indicate agreement or understanding, while hand movements can emphasize key points. However, it's essential to be aware of cultural differences, as gestures may have varying interpretations. In a multicultural setting, being sensitive to these differences is crucial to avoid misunderstandings. Thoughtful use of gestures can enhance clarity and help convey messages more effectively.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_chat_bubble_talk2_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746734613-834.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">704</screen_id>
+		<Template>4</Template>
+		
+		<Content height="483" width="462" x="0" y="41" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Eye contact is a powerful tool in non-verbal communication, capable of conveying attention, confidence, and sincerity. However, it's important to consider individual preferences and cultural norms, as direct eye contact may be uncomfortable for some. In interactions with individuals with developmental disabilities, gauging comfort levels and adjusting eye contact accordingly is key. A gentle gaze can show interest and empathy, while avoiding eye contact might be perceived as disinterest. Balancing eye contact appropriately helps build rapport and fosters a sense of connection.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="563" y="83" width="398" height="398" swfSizing="stage">swf/Element_chat_bubble_talk2_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746734600-158.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>Barriers to Empathetic Communication</Section>
+		<Content height="288" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Barriers to Empathetic Communication</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Barriers to empathetic communication often stem from preconceived notions about individuals with developmental disabilities. These preconceptions can manifest as stereotypes or assumptions about a person's capabilities or understanding. For instance, one might mistakenly believe that a non-verbal person cannot comprehend complex information. Such biases can hinder effective communication and support. Overcoming these barriers requires education and a focus on the individual rather than the disability.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/VyuZgjAZywRjXpep1UFZVQdLpadIyjLRzJZuX95R.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="544" x="0" y="118" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Environmental distractions can significantly impede empathetic communication. A noisy or visually cluttered setting can make it challenging to focus on the person you are communicating with. For example, trying to have a meaningful conversation in a busy room can lead to misunderstandings. To mitigate this, it's essential to choose appropriate settings and minimize controllable distractions. Creating a calm and focused environment can enhance the quality of communication.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/671150b175670.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="508" x="521" y="117" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Time pressures are another common barrier to empathetic communication. In fast-paced environments, there may be a temptation to rush conversations or cut people off. This can lead to missed opportunities for understanding and connection. Prioritizing time for meaningful interactions and being present in the moment can help overcome this barrier. Scheduling dedicated time for communication can foster better relationships and understanding.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67115057ba0d4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">803</screen_id>
+		<Template>4</Template>
+		
+		<Content height="452" width="462" x="0" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Focusing solely on tasks rather than building relationships can also hinder empathetic communication. When interactions are viewed as purely functional, the opportunity to connect on a personal level is lost. For example, speaking to someone only to give instructions neglects the relational aspect of communication. Intentionally building rapport and viewing communication as key to task success can transform these interactions. This approach emphasizes the importance of seeing the person beyond the task.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ZP4VfFVwKJ5jHRddanfcjKBj2XQSXEXCFW6jOEcv.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">804</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="779" x="250" y="254" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Personal stress or burnout can severely impact one's ability to communicate empathetically. When overwhelmed, it's challenging to maintain patience and understanding. This can result in irritable or dismissive responses, which can damage relationships. Recognizing personal limits and practicing self-care are crucial for maintaining empathetic communication. Seeking support and using mindfulness techniques can help manage stress and improve communication quality.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/BNyiNwLcXt05ciA8KwDxyd9Q1HcaErq7fL4iNK0K.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Applying Empathetic Communication</Section>
+		<Content height="350" width="779" x="250" y="196" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Applying Empathetic Communication</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Applying empathetic communication involves a conscious effort to understand and connect with individuals on a deeper level. It requires taking the time to build rapport and show genuine interest in the person beyond immediate tasks. Recognizing each individual's unique communication style is crucial, whether it involves verbal, non-verbal, or assistive technology. This approach encourages being a 'communication detective,' observing and interpreting cues to enhance understanding. Flexibility in adjusting communication strategies based on feedback is key to ensuring effective interaction.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/0MNKOkOKj7b3VBo8ahiDQucnl35CFaWXxMoiM22i.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="859" x="170" y="73" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Practicing perspective-taking is an essential component of empathetic communication. It involves regularly considering the situation from the other person's viewpoint, asking oneself how they might be feeling or what their unmet needs could be. This practice helps in understanding sensory sensitivities, cognitive processing, and past experiences that may influence their behavior. Reflecting on one's own communication patterns is equally important, fostering self-awareness and growth. After interactions, especially challenging ones, it is beneficial to evaluate what went well and what could be improved.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746734626-188.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="859" x="170" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Incorporating empathetic communication strategies into daily interactions can significantly enhance relationships and outcomes. It is not just about perfecting techniques but about making authentic connections. Participants are encouraged to apply these strategies in realistic scenarios, such as de-escalating agitation or understanding non-verbal requests. Group activities provide opportunities to discuss and share insights on empathetic responses. The goal is to create a supportive environment where individuals feel heard, understood, and valued.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/UxhrOxduBkPaEGxewx0Ssk9iDDTXUZF079mYUbQg.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key component of active listening?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-2.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Giving undivided attention]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Undivided attention is crucial.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Interrupting frequently]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Focus on undivided attention. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Avoiding eye contact]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Focus on undivided attention. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How should you respond to someone's feelings?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-2.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Dismiss their feelings]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Validation is key. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Validate without judgment]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Exactly! Validate without judgment.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Agree with their actions]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Validation is key. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What does person-centered language emphasize?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-2.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Medical terminology]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>No, it focuses on the person. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[The disability first]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>No, it focuses on the person. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[The person first]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Yes! It emphasizes the person first.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Conclusion &amp; Commitment to Practice</Section>
+		<Content height="412" width="566" x="221" y="140" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Conclusion &amp; Commitment to Practice</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">As we conclude this course, it's essential to reflect on the journey we've undertaken together. The skills of empathetic communication are not just tools but pathways to creating meaningful connections. By understanding and practicing these skills, we open doors to more profound interactions and supportive environments. It's important to remember that these skills are not static; they evolve with practice and reflection. Each interaction is an opportunity to learn and grow, enhancing our ability to connect with others empathetically.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/69uOpBjNSMxe42GV2lAqY111xLf1Dm6MTvddnk6v.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="859" x="170" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Commitment to practice is crucial in embedding these skills into our daily lives. Identifying specific areas for improvement allows us to focus our efforts and measure progress. This commitment is a personal journey, unique to each individual, shaped by their experiences and interactions. Setting realistic goals and seeking feedback can significantly enhance our learning process. By doing so, we not only improve our communication skills but also contribute to more inclusive and understanding communities.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/WVFGEtC4saHQ7YDEadnhRkWKQemZSYpNVH5njJxd.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="462" x="0" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Ongoing learning is a vital component of mastering empathetic communication. The world is ever-changing, and so are the dynamics of communication. Staying informed about new strategies and insights can enrich our understanding and application of these skills. Engaging with resources such as books, workshops, and peer discussions can provide fresh perspectives and inspiration. This continuous learning mindset ensures that our communication remains relevant and effective in diverse settings.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Gr0RU6rc9uzVGNJFJnzVW8m8Y2VKr9C6HMIb45Vk.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1003</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="859" x="170" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Self-reflection is a powerful tool in the journey of empathetic communication. After each interaction, taking a moment to reflect on what went well and what could be improved fosters growth. This practice helps us become more aware of our communication patterns and their impact on others. It encourages us to be mindful of our intentions and the messages we convey. Through reflection, we can align our actions with our values, enhancing our ability to communicate empathetically.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746734639-696.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1004</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="779" x="0" y="284" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">As we part ways, it's important to carry forward the lessons learned and the connections made. The impact of empathetic communication extends beyond individual interactions; it influences the broader community. By committing to practice and continuous improvement, we contribute to a culture of empathy and understanding. This course is just the beginning; the real journey lies in applying these skills in everyday life. Together, we can make a difference, one conversation at a time.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/zkSTAcexbOBy5lTAn4H0pT24R0pdyXX1hSG80ffj.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="515" width="805" x="107" y="34" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Foundations of Empathetic Communication</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Welcome & Introduction</li><li>Understanding Empathetic Communication</li><li>Active Listening</li><li>Validation of Feelings</li><li>Person-Centered Language</li><li>Non-Verbal Communication</li><li>Barriers to Empathetic Communication</li><li>Applying Empathetic Communication</li><li>Conclusion & Commitment to Practice</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="744" y="143" start="0" stop="400" width="325" height="507" mirror="true">video/woman40s_well_done.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall3.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>12</screen_scorm_finish>
+		<scorm_frame>11</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Foundations of Empathetic Communication]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

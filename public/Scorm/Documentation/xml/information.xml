@@ -1,0 +1,459 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Importance of Documentation" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Writing Effective Progress Notes/Service Logs" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Incident Reporting" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Timekeeping and Scheduling" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="328" width="773" x="74" y="83" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Documentation &amp; Administrative Tasks</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Importance of Documentation</li><li>Writing Effective Progress Notes/Service Logs</li><li>Incident Reporting</li><li>Timekeeping and Scheduling</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="803" y="215" start="0" stop="400" width="266" height="434" mirror="true">video/Jack_start.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall20.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Importance of Documentation</Section>
+		<Content height="600" width="462" x="567" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Importance of Documentation</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Accurate documentation is a fundamental aspect of professional practice, serving multiple critical functions. It is a legal requirement, ensuring compliance with regulations and standards within the industry. Documentation provides a basis for billing and funding, demonstrating the services provided and justifying the financial aspects of care. Furthermore, it tracks client progress towards Individual Service Plan (ISP) goals, offering a clear record of achievements and areas needing attention. This systematic approach motivates staff to engage seriously with documentation, recognizing its broader implications for service delivery and accountability.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ScVbmVQwZXxCgv4aGWRHMefKhjVI2BZY3sX4pUVG.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="577" width="407" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Timely documentation is essential for maintaining continuity of care among team members. It acts as a communication tool, ensuring that all staff are informed about client progress and any changes in their care plans. This shared understanding is crucial for coordinated efforts and effective teamwork, fostering an environment where client needs are consistently met. By keeping detailed records, staff can refer back to previous interactions and decisions, aiding in informed future planning. This proactive approach not only benefits the clients but also enhances the efficiency and effectiveness of the care team.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/RJXACDpbSj2ZUmUuxlNqtcxM3oOfRjaPStoH339M.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="552" x="470" y="69" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The process of documentation is integral to future planning and service improvement. By analyzing documented data, organizations can identify trends, predict client needs, and adjust strategies accordingly. This forward-thinking approach enables agencies to allocate resources more effectively and develop targeted interventions. Accurate records also serve as a basis for training new staff, providing them with valuable insights into client histories and organizational practices. In this way, documentation supports both immediate and long-term goals, contributing to the overall success and sustainability of the services provided.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114ecfc6f8d.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Writing Effective Progress Notes/Service Logs</Section>
+		<Content height="544" width="462" x="567" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Writing Effective Progress Notes/Service Logs</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Writing effective progress notes and service logs is a fundamental skill in professional settings. These documents must focus on objective, factual, and behavioral language rather than subjective opinions or interpretations. By accurately describing what was observed, said, and done, these notes provide a clear picture of client activities and responses. They are essential for tracking progress towards specific Individual Service Plan (ISP) goals. Such documentation ensures that all team members are informed and can provide consistent care.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/L3sVNzDlHx0Hp9BsODqSRPG44UDGZo7qSdNM6ySs.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="566" x="221" y="167" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The clarity and utility of progress notes depend heavily on their adherence to agency templates and formats. Professional language and legibility, especially when notes are handwritten, are crucial for effective communication. Accurate documentation is not only a best practice but also a requirement for legal and funding purposes. Ensuring timely completion, ideally by the end of each shift, is critical for maintaining the flow of information. Well-written notes can significantly enhance the quality of care provided to clients.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="757" y="39" width="223" height="223" swfSizing="stage">swf/Element_flowchart_icon_3.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746445707-935.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="515" width="407" x="585" y="35" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Objective writing in progress notes involves detailing the activities performed and the client's participation and response. This approach helps in identifying both the progress made and the challenges encountered in achieving ISP goals. The use of specific and factual language helps in avoiding ambiguity and misinterpretation. By consistently applying these principles, staff can produce documentation that is both useful and compliant. The importance of this skill cannot be overstated, as it directly impacts client care and agency operations.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/Element_flowchart_icon_3.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746445692-531.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Incident Reporting</Section>
+		<Content height="381" width="566" x="221" y="156" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Incident Reporting</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Incident reporting is a structured process designed to capture all details of significant events within an organization. These events can include client injuries, medication errors, or behavior incidents. The primary goal is to ensure that every aspect of the incident is documented with precision. This documentation serves as a formal record, which is crucial for legal compliance and organizational accountability. Prompt and accurate incident reporting can facilitate effective follow-up actions and risk management strategies.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/BOvejLH1Sk4rFEABDg1J60A2vUx9GTgMHHhFquZy.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="452" width="407" x="585" y="66" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">To effectively report an incident, one must understand the specific forms and protocols used by their agency. Each agency has its own set of forms that must be filled out to document incidents. A crucial part of this process is providing a factual description of what occurred. This includes listing any witnesses who were present and detailing the actions taken in response to the incident. Accurate and detailed reporting ensures that all necessary information is captured for future reference.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd936da9b0.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="608" width="288" x="586" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Timeliness is a critical component of incident reporting. Reports must be submitted within specific timeframes to ensure that the information is still fresh and relevant. Immediate reporting to a supervisor is often required to initiate any necessary investigation or follow-up. Adhering to submission timelines is essential to maintain the integrity of the reporting process. This practice helps organizations manage risks and improve safety protocols effectively.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="9.667" y="38.352" width="80.6" height="74.4" swfSizing="stage">swf/Element_birds_flying_away.swf</Image>
+
+		<Video/>
+		<Background>images/7cNGyPpvgZc07v1Ju72nClgvMQg2T8kPOl6TrjFb.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Timekeeping and Scheduling</Section>
+		<Content height="319" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Timekeeping and Scheduling</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Accurate timekeeping is essential for ensuring that employees are compensated fairly and that staffing needs are met effectively. The use of the agency's system, whether a traditional timesheet or an electronic system, allows for precise tracking of hours worked. This process involves recording start and end times for shifts, as well as any breaks taken during the workday. Adhering to these procedures helps prevent discrepancies in payroll and ensures compliance with labor laws. Moreover, it supports the organization's ability to maintain proper staffing levels and operational efficiency.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/zhyW7Rvh6lcKxtCjRTJhZFIeIJMI6F3vDYNhkqG2.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="859" x="170" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Understanding the rules regarding breaks, overtime, and shift changes is crucial for all staff members. Breaks are typically structured to ensure that employees have adequate rest periods, which contribute to overall productivity and job satisfaction. Overtime rules are in place to manage workloads and compensate employees for additional hours worked beyond their scheduled shifts. Shift changes may occur due to various reasons, such as staff shortages or unforeseen circumstances, and require clear communication and documentation. Familiarity with these guidelines helps staff navigate their responsibilities and maintain a balanced work-life dynamic.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/D0rCqVYl1SyocrdBu2m25BEn7WvYNAWgjEoRMjl9.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="546" width="407" x="86" y="37" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Assigned schedules and responsibilities for each shift are clearly outlined to ensure that all staff members are aware of their duties. This clarity helps in maintaining a seamless workflow and minimizes the risk of errors or oversights in daily operations. Employees are expected to understand their roles and the tasks they are responsible for during their shifts. Clear scheduling also aids in coordinating team efforts and achieving organizational goals. Ensuring that everyone is on the same page enhances teamwork and contributes to a positive work environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/dF41lZKTTUIYeM6kLJX75t7wlirAMMnCd5Ik1mVA.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="515" width="462" x="0" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The process for requesting time off and reporting planned or unplanned absences is a critical component of timekeeping and scheduling. Employees must follow specific procedures to request leave, ensuring that their absence does not disrupt the workflow or staffing levels. This process typically involves submitting a request through an established system or directly to a supervisor. In cases of unplanned absences, such as illness, staff are required to inform their supervisors as soon as possible. Proper communication and adherence to these procedures help maintain operational continuity and allow for timely adjustments in staffing.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746445736-151.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		
+		<Content height="608" width="407" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Accurate timekeeping and scheduling are not only about tracking hours and shifts but also about fostering a culture of accountability and responsibility. By ensuring that all staff members understand and adhere to these practices, organizations can build trust and reliability within their teams. This culture supports fair treatment of employees, compliance with legal requirements, and efficient management of resources. It also empowers staff to take ownership of their schedules and commitments, leading to greater job satisfaction and organizational success. Ultimately, effective timekeeping and scheduling contribute to a harmonious and productive work environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746445722-749.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is one key reason for maintaining accurate documentation?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It is mainly for decoration.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Accurate documentation is crucial for continuity of care. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It ensures continuity of care.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Documentation ensures continuity of care.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It is used only for audits.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Accurate documentation is crucial for continuity of care. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a feature of well-written progress notes?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They ignore client progress.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Objective language is a key feature. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They reflect personal opinions.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Objective language is a key feature. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They use objective language.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Objective language is essential.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">507</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the importance of immediate incident reporting?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It is ignored by supervisors.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Immediate reporting aids in follow-up and risk management. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It delays investigation.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Immediate reporting aids in follow-up and risk management. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It aids prompt follow-up.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It helps in prompt follow-up and risk management.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="359" width="756" x="273" y="130" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Documentation &amp; Administrative Tasks</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Importance of Documentation</li><li>Writing Effective Progress Notes/Service Logs</li><li>Incident Reporting</li><li>Timekeeping and Scheduling</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="169" start="0" stop="400" width="339" height="553" mirror="false">video/Jack_end.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall6.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>7</screen_scorm_finish>
+		<scorm_frame>6</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Documentation &amp; Administrative Tasks]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

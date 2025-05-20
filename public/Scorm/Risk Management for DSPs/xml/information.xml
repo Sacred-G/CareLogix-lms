@@ -1,0 +1,1191 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Understanding Risk &amp; Its Importance" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Core Principles of Risk Management" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Identifying and Assessing Risks" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Being a Proactive Observer" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Common Risk Areas &amp; Using Checklists" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Your Role in Risk Planning &amp; Mitigation" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Understanding and Implementing Risk Plans" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Balancing Rights, Choice, and Safety" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Special Incident Reporting (SIR)" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="How to Write a Good Incident Report" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Your Immediate Response to an Incident" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="13" item_label="Learning from Incidents &amp; Preventing Recurrence" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="14" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="15" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="577" width="791" x="4" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Risk Management for DSPs</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Understanding Risk & Its Importance</li><li>Core Principles of Risk Management</li><li>Identifying and Assessing Risks</li><li>Being a Proactive Observer</li><li>Common Risk Areas & Using Checklists</li><li>Your Role in Risk Planning & Mitigation</li><li>Understanding and Implementing Risk Plans</li><li>Balancing Rights, Choice, and Safety</li><li>Special Incident Reporting (SIR)</li><li>How to Write a Good Incident Report</li><li>Your Immediate Response to an Incident</li><li>Learning from Incidents & Preventing Recurrence</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="591" y="97" start="0" stop="400" width="478" height="780" mirror="true">video/man40s_welcome_to_elearning.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall9.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Understanding Risk &amp; Its Importance</Section>
+		<Content height="319" width="871" x="79" y="144" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding Risk &amp; Its Importance</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Risk is an inherent part of everyday life, affecting both individuals and the environments they inhabit. It encompasses potential issues such as falls, choking, medication errors, and environmental hazards. In the context of supporting individuals with developmental disabilities, understanding risk is crucial for ensuring their safety and well-being. Effective risk management practices are essential to prevent harm and promote a positive quality of life. Direct Support Professionals (DSPs) play a pivotal role as they are often the first to notice potential risks and are intimately familiar with the individuals they support.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746726700-964.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="859" x="170" y="73" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The importance of risk management cannot be overstated, as it directly impacts the quality of life for individuals with developmental disabilities. By identifying and mitigating risks, DSPs help to ensure basic safety and prevent serious incidents. This proactive approach not only protects individuals from harm but also upholds their rights and dignity. DSPs are uniquely positioned to observe changes in behavior or environment that may indicate potential risks. Their close relationship with the individuals they support allows them to act swiftly and effectively in addressing these concerns.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746726687-908.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="546" width="407" x="86" y="37" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">DSPs must be vigilant in their observations, as they are the frontline defenders against potential risks. Their ability to recognize early warning signs and take appropriate action is crucial in preventing incidents. This involves a keen awareness of the individuals' needs, preferences, and typical behaviors. By maintaining open communication with their team and supervisors, DSPs ensure that everyone is informed and prepared to handle potential risks. This collaborative effort is vital in creating a safe and supportive environment for individuals with developmental disabilities.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746726674-774.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Core Principles of Risk Management</Section>
+		<Content height="256" width="1021" x="5" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Core Principles of Risk Management</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Prevention is the cornerstone of effective risk management. It involves anticipating potential hazards and taking steps to mitigate them before they occur. This proactive approach not only safeguards individuals but also enhances their quality of life by minimizing disruptions. For Direct Support Professionals (DSPs), prevention means being vigilant and attentive to their environment and the individuals they support. By identifying risks early, DSPs can take corrective actions that prevent serious incidents.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd9133516b.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="473" x="552" y="65" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining a safe environment is a collective responsibility that extends beyond individual roles. DSPs must be aware of their surroundings and take immediate action when they identify unsafe conditions, such as frayed cords or wet floors. Ensuring safety may involve reporting hazards to supervisors or directly addressing them if it is safe to do so. This vigilance helps create a secure environment where individuals can thrive. A culture of safety empowers everyone to contribute to risk management actively.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd6d8223a5.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="547" x="4" y="100" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Effective communication is a vital component of risk management. DSPs must engage in open dialogue with their teams, supervisors, and the individuals they support. Documenting observations and changes in behavior or environment is crucial for maintaining an accurate record of potential risks. This documentation aids in developing strategies to address risks and ensures that everyone involved is informed and prepared. Clear communication fosters collaboration and enhances the overall safety of the environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f0ebda06.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="250" y="239" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Understanding and adhering to agency procedures for responding to and reporting incidents is essential for DSPs. These procedures provide a framework for handling emergencies and ensure that all necessary steps are taken to protect individuals. DSPs must be familiar with these protocols and follow them diligently to ensure a swift and effective response. Prompt reporting of incidents allows for timely interventions and helps prevent future occurrences. By adhering to established procedures, DSPs contribute to a culture of accountability and safety.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/yizmtXajBMQBqageW1repHp3f7bdmy5NAwZYj6Zx.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">304</screen_id>
+		<Template>4</Template>
+		
+		<Content height="483" width="462" x="0" y="41" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Balancing the rights of individuals with their safety is a fundamental principle of risk management. DSPs must respect the dignity of risk, which acknowledges the right of individuals to make choices, even if those choices involve some level of risk. This requires a nuanced understanding of each individual's needs and preferences, as well as the potential consequences of their choices. DSPs play a critical role in supporting informed decision-making and ensuring that individuals are aware of the risks involved. By respecting individual rights while prioritizing safety, DSPs help individuals lead fulfilling lives.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ViDcQNI9lKhpnGr2TTSFz7UAHEUDxDms6pvyXlJX.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Identifying and Assessing Risks</Section>
+		<Content height="319" width="859" x="170" y="46" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Identifying and Assessing Risks</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Identifying and assessing risks is a crucial part of ensuring safety and well-being in any environment. This process involves being observant and aware of potential hazards that could lead to harm. It requires a proactive approach, where individuals are constantly scanning their surroundings for anything that might pose a threat. By understanding the environment and the people within it, one can better anticipate and mitigate risks before they become serious issues. This proactive stance is essential in preventing accidents and ensuring a safe space for everyone involved.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/VvuTdWpCWDl1u3vRiTYLfmW6wq6w9Z7qkbrhSquQ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="0" y="268" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">A key aspect of risk assessment is knowing the individuals and their specific needs and behaviors. This involves reviewing any existing plans or documentation that outline known risks and preferences. Understanding typical behaviors and health conditions helps in identifying any deviations that might indicate a potential risk. Observing changes in physical, behavioral, or environmental conditions is crucial in this assessment process. By staying informed and attentive, one can effectively contribute to a safer environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/p68V7nQbSky7adSox7xkMIJoeuODYe2i0WevxqJB.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="566" x="221" y="198" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Environmental awareness plays a significant role in identifying risks. This includes being mindful of physical surroundings, such as cluttered spaces, poor lighting, or broken equipment. Each of these elements can contribute to potential hazards if not addressed promptly. Regularly assessing the environment for such risks ensures that preventative measures can be taken. This vigilance helps in maintaining a safe and secure setting for everyone.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/uGo5QwWxpLCJ20TKzKmFYUXch5apVhLExYs9Nuvg.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">403</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="566" x="221" y="182" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Behavioral observations are also critical in assessing risks. Changes in behavior, such as increased agitation or withdrawal, can signal underlying issues that need attention. By recognizing these signs early, appropriate interventions can be implemented to address the root cause. This not only helps in mitigating risks but also supports the individual's overall well-being. Understanding and responding to behavioral cues is a vital part of comprehensive risk management.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ppv1ZbXo9XQkEa8xbzBMpHp3j9SL4Pere0XwQBii.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">404</screen_id>
+		<Template>4</Template>
+		
+		<Content height="483" width="462" x="567" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Finally, effective communication is essential in the risk assessment process. Sharing observations and concerns with the appropriate team members ensures that everyone is informed and can contribute to mitigating risks. This collaborative approach allows for a more comprehensive understanding of potential hazards and the development of effective strategies to address them. By fostering open communication, a culture of safety and vigilance is promoted. This collective effort is key to successful risk management and ensuring the safety of all individuals involved.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/MAvsaQY202EXosfhNRIltTHA1hPfDNlPAkae5iLA.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Being a Proactive Observer</Section>
+		<Content height="568" width="462" x="0" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Being a Proactive Observer</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Being a proactive observer involves keen attention to detail and the ability to anticipate potential risks before they manifest into problems. This skill requires an understanding of the individuals being supported, including their typical behaviors, health conditions, and communication styles. Observers must be vigilant, noting any changes in physical, behavioral, or environmental conditions that could indicate emerging risks. By maintaining a proactive stance, DSPs can intervene early, preventing minor issues from escalating into significant incidents. This approach not only enhances safety but also improves the overall quality of care provided.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/veWlRZxW5bZJjiktLhoOBA4sqsZYXt4lCpfFiYpB.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="566" x="0" y="68" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">A proactive observer must be familiar with the environments in which they work, identifying hazards that might not be immediately obvious. This includes recognizing cluttered spaces, poor lighting, or malfunctioning equipment that could pose risks. Regularly assessing these environments helps in maintaining a safe space for individuals. Additionally, understanding the specific needs and preferences of each individual allows DSPs to tailor their observations and interventions effectively. This personalized approach ensures that potential risks are addressed in a manner that respects the dignity and autonomy of the individuals.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114ffdbbca4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="546" width="407" x="86" y="37" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Effective communication is a cornerstone of being a proactive observer. Sharing observations with team members, supervisors, and other stakeholders ensures that everyone is aware of potential risks and can collaborate on mitigation strategies. This communication should be clear, concise, and timely, allowing for swift action when necessary. Documentation of observations and actions taken is crucial, providing a record that can be referenced in future risk assessments. This collaborative approach fosters a culture of safety and continuous improvement within the care environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/wFQTqbIn05E674lUz2RoQ4nWDtsml4vq2GvhaVR8.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the role of DSPs in risk management?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To identify and mitigate risks]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! DSPs are vital in identifying and mitigating risks.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To supervise team meetings]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. DSPs play a crucial role in managing risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To handle administrative tasks]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. DSPs play a crucial role in managing risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">Why is proactive observation important for DSPs?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To prevent incidents]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Proactive observation helps prevent incidents before they occur.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To increase workload]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Proactive observation is key to preventing incidents. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To delay reporting]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Proactive observation is key to preventing incidents. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What should DSPs do if they spot a hazard?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Wait for a supervisor]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. DSPs should address hazards promptly. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Report or fix it if safe]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! DSPs should report or fix hazards if safe.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignore it if minor]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. DSPs should address hazards promptly. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Common Risk Areas &amp; Using Checklists</Section>
+		<Content height="350" width="859" x="170" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Common Risk Areas &amp; Using Checklists</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Common risk areas in healthcare settings are crucial to identify and manage effectively. Falls are a significant concern, often caused by factors such as medication side effects, poor vision, or environmental hazards like wet floors. Skin breakdown, another prevalent risk, can result from immobility, incontinence, or inadequate nutrition. Choking and aspiration are also critical risks, particularly for individuals with swallowing difficulties, requiring careful dietary management and proper positioning. Mental health changes, including depression, can impact individuals significantly, necessitating vigilant observation for signs of withdrawal or agitation.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/hdToMUNwX7SSxkTvoXppjohjxiOwWc6CLZCIdDnW.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="493" width="225" x="6" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Using checklists is an effective method for systematically identifying and managing risks. Checklists help ensure that all potential hazards are considered and addressed, reducing the chance of oversight. They provide a structured approach to risk assessment, allowing for consistent and comprehensive evaluations across different settings. By following a checklist, caregivers can ensure they are monitoring for common risks such as falls, skin breakdown, and choking. This proactive approach not only enhances safety but also supports the well-being of individuals by preventing incidents before they occur.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/MN9nfbDcCNyt2yWgMCmJ7Rg7dtw5D6hoBuTiJ4gs.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Your Role in Risk Planning &amp; Mitigation</Section>
+		<Content height="288" width="1021" x="6" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Your Role in Risk Planning &amp; Mitigation</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In risk planning and mitigation, DSPs play a critical role in ensuring the safety and well-being of individuals under their care. They are responsible for understanding and implementing risk plans that detail specific actions to reduce potential hazards. This involves being familiar with each individual's plan, consistently following the outlined procedures, and documenting any deviations or new risks. Effective communication is essential, as DSPs must relay any updates or concerns to supervisors and other team members. By maintaining vigilance and adhering to these plans, DSPs help create a safer environment for everyone involved.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/KG4opUlr9NJm3HF1CipcaZK7lwSuy7qYaVRQz6aQ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="779" x="250" y="223" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">DSPs must balance the need for safety with respecting the rights and choices of the individuals they support. This requires a nuanced understanding of the dignity of risk, where individuals have the right to make choices, even if they involve some level of risk. DSPs should facilitate informed decision-making by providing clear information about potential consequences. When a choice poses a significant risk, it should be discussed with the individual and a supervisor to find a suitable solution. This approach ensures that individuals are empowered to make choices while maintaining a safe environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/uyf679n4NNsR1licpbcxqjPKTVFSYboC45Q7kItK.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="532" x="497" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Communication is a cornerstone of effective risk management, requiring DSPs to keep all relevant parties informed about risk plans and any changes. This includes using communication logs, participating in team meetings, and ensuring that updates are shared promptly. DSPs must also report if a risk plan is not working as intended or if new risks emerge. This proactive approach allows for timely adjustments to strategies, ensuring that risk mitigation efforts remain effective. By fostering open communication, DSPs contribute to a collaborative environment focused on safety and well-being.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="299.000" y="183.750" width="19.6" height="19.6" swfSizing="stage">swf/Element_led_light_orange.swf</Image>
+		<Image_1 x="299.000" y="183.750" width="19.6" height="19.6" swfSizing="stage">swf/Element_led_light_orange.swf</Image_1>
+
+		<Video/>
+		<Background>images/dR2VmYvwqCFR69ePumYmkJ6MkHwW75yFTgH1YMCn.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">703</screen_id>
+		<Template>4</Template>
+		
+		<Content height="390" width="566" x="221" y="151" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">DSPs are encouraged to actively participate in the evaluation and improvement of risk plans. Their firsthand observations and insights are invaluable in identifying areas for enhancement and suggesting practical solutions. By sharing their experiences and ideas, DSPs help refine strategies to better address the needs of the individuals they support. This collaborative effort not only improves safety but also empowers DSPs to take ownership of their role in risk management. Through continuous learning and adaptation, DSPs contribute to the ongoing development of effective risk mitigation practices.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/HKtFBzz4gFpFmUiD1unYzs68oJ4gwbC6T4KKFV8x.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>Understanding and Implementing Risk Plans</Section>
+		<Content height="319" width="767" x="262" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding and Implementing Risk Plans</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Understanding and implementing risk plans are essential components of effective risk management. A risk plan outlines specific strategies and actions to reduce the likelihood or impact of potential risks. It is crucial for Direct Support Professionals (DSPs) to be familiar with these plans for each individual they support. Consistent implementation of risk plans ensures that all preventive measures are actively in place. Moreover, DSPs must document any deviations or issues encountered while following these plans.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/IiSlrer9sXglCoMxOalpCecSXpmb3CrNHQQRGw5s.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="250" y="239" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Communication is a vital aspect of implementing risk plans effectively. DSPs should ensure that all team members, including supervisors and family members when appropriate, are aware of the risk plans in place. Regular updates and discussions about the effectiveness of these plans help in identifying areas that may require adjustments. Utilizing communication logs and team meetings can facilitate this process. Ensuring everyone is informed contributes to a cohesive approach to risk management.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/9VjrFR0peAy7eMwXwuj20jsq6aughHCzrQbhZb93.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="390" width="507" x="505" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Documenting according to the risk plan is a key responsibility for DSPs. Accurate documentation provides a record of what has been done and highlights any changes or new risks that may have emerged. This information is crucial for ongoing risk assessment and plan adjustments. If a risk plan is not working as intended, DSPs must report this promptly to initiate a review and necessary modifications. Timely documentation and reporting help maintain the effectiveness of risk management strategies.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/6711517469f8e.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Balancing Rights, Choice, and Safety</Section>
+		<Content height="350" width="779" x="0" y="226" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Balancing Rights, Choice, and Safety</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Balancing rights, choice, and safety is a fundamental aspect of supporting individuals with developmental disabilities. It involves respecting the individual's autonomy while ensuring their safety and well-being. DSPs must understand that individuals have the right to make choices, even if those choices involve some level of risk. This concept, known as the dignity of risk, emphasizes the importance of informed choice. DSPs play a crucial role in facilitating informed decision-making by helping individuals understand the potential consequences of their choices.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/tPw4of3heYd1LvNBaanuMSQiO15APOn3eN6Y53ke.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="577" width="407" x="585" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Informed choice requires clear communication and understanding between the DSP and the individual. DSPs should provide information in a way that is accessible and comprehensible to the individual. This may involve using visual aids, simplified language, or other communication tools tailored to the individual's needs. When an individual's choice poses a significant risk, DSPs should engage in a dialogue with the individual and, if necessary, involve supervisors to explore safer alternatives. The goal is to empower individuals to make their own decisions while ensuring their safety.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/Element_security_alarm.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746726712-98.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="390" width="566" x="221" y="151" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">DSPs must also adhere to the individual's Individual Program Plan (IPP) and any specific guidelines for high-risk choices. The IPP outlines the individual's preferences, needs, and strategies for managing risks. By following the IPP, DSPs ensure that the individual's rights and safety are balanced within a structured framework. Regular communication with the support team, including supervisors and family members, is essential to maintain consistency in implementing the IPP. This collaborative approach helps to address any emerging risks and adapt the plan as needed.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e200394f.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		
+		<Content height="577" width="366" x="325" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Supporting individual choice while ensuring safety is an ongoing process that requires vigilance and adaptability. DSPs should continuously observe and assess the individual's behavior, health, and environment for any changes that may impact their safety. This proactive approach allows DSPs to identify potential risks early and take appropriate action. By fostering a culture of safety and respect, DSPs contribute to the individual's overall quality of life. Encouraging independence and self-determination is key to promoting a positive and empowering environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="391.667" y="415.667" width="353" height="199" swfSizing="stage">swf/Element_nature_butterfly_blue.swf</Image>
+
+		<Video/>
+		<Background>images/gNZJjfGbP7efC6UJyjDkXPDmsJ1eRe7xbFHxuiaZ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		
+		<Content height="546" width="414" x="615" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Ultimately, balancing rights, choice, and safety is about creating a supportive and inclusive environment where individuals feel valued and respected. DSPs are instrumental in advocating for the individual's rights and ensuring their voices are heard. This involves recognizing the individual's unique strengths and abilities and supporting them in achieving their personal goals. By prioritizing both safety and autonomy, DSPs help individuals lead fulfilling and meaningful lives. The commitment to balancing these elements reflects the core values of person-centered care.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="444.000" y="154.583" width="38" height="38" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/bcG6QOmZFzTjRta2rKbempORMZd9i27pTdmNjRfW.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a common risk area for DSPs?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Falls and choking]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Falls and choking are common risk areas.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Office supplies shortage]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Falls and choking are common risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Overcrowded meetings]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Falls and choking are common risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">906</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How do checklists help in risk management?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They increase paperwork]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Checklists are crucial for identifying risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They identify patterns]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Checklists help identify patterns and risks.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They reduce communication]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Checklists are crucial for identifying risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">907</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the 'dignity of risk'?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Eliminating all risks]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It involves balancing safety with choice. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Balancing safety with choice]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It balances safety with the right to choose.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignoring individual preferences]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It involves balancing safety with choice. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Special Incident Reporting (SIR)</Section>
+		<Content height="500" width="255" x="5" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Special Incident Reporting (SIR)</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Special Incident Reporting (SIR) is a crucial process in risk management, ensuring that incidents are documented accurately and promptly. It involves identifying incidents that meet specific criteria, such as injuries requiring medical attention, medication errors, or allegations of abuse. The purpose of SIR is to ensure individual safety, provide data for service improvement, and meet legal obligations. Accurate reporting is essential as it helps in understanding the incident's context and preventing future occurrences. DSPs must be diligent in observing and documenting incidents as part of their professional responsibilities.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="385.667" y="-5.333" width="744" height="472" swfSizing="stage">swf/element_sun_rays_divine.swf</Image>
+
+		<Video/>
+		<Background>images/X4TWwtMrv0hmm6WpRgoEEs0wLfqxU6377qGXUii1.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="462" x="0" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The process of writing a good incident report involves being factual and objective. DSPs should report only what they saw, heard, or were told, avoiding opinions or assumptions. Key information includes who was involved, what happened, when and where it occurred, and how the information was acquired. Immediate actions taken should also be documented to provide a complete picture of the incident. Timeliness is crucial, as reports should be completed as soon as possible to ensure accuracy and reliability.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/zqygktqUV4odRg46ISNVGf8N0rgiqmqV6YBhUwTj.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="390" width="473" x="4" y="80" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">When an incident occurs, the immediate response should prioritize safety for all involved. DSPs should provide necessary care, such as first aid, and notify supervisors and other required parties. Documentation should follow quickly, gathering facts for the report. Preserving evidence is important in cases of alleged abuse or significant injury, to support investigations. This structured approach ensures that incidents are handled effectively and that all necessary information is captured for future reference.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fde4d5da7b.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>4</Template>
+		<Section>How to Write a Good Incident Report</Section>
+		<Content height="288" width="779" x="0" y="257" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>How to Write a Good Incident Report</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Writing a good incident report is crucial for ensuring accurate documentation of events. The report should be factual and objective, focusing on what was observed or heard. Avoid including opinions or assumptions, as these can lead to misunderstandings. Use clear and concise language to convey the sequence of events. This helps in maintaining the integrity of the report and ensures that it can be used effectively for follow-up actions.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/48quwmbfZQrkLA8RPswbJ1lBURBiws5P1vbZb2X4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1101</screen_id>
+		<Template>4</Template>
+		
+		<Content height="515" width="407" x="86" y="53" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">A well-written incident report includes key information such as who was involved, what happened, when and where it occurred, and how the information was acquired. This structured approach ensures that all necessary details are captured. Including immediate actions taken, such as first aid or notifying a supervisor, is also important. Timeliness in reporting and documenting incidents is crucial to ensure that the information is fresh and accurate. This helps in taking prompt corrective measures if needed.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/h2WnQvfdGajKh0IIlBewlFg7YgqSdw8DnWRmIhEa.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1102</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="871" x="79" y="202" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The language used in an incident report should be precise and free of ambiguity. Describing actions and events in a straightforward manner helps prevent misinterpretation. For example, instead of writing 'He was angry,' describe the observable actions like 'He was yelling and threw a chair.' This level of detail provides a clearer picture of the incident. It is essential for those reviewing the report to understand exactly what transpired without having to infer details.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fda002c309.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1103</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="871" x="79" y="186" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Incident reports serve as an official record and can be used for various purposes, including legal and regulatory compliance. They are also valuable for improving safety protocols and preventing future incidents. By documenting incidents thoroughly, organizations can analyze patterns and identify areas for improvement. This proactive approach contributes to a safer environment for everyone involved. It also underscores the importance of each individual's role in maintaining safety standards.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/pToZRYyJTD6LtvVCXR4poQqux0f9BBS07DwDT3nN.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1104</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="859" x="86" y="41" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In addition to being factual and timely, incident reports should be reviewed for accuracy before submission. This involves checking that all sections are complete and that the information is consistent. Any discrepancies should be clarified to ensure the report is reliable. This diligence in reporting reflects professionalism and a commitment to safety. It also reinforces the trust placed in individuals responsible for documenting incidents.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd98e1c750.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Your Immediate Response to an Incident</Section>
+		<Content height="498" width="301" x="728" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Your Immediate Response to an Incident</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">When an incident occurs, the immediate response is crucial to ensure the safety and well-being of everyone involved. The first step is to assess the situation quickly and calmly, identifying any immediate dangers. Providing necessary care, such as first aid or calling for medical assistance, should be prioritized. It's important to notify the appropriate parties, such as a supervisor or emergency services, according to agency policy. Documenting the incident as soon as possible helps in creating an accurate record for future reference.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="224.000" y="114.583" width="98" height="98" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/mo0kvp8I4QcCGj7oiAI1Bb3mPQCcbm9LQccrvaB0.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="462" x="567" y="120" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Ensuring safety first is the primary concern when responding to an incident. This involves checking the environment for hazards that could cause further harm. The responder should remain calm and composed, as panic can exacerbate the situation. If the incident involves multiple individuals, prioritizing those in the most immediate danger is essential. Once the situation is stable, gathering facts for documentation becomes the focus.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e1844b34.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="566" x="221" y="182" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Documentation should be factual and objective, avoiding assumptions or opinions. The report should include who was involved, what happened, when and where it occurred, and how the information was obtained. Immediate actions taken, such as first aid or notifying a supervisor, should also be recorded. Timeliness is key, as details can be forgotten or distorted over time. Preserving evidence, if applicable, is important for incidents involving allegations of abuse or significant injury.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/9A3IEpJFQGlUVS3mlmyySHaRAKHWm1vXHcqD1bFV.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">13</screen_id>
+		<Template>4</Template>
+		<Section>Learning from Incidents &amp; Preventing Recurrence</Section>
+		<Content height="419" width="566" x="221" y="137" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning from Incidents &amp; Preventing Recurrence</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Learning from incidents is crucial for preventing future occurrences. Each incident provides valuable insights into the contributing factors and underlying causes. By analyzing these elements, organizations can develop targeted strategies to mitigate risks. This process involves examining individual, staff, environmental, and procedural factors. Understanding these components helps in creating a safer and more supportive environment for everyone involved.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/YB76aBKM5AV5vkDUKESei8d52KjFS8AEnXOKmZkG.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="0" y="268" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Preventing recurrence requires a proactive approach and commitment from all team members. It involves implementing preventative actions based on the analysis of past incidents. These actions should address the root causes and be practical and feasible to implement. Regular training and communication among staff are essential to ensure everyone understands their roles in prevention. Continuous monitoring and feedback loops help in refining strategies and enhancing their effectiveness.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/o1wWUjFSwyfWN81HJleDJqdCPQVBHijbQ3lfwJGE.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="779" x="0" y="268" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Effective incident prevention also emphasizes the importance of reporting and documentation. Accurate and timely reporting provides the data needed for thorough analysis and decision-making. It helps in identifying patterns and trends that may not be immediately apparent. Documentation serves as a record for future reference, aiding in the evaluation of preventative measures. Encouraging a culture of openness and responsibility among staff supports ongoing improvements in safety and quality of care.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd757b41ec.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1303</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key component of a risk plan?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI010" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Consistent implementation]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Consistent implementation is key.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Frequent changes]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Consistent implementation is essential. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Irregular updates]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Consistent implementation is essential. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1304</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How should DSPs handle individual choices involving risk?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI011" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignore all risks]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Support informed choices and discuss risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Support informed choices]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Support informed choices and discuss significant risks.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Prevent all choices]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Support informed choices and discuss risks. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1305</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the purpose of special incident reporting?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-1.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI012" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To delay action]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It ensures safety and follow-up. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To increase workload]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It ensures safety and follow-up. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To ensure safety]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! It ensures safety and appropriate follow-up.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">14</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">15</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="608" width="709" x="321" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Risk Management for DSPs</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Understanding Risk & Its Importance</li><li>Core Principles of Risk Management</li><li>Identifying and Assessing Risks</li><li>Being a Proactive Observer</li><li>Common Risk Areas & Using Checklists</li><li>Your Role in Risk Planning & Mitigation</li><li>Understanding and Implementing Risk Plans</li><li>Balancing Rights, Choice, and Safety</li><li>Special Incident Reporting (SIR)</li><li>How to Write a Good Incident Report</li><li>Your Immediate Response to an Incident</li><li>Learning from Incidents & Preventing Recurrence</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="143" start="0" stop="400" width="310" height="507" mirror="false">video/man40s_well_done.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall17.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>15</screen_scorm_finish>
+		<scorm_frame>14</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Risk Management for DSPs]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

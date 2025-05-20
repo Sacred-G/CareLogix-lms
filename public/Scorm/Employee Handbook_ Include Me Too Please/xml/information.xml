@@ -1,0 +1,1145 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Introduction &amp; Overview" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="At-Will Employment" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Zero Tolerance for Harassment" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Anti-Discrimination &amp; Accommodations" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Professional Conduct" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Telecommuting" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Company Property &amp; Systems" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Company Publicity" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Employee Classification" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="Time &amp; Attendance" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Payroll" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="13" item_label="Employee Performance &amp; Advancement" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="14" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="15" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="577" width="730" x="171" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Employee Handbook: Include Me Too Please</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Introduction & Overview</li><li>At-Will Employment</li><li>Zero Tolerance for Harassment</li><li>Anti-Discrimination & Accommodations</li><li>Professional Conduct</li><li>Telecommuting</li><li>Company Property & Systems</li><li>Company Publicity</li><li>Employee Classification</li><li>Time & Attendance</li><li>Payroll</li><li>Employee Performance & Advancement</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="234" start="0" stop="400" width="308" height="481" mirror="false">video/woman40s_welcome_to_elearning.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall19.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Introduction &amp; Overview</Section>
+		<Content height="444" width="407" x="86" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Introduction &amp; Overview</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Include Me Too Please LLC is dedicated to fostering a workplace environment that upholds the highest standards of professionalism and ethical conduct. Our operations are guided by principles that ensure all activities are carried out with integrity and in compliance with applicable laws. Employees are expected to adhere to these standards, contributing to a culture of trust and responsibility.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/kEPO4e8hLvdkQmtdt7wuSMw7r0LHsbIP1DwArxpZ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="1020" x="9" y="402" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">This Employee Handbook serves as a comprehensive guide for understanding company policies and procedures. It is designed to provide answers to common questions employees may have regarding their roles and responsibilities. The handbook also establishes clear procedures for reporting violations and addressing concerns, ensuring transparency and fairness in all dealings.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="187.000" y="96.583" width="99.4" height="99.4" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/35lb4pluTYY4Jqbdl3U4b4rOP28uL3zJf3MuvD76.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="86" y="162" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Employees are encouraged to read and understand the contents of this handbook thoroughly. By doing so, they become well-informed about their rights and obligations within the company. This knowledge empowers them to perform their duties effectively while maintaining a harmonious workplace.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/tX0zmcoBmRwjKnQDureXzCL9kxU9iSJDMMa3dsHY.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">203</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Include Me Too Please LLC is committed to enforcing its policies rigorously. The success of these efforts largely depends on employees reporting any inappropriate conduct they witness or experience. Prompt reporting allows the company to address issues swiftly and take corrective action where necessary, reinforcing a safe and respectful work environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/AoGAleOgq0LOnxfuKt0ccQB17wtxIykGtbVT1GLm.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>At-Will Employment</Section>
+		<Content height="505" width="190" x="2" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>At-Will Employment</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">At-will employment is a fundamental aspect of the employment relationship at Include Me Too Please LLC. This means that either the employee or the company can terminate the employment at any time, with or without cause or notice. The only exception to this rule is if there is a written agreement signed by the Owner that specifies otherwise.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="590.000" y="170.583" width="41.4" height="41.4" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/wlF0cda2cyfmUl0Vopfpsioj84IEFnbhknYM5nUf.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="86" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The at-will employment policy provides flexibility for both the company and the employee. It allows the company to make necessary staffing changes to adapt to business needs. Similarly, it gives employees the freedom to leave their job if they find a better opportunity or need to make a personal change.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ejrfjRmNeCX9rudcOlUvD3Xskd1J1aVKNfpgQiUj.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="779" x="250" y="270" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">While the at-will employment policy offers benefits, it also requires clear communication and understanding between both parties. Employees are encouraged to discuss any concerns or questions about their employment status with the Owner. This open dialogue helps ensure that all parties are aware of their rights and responsibilities under the at-will employment framework.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/n7IU0YQUHhx7djFr6TBhR2Ycalf7nvpbwF2GLp1o.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Zero Tolerance for Harassment</Section>
+		<Content height="381" width="462" x="567" y="109" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Zero Tolerance for Harassment</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Include Me Too Please LLC has a strict zero-tolerance policy for harassment, ensuring a safe and respectful workplace for all employees. Harassment of any kind, whether based on race, gender, sexual orientation, or other protected characteristics, is not tolerated. Employees are encouraged to report any incidents of harassment immediately to facilitate prompt corrective action.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/BVG4ZoceKObOh3U9czy8UGEmlDLrQ0kashXTE5t7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The company provides clear procedures for reporting harassment, ensuring confidentiality and protection against retaliation. Employees are assured that their concerns will be taken seriously and investigated thoroughly. This policy applies to all employees, contractors, and third parties interacting with the company.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/wm4kaWKmIYBCI8MLzVTcmNfLZlkA2mR3zUXtuoYm.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="462" x="0" y="150" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Training and awareness programs are regularly conducted to educate employees about recognizing and preventing harassment. These initiatives aim to foster an inclusive and supportive work environment. The company is committed to ongoing efforts to maintain a workplace free from harassment and discrimination.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/dOzPkPSaNcDv0LcL69s9LzxXAekHRf8RWi9DpHSX.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Anti-Discrimination &amp; Accommodations</Section>
+		<Content height="225" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Anti-Discrimination &amp; Accommodations</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Include Me Too Please LLC is committed to fostering an inclusive workplace where discrimination is not tolerated. We adhere to all applicable federal, state, and local laws to ensure equal employment opportunities for everyone. Our policies are designed to protect employees from discrimination based on race, color, religion, gender, and other protected characteristics.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/BYUeZzFvpeQ6r7mjZNV9N2mlFe263wxRUjCYK8z3.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="585" y="113" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">We recognize the importance of providing reasonable accommodations to employees with disabilities. Our goal is to ensure that all employees can perform their essential job functions without facing undue hardship. Employees are encouraged to communicate their accommodation needs to the management team for appropriate action.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746323297-513.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="779" x="0" y="299" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In addition to disability accommodations, we also respect religious practices and observances. Employees may request accommodations for religious holidays or practices, and we strive to accommodate these requests when possible. Our commitment to diversity and inclusion is reflected in our efforts to support employees' varied cultural and religious backgrounds.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fde86e1324.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the main goal of the Employee Handbook?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To list job openings]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The handbook focuses on company policies. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To describe the company's history]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The handbook focuses on company policies. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[To inform about company policies]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! The handbook informs about policies.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What does 'at-will' employment signify?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Employees must give two weeks' notice]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It means employment can end anytime. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Employment can end anytime]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Employment can be ended anytime.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Employment is guaranteed for a year]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It means employment can end anytime. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How does the company address harassment?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Zero tolerance for harassment]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! The company has zero tolerance.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Harassment is allowed if unintentional]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The company has zero tolerance for harassment. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Harassment is addressed case-by-case]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The company has zero tolerance for harassment. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Professional Conduct</Section>
+		<Content height="194" width="859" x="170" y="108" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Professional Conduct</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Professional conduct is the cornerstone of a harmonious and productive workplace. Employees are expected to adhere to established standards that promote respect, integrity, and accountability. These standards ensure that every team member contributes positively to the company's goals and culture.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/zlIUd8M7nNiAkjRuzITbgEMau4zeq1VsH9o4BcO2.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="462" x="0" y="150" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining a professional demeanor involves being punctual, respectful, and diligent in all tasks. Employees should strive to communicate effectively and collaborate with colleagues to achieve common objectives. This approach fosters a supportive environment where everyone feels valued and empowered.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/gCstNpYCKduhnUt73LDBKnZkqdGzpxmBjShXcYr2.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="871" x="79" y="233" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Violations of professional conduct can lead to disciplinary actions, which may include termination. It is crucial for employees to understand the importance of following company policies and procedures. By doing so, they help maintain a safe and efficient workplace for all.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746323310-949.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">603</screen_id>
+		<Template>4</Template>
+		
+		<Content height="499" width="165" x="2" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Dress code is an integral part of professional conduct, reflecting the company's image and values. Employees are encouraged to dress appropriately for their roles, ensuring that their attire is clean, neat, and suitable for the workplace. This attention to appearance enhances the overall professionalism of the organization.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/0UfbphkC42ePaclGXdnj1YHFTsaaiA3VfrvD4Lmt.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Telecommuting</Section>
+		<Content height="412" width="407" x="86" y="104" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Telecommuting</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Telecommuting offers employees the flexibility to work from remote locations while maintaining productivity. This arrangement requires employees to have reliable communication tools such as a dedicated phone line and high-speed internet. Employees must ensure their home workspace is conducive to work, considering factors like ergonomics and minimal interruptions.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/DSgEpHiOdFMZBc20DLtWOF0NR6d5iZ3Lsy73iY27.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="250" y="286" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">To effectively telecommute, employees should establish a structured routine similar to an on-site workday. Regular communication with supervisors is crucial to align on tasks and expectations. Employees are also responsible for securing company equipment and sensitive information in their remote work environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fdd3b9ce76.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">While telecommuting provides flexibility, it also demands a high level of self-discipline and accountability. Employees must adhere to the company's timekeeping policies and seek approval for any overtime work. The success of telecommuting depends on the employee's ability to balance work responsibilities with the home environment.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746323322-95.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>Company Property &amp; Systems</Section>
+		<Content height="256" width="566" x="221" y="218" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Company Property &amp; Systems</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Company property and systems are integral to the daily operations of Include Me Too Please LLC. Employees are expected to use these resources responsibly and maintain them in good condition. Misuse or neglect of company property can lead to disciplinary action, including termination.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/D0rCqVYl1SyocrdBu2m25BEn7WvYNAWgjEoRMjl9.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">All equipment, from computers to office furniture, is provided to support employees in their roles. Personal use of company resources should be minimal and not interfere with business activities. Employees should have no expectation of privacy when using company systems, as monitoring may occur to ensure compliance.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ux7bd3pStz6ANhamCsKFCAchQNZACjSNmP3tjqnm.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="0" y="330" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Security of company systems is paramount, and employees must adhere to IT policies. This includes maintaining strong passwords and safeguarding sensitive information. Any breach of security protocols can result in serious consequences for both the employee and the company.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746323338-153.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Company Publicity</Section>
+		<Content height="225" width="716" x="5" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Company Publicity</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Company publicity involves the strategic use of media to enhance the organization's image and reach. This includes utilizing photographs, videos, and voice recordings of employees for promotional purposes. Such materials help in crafting a positive and engaging narrative about the company to the public.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="938.730" y="167.583" width="87.8" height="115.8" swfSizing="stage">swf/Element_birds_flying_away.swf</Image>
+
+		<Video/>
+		<Background>images/QwVgMsfNIsQB5Yfes1FGXSpMXqPba1yD06okeoF0.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="871" x="79" y="218" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Employees may be featured in various promotional materials, showcasing their roles and contributions. This not only highlights the company's workforce but also personalizes the brand, making it more relatable to potential clients and partners. The use of real employees in publicity efforts can foster a sense of authenticity and trust.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="463" y="464" width="137" height="137" swfSizing="stage">swf/Element_finances_loss_bad_news.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746323367-479.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="585" y="144" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Consent is crucial when using employee images or recordings for publicity. The company ensures that all media used for promotional purposes is approved by the individuals involved. This practice respects employee privacy while allowing the company to effectively market its brand.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/Element_finances_loss_bad_news.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746323350-620.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the company's stance on discrimination?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-2.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Only federal laws are followed]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Discrimination is not tolerated. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Discrimination is strictly prohibited]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Discrimination is strictly prohibited.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Discrimination is allowed if justified]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Discrimination is not tolerated. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is expected in terms of professional conduct?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-2.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Only managers follow conduct guidelines]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Honesty and punctuality are essential. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Conduct is optional]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Honesty and punctuality are essential. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Honesty and punctuality are expected]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Honesty and punctuality are key.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is required for telecommuting?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-2.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[A proper home workspace]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! A proper workspace is needed.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[No approval needed]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. A proper workspace is necessary. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Only a laptop]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. A proper workspace is necessary. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Employee Classification</Section>
+		<Content height="225" width="859" x="170" y="93" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Employee Classification</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Employee classification is a fundamental aspect of workforce management, determining the roles and benefits employees are eligible for. Include Me Too Please LLC categorizes employees into several classifications such as full-time, part-time, and temporary. These classifications help in organizing work schedules, benefits, and payroll efficiently.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/iZLUBACyjCXeIhBsegHN30HDqe2hykJvkl9VoxUU.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="871" x="79" y="218" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Full-time employees are those who work a minimum of 30 hours per week and are eligible for a comprehensive benefits package. Part-time employees, working less than 30 hours, receive limited benefits, primarily those mandated by law. Temporary employees are hired for a specific period and usually do not qualify for benefits beyond legal requirements.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/3DX8o1E8GB0dk2osWatIGBuY5qFlXEZ1IkDabskd.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="585" y="113" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The classification also distinguishes between exempt and non-exempt employees, affecting their eligibility for overtime pay. Exempt employees, often salaried, are not entitled to overtime, whereas non-exempt employees, typically hourly, receive overtime pay as per federal and state laws. This distinction ensures compliance with labor laws and fair compensation for extra hours worked.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/DQIWUgavcqKVtU8eIY6VF8wZTdhSL3ylR4iHMbhj.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1003</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Employee classification is not static and may change based on business needs or employee performance. Include Me Too Please LLC reserves the right to reclassify employees or adjust their roles to align with company objectives. This flexibility allows the company to adapt to changing market demands and operational requirements.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/niTFqgl89Fl0716JnfRTgSfeQhbVGnlK1Tzk2rNn.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>4</Template>
+		<Section>Time &amp; Attendance</Section>
+		<Content height="194" width="779" x="250" y="274" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Time &amp; Attendance</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Time and attendance are crucial components of workplace efficiency and productivity. Employees are expected to adhere to their assigned schedules to ensure smooth operations. Punctuality and regular attendance are essential for maintaining a reliable workforce.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/L2cINyxQGdTNQSwLfW2e4qkCu55UmQamNEHSWTjs.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1101</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="86" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Non-exempt employees are required to accurately record their hours worked, including meal periods and breaks. This ensures compliance with labor laws and guarantees that employees are compensated fairly for their time. Accurate timekeeping is a shared responsibility between employees and management.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="380" y="241" width="293" height="293" swfSizing="stage">swf/Element_day_schedule.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746323395-846.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1102</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Overtime is sometimes necessary to meet business demands, and non-exempt employees are compensated according to applicable laws. Employees must seek approval from their supervisors before working overtime. Unauthorized overtime may lead to disciplinary action to ensure adherence to company policies.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_day_schedule.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746323382-918.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Payroll</Section>
+		<Content height="194" width="1025" x="4" y="377" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Payroll</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Payroll is a critical aspect of employment that ensures employees are compensated accurately and timely for their work. At Include Me Too Please LLC, payroll is processed bi-monthly, providing employees with regular and predictable income. Employees are encouraged to review their pay stubs for accuracy and report any discrepancies immediately.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="184.000" y="181.583" width="91" height="91" swfSizing="stage">swf/Element_data_a_28.swf</Image>
+
+		<Video/>
+		<Background>images/K8e1mwdkdfF0aZs19sYuydGcn2bZ60irVjS0MeFT.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Deductions from payroll include federal and state taxes, Social Security, and any other legally mandated contributions. Employees may also see deductions for benefits they have opted into, such as health insurance or retirement plans. Understanding these deductions helps employees manage their finances effectively.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ojgWTrmDm5TuZGv7rEhkLjNk2CM7BD7R029B3g9h.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In the event of an error in payroll, the company is committed to resolving the issue promptly. Employees should report any concerns to their manager or the Owner to ensure corrections are made swiftly. This commitment to accuracy and transparency fosters trust and satisfaction among the workforce.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746323408-875.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">13</screen_id>
+		<Template>4</Template>
+		<Section>Employee Performance &amp; Advancement</Section>
+		<Content height="581" width="273" x="756" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Employee Performance &amp; Advancement</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Employee performance evaluations are a crucial aspect of professional development at Include Me Too Please LLC. Managers continuously assess job performance through day-to-day interactions. These evaluations provide valuable feedback and guide employees towards achieving their career goals.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="312.000" y="10.583" width="174" height="174" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/98zJmUi6Yh4Szo9yf6UZWU7QurKiIEAv8wtYQkMh.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="462" x="0" y="150" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Formal performance reviews are typically conducted annually, though more frequent evaluations may occur. Employees are encouraged to seek regular feedback from both managers and coworkers. This proactive approach helps employees align their efforts with company expectations and personal growth objectives.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/7qqksblW0KgMqQqYKjj1wmAkSSpYy5fD9YoyPTlN.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="568" x="455" y="163" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Promotions and advancement opportunities are available to employees who demonstrate exceptional performance and dedication. Include Me Too Please LLC prefers to promote from within, fostering a culture of growth and development. Employees are encouraged to apply for internally posted positions to further their careers.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f1008dac.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="170" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The company supports professional growth by offering training and development programs. These initiatives are designed to enhance employees' skills and prepare them for future roles. By investing in employee development, Include Me Too Please LLC ensures a competent and motivated workforce.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/k2j4NHykTePb5uBegt1LMsOShn9464NA4l2ktBTE.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1304</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="462" x="0" y="150" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Employees are encouraged to take ownership of their career paths by setting personal and professional goals. Regular discussions with managers about career aspirations can help identify opportunities for advancement. This collaborative approach empowers employees to take charge of their professional journey.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746323420-153.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1305</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How should company property be used?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI010" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[For personal use only]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It should be used for business. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[As employees see fit]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. It should be used for business. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Primarily for business purposes]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Use it primarily for business.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1306</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the policy on company publicity?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI011" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Publicity is not allowed]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Permission is needed for using images. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Images need permission for use]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Employee images need permission.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Employees handle all publicity]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Permission is needed for using images. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1307</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How are employees classified?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI012" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[All employees are part-time]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Employees are classified by role. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Classified as full-time, part-time, or temporary]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Employees are classified by role.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[No classifications exist]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Employees are classified by role. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">14</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">15</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="608" width="847" x="182" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Employee Handbook: Include Me Too Please</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Introduction & Overview</li><li>At-Will Employment</li><li>Zero Tolerance for Harassment</li><li>Anti-Discrimination & Accommodations</li><li>Professional Conduct</li><li>Telecommuting</li><li>Company Property & Systems</li><li>Company Publicity</li><li>Employee Classification</li><li>Time & Attendance</li><li>Payroll</li><li>Employee Performance & Advancement</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="143" start="0" stop="400" width="325" height="507" mirror="false">video/woman40s_well_done.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall4.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>15</screen_scorm_finish>
+		<scorm_frame>14</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Employee Handbook: Include Me Too Please]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

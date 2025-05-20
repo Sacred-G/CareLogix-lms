@@ -1,0 +1,1083 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Introduction to Medication Management" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Levels of Medication Support" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Understanding the MAR" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="The Five Rights of Medication Administration" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Additional Rights: Reason and Documentation" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Safe Storage and Handling of Medications" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Monitoring Side Effects" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Documenting Administration and Refusals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Handling Medication Errors" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="Staying Organized and Focused" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Interactive Learning Activities" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="13" item_label="Conclusion and Best Practices" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="14" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="15" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="577" width="756" x="273" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Medication Administration</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Introduction to Medication Management</li><li>Levels of Medication Support</li><li>Understanding the MAR</li><li>The Five Rights of Medication Administration</li><li>Additional Rights: Reason and Documentation</li><li>Safe Storage and Handling of Medications</li><li>Monitoring Side Effects</li><li>Documenting Administration and Refusals</li><li>Handling Medication Errors</li><li>Staying Organized and Focused</li><li>Interactive Learning Activities</li><li>Conclusion and Best Practices</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="136" start="0" stop="400" width="339" height="553" mirror="false">video/Jack_start.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall11.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Introduction to Medication Management</Section>
+		<Content height="256" width="779" x="0" y="272" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Introduction to Medication Management</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Medication management is a critical aspect of healthcare that ensures clients receive their medications safely and effectively. Direct support workers play a vital role in this process, as they are often responsible for assisting with or administering medications to clients. Proper training and adherence to regulations are essential to prevent errors and ensure client well-being.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/InpmLVmecl5Hjtngq7FjnVLtToyVxasjJkscyOZc.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In California, unlicensed direct support staff can assist with medication administration in community settings with the right training. This flexibility allows for better support of clients in group homes or supported living environments. The key is understanding the specific needs of each client and delivering the appropriate level of medication support.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453358-46.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="86" y="146" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Medication management involves distinguishing between reminders, assistance, and administration. Each level requires different skills and responsibilities, from simply reminding clients to take their medication to fully administering it. Understanding these distinctions is crucial for ensuring the safety and effectiveness of the medication regimen.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453343-527.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Levels of Medication Support</Section>
+		<Content height="412" width="437" x="570" y="78" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Levels of Medication Support</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Medication management is a fundamental aspect of healthcare, particularly for direct support workers who assist clients with various needs. This responsibility requires a precise understanding of medication protocols and the ability to execute them without error. The primary goal is to ensure that clients receive their medications safely and effectively, minimizing the risk of adverse effects.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fe0d071a44.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1030" x="0" y="88" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In the context of community settings, medication management becomes even more critical due to the diverse needs of clients. Direct support workers must be adept at distinguishing between different levels of medication support, such as reminders, assistance, and administration. Each level demands specific skills and adherence to protocols to maintain client safety and well-being.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114e1fa26d0.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Proper training is essential for unlicensed staff who are involved in medication management. In places like California, regulations allow these staff members to assist with or administer medications, provided they receive appropriate training. This training ensures that staff understand the importance of accuracy and compliance with medication administration procedures.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="609" y="132" width="367" height="367" swfSizing="stage">swf/Element_health_hospital_bed.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453387-600.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="871" x="79" y="218" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The process of medication management involves more than just giving out pills; it requires careful documentation and communication. The use of tools like the Medication Administration Record (MAR) helps track medication administration accurately. This record-keeping is crucial for ensuring continuity of care and preventing medication errors.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="463" y="464" width="137" height="137" swfSizing="stage">swf/Element_health_hospital_bed.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453373-830.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Understanding the MAR</Section>
+		<Content height="381" width="407" x="585" y="102" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding the MAR</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Medication Administration Record (MAR) is a vital document in healthcare settings. It serves as a comprehensive log of all medications prescribed to a client and tracks each dose given. Understanding how to read and fill out the MAR correctly is crucial for ensuring that clients receive their medications as prescribed.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/GGq4eVjCw0GKQKhXjrTUwVzWPcwPPerXCLdU1t9I.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="462" x="0" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The MAR includes detailed information such as the medication name, dosage, route, and scheduled times for administration. Healthcare workers must ensure that the information on the MAR matches the doctor’s orders and the prescription label. Any discrepancies should be addressed immediately to prevent medication errors.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="563" y="83" width="398" height="398" swfSizing="stage">swf/Element_document_signing.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453400-890.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Proper documentation on the MAR is essential for maintaining accurate records and ensuring continuity of care between shifts. Each dose given must be initialed or signed by the administering staff member, with any additional notes as required. This process not only serves as a legal record but also as a communication tool among healthcare providers.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fd602d2b99.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>The Five Rights of Medication Administration</Section>
+		<Content height="419" width="369" x="631" y="74" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>The Five Rights of Medication Administration</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Five Rights of Medication Administration are fundamental principles ensuring safe and effective medication use. These rights include the Right Person, Right Medication, Right Dose, Right Time, and Right Route. Adhering to these guidelines helps minimize errors and enhances patient safety.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/66fd5bb5169a4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="566" x="221" y="245" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Right Person principle emphasizes verifying the correct individual before administering medication. This involves checking identifiers such as name, photo, or ID bracelet to prevent mix-ups. Ensuring the right person receives the medication is crucial in settings with multiple clients.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="757" y="39" width="223" height="223" swfSizing="stage">swf/Element_document_shield_star.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453427-634.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="659" x="0" y="34" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Right Medication requires careful examination of the medication name on both the pharmacy label and the MAR. Medications with similar names can be easily confused, making this step vital in preventing errors. Staff must confirm that the medication in hand matches the prescribed order.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="379.000" y="517.083" width="142.6" height="142.6" swfSizing="stage">swf/Element_drugs_pills.swf</Image>
+
+		<Video/>
+		<Background>images/6StkoH69lgV6gKbqQ2VlWWQQ0aneIVlIRAI9h9hp.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="170" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Right Dose involves verifying the correct strength and amount of medication to be administered. Medications often come in different strengths, requiring precise measurement or calculations. Ensuring the correct dose prevents underdosing or overdosing, which can have significant health implications.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_document_shield_star.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453414-221.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="462" x="0" y="166" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Right Time ensures medications are given at the prescribed intervals. Most MARs specify scheduled times, with a permissible window for administration. Timely medication administration is crucial for maintaining therapeutic levels and efficacy.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/lW57cAArqi3e9V9pEsvpYl0Uva8yeAkDblSUWXUt.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="356" x="0" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The Right Route confirms the medication is delivered via the correct method, such as oral, topical, or injection. Each route has specific instructions and procedures that must be followed. Adhering to the correct route ensures the medication's effectiveness and patient safety.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="434.667" y="284.333" width="18" height="19" swfSizing="stage">swf/Element_led_light_white.swf</Image>
+
+		<Video/>
+		<Background>images/U0Pi6aw0yVzhYYk8HJAu210EhC0ctMhCaAY8znjh.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the role of medication management in healthcare?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-6.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It is only for emergency situations.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Medication management is essential for client safety. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It is optional for most clients.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Medication management is essential for client safety. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It ensures clients take medications safely.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Medication management is crucial for client safety.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">507</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What does medication assistance entail?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-6.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Prescribing new medications to clients.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Assistance involves helping clients self-administer medication. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Helping clients self-administer medication.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Well done! Assistance involves helping clients self-administer medication.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Administering medication without supervision.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Assistance involves helping clients self-administer medication. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">508</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">Why is the MAR important in medication administration?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-6.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It tracks each medication dose given.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>That's right! The MAR tracks each dose given.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It is used to store medications.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The MAR is crucial for tracking each medication dose. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[It replaces the need for prescriptions.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The MAR is crucial for tracking each medication dose. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Additional Rights: Reason and Documentation</Section>
+		<Content height="194" width="1024" x="2" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Additional Rights: Reason and Documentation</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Understanding the reason behind each medication is crucial for effective administration. This knowledge ensures that caregivers are aware of the intended outcomes and can monitor the effectiveness of the treatment. Additionally, it helps in identifying any adverse reactions or side effects that may occur.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="516.667" y="272.750" width="20" height="16" swfSizing="stage">swf/Element_led_light_white.swf</Image>
+
+		<Video/>
+		<Background>images/67114fbfd441c.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="753" x="105" y="397" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Proper documentation is an essential aspect of medication administration. It provides a legal record of the care provided and ensures continuity of care between shifts. Accurate documentation can prevent medication errors and is a critical component of patient safety.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="90.667" y="180.667" width="22.2" height="18.8" swfSizing="stage">swf/Element_led_light_green.swf</Image>
+		<Image_1 x="90.667" y="180.667" width="22.2" height="18.8" swfSizing="stage">swf/Element_led_light_green.swf</Image_1>
+
+		<Video/>
+		<Background>images/GUNC6C0CCtbkEB7QnrWPdL6EWGAh956vk1pqRdj8.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="86" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The 'Right Reason' involves being informed about why a medication is prescribed. This understanding aids in evaluating whether the medication achieves its intended purpose. It also supports healthcare providers in making informed decisions about ongoing care.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453445-52.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">603</screen_id>
+		<Template>4</Template>
+		
+		<Content height="515" width="225" x="6" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The 'Right Documentation' entails recording every detail about medication administration. This includes noting the time, dose, and any observations related to the patient's response. Such meticulous records are vital for evaluating treatment efficacy and planning future care.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/MN9nfbDcCNyt2yWgMCmJ7Rg7dtw5D6hoBuTiJ4gs.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Safe Storage and Handling of Medications</Section>
+		<Content height="194" width="1024" x="5" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Safe Storage and Handling of Medications</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Safe storage and handling of medications are critical components in medication management. Medications should always be stored in a locked cabinet or drawer to prevent unauthorized access. This practice not only ensures compliance with regulations but also enhances safety by preventing accidental ingestion or misuse.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="533.000" y="532.250" width="34" height="34" swfSizing="stage">swf/Element_led_light_green.swf</Image>
+
+		<Video/>
+		<Background>images/H7b1SZtpwwe301eDGdI7J0kEgEv7tw9hAeOBc83c.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="549" x="480" y="161" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Each medication must remain in its original pharmacy container with a clear label. This includes the client's name, drug name, dosage, and instructions, which are vital for ensuring the correct administration. Transferring pills to unlabeled containers is prohibited as it increases the risk of errors.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67b85a6161b60.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="250" y="301" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Controlled substances often require additional tracking and security measures. These medications might need to be counted each shift and stored under double-lock conditions. This level of diligence is necessary to comply with state rules and maintain accurate records.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453473-738.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">703</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="462" x="0" y="166" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Proper temperature control is essential for medication storage, as some require refrigeration. Such medications should be kept in a locked box within a refrigerator to maintain their efficacy. Avoid storing medications in areas with extreme heat or humidity, like near stoves or in bathrooms.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453459-144.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>Monitoring Side Effects</Section>
+		<Content height="194" width="871" x="79" y="206" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Monitoring Side Effects</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Monitoring side effects is a critical component of medication administration. Observing clients for any changes post-medication can help identify adverse reactions early. It's important to document these observations and communicate them to healthcare providers promptly.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Oo1cmQrUV6u0FDQPwTnZHIIdxKNwqv6VZo1JOoXt.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="109" width="1028" x="1" y="71" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Different medications have a range of potential side effects that need to be monitored. Some side effects might be mild, like dry mouth, while others could be severe, such as difficulty breathing. Understanding these possibilities helps in taking appropriate and timely action.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670fdbeaa66d4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="390" width="321" x="346" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">When a new medication is introduced or a dose is changed, vigilance in monitoring is especially necessary. Clients might not always be able to communicate discomfort or adverse effects verbally. Therefore, staff should be observant of non-verbal cues and behavioral changes that might indicate a problem.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/lrzOnZ1my3c0G8UjI7WabQzdrfvTwFh15sWUEU4j.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Documenting Administration and Refusals</Section>
+		<Content height="419" width="407" x="86" y="101" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Documenting Administration and Refusals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Documenting medication administration is a critical aspect of healthcare that ensures continuity of care and patient safety. Each dose of medication given must be accurately recorded on the Medication Administration Record (MAR). This process helps in tracking the patient's medication intake and prevents potential errors or overdoses.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453487-57.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="1030" x="0" y="361" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">When a patient refuses medication, it is essential to document the refusal promptly and accurately. Understanding the reasons behind refusals can aid in patient care and help address any concerns or side effects they might be experiencing. Communication with supervisors or healthcare providers is crucial in these situations to ensure proper follow-up and care adjustments.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="418.667" y="266.667" width="11" height="14" swfSizing="stage">swf/Element_led_light_green.swf</Image>
+		<Image_1 x="418.667" y="266.667" width="11" height="14" swfSizing="stage">swf/Element_led_light_green.swf</Image_1>
+
+		<Video/>
+		<Background>images/oM1WxOygclDCummn1vCAeJGUS0hIAER1EJDbfWhg.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="620" x="0" y="176" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Proper documentation of medication administration and refusals also serves as a legal record. It provides evidence of the care provided and can be crucial in investigations or audits. Maintaining accurate and thorough records is a professional responsibility that supports the integrity of the healthcare system.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67115149afbf7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the purpose of the 'Right Time' in medication administration?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Allows flexibility in medication schedules.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The 'Right Time' ensures medications are given at the correct times. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ensures medications are given at correct times.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Excellent! It ensures medications are given at the correct times.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Is not relevant to medication safety.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. The 'Right Time' ensures medications are given at the correct times. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How should medications be stored for safety?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Securely in a locked cabinet.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Great! Medications should be stored securely in a locked cabinet.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[In open shelves for easy access.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Medications should be stored securely in a locked cabinet. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Mixed with other household items.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Medications should be stored securely in a locked cabinet. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key aspect of monitoring side effects?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-7.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignoring minor side effects.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Monitoring involves documenting side effects and informing healthcare professionals. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Stopping the medication immediately.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Monitoring involves documenting side effects and informing healthcare professionals. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Documenting and informing healthcare professionals.]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Documenting side effects and informing healthcare professionals is crucial.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Handling Medication Errors</Section>
+		<Content height="450" width="301" x="728" y="55" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Handling Medication Errors</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Handling medication errors is a critical component of ensuring patient safety. Despite best efforts, errors can occur, such as administering the wrong medication or dose. It is crucial to address these errors promptly and transparently to mitigate any potential harm.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="224.000" y="114.583" width="98" height="98" swfSizing="stage">swf/Element_time_clock_white.swf</Image>
+
+		<Video/>
+		<Background>images/mo0kvp8I4QcCGj7oiAI1Bb3mPQCcbm9LQccrvaB0.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="421" width="285" x="744" y="70" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">When a medication error occurs, the first priority is the patient's safety. Immediate actions might include contacting a healthcare professional or poison control, depending on the severity of the mistake. Once the patient is safe, the error should be reported to the relevant authorities within the healthcare facility.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="177.568" y="60.066" width="206.2" height="44.8" swfSizing="stage">swf/Element_led_light_white.swf</Image>
+
+		<Video/>
+		<Background>images/LIpSzs9UsHcxmalBCEssCvS8rHnLX53glCCKMOCv.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="367" x="2" y="126" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Documentation of medication errors is essential for maintaining an accurate medical record. It helps in identifying patterns that might indicate systemic issues needing correction. Transparent reporting also fosters an environment of trust and continuous improvement within healthcare teams.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="739.667" y="381.667" width="18" height="18" swfSizing="stage">swf/Element_led_light_white.swf</Image>
+
+		<Video/>
+		<Background>images/670fe33d145b7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>4</Template>
+		<Section>Staying Organized and Focused</Section>
+		<Content height="357" width="397" x="2" y="102" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Staying Organized and Focused</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Staying organized is crucial for ensuring safe and effective medication administration. A well-structured environment minimizes the risk of errors and enhances efficiency. It is important to establish a routine that allows for thorough checks and balances.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/66fd5bac6c410.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1101</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="462" x="567" y="182" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Focus is equally important when handling medications, as distractions can lead to mistakes. Creating a 'no interruption zone' can help maintain concentration during critical tasks. This practice ensures that each step is completed with the necessary attention to detail.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="146" y="139" width="331" height="331" swfSizing="stage">swf/Element_target_arrow_icon.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453501-864.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1102</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="0" y="330" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Double-checking procedures and using tools like checklists can further enhance focus. These practices help verify that all steps have been followed correctly. In high-risk situations, involving a second person to cross-check can provide an additional layer of safety.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/EVacqphnpXfVlDcGl9yoUs8FwTiX59PZOX5Z43R8.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Interactive Learning Activities</Section>
+		<Content height="350" width="462" x="567" y="124" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Interactive Learning Activities</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Interactive learning activities play a crucial role in enhancing understanding and retention of medication administration principles. By engaging learners in simulations and practical exercises, they can apply theoretical knowledge in a controlled environment. This approach not only builds confidence but also improves accuracy in real-life scenarios.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/7fdfj0T7f9aiCqBJcU43d09sx56MDCyXih95H1gZ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">One effective activity is the use of MAR simulations, where learners practice charting doses and interpreting medication schedules. These exercises help familiarize them with common abbreviations and the importance of precise documentation. Through repeated practice, learners develop a deeper understanding of how to manage medication records effectively.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453545-67.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Quizzes on the 'Rights' of medication administration reinforce essential safety protocols. Presenting scenarios of potential errors challenges learners to identify which 'Right' was violated. This interactive approach encourages critical thinking and problem-solving skills, crucial for preventing medication errors.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/JzO3V57lu3DiYXoNFyhWPLA9YqVhB7dad1GrhEF0.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1203</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Walkthrough videos demonstrate correct medication administration techniques, providing visual guidance for learners. These videos cover steps such as comparing the MAR to the medication bottle and ensuring proper client communication. Visual aids help reinforce learning by showing the practical application of concepts.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453531-112.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1204</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="170" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Error documentation exercises teach learners how to accurately report and address medication errors. By filling out sample forms or MAR entries, they gain experience in handling real-world situations. This practice is vital for maintaining transparency and ensuring client safety in healthcare settings.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746453514-28.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">13</screen_id>
+		<Template>4</Template>
+		<Section>Conclusion and Best Practices</Section>
+		<Content height="225" width="871" x="79" y="191" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Conclusion and Best Practices</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Medication administration is a critical component of healthcare, requiring meticulous attention to detail and adherence to established protocols. Ensuring patient safety is paramount, as errors in medication administration can lead to severe consequences. Healthcare professionals must be vigilant and precise in their approach to administering medication.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/SoFvObatbTYq9P3JuDno7QnZF0TXneHZUuz5LhqT.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="483" width="340" x="689" y="37" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Best practices in medication administration involve a thorough understanding of the 'Rights' of medication administration, including the right patient, right medication, right dose, right time, and right route. These principles serve as a foundational guide to prevent errors and ensure that patients receive the correct treatment. Continuous education and training are essential to stay updated with the latest guidelines and protocols.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="591.000" y="12.167" width="45" height="48" swfSizing="stage">swf/Element_led_light_orange.swf</Image>
+
+		<Video/>
+		<Background>images/JP5qiyiE7tS6KbYHwCzaQWRt0ySu086jzWTgjQt8.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="779" x="250" y="270" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Incorporating technology and innovative tools can enhance the accuracy and efficiency of medication administration. Electronic health records and automated dispensing systems can reduce human error and improve patient outcomes. However, healthcare providers must remain attentive and not overly rely on technology, maintaining a balance between human oversight and technological assistance.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="209" y="50" width="238" height="238" swfSizing="stage">swf/Element_stamp_approved.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746453558-668.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">14</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">15</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="608" width="709" x="321" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Medication Administration</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Introduction to Medication Management</li><li>Levels of Medication Support</li><li>Understanding the MAR</li><li>The Five Rights of Medication Administration</li><li>Additional Rights: Reason and Documentation</li><li>Safe Storage and Handling of Medications</li><li>Monitoring Side Effects</li><li>Documenting Administration and Refusals</li><li>Handling Medication Errors</li><li>Staying Organized and Focused</li><li>Interactive Learning Activities</li><li>Conclusion and Best Practices</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="143" start="0" stop="400" width="310" height="507" mirror="false">video/Jack_end.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall17.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>15</screen_scorm_finish>
+		<scorm_frame>14</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Medication Administration]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>

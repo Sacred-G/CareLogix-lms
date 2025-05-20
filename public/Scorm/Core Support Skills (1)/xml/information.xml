@@ -1,0 +1,1101 @@
+<?xml version="1.0"?>
+<screens>
+	<background src="VirtualGalleryTest.swf">
+		<menu>
+			<item item_url="1" item_label="Learning Goals" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="2" item_label="Building Positive Relationships &amp; Rapport" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="3" item_label="Trust and Empathy" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="4" item_label="Shared Activities and Positive Interaction" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="5" item_label="Maintaining Professional Boundaries" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="6" item_label="Strategies for Rapport &amp; Boundaries" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="7" item_label="Supporting Daily Living Skills" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="8" item_label="Understanding ADLs and IADLs" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="9" item_label="Least-Intrusive Support &amp; Fostering Independence" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="10" item_label="Skill-Building with Task Analysis" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="11" item_label="Promoting Community Inclusion &amp; Participation" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="12" item_label="Finding Accessible Community Resources" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="13" item_label="Quiz" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+			<item item_url="14" item_label="Summary" item_url_target="_self" thumbnail="images/thumbs/1.jpg"/>
+		</menu>
+	</background>
+
+	<screen>
+		<screen_id x="0" y="0">1</screen_id>
+		<Template>4</Template>
+		<Section>Learning Goals</Section>
+		<Content height="515" width="994" x="16" y="40" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Learning Goals</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Welcome to this learning session on <b>Core Support Skills</b> In this course we shall address:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Building Positive Relationships & Rapport</li><li>Trust and Empathy</li><li>Shared Activities and Positive Interaction</li><li>Maintaining Professional Boundaries</li><li>Strategies for Rapport & Boundaries</li><li>Supporting Daily Living Skills</li><li>Understanding ADLs and IADLs</li><li>Least-Intrusive Support & Fostering Independence</li><li>Skill-Building with Task Analysis</li><li>Promoting Community Inclusion & Participation</li><li>Finding Accessible Community Resources</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">There will be a quiz at the end to test your knowledge.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="714" y="104" start="0" stop="400" width="355" height="553" mirror="true">video/woman30s_Hello.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall7.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">2</screen_id>
+		<Template>4</Template>
+		<Section>Building Positive Relationships &amp; Rapport</Section>
+		<Content height="388" width="407" x="585" y="99" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Building Positive Relationships &amp; Rapport</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Building positive relationships and rapport with individuals you support is foundational to effective caregiving. Establishing trust involves consistent actions that show reliability and genuine care. When individuals feel safe and respected, they are more likely to engage in activities and skills development.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/Bux9RhnI7D4gGfdSKE5ed4k3UKZvt9tFDtulMYpu.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="170" y="135" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Empathy plays a crucial role in building rapport. It involves understanding the individual's perspective and acknowledging their feelings. This empathetic approach fosters a sense of connection and trust, making the individual feel valued and understood.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/5DF7GshbbXtG7iKDnJ6H81JP2tVknD5Lr3HyusrF.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Engaging in shared activities helps strengthen the bond between the support professional and the individual. Participating in activities that the individual enjoys, such as sports or arts, creates moments of joy and connection. These shared experiences help the individual view the professional as an ally rather than just a caregiver.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="586" y="50" width="269" height="269" swfSizing="stage">swf/Element_icon_help.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400198-67.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">203</screen_id>
+		<Template>4</Template>
+		
+		<Content height="265" width="462" x="567" y="167" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining professional boundaries is essential while building rapport. It is important to balance being supportive without becoming overly involved in the individual's personal life. Boundaries ensure a healthy, ethical relationship that protects both the individual and the professional.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/y2a8UiYeOHVMMxgkfG4nJoDIz7MqYHN0SUHkFbLA.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">204</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="250" y="301" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Collaboration with family and other natural supports enhances the support provided to the individual. Involving family members in planning and activities builds a supportive network. This collaboration respects the individual's autonomy while ensuring comprehensive support.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/468dt3Mw7kNcbPGxG4z03kbU40sQEs9f1o2Oxn0y.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">3</screen_id>
+		<Template>4</Template>
+		<Section>Trust and Empathy</Section>
+		<Content height="288" width="462" x="0" y="139" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Trust and Empathy</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Building positive relationships and rapport is foundational in providing effective support. It involves creating a safe and respectful environment where individuals feel valued and understood. This process requires consistent effort and genuine interest in the individual's well-being.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="563" y="83" width="398" height="398" swfSizing="stage">swf/Element_icon_positive.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400258-435.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">301</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="871" x="79" y="233" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Trust is a critical component of building rapport and is earned through reliability and honesty. When individuals feel they can depend on their support professionals, they are more likely to engage openly. Demonstrating empathy by acknowledging their feelings further strengthens this trust.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="463" y="464" width="137" height="137" swfSizing="stage">swf/Element_icon_positive.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400246-755.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">302</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="585" y="144" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Engaging in shared activities that align with the individual's interests can significantly enhance rapport. Participating in these activities together fosters a sense of camaraderie and mutual respect. It is important to approach these interactions with positivity and encouragement.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/Element_icon_positive.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400233-943.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">303</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="871" x="79" y="233" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining professional boundaries is essential while building rapport. It ensures that the relationship remains healthy and focused on the individual's needs. Balancing friendliness with professionalism protects both the individual and the support worker.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="463" y="464" width="137" height="137" swfSizing="stage">swf/Element_icon_positive.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400222-410.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">304</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="566" x="221" y="260" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Collaborating with family and other natural supports enriches the support process. Families provide valuable insights into the individual's history and preferences. Respectful communication with family members helps create a cohesive support network.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="757" y="39" width="223" height="223" swfSizing="stage">swf/Element_icon_positive.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400210-609.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">4</screen_id>
+		<Template>4</Template>
+		<Section>Shared Activities and Positive Interaction</Section>
+		<Content height="194" width="1021" x="8" y="361" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Shared Activities and Positive Interaction</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Engaging in shared activities is a powerful way to build rapport and foster positive interactions. By participating in activities that the individual enjoys, such as sports, arts, or music, support professionals can create moments of joy and connection. These shared experiences help the person see the support professional as a friend or ally, rather than just staff.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="363.359" y="-95.333" width="746.4" height="576.6" swfSizing="stage">swf/element_sun_rays_divine.swf</Image>
+
+		<Video/>
+		<Background>images/cn9u75z3XMhJca6B1luAxWSgLAUMBTI4P9T7KT7g.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">401</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="86" y="146" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Participating in activities together sends a message that the individual is valued for who they are. It shows that the support professional is interested in their interests and hobbies, which strengthens the bond between them. This mutual enjoyment and participation can lead to increased cooperation and willingness to engage in more challenging tasks.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/0JXTofcOM9wZr3lQ5xwNo9cyFcawTiGT5ZgGQrh2.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">402</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="250" y="286" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Positive reinforcement is a key component of shared activities. By acknowledging and praising the individual's achievements, no matter how small, support professionals can boost their confidence and motivation. Simple gestures like a high-five or a smile can go a long way in making the individual feel appreciated and respected.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/VFiiT07MKGPmonTXI7LEZx81NPwzgupQexgGvzpk.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">403</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1018" x="11" y="390" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining a friendly demeanor during shared activities is crucial. Smiling, laughing, and being present in the moment can transform interactions from feeling like work or therapy into enjoyable experiences. This approach not only enhances the individual's comfort and happiness but also builds a foundation for tackling more difficult tasks together.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="-0.500" y="-340.417" width="774.6" height="774.6" swfSizing="stage">swf/element_sun_rays_divine.swf</Image>
+
+		<Video/>
+		<Background>images/zrKCu7oNWqSPf5cF0HTzhIZMDdz9Ix2K3b4Wr4Gl.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">5</screen_id>
+		<Template>4</Template>
+		<Section>Maintaining Professional Boundaries</Section>
+		<Content height="419" width="407" x="86" y="101" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Maintaining Professional Boundaries</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Maintaining professional boundaries is essential to ensure a healthy and ethical relationship between support professionals and those they assist. It involves understanding the line between being supportive and becoming inappropriately involved. Professionals must balance empathy with the need to remain within the confines of their role.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/0q4DIC0opwG3y6Q1nxZ5TcLP40iT4HU7ybaiidve.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">501</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Personal information should be shared cautiously, ensuring that only relevant details are disclosed to maintain professionalism. Oversharing can lead to blurred lines and dependency, which may compromise the integrity of the support relationship. Respecting the privacy of the individuals supported is equally important.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/hShS3dQCo2H2m44uZ866ZUnnzEiOaqGgXIVWCwzx.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">502</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Role clarity is crucial in maintaining boundaries, as it helps define what tasks and responsibilities are appropriate. Support professionals should be aware of their job descriptions and avoid taking on tasks that fall outside their professional duties. This clarity helps prevent exploitation and ensures the focus remains on the individual's needs.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/DQz83ixDEo7YfUn9F8Pss24LbeEYddR4YLgiUalM.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">503</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="779" x="250" y="270" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Emotional boundaries are necessary to prevent over-involvement and ensure that the professional relationship remains healthy. While it's natural to develop a rapport, it's important to avoid becoming a confidant in a way that compromises professional distance. Encouraging independence and other relationships is key to maintaining these boundaries.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="209" y="50" width="238" height="238" swfSizing="stage">swf/Element_chat_bubble_share_click_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400292-412.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">504</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Outside contact with individuals supported should be limited to professional settings to avoid conflicts of interest. Agencies often have policies against personal interactions outside of work hours to protect both parties. Adhering to these guidelines helps maintain a clear distinction between personal and professional relationships.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_chat_bubble_share_click_blue.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400281-302.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">505</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is essential for building positive relationships in support work?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI04" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Financial incentives]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Trust and rapport are essential in support work. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Strict rules]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Trust and rapport are essential in support work. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Trust and rapport]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Trust and rapport are key to successful support.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">506</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How can empathy be demonstrated in support work?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI05" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignoring their feelings]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Empathy involves understanding and acknowledging feelings. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Understanding their perspective]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Great! Understanding and acknowledging feelings shows empathy.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Focusing only on tasks]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Empathy involves understanding and acknowledging feelings. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">507</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">Why are shared activities important in building rapport?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-5.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI06" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They create positive interactions]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Well done! Shared activities help create positive interactions.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They are time-consuming]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Shared activities help build rapport through positive interactions. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[They are irrelevant]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Try again. Shared activities help build rapport through positive interactions. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">6</screen_id>
+		<Template>4</Template>
+		<Section>Strategies for Rapport &amp; Boundaries</Section>
+		<Content height="357" width="462" x="567" y="121" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Strategies for Rapport &amp; Boundaries</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Establishing rapport involves consistent communication and understanding the individual's unique needs and preferences. This requires active listening and responding empathetically to their concerns. Building a strong rapport lays the foundation for effective support and collaboration.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/P815RjzlwSCpOcsY5bmzX9tszrTieqNzXXTCEb0d.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">601</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Professional boundaries are essential to maintain a healthy and ethical relationship with the individual. These boundaries help define the roles and responsibilities of the support professional, ensuring clarity and respect. Adhering to boundaries protects both the individual and the professional from potential conflicts or misunderstandings.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746400320-360.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">602</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1028" x="1" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Strategies for maintaining rapport and boundaries include setting clear expectations and being transparent in communication. It's important to remain consistent and fair in interactions, providing support without overstepping personal limits. These strategies foster trust and respect, creating a safe environment for the individual.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="177.000" y="218.250" width="137.6" height="137.6" swfSizing="stage">swf/Element_nature_sun_small.swf</Image>
+
+		<Video/>
+		<Background>images/qlKiOcEA8IpcWxvY8HHaGvUQ5UfI1E4jEylhsW9H.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">603</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Utilizing the 'Grandma Rule' for social media interactions helps maintain professionalism. This rule suggests that if an action wouldn't be appropriate in front of a supervisor or family, it might not be suitable in a professional context. Such guidelines ensure that interactions remain respectful and within professional boundaries.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/ai-1746400309-416.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">7</screen_id>
+		<Template>4</Template>
+		<Section>Supporting Daily Living Skills</Section>
+		<Content height="350" width="462" x="567" y="124" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Supporting Daily Living Skills</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Supporting daily living skills is crucial for promoting independence among individuals with developmental disabilities. These skills range from basic self-care tasks to more complex activities necessary for community living. The focus is on empowering individuals to perform these tasks with minimal assistance, fostering a sense of autonomy and confidence.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="146" y="139" width="331" height="331" swfSizing="stage">swf/Element_payslip.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400345-615.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">701</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="779" x="0" y="315" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Activities of Daily Living (ADLs) include essential self-care tasks like bathing, dressing, and eating. These are fundamental for personal well-being and are often the first skills taught to promote independence. Direct support professionals play a key role in providing guidance and support to help individuals master these tasks.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/r9VLyvF6ntXHubocerhphn2aHO3eNqi1zJhGeeFt.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">702</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Instrumental Activities of Daily Living (IADLs) involve more complex tasks such as managing finances, cooking, and using transportation. These activities require higher cognitive and social skills, and mastering them enables individuals to live more independently. Support professionals help by breaking down these tasks into manageable steps and providing appropriate levels of assistance.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_payslip.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400331-512.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">703</screen_id>
+		<Template>4</Template>
+		
+		<Content height="234" width="566" x="221" y="229" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Using the least-intrusive support necessary is a guiding principle in teaching daily living skills. This approach encourages individuals to try tasks independently, even if it means making mistakes along the way. By gradually reducing assistance, support professionals help build confidence and competence in the individuals they support.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/segA46Z8eUSmcAZE1Z6pOHVDRxZWR0SnlKrRoZGi.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">8</screen_id>
+		<Template>4</Template>
+		<Section>Understanding ADLs and IADLs</Section>
+		<Content height="388" width="423" x="372" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Understanding ADLs and IADLs</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Activities of Daily Living (ADLs) are fundamental tasks that individuals perform every day to take care of themselves. These include essential self-care activities such as bathing, dressing, and eating. ADLs are crucial for maintaining personal health and hygiene, and they form the foundation of independent living.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="211.000" y="398.583" width="26.8" height="26.8" swfSizing="stage">swf/Element_water_drop_drip.swf</Image>
+
+		<Video/>
+		<Background>images/VaHnLvGE5GhFQfdvQtBh9aJnGg0Vu47CZWCUqKsl.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">801</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1030" x="0" y="104" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Instrumental Activities of Daily Living (IADLs) are more complex tasks that support independent living in the community. These activities include managing finances, handling transportation, and preparing meals. IADLs require higher cognitive functioning and organizational skills compared to basic ADLs.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f424aa2a.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">802</screen_id>
+		<Template>4</Template>
+		
+		<Content height="359" width="407" x="86" y="131" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Understanding the difference between ADLs and IADLs is vital for providing appropriate support to individuals with developmental disabilities. While some individuals may require assistance with both ADLs and IADLs, others may only need support with one category. Tailoring support to the individual's specific needs promotes independence and enhances their quality of life.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f8cb4f88.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">9</screen_id>
+		<Template>4</Template>
+		<Section>Least-Intrusive Support &amp; Fostering Independence</Section>
+		<Content height="194" width="859" x="170" y="108" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Least-Intrusive Support &amp; Fostering Independence</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Providing support in the least-intrusive manner is crucial for fostering independence. This approach encourages individuals to perform tasks themselves, enhancing their confidence and skills. By gradually reducing assistance, individuals can gain autonomy and self-reliance.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_icon_person2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400378-340.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">901</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="250" y="301" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The prompt hierarchy is a valuable tool in this process. It involves starting with minimal assistance and increasing support only as needed. This method ensures that individuals have the opportunity to attempt tasks independently before receiving help.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="209" y="50" width="238" height="238" swfSizing="stage">swf/Element_icon_person2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400366-828.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">902</screen_id>
+		<Template>4</Template>
+		
+		<Content height="203" width="511" x="518" y="181" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Encouraging independence involves allowing individuals to make mistakes and learn from them. This process, known as the dignity of risk, is essential for personal growth. It is important to balance safety with the freedom to try new things.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114ddd6505f.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">903</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="871" x="79" y="233" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Support professionals play a key role in facilitating this independence. By providing guidance and encouragement, they help individuals develop their skills. This support should always be respectful and empowering, promoting the individual's dignity.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="463" y="464" width="137" height="137" swfSizing="stage">swf/Element_icon_person2.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400355-173.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">904</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is a key aspect of maintaining professional boundaries?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI07" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="1" Score="1" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Balancing support and involvement]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Correct! Balancing support without over-involvement is crucial.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Becoming a close friend]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Maintaining boundaries involves balancing support and involvement. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Sharing personal life details]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Maintaining boundaries involves balancing support and involvement. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">905</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">What is the focus of least-intrusive support?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI08" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Doing everything for them]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Least-intrusive support aims to foster independence. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="1" Score="1" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Fostering independence]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Good job! Least-intrusive support fosters independence.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="0" Score="0" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Avoiding interaction]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Incorrect. Least-intrusive support aims to foster independence. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">906</screen_id>
+		<Template>4</Template>
+		<Section>Knowledge check</Section>
+		<Content height="340" width="370" x="60" y="95" padding="25" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95"><![CDATA[<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448; margin-bottom: 16px;"><strong>Knowledge check!</strong></p>
+	<p style="font-family: SANS-SERIF; font-size: 24px; color: #404448;">How does task analysis aid in skill-building?</p>]]></Content>
+		<Content_1 x="480" y="95" width="500" height="350" hasBackground="true" bgColor="#ffffff" bgAlpha="0.95" alpha="1"><![CDATA[<p>&nbsp;</p>]]></Content_1>
+		<Narrator/>
+		<Video/>
+		<Background>images/kcheck-3.jpg</Background>
+		<navigation delay=""/>
+		<Quizes>
+			<settings><quiz_identifier/></settings>
+			<Quiz Type="inline" x="517" y="168">
+				<Question QuestionID="MI09" QuestionType="inline" Title="Checkbox Form question" CommentBox="0" qType="MC">
+					<Text>Enter question here...</Text>
+					<Answers>
+						<Answer AnswerID="1" Correct="0" Score="0" Order="1" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Combining tasks into one]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Task analysis breaks tasks into manageable steps. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="2" Correct="0" Score="0" Order="2" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Ignoring task details]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Not quite. Task analysis breaks tasks into manageable steps. Use the menu to review the previous topics before continuing.</Feedback>
+						</Answer>
+						<Answer AnswerID="3" Correct="1" Score="1" Order="3" TaskSeverity="0" ActionByID="0">
+							<Text><![CDATA[Breaking tasks into steps]]></Text>
+							<TaskName/>
+							<TaskDescription/>
+							<Feedback>Well done! Task analysis breaks tasks into steps for easier learning.</Feedback>
+						</Answer>
+					</Answers>
+				</Question>
+			</Quiz>
+		</Quizes>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">10</screen_id>
+		<Template>4</Template>
+		<Section>Skill-Building with Task Analysis</Section>
+		<Content height="450" width="407" x="585" y="68" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Skill-Building with Task Analysis</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Task analysis is a methodical approach to teaching complex skills by breaking them down into smaller, manageable steps. Each step is taught individually, allowing the learner to master one component before moving on to the next. This method not only simplifies learning but also builds confidence as the individual experiences success with each completed step.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/zSAxhl4YzUZUolBlwVjcX0gk265rHRgzZci0lRpZ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1001</screen_id>
+		<Template>4</Template>
+		
+		<Content height="328" width="407" x="585" y="129" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">In practice, task analysis involves identifying the sequence of actions required to complete a task. For example, brushing teeth can be broken down into steps such as picking up the toothbrush, applying toothpaste, and rinsing the mouth. By focusing on each step, the learner can gradually build the full skill set needed to perform the task independently.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="133" y="123" width="362" height="362" swfSizing="stage">swf/Element_graph_success.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400413-792.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1002</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="170" y="119" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Task analysis can be enhanced with visual aids, such as picture sequences or checklists, which guide the learner through each step. These tools provide clear, visual cues that can be especially helpful for individuals who benefit from seeing the process laid out. Over time, as the learner becomes more familiar with the task, these aids can be gradually removed to encourage independence.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="243" y="323" width="226" height="226" swfSizing="stage">swf/Element_graph_success.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400401-31.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1003</screen_id>
+		<Template>4</Template>
+		
+		<Content height="172" width="859" x="86" y="57" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">The goal of task analysis is to foster independence by teaching skills in a structured and supportive manner. By breaking tasks down, individuals are less likely to feel overwhelmed and more likely to engage in the learning process. This approach not only empowers the learner but also respects their pace and learning style, ultimately leading to greater autonomy.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="380" y="241" width="293" height="293" swfSizing="stage">swf/Element_graph_success.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400389-273.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">11</screen_id>
+		<Template>4</Template>
+		<Section>Promoting Community Inclusion &amp; Participation</Section>
+		<Content height="256" width="859" x="86" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Promoting Community Inclusion &amp; Participation</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Promoting community inclusion and participation is essential for individuals with developmental disabilities to lead fulfilling lives. It involves ensuring they have access to community resources and opportunities to engage in social, recreational, and vocational activities. This process not only enhances their quality of life but also fosters a sense of belonging and acceptance within the community.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/YX40tNEXzUrZjXVedl0PpnexD01oyJ88dUHtmJHO.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1101</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="462" x="567" y="151" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">One of the key aspects of community inclusion is identifying and utilizing accessible resources. This includes parks, libraries, community centers, and vocational opportunities that are welcoming and accommodating. By connecting individuals with these resources, support professionals can help them build social networks and develop new skills.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="146" y="139" width="331" height="331" swfSizing="stage">swf/Element_graph_success.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400425-523.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1102</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="1030" x="0" y="330" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Supporting social skills and safety in the community is crucial for successful inclusion. Individuals may need guidance on how to interact appropriately with others and navigate public spaces safely. Providing training and role-playing scenarios can help them gain confidence and independence in community settings.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/67114f81d3eff.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">12</screen_id>
+		<Template>4</Template>
+		<Section>Finding Accessible Community Resources</Section>
+		<Content height="225" width="779" x="0" y="288" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Finding Accessible Community Resources</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Finding accessible community resources is essential for promoting inclusion for individuals with developmental disabilities. These resources can range from parks and recreational programs to libraries and community centers. Identifying and utilizing these resources helps individuals participate fully in community life.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/dGBsUORg0mV93pp5HFX99QR1eTbkNV2gZBcefCk4.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1201</screen_id>
+		<Template>4</Template>
+		
+		<Content height="296" width="407" x="86" y="162" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Parks and recreation programs often offer inclusive or adaptive activities that cater to diverse needs. These can include art classes, swimming lessons, or sports teams that welcome individuals with disabilities. Engaging in these activities fosters social connections and enhances physical well-being.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/NirxuJVFQs3Alt3Ak6pGurHBAxAAQA9ObNNzOwtZ.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1202</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="859" x="86" y="72" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Community centers and libraries provide opportunities for social interaction and skill development. Libraries may host events like storytimes or hobby clubs, which are great for building social skills. Community centers often offer adult education classes or fitness programs that are inclusive.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+		<Image x="380" y="241" width="293" height="293" swfSizing="stage">swf/Element_health_bag.swf</Image>
+
+		<Video/>
+		<Background>images/ai-1746400436-870.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">1203</screen_id>
+		<Template>4</Template>
+		
+		<Content height="140" width="779" x="250" y="301" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9" auto_narrator="true">
+			<![CDATA[
+			<p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Vocational and volunteering opportunities are also crucial for community inclusion. Volunteering at local organizations can help individuals build relationships and gain valuable skills. These experiences contribute to a sense of purpose and belonging in the community.</p>]]>
+		</Content>
+		
+		<Narrator/>
+
+
+		<Video/>
+		<Background>images/670ce8e090abf.jpg</Background>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">13</screen_id>
+		<Template>1</Template>
+		<Section>Quiz</Section>
+		<Content>Please answer these questions and pass the quiz in order to continue.</Content>
+		<Quizes>
+			<settings>
+				<quiz_title/>
+				<OK>OK</OK>
+				<Issue_Detected>Issue detected</Issue_Detected>
+				<Retake_Test>You have reached the end of the test.</Retake_Test>
+				<Ratio>Your score is</Ratio>
+				<No_Issues>Congratulations! You have scored 100%!</No_Issues>
+				<Few_Issues>Congratulations! You have passed the quiz.</Few_Issues>
+				<Some_Issues>You have not reached the pass mark required.</Some_Issues>
+				<Many_Issues>You have got many questions wrong.</Many_Issues>
+				<Most_Issues>Select below</Most_Issues>
+				<Random>1</Random>
+				<Show_Intro>1</Show_Intro>
+				<Show_Results>1</Show_Results>
+				<QuizType>0</QuizType>
+				<LoadsQuizatScreenLevel>0</LoadsQuizatScreenLevel>
+				<ShowFeedback>1</ShowFeedback>
+				<PassMark>70</PassMark>
+				<Show_Answers>1</Show_Answers>
+			</settings>
+		</Quizes>
+		<Background/>
+		<navigation/>
+	</screen>
+	<screen>
+		<screen_id x="0" y="0">14</screen_id>
+		<Template>4</Template>
+		<Section>Summary</Section>
+		<Content height="577" width="756" x="273" y="32" padding="20" hasBackground="true" bgColor="#ffffff" bgAlpha="0.9">
+			<![CDATA[<p style="font-family: SANS-SERIF; font-size: 28px; margin-bottom: 16px; color:#404448"><b>Summary</b></p>
+			<p style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448">Well done you have completed the course <b>Core Support Skills</b> You should now be familiar with:</p><ul style="font-family: SANS-SERIF; font-size: 24px; margin-bottom: 16px; color:#404448"><li>Building Positive Relationships & Rapport</li><li>Trust and Empathy</li><li>Shared Activities and Positive Interaction</li><li>Maintaining Professional Boundaries</li><li>Strategies for Rapport & Boundaries</li><li>Supporting Daily Living Skills</li><li>Understanding ADLs and IADLs</li><li>Least-Intrusive Support & Fostering Independence</li><li>Skill-Building with Task Analysis</li><li>Promoting Community Inclusion & Participation</li><li>Finding Accessible Community Resources</li></ul><p style="font-family: SANS-SERIF; font-size: 24px; color:#404448">Should you need to revisit any of the topics in this course, please use the menu at the bottom of the screen.</p>]]>
+		</Content>
+		<Flash x="" y="" width="" height="" targetId="" text="" textColor="#000000">swf/empty_1.swf</Flash>
+		<Narrator x="0" y="136" start="0" stop="400" width="355" height="553" mirror="false">video/woman30s_well_done.webm</Narrator>
+
+		<Video/>
+		<Background>images/main_wall11.jpg</Background>
+		<navigation/>
+	</screen>
+	<video>
+		<vid/>
+		<video_file_visible>true</video_file_visible>
+		<time_visible>false</time_visible>
+		<video_streaming>false</video_streaming>
+		<server/>
+		<video_slides_in>false</video_slides_in>
+	</video>
+	<scorm>
+		<scorm_format>SVGA_1905s</scorm_format>
+		<screen_scorm_finish>14</screen_scorm_finish>
+		<scorm_frame>13</scorm_frame>
+		<xmlversion>null</xmlversion>
+		<scorm_2004>1024012</scorm_2004>
+		<scorm_2005>1144484</scorm_2005>
+		<course_name><![CDATA[Core Support Skills]]></course_name>
+	</scorm>
+	<settings>
+		<status_set_to_passed>true</status_set_to_passed>
+		<show_background>false</show_background>
+		<title_color>26367</title_color>
+		<default_thumb>1.jpg</default_thumb>
+		<show_second_menu>false</show_second_menu>
+		<show_text_toggle_button>true</show_text_toggle_button>
+	<accessibility>some</accessibility></settings>
+	<introduction>
+		<show_intro>true</show_intro>
+	</introduction>
+	<navigation>
+		<button name="next" x="982.5" y="590" width="75" height="60"/>
+		<button name="prev" x="77.5" y="590" width="55" height="44" visible="true"/>
+		<button name="yes" x="903.6" y="576.55" width="75" height="60" visible="false"/>
+		<button name="no" x="996.95" y="576.55" width="75" height="60" visible="false"/>
+	</navigation>
+	<nav_blocks>
+		<button name="skip" asset="next" x="982.5" y="590" width="75" height="60"/>
+	</nav_blocks>
+</screens>
