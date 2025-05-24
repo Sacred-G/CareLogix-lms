@@ -1,0 +1,76 @@
+
+export interface Question {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+}
+
+export interface Flashcard {
+  id: string;
+  term: string;
+  definition: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ScenarioOption {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+  feedback: string;
+}
+
+export interface Module {
+  id: string;
+  title: string;
+  description: string;
+  videoUrl?: string;
+  content: string;
+  audioUrl?: string;
+  transcript?: string;
+  questions: Question[];
+  flashcards?: Flashcard[];
+  faqs?: FAQ[];
+  courseId?: string; // Added for SCORM module support
+  interactiveScenario?: {
+    title: string;
+    description: string;
+    type: 'multiple-choice' | 'dialogue' | 'mindmap';
+    content?: any; // This would be structured based on scenario type
+    options?: ScenarioOption[];
+    mindmapType?: string; // For mindmap type, identifies which mindmap data to use
+  };
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  instructor: string;
+  thumbnail: string;
+  duration: string;
+  modules: Module[];
+  certificateAvailable?: boolean;
+  domain?: string; // Domain property added here
+  featured?: boolean; // Added to highlight important courses
+}
+
+export interface Certificate {
+  id: string;
+  userId: string;
+  userName: string;
+  courseId: string;
+  courseTitle: string;
+  issueDate: string;
+  completionDate: string;
+  validUntil?: string;
+  certificateNumber: string;
+  organizationName?: string;
+  organizationLogo?: string;
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register SCORM Package</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2563eb;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #1d4ed8;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+    .error {
+      background-color: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+    .info {
+      background-color: #f0f9ff;
+      border: 1px solid #bae6fd;
+      color: #0369a1;
+    }
+    code {
+      font-family: monospace;
+      background: #f3f4f6;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+    .steps {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .steps ol {
+      padding-left: 20px;
+    }
+    .steps li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Register Existing SCORM Package</h1>
+  <p>This utility helps you register your existing SCORM content with a course so it shows up in the interactive menu.</p>
+  
+  <div class="steps">
+    <h3>How it works:</h3>
+    <ol>
+      <li>Fill out the form below with the details of your SCORM package</li>
+      <li>The utility will create a record in the database for your SCORM module</li>
+      <li>It will associate the module with the selected course</li>
+      <li>Your existing SCORM content in <code>/public/Scorm/1/training.htm</code> will be used directly</li>
+      <li>The module will appear in the "Interactive" tab of the selected course</li>
+    </ol>
+  </div>
+  
+  <div id="result" style="display: none;"></div>
+  
+  <form id="registerForm">
+    <div class="form-group">
+      <label for="title">Module Title</label>
+      <input type="text" id="title" required placeholder="Enter a title for your SCORM module">
+    </div>
+    
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" placeholder="Describe what this SCORM module teaches"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="course_id">Course</label>
+      <select id="course_id" required>
+        <option value="">Select a course</option>
+        <!-- Courses will be populated dynamically -->
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="launch_path">Launch Path</label>
+      <input type="text" id="launch_path" value="training.htm" required>
+      <p><small>Path to the main HTML file in your SCORM package</small></p>
+    </div>
+    
+    <div class="form-group">
+      <label for="file_path">SCORM Location</label>
+      <select id="file_path" required>
+        <option value="">Select a SCORM folder</option>
+        <option value="Scorm/1">Scorm/1</option>
+        <option value="Scorm/2">Scorm/2</option>
+        <option value="Scorm/Core Support Skills (1)">Scorm/Core Support Skills</option>
+        <option value="Scorm/Documentation">Scorm/Documentation</option>
+        <option value="Scorm/Employee Handbook_ Include Me Too Please">Scorm/Include Me Too</option>
+        <option value="Scorm/Foundations of Empathetic Communication">Scorm/Empathetic Communication</option>
+        <option value="Scorm/Incident Reporting">Scorm/Incident Reporting</option>
+        <option value="Scorm/Medication_Administration">Scorm/Medication Administration</option>
+        <option value="Scorm/Risk Management for DSPs">Scorm/Risk Management</option>
+        <option value="Scorm/Transportation Safety & Procedures">Scorm/Transportation Safety</option>
+      </select>
+      <p><small>Select the folder containing your SCORM content</small></p>
+    </div>
+    
+    <button type="submit">Register SCORM Module</button>
+  </form>
+  
+  <script>
+    // Initialize Supabase client with API key from .env
+    const supabaseUrl = 'https://xaqzisvydglrczbzmbpw.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhcXppc3Z5ZGdscmN6YnptYnB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzODU0MjMsImV4cCI6MjA2MDk2MTQyM30.ueT4e7IjDC8WKKzFf7cSvmpQoBhBg2eCjnqKMBllp80';
+    
+    // Create Supabase client once
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // Get the authenticated user's ID
+    let userId = null;
+
+    // Fetch user info on page load - simplified for local development
+    async function fetchUserId() {
+      // For local development, we'll just use a default admin ID
+      userId = '00000000-0000-0000-0000-000000000000';
+      console.log('Using default admin ID for local development');
+      return;
+    }
+    
+    // Get courses and populate dropdown
+    async function loadCourses() {
+      try {
+        // Supabase client is already created at the top
+        
+        // Get courses from the database
+        const { data: dbCourses, error } = await supabase
+          .from('courses')
+          .select('id, title')
+          .order('title');
+          
+        if (error) throw error;
+        
+        // Get predefined courses from JavaScript files
+        // We can't actually load all these dynamically, so we'll hardcode some common ones
+        const predefinedCourses = [
+          { id: 'boundaries-ethics', title: 'Boundaries and Ethics' },
+          { id: 'client-rights', title: 'Client Rights' },
+          { id: 'communication-empathy', title: 'Communication and Empathy' },
+          { id: 'community-inclusion', title: 'Community Inclusion' },
+          { id: 'developmental-disabilities', title: 'Developmental Disabilities' },
+          { id: 'documentation-visits', title: 'Documentation and Visits' },
+          { id: 'emergency-preparedness', title: 'Emergency Preparedness' },
+          { id: 'intro-dev-disabilities', title: 'Introduction to Developmental Disabilities' },
+          { id: 'medication-admin', title: 'Medication Administration' },
+          { id: 'personal-care-dignity', title: 'Personal Care and Dignity' },
+          { id: 'scenario-practice', title: 'Scenario Practice' },
+          { id: 'transportation', title: 'Safe and Effective Transportation' }
+        ];
+        
+        // Combine DB courses with predefined courses
+        const allCourses = [...(dbCourses || []), ...predefinedCourses];
+        
+        // Populate dropdown
+        const select = document.getElementById('course_id');
+        select.innerHTML = '<option value="">Select a course</option>';
+        
+        allCourses.forEach(course => {
+          const option = document.createElement('option');
+          option.value = course.id;
+          option.textContent = course.title;
+          select.appendChild(option);
+        });
+        
+        showResult(`Loaded ${allCourses.length} courses successfully.`, 'info');
+      } catch (error) {
+        console.error('Error loading courses:', error);
+        showResult(`Error loading courses: ${error.message}`, 'error');
+      }
+    }
+    
+    // Register SCORM module
+    async function registerScorm(event) {
+      event.preventDefault();
+      
+      try {
+        // Supabase client is already created at the top
+        
+        // Get form values
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const course_id = document.getElementById('course_id').value;
+        const launch_path = document.getElementById('launch_path').value;
+        const file_path = document.getElementById('file_path').value;
+        
+        if (!title || !course_id) {
+          showResult('Title and Course are required fields.', 'error');
+          return;
+        }
+        
+        // Build the public URL - DO NOT include /public/ in the path
+        const public_url = `/${file_path}/${launch_path}`;
+        
+        // Create SCORM module record
+        const { data, error } = await supabase
+          .from('scorm_modules')
+          .insert({
+            title,
+            description,
+            course_id,
+            file_path,
+            launch_path,
+            status: 'processed', // Mark as processed so it shows as ready
+            public_url,
+            processed_at: new Date().toISOString(),
+            created_by: userId // Include the created_by field with the user ID
+          })
+          .select();
+          
+        if (error) throw error;
+        
+        showResult(`
+          <h3>SCORM module successfully registered!</h3>
+          <p>Module ID: ${data[0].id}</p>
+          <p>Title: ${title}</p>
+          <p>Course: ${course_id}</p>
+          <p>Path: ${public_url}</p>
+          <p>Your SCORM module should now appear in the Interactive tab of the selected course.</p>
+          <p><a href="/" target="_blank">Go to the course page to view it</a></p>
+        `, 'success');
+      } catch (error) {
+        console.error('Error registering SCORM:', error);
+        showResult(`Error registering SCORM: ${error.message}`, 'error');
+      }
+    }
+    
+    // Show result message
+    function showResult(message, type = 'info') {
+      const resultElement = document.getElementById('result');
+      resultElement.innerHTML = message;
+      resultElement.className = `result ${type}`;
+      resultElement.style.display = 'block';
+      
+      // Make sure form remains visible
+      document.getElementById('registerForm').style.display = 'block';
+    }
+    
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', async () => {
+      await fetchUserId();
+      loadCourses();
+    });
+    document.getElementById('registerForm').addEventListener('submit', registerScorm);
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCORM Test Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .iframe-container {
+      margin-top: 20px;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .path-buttons {
+      margin: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #4299e1;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #3182ce;
+    }
+    .current-path {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SCORM Test Viewer</h1>
+    <p>This page helps you test your SCORM content directly without going through the LMS interface.</p>
+    
+    <div class="path-buttons">
+      <button onclick="loadScorm('/Scorm/1/training.htm')">Load SCORM from /Scorm/1/training.htm</button>
+      <button onclick="loadScorm('/Scorm/1/index.html')">Load SCORM from /Scorm/1/index.html</button>
+      <button onclick="loadScorm('/scorm/1/training.htm')">Load SCORM from /scorm/1/training.htm (lowercase)</button>
+    </div>
+    
+    <div class="current-path" id="current-path">No SCORM loaded yet</div>
+    
+    <div class="iframe-container">
+      <iframe id="scorm-iframe" src="about:blank" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    function loadScorm(path) {
+      const iframe = document.getElementById('scorm-iframe');
+      const pathDisplay = document.getElementById('current-path');
+      
+      iframe.src = path;
+      pathDisplay.textContent = 'Currently displaying: ' + path;
+      
+      // Optionally capture SCORM API calls for debugging
+      iframe.onload = function() {
+        console.log('SCORM content loaded from: ' + path);
+      };
+    }
+  </script>
+</body>
+</html>

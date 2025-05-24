@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 240 10% 3.9%; /* Dark background */
+    --foreground: 0 0% 98%; /* Light text */
+
+    /* Primary Accent (Purple to Pink Gradient) */
+    --primary: 258 90% 60%; /* Vibrant Purple */
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary Accent (Blue to Green Gradient) */
+    --secondary: 200 90% 50%; /* Vibrant Blue */
+    --secondary-foreground: 0 0% 98%;
+
+    /* Card/Surface Colors */
+    --card: 240 10% 8%; /* Slightly lighter dark for cards */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Muted/Border Colors */
+    --muted: 240 10% 15%; /* Muted background */
+    --muted-foreground: 240 5% 64.9%; /* Muted text */
+
+    --accent: 240 10% 15%; /* Accent background */
+    --accent-foreground: 0 0% 98%; /* Accent text */
+
+    --destructive: 0 84.2% 60.2%; /* Red for errors */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 20%; /* Border color */
+    --input: 240 10% 20%; /* Input border */
+    --ring: 258 90% 60%; /* Focus ring color (primary) */
+
+    --radius: 0.75rem; /* Default border radius */
+  }
+}
+
+@layer utilities {
+  /* Custom Gradient Backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(312 90% 60%) 100%); /* Purple to Pink */
+  }
+
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(160 90% 50%) 100%); /* Blue to Green */
+  }
+
+  /* Custom Text Gradients */
+  .text-gradient-primary {
+    background: linear-gradient(45deg, hsl(var(--primary)) 0%, hsl(312 90% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-secondary {
+    background: linear-gradient(45deg, hsl(var(--secondary)) 0%, hsl(160 90% 50%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Custom Shadows */
+  .shadow-lg-glow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 20px 5px hsla(var(--primary), 0.3);
+  }
+
+  .shadow-xl-glow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 30px 8px hsla(var(--primary), 0.4);
+  }
+
+  .shadow-card-glow {
+     box-shadow: 0 4px 32px 0 rgba(0,0,0,0.10), 0 0 15px hsla(var(--primary), 0.25); /* Combine existing card shadow with a subtle primary glow */
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body; /* Use new background variable */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl;
+  }
+
+  /* Improve accessibility with focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+}
+
+@layer components {
+  .lms-container {
+    @apply container mx-auto px-4 sm:px-6 py-8;
+  }
+
+  .lms-card {
+    @apply bg-card text-card-foreground rounded-xl border shadow-card-glow hover:shadow-xl-glow transition-shadow duration-300; /* Use new card shadow */
+  }
+
+  .lms-card-header {
+    @apply p-6 border-b;
+  }
+
+  .lms-card-content {
+    @apply p-6;
+  }
+
+  .lms-card-footer {
+    @apply p-6 border-t;
+  }
+
+  .progress-ring {
+    @apply rounded-full;
+  }
+
+  .video-container {
+    @apply relative w-full overflow-hidden rounded-lg;
+  }
+
+  .video-container iframe,
+  .video-container video {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+  .audio-player {
+    @apply w-full rounded-lg bg-muted p-4;
+  }
+
+  .quiz-option {
+    @apply relative p-4 border rounded-lg cursor-pointer transition-all;
+  }
+
+  .quiz-option.correct {
+    @apply bg-green-100 border-green-500; /* Keep standard success colors for now */
+  }
+
+  .quiz-option.incorrect {
+    @apply bg-red-100 border-red-500; /* Keep standard error colors for now */
+  }
+
+  /* New styles for better reading experience */
+  /* Keep existing text-gradient-primary but update definition in utilities */
+  .prose {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .prose p {
+    @apply my-4 text-lg;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-gradient-primary; /* Use text gradient for headings */
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-gradient-primary; /* Use text gradient for headings */
+  }
+
+  .prose ul, .prose ol {
+    @apply my-4 ml-6 space-y-2;
+  }
+
+  .prose li {
+    @apply text-lg;
+  }
+
+  .prose strong {
+    @apply font-semibold text-primary; /* Use primary color for strong text */
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Certificate Signature Styles */
+  .signature-container {
+    @apply flex items-end justify-center h-16 border-b border-gray-300; /* Keep standard gray for now */
+  }
+
+  .signature-image {
+    @apply h-full w-auto max-w-full opacity-80;
+  }
+
+  .certificate-signature-line {
+    @apply w-full h-px bg-gray-400 my-2; /* Keep standard gray for now */
+  }
+
+  .signature-name {
+    @apply font-medium text-gray-800 mt-2; /* Keep standard gray for now */
+  }
+
+  .signature-title {
+    @apply text-sm text-gray-500; /* Keep standard gray for now */
+  }
+}
+
+/* Blurred circles - keeping these specific elements */
+.blurred-circle-pink {
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 420px;
+  height: 420px;
+  background: hsl(312 90% 60%); /* Use primary color */
+  opacity: 0.32;
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blurred-circle-blue {
+  position: absolute;
+  top: 40px;
+  right: -180px;
+  width: 420px;
+  height: 420px;
+  background: hsl(var(--secondary)); /* Use secondary color */
+  opacity: 0.22;
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blurred-circle-purple {
+  position: absolute;
+  bottom: -120px;
+  left: 40vw;
+  width: 420px;
+  height: 420px;
+  background: hsl(var(--primary)); /* Use primary color */
+  opacity: 0.18;
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Removed old specific background classes */
+/* .bg-radial-glow, .bg-include-glow, .bg-hero-dark, .bg-footer-accent, .btn-pink, .heading-pink, .bg-main, .bg-black-gradient, .bg-pink-gradient */
