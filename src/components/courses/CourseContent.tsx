@@ -9,6 +9,7 @@ import FAQSection from './FAQSection';
 import InteractiveScenario from './InteractiveScenario';
 import ScormViewer from './ScormViewer';
 import MindmapSection from '../mindmap/MindmapSection';
+import PdfViewer from './PdfViewer'; // Added PdfViewer import
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import ReactMarkdown from 'react-markdown';
@@ -44,6 +45,7 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
   const [audioCompleted, setAudioCompleted] = useState(false);
   const [activeTab, setActiveTab] = useState('content');
   const [selectedScormModuleId, setSelectedScormModuleId] = useState<string | null>(null);
+  const [selectedRoleIframeUrl, setSelectedRoleIframeUrl] = useState<string | null>(null);
 
   // Calculate if quiz is unlocked (both video and audio completed)
   const isVideoRequired = !!module.videoUrl;
@@ -107,6 +109,53 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
     });
   };
 
+  // Handle role-based iframe selection module type
+  if (module.customModuleType === 'roleBasedIframeSelection') {
+    if (selectedRoleIframeUrl) {
+      return (
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Training Module'}</h2>
+          <p className="text-muted-foreground text-lg">{module.description || 'Please complete the training below.'}</p>
+          <iframe 
+            src={selectedRoleIframeUrl}
+            title={module.title || 'Sexual Harassment Prevention Training'}
+            className="w-full h-[70vh] border-0 rounded-lg shadow-lg"
+            allowFullScreen
+          ></iframe>
+          <Button onClick={() => setSelectedRoleIframeUrl(null)} variant="outline">Back to Role Selection</Button>
+        </div>
+      );
+    }
+
+    return (
+      <div className="space-y-8 p-6 bg-card rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Training Selection'}</h2>
+        <div className="prose dark:prose-invert max-w-none">
+          <ReactMarkdown>{module.content}</ReactMarkdown>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4 mt-6">
+          {module.supervisorIframeUrl && (
+            <Button 
+              onClick={() => setSelectedRoleIframeUrl(module.supervisorIframeUrl!)}
+              className="flex-1 py-3 text-lg bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              Supervisor Training
+            </Button>
+          )}
+          {module.nonSupervisorIframeUrl && (
+            <Button 
+              onClick={() => setSelectedRoleIframeUrl(module.nonSupervisorIframeUrl!)}
+              className="flex-1 py-3 text-lg bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+            >
+              Non-Supervisor Training
+            </Button>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // Default rendering for other module types
   return (
     <div className="space-y-8">
       <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Module'}</h2>
@@ -196,6 +245,13 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               </div>
             </CardContent>
           </Card>
+
+          {module.pdfPath && (
+            <div className="mt-8 pt-6 border-t border-border">
+              <h3 className="text-xl font-semibold mb-4 text-gradient-secondary">Supporting Document: {module.title}</h3>
+              <PdfViewer filePath={module.pdfPath} title={`PDF: ${module.title}`} />
+            </div>
+          )}
           
           {module.audioUrl && (
             <div className="space-y-4">
@@ -381,6 +437,10 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                         type={module.interactiveScenario.mindmapType || 'dsp-role'}
                         title={module.interactiveScenario.title}
                         description={module.interactiveScenario.description}
+                      />
+                    ) : module.interactiveScenario.content ? (
+                      <InteractiveScenario 
+                        branchingScenario={module.interactiveScenario}
                       />
                     ) : (
                       <InteractiveScenario 

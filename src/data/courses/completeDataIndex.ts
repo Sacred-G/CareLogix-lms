@@ -14,6 +14,10 @@ import { scenarioPracticeCourse } from './scenarioPractice';
 import { transportationCourse } from './transportation';
 import { trustRapportCourse } from './trustRapport';
 import { positiveBehaviorSupportCourse } from './positiveBehaviorSupport';
+import { dosDontsCourse } from './dosDonts';
+import { sexualHarassmentTrainingCourse } from './sexualHarassmentTraining';
+import { hoyerLiftTrainingCourse } from './hoyerLiftTraining';
+import { riskManagementIncidentReportingCourse } from './riskManagementIncidentReporting';
 
 // New Hire Orientation Video Course
 export const newHireOrientationCourse: Course = {
@@ -68,6 +72,10 @@ export const dspCourses: Course[] = [
   transportationCourse,
   trustRapportCourse, // Added Building Trust & Rapport Course
   positiveBehaviorSupportCourse, // Added Positive Behavior Support Course
+  dosDontsCourse,
+  sexualHarassmentTrainingCourse,
+  hoyerLiftTrainingCourse, // Added Hoyer Lift Training Course
+  riskManagementIncidentReportingCourse, // Added Risk Management and Incident Reporting Course
 ];
 
 // Micro Learning Courses - Short, focused learning modules

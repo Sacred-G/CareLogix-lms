@@ -40,22 +40,15 @@ function useCourseData() {
   const { data: databaseCourses, isLoading: isLoadingDbCourses } = useQuery({
     queryKey: ['database-courses'],
     queryFn: async () => {
-      // Create a list of course IDs to exclude - specifically targeting duplicate developmental disabilities courses
-      const excludedCourseIds = [
-        'intro-dev-disabilities',
-        'developmental-disabilities',
-        'dev-disabilities',
-        'introduction-developmental-disabilities'
-      ];
-      
-      // Filter out these courses directly in the query
+      // The .not() filter was removed from here as it caused errors with non-UUIDs.
+      // Duplicate filtering is handled later in the useMemo hook for allDbAndStaticCourses.
       const { data, error } = await supabase
         .from('courses')
         .select('*')
-        .not('id', 'in', `(${excludedCourseIds.join(',')})`) // Exclude specific course IDs
+        // .not('id', 'in', `(${excludedCourseIds.join(',')})`) // This line was removed
         .order('created_at', { ascending: false });
       
-      console.log('Excluded course IDs from database query:', excludedCourseIds);
+      // console.log('Excluded course IDs from database query:', excludedCourseIds); // This line was removed
       
       if (error) {
         console.error('Error fetching courses:', error);
@@ -70,6 +63,11 @@ function useCourseData() {
   // Combine static courses with database courses, but prevent duplicates
   const allDbAndStaticCourses = React.useMemo(() => {
     const dbCourses = databaseCourses ? databaseCourses.map(convertDatabaseCourse) : [];
+
+    const permanentlyExcludedDbUUIDs = [
+      '38fa9211-e978-4f56-800e-a39a4cff0dcc',
+      'e4607150-134e-42fa-861f-94a3bfab1610'
+    ].map(id => id.toLowerCase()); // Ensure comparison is case-insensitive
     
     // Create a map of normalized course IDs to detect variations of the same course
     // This handles both exact matches and similar IDs like 'intro-dev-disabilities' and 'developmental-disabilities'
@@ -87,12 +85,17 @@ function useCourseData() {
       }
     });
     
-    // Only add database courses that don't match any of our static courses
+    // Only add database courses that don't match any of our static courses AND are not permanently excluded
     const uniqueDbCourses = dbCourses.filter(dbCourse => {
       const normalizedId = dbCourse.id.toLowerCase();
-      const isDuplicate = staticCourseIdMap.has(normalizedId) || 
-                         (normalizedId.includes('dev') && normalizedId.includes('disab'));
-      return !isDuplicate;
+
+      if (permanentlyExcludedDbUUIDs.includes(normalizedId)) { // Check against permanent exclusion list
+        return false; // Exclude if in the list
+      }
+
+      const isDuplicateOfStatic = staticCourseIdMap.has(normalizedId) || 
+                                (normalizedId.includes('dev') && normalizedId.includes('disab'));
+      return !isDuplicateOfStatic;
     });
     
     console.log('Filtered out duplicate courses:', 

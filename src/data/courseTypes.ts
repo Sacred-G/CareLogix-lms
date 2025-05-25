@@ -33,10 +33,14 @@ export interface Module {
   content: string;
   audioUrl?: string;
   transcript?: string;
-  questions: Question[];
+  questions?: Question[];
   flashcards?: Flashcard[];
   faqs?: FAQ[];
   courseId?: string; // Added for SCORM module support
+  customModuleType?: string; // For special handling like role-based iframes
+  supervisorIframeUrl?: string; // URL for supervisor iframe content
+  nonSupervisorIframeUrl?: string; // URL for non-supervisor iframe content
+  pdfPath?: string; // Optional path to a PDF document for the module
   interactiveScenario?: {
     title: string;
     description: string;

@@ -79,12 +79,6 @@ Always document:
 - Any refusals or missed doses
 - Observations of effects or side effects
 
-## DSP Scope of Practice
-
-As a DSP, you may:
-- Administer medication according to orders
-- Document properly
-- Monitor for side effects
 - Report concerns
 
 You may NOT:
@@ -104,6 +98,7 @@ If a medication error occurs:
 
 Remember: Medication errors are serious but reporting them promptly is essential for individual safety and system improvement.
 `,
+      pdfPath: '/pdfs/medication1.pdf',
       questions: [
         {
           id: "q1-mod1",
@@ -222,12 +217,156 @@ Remember: Medication errors are serious but reporting them promptly is essential
         }
       ],
       audioUrl: "/Audio/The Seven Rights of Medication Assistance.wav",
-      transcript: "This audio segment covers the essential principles of medication safety, including the seven rights of medication administration, proper documentation requirements, and what to do if a medication error occurs. We emphasize the importance of following protocols and understanding your scope of practice."
+      transcript: "This audio segment covers the essential principles of medication safety, including the seven rights of medication administration, proper documentation requirements, and what to do if a medication error occurs. We emphasize the importance of following protocols and understanding your scope of practice.",
+      interactiveScenario: {
+        title: "Medication Administration Practice",
+        description: "Apply the 7 Rights of medication administration in this interactive scenario. Make safe decisions as you administer medications to a resident.",
+        type: "multiple-choice",
+        content: {
+          scenario: "You are preparing to administer morning medications to Maria, a 35-year-old woman with an intellectual disability who lives in a group home. You have her medication administration record (MAR) and need to ensure you follow all proper procedures.",
+          decisions: [
+            {
+              prompt: "Before administering any medication, what should you do first?",
+              options: [
+                {
+                  text: "Ask Maria to confirm her name and date of birth, and check her ID bracelet against the MAR.",
+                  outcome: "You've correctly verified Maria's identity using two identifiers, following the 'Right Person' principle.",
+                  correct: true,
+                  next: "medication_verification"
+                },
+                {
+                  text: "Check that the medications in the drawer match what's listed on the MAR.",
+                  outcome: "While verification of medication is important, you must first ensure you have the right person before proceeding with any medication administration.",
+                  correct: false
+                },
+                {
+                  text: "Ask the shift supervisor to confirm it's time for Maria's medications.",
+                  outcome: "While verifying the time is important, identifying the correct resident must come first in the medication administration process.",
+                  correct: false
+                },
+                {
+                  text: "Prepare all medications and place them in a medication cup for efficient administration.",
+                  outcome: "This approach skips critical verification steps. Always identify the resident before preparing any medications.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "medication_verification",
+              prompt: "Now that you've identified Maria, you see she is prescribed 500mg of Valproic Acid (Depakote) once daily. The bottle contains 250mg tablets. How many tablets should Maria receive?",
+              options: [
+                {
+                  text: "1 tablet, as the MAR must be incorrect about the dosage.",
+                  outcome: "Never assume the MAR is incorrect. If there's a discrepancy, you should verify with a supervisor or pharmacist rather than making assumptions.",
+                  correct: false
+                },
+                {
+                  text: "2 tablets, to provide the full 500mg dose.",
+                  outcome: "Correct! You've properly calculated that two 250mg tablets will provide the prescribed 500mg dose, following the 'Right Dose' principle.",
+                  correct: true,
+                  next: "administration_technique"
+                },
+                {
+                  text: "Ask Maria how many tablets she usually takes.",
+                  outcome: "While Maria's input can be valuable, medication administration decisions should be based on the MAR and professional judgment, not resident preference or recollection.",
+                  correct: false
+                },
+                {
+                  text: "Contact the pharmacy to clarify the discrepancy.",
+                  outcome: "There's no discrepancy to clarify. The prescribed dose is 500mg and the tablets are 250mg each, so 2 tablets are needed. This delay is unnecessary.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "administration_technique",
+              prompt: "As you prepare to give Maria her medication, you notice she has a glass of orange juice nearby. What should you do before giving her the Depakote?",
+              options: [
+                {
+                  text: "Check the medication guide to see if Depakote can be taken with orange juice.",
+                  outcome: "Correct! You're verifying potential food-medication interactions, which is part of the 'Right Method' of administration.",
+                  correct: true,
+                  next: "documentation"
+                },
+                {
+                  text: "Take the orange juice away and give her water instead, since water is always safer.",
+                  outcome: "While some medications should be taken with water, making this assumption without checking is incorrect and unnecessarily restrictive.",
+                  correct: false
+                },
+                {
+                  text: "Crush the tablets to make them easier to swallow with the juice.",
+                  outcome: "Never crush medications without checking if they can be crushed. Some medications, including certain formulations of Depakote, should not be crushed as it affects their release mechanism.",
+                  correct: false
+                },
+                {
+                  text: "Assume it's fine and proceed with giving the medication.",
+                  outcome: "Never make assumptions about medication administration. Always verify proper administration methods, including potential food or drink interactions.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "documentation",
+              prompt: "After Maria takes her medication, what is your next step?",
+              options: [
+                {
+                  text: "Move on to the next resident's medications while Maria finishes her breakfast.",
+                  outcome: "You should never leave without completing proper documentation. This could lead to medication errors.",
+                  correct: false
+                },
+                {
+                  text: "Ask Maria if she feels any immediate side effects from the medication.",
+                  outcome: "While monitoring for side effects is important, most medications won't cause immediate effects that would be noticeable before documentation is complete.",
+                  correct: false
+                },
+                {
+                  text: "Document the administration on the MAR immediately, including date, time, and your initials.",
+                  outcome: "Correct! Immediate documentation is essential to prevent medication errors and maintain accurate records. This follows the 'Right Documentation' principle.",
+                  correct: true,
+                  next: "error_scenario"
+                },
+                {
+                  text: "Wait to see if Maria actually swallows the medication before documenting.",
+                  outcome: "While ensuring the medication is taken is important, you should observe this as part of the administration process, then document immediately afterward.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "error_scenario",
+              prompt: "Later that day, you realize you may have given Maria her evening dose of medication in the morning by mistake. What should you do?",
+              options: [
+                {
+                  text: "Don't give her the evening dose to compensate for the error.",
+                  outcome: "Making additional medication changes without proper authorization compounds the error and could harm the resident.",
+                  correct: false
+                },
+                {
+                  text: "Wait to see if Maria experiences any negative effects before reporting.",
+                  outcome: "Delaying reporting of a medication error is never appropriate and could put Maria at risk.",
+                  correct: false
+                },
+                {
+                  text: "Immediately report the error to your supervisor and document it according to your facility's protocol.",
+                  outcome: "Correct! Prompt reporting and documentation of medication errors is essential for resident safety and appropriate follow-up care.",
+                  correct: true
+                },
+                {
+                  text: "Ask a coworker for advice on how to handle the situation discreetly.",
+                  outcome: "Medication errors should never be handled 'discreetly.' They require proper reporting through official channels to ensure resident safety.",
+                  correct: false
+                }
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       id: "mod-2",
       title: "Common Medications and Side Effects",
       description: "Overview of medications commonly prescribed for individuals with developmental disabilities and their potential side effects.",
+      pdfPath: '/public/pdfs/meidcation2.pdf',
       videoUrl: "https://youtu.be/sUTHueAQTI4",
       content: `
 # Common Medications and Side Effects

@@ -26,8 +26,8 @@ const InteractiveMindmap: React.FC<InteractiveMindmapProps> = ({
   const mapHeight = 1500;
 
   // For panning & zooming
-  const [scale, setScale] = useState(0.7); // Start zoomed out more to show full map
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(0.6); // Start even more zoomed out to show full map
+  const [position, setPosition] = useState({ x: 0, y: 100 }); // Start with a slight upward offset
   const [dragging, setDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -69,8 +69,8 @@ const InteractiveMindmap: React.FC<InteractiveMindmapProps> = ({
   };
 
   const resetView = () => {
-    setScale(0.7);
-    setPosition({ x: 0, y: 0 });
+    setScale(0.6);
+    setPosition({ x: 0, y: 100 });
   };
 
   // Node expansion
@@ -141,7 +141,8 @@ const InteractiveMindmap: React.FC<InteractiveMindmapProps> = ({
     const nodeHeight = 120; // Even taller nodes
     
     // Extreme spacing between nodes to prevent any overlap
-    const childSpacing = 400; // Extreme vertical spacing
+    // Increased vertical spacing to prevent overlap between top, middle, and bottom nodes
+    const childSpacing = 650; // Significantly increased vertical spacing
     const horizontalSpacing = 800; // Extreme horizontal spacing
     
     // Calculate vertical spacing based on expanded children
@@ -152,11 +153,33 @@ const InteractiveMindmap: React.FC<InteractiveMindmapProps> = ({
       // Calculate total height needed for children and adjust spacing
       const totalHeight = node.children.length * childSpacing;
       totalChildHeight = totalHeight;
-      const childY = y - totalHeight / 2 + childSpacing / 2;
+      
+      // Create more vertical space for the top and bottom nodes
+      const childrenCount = node.children.length;
+      const verticalOffset = childrenCount > 2 ? 350 : 0; // Increased vertical offset
+      const childY = y - totalHeight / 2 + childSpacing / 2 - verticalOffset; // Move everything up more
       
       node.children.forEach((child, childIndex) => {
         const childX = x + horizontalSpacing; // Increased horizontal spacing
-        const newChildY = childY + childIndex * childSpacing;
+        
+        // Apply additional vertical spacing to create more distance between nodes
+        let positionMultiplier = 1.0;
+        let additionalOffset = 0;
+        
+        // Apply additional spacing for top and bottom nodes
+        if (childrenCount > 2) {
+          if (childIndex === 0) { // Top node
+            positionMultiplier = 0.7; // Moves it even higher
+            additionalOffset = -200; // Additional upward offset for top node
+          } else if (childIndex === 1) { // Middle node
+            additionalOffset = 100; // Push middle node down a bit
+          } else if (childIndex === childrenCount - 1) { // Bottom node
+            positionMultiplier = 1.3; // Moves it even lower
+            additionalOffset = 200; // Additional downward offset for bottom node
+          }
+        }
+        
+        const newChildY = childY + (childIndex * childSpacing * positionMultiplier) + additionalOffset;
         
         childrenToRender.push(
           renderNode(child, childX, newChildY, level + 1, childIndex, x, y)
@@ -344,7 +367,7 @@ const InteractiveMindmap: React.FC<InteractiveMindmapProps> = ({
             cursor: dragging ? 'grabbing' : 'grab',
           }}
         >
-          <g transform={`translate(${position.x + 800}, ${position.y + 500}) scale(${scale})`}>
+          <g transform={`translate(${position.x + 800}, ${position.y + 350}) scale(${scale})`}>
             {renderNode(data, 0, 0)}
           </g>
         </svg>

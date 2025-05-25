@@ -208,7 +208,150 @@ As a DSP, you should:
         }
       ],
       audioUrl: "/Audio/Client Rights and Dignity of Risk.wav",
-      transcript: "This audio lesson covers the fundamental rights of individuals with developmental disabilities and the legal protections in place to uphold these rights. We discuss how DSPs can effectively advocate for and support client rights in everyday practice."
+      transcript: "This audio lesson covers the fundamental rights of individuals with developmental disabilities and the legal protections in place to uphold these rights. We discuss how DSPs can effectively advocate for and support client rights in everyday practice.",
+      interactiveScenario: {
+        title: "Navigating Client Rights Scenarios",
+        description: "Apply your knowledge of client rights in these real-world scenarios. Make decisions that uphold dignity, privacy, and self-determination.",
+        type: "multiple-choice",
+        content: {
+          scenario: "You are a Direct Support Professional working with James, a 28-year-old man with an intellectual disability who lives in a group home. Today, you're facing several situations that involve balancing client rights with safety and wellbeing.",
+          decisions: [
+            {
+              prompt: "James tells you he wants to keep his bedroom door closed when he is in his room. The house manager has instructed staff to keep all bedroom doors open for easy supervision. What is the most appropriate response?",
+              options: [
+                {
+                  text: "Explain to James that for his safety, all doors must remain open as per house policy.",
+                  outcome: "This response prioritizes a blanket policy over James's right to privacy. While safety is important, it should be balanced with respect for privacy whenever possible.",
+                  correct: false
+                },
+                {
+                  text: "Tell James you understand, but you'll need to check with your supervisor first before allowing this.",
+                  outcome: "This response acknowledges James's request but still treats his basic right to privacy as something that requires special permission.",
+                  correct: false
+                },
+                {
+                  text: "Respect James's right to privacy by allowing his door to be closed, while implementing appropriate check-ins to address safety concerns.",
+                  outcome: "Correct! This response balances James's fundamental right to privacy with reasonable safety measures. Regular check-ins can address supervision needs without unnecessarily restricting rights.",
+                  correct: true,
+                  next: "confidentiality_scenario"
+                },
+                {
+                  text: "Suggest a compromise where the door stays partially open to balance privacy and supervision requirements.",
+                  outcome: "While this attempts to find middle ground, it still restricts James's right to full privacy in his personal space without clear justification for the restriction.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "confidentiality_scenario",
+              prompt: "During a community outing, you run into your friend who recognizes James from the neighborhood. Your friend asks, 'Do you work with him? What's wrong with him?' How should you respond?",
+              options: [
+                {
+                  text: "Share basic information about James's disability since your friend already knows him from the neighborhood.",
+                  outcome: "This violates James's right to confidentiality. Even if your friend knows James, you should not disclose personal information without explicit consent.",
+                  correct: false
+                },
+                {
+                  text: "Say, 'Yes, I support James through my work, but I can't discuss details about the people I support professionally.'",
+                  outcome: "Correct! This response maintains professional boundaries and protects James's confidentiality while not denying your professional relationship with him.",
+                  correct: true,
+                  next: "self_determination_scenario"
+                },
+                {
+                  text: "Introduce your friend to James and let James decide what to share about himself.",
+                  outcome: "While this gives James agency, it puts him on the spot and may make him uncomfortable. It also doesn't address the inappropriate question from your friend.",
+                  correct: false
+                },
+                {
+                  text: "Deny that you work with James to avoid breaking confidentiality.",
+                  outcome: "Lying isn't necessary to maintain confidentiality and could be confusing or hurtful to James who is present for this conversation.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "self_determination_scenario",
+              prompt: "James wants to go on a date with someone he met at his day program. The team is concerned because James has limited experience with relationships. What is the most appropriate approach?",
+              options: [
+                {
+                  text: "Tell James that dating isn't appropriate for him right now given his limited experience.",
+                  outcome: "This unnecessarily restricts James's right to self-determination and to develop relationships based on assumptions about his abilities.",
+                  correct: false
+                },
+                {
+                  text: "Support James's decision while providing education about healthy relationships and creating a safety plan for the date.",
+                  outcome: "Correct! This approach respects James's right to self-determination while providing appropriate support to help him navigate a new experience safely.",
+                  correct: true,
+                  next: "dignity_respect_scenario"
+                },
+                {
+                  text: "Allow the date but insist that a staff member accompanies them to ensure James's safety.",
+                  outcome: "While safety is important, having staff present on a date is unnecessarily intrusive and undermines James's dignity and independence.",
+                  correct: false
+                },
+                {
+                  text: "Suggest that James invite his date to the group home for a supervised group activity instead.",
+                  outcome: "This doesn't honor James's desire for a dating relationship and substitutes his wishes with what staff feel is more appropriate.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "dignity_respect_scenario",
+              prompt: "During a team meeting about James, a new staff member repeatedly refers to James as 'suffering from intellectual disability' and being 'mentally retarded.' What should you do?",
+              options: [
+                {
+                  text: "Say nothing during the meeting, but speak to the staff member privately afterward about using respectful, person-first language.",
+                  outcome: "While addressing this privately shows consideration, it allows disrespectful language to continue throughout the meeting, which doesn't adequately protect James's dignity.",
+                  correct: false
+                },
+                {
+                  text: "Immediately correct the staff member firmly in front of everyone to ensure they understand this language is unacceptable.",
+                  outcome: "While the language needs to be addressed, confronting the staff member harshly in front of others may create defensiveness rather than learning.",
+                  correct: false
+                },
+                {
+                  text: "Respectfully model appropriate language during the meeting and create an opportunity to provide education to all staff on person-first language.",
+                  outcome: "Correct! This approach addresses the immediate issue by modeling correct language while creating a learning opportunity that benefits all staff without publicly shaming the new employee.",
+                  correct: true,
+                  next: "community_inclusion_scenario"
+                },
+                {
+                  text: "Redirect the conversation to other topics to minimize the impact of the inappropriate language.",
+                  outcome: "Avoiding the issue doesn't address the underlying problem and fails to advocate for respectful treatment of James.",
+                  correct: false
+                }
+              ]
+            },
+            {
+              id: "community_inclusion_scenario",
+              prompt: "James wants to join a community basketball league, but the coach seems hesitant about including someone with a disability. What's the best approach to support James's right to community inclusion?",
+              options: [
+                {
+                  text: "Find a special needs sports program instead where James will be more welcome.",
+                  outcome: "This avoids addressing the discrimination and denies James access to the mainstream community activity he specifically wants to join.",
+                  correct: false
+                },
+                {
+                  text: "Offer to attend practices with James to provide any needed support and education to the coach about inclusion.",
+                  outcome: "Correct! This approach directly supports James's right to community inclusion while offering practical solutions to address the coach's concerns.",
+                  correct: true
+                },
+                {
+                  text: "File a formal ADA complaint against the basketball league for discrimination.",
+                  outcome: "While discrimination should be addressed, immediately escalating to formal complaints before attempting education and problem-solving is premature and may not best serve James's immediate desire to participate.",
+                  correct: false
+                },
+                {
+                  text: "Explain to James that not all community groups are equipped to include people with disabilities and help him accept this reality.",
+                  outcome: "This response fails to advocate for James's rights and inappropriately asks him to accept discrimination rather than working to remove barriers.",
+                  correct: false
+                }
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       id: "mod-2",

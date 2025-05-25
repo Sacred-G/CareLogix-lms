@@ -486,7 +486,7 @@ Remember that building effective communication is a process that takes time and 
           explanation: "Verifying understanding is important to ensure effective two-way communication and prevent misunderstandings. This can be done respectfully by asking open-ended questions or requesting that the person explain information in their own words."
         }
       ],
-      audioUrl: "/Audio/Effective Communication in Support Roles.wav",
+      audioUrl: "/Audio/Unlocking Communication for Direct Support Professionals.wav",
       transcript: "In this audio lesson, we explore key communication techniques for Direct Support Professionals, including active listening, using clear language, and understanding alternative communication methods. We discuss how to recognize communication barriers and adapt your approach accordingly."
     }
   ],

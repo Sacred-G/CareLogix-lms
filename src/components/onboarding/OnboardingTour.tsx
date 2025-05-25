@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Joyride, { CallBackProps, STATUS, Step } from 'react-joyride';
 import { useAuth } from '@/hooks/useAuth';
-import { useOnboarding } from '@/hooks/useOnboarding';
+import { useOnboarding } from '@/hooks/useOnboarding.tsx';
 import { Button } from '@/components/ui/button';
 
 // Define onboarding steps
@@ -80,6 +80,8 @@ const getOnboardingSteps = (): Step[] => [
   }
 ];
 
+const TOUR_COMPLETED_KEY_PREFIX = 'hasCompletedFirstTour_';
+
 const OnboardingTour: React.FC = () => {
   const { user } = useAuth();
   const { showOnboarding, setShowOnboarding, completeOnboarding } = useOnboarding(user?.id);
@@ -89,14 +91,37 @@ const OnboardingTour: React.FC = () => {
   // State to store steps
   const [steps] = useState(getOnboardingSteps);
 
+  useEffect(() => {
+    if (user && user.id) {
+      const userTourKey = `${TOUR_COMPLETED_KEY_PREFIX}${user.id}`;
+      const hasCompleted = localStorage.getItem(userTourKey);
+
+      // If tour hasn't been completed by this user and is not already running,
+      // and the useOnboarding hook also thinks it should be shown.
+      if (!hasCompleted && !run && showOnboarding) {
+        // console.log("Attempting to auto-start tour for user:", user.id); // For debugging
+        startTour();
+      }
+    } else {
+      // User logged out, ensure tour is not running
+      if (run) {
+        setRun(false);
+      }
+    }
+  }, [user, run, showOnboarding]); // Dependencies for the effect
+
   // Handle tour callbacks
   const handleJoyrideCallback = (data: CallBackProps) => {
     const { status } = data;
-    
-    // Check if the tour is finished or skipped
+
     if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
       setRun(false);
-      completeOnboarding();
+      if (user && user.id) {
+        const userTourKey = `${TOUR_COMPLETED_KEY_PREFIX}${user.id}`;
+        localStorage.setItem(userTourKey, 'true');
+        // console.log("Tour completed/skipped, localStorage set for user:", user.id); // For debugging
+      }
+      completeOnboarding(); // Call the original hook's completion logic
     }
   };
 
@@ -105,8 +130,11 @@ const OnboardingTour: React.FC = () => {
     setRun(true);
   };
 
-  // Show the start tour button if onboarding is needed but not currently running
-  if (showOnboarding && !run) {
+  // Show the start tour button only if user is logged in, 
+  // onboarding is needed (according to the hook), and tour is not currently running.
+  // The localStorage check in useEffect handles the "first time" auto-start.
+  // The button respects the showOnboarding flag from the hook for manual re-trigger if desired.
+  if (user && showOnboarding && !run) {
     return (
       <div className="fixed bottom-4 right-4 z-50">
         <Button 

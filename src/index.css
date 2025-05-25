@@ -184,6 +184,10 @@
     @apply text-xl font-semibold mt-6 mb-3 text-gradient-primary; /* Use text gradient for headings */
   }
 
+  .prose h4 {
+    @apply text-lg font-semibold mt-5 mb-2 text-gradient-primary; /* Apply gradient to question headings */
+  }
+
   .prose ul, .prose ol {
     @apply my-4 ml-6 space-y-2;
   }

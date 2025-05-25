@@ -26,7 +26,11 @@ const generateCourseUUIDs = () => {
     'empowerment-advocacy',
     'new-hire-orientation',
     'dsp-foundations',
-    'cultural-competence'
+    'cultural-competence',
+    'dos-donts-dsp',
+    'hoyer-lift-training',
+    'risk-management-incident-reporting',
+    'sexual-harassment-training' // Ensure this is present, add if missing
   ];
   
   // Generate a UUID for each course ID
@@ -39,6 +43,11 @@ const generateCourseUUIDs = () => {
 
 // Create and export the mapping
 export const courseIdToUUID = generateCourseUUIDs();
+
+// Create and export an inverted mapping: UUID to string course ID
+export const uuidToCourseId = Object.fromEntries(
+  Object.entries(courseIdToUUID).map(([stringId, uuid]) => [uuid, stringId])
+);
 
 // Helper function to get UUID for a course ID
 export const getCourseUUID = (courseId: string): string => {

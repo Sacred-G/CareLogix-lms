@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { allCourses } from '@/data/courses/completeDataIndex';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
-import { getCourseUUID } from '@/data/courseIdMapping';
 import { ScormModule } from '@/data/scormTypes';
+
+// Define a type for the enrollment record including new time fields
+interface EnrollmentRecord {
+  id: string;
+  user_id: string;
+  course_id: string;
+  completed: boolean;
+  progress: number;
+  created_at: string; 
+  started_at?: string | null;
+  last_accessed_at?: string | null;
+  total_time_spent_ms?: number | null;
+}
 
 // Import the new components
 import Footer from '@/components/navigation/Footer';
@@ -17,7 +29,7 @@ import EmptyCourse from '@/components/courses/EmptyCourse';
 
 const CourseDetail: React.FC = () => {
   const queryClient = useQueryClient();
-  const { courseId } = useParams<{ courseId: string }>();
+  const { courseId = '' } = useParams<{ courseId: string }>();
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("content");
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
@@ -53,127 +65,134 @@ const CourseDetail: React.FC = () => {
     enabled: !!courseId
   });
   
-  // Fetch enrollment data if user is logged in
-  const { data: enrollment, isLoading: isLoadingEnrollment } = useQuery({
-    queryKey: ['enrollment', courseId, session?.user?.id],
+  // Fetch user's current enrollment status for this course
+  const { data: enrollmentData, isLoading: isLoadingEnrollment, refetch: refetchEnrollmentStatus } = useQuery<EnrollmentRecord | null>({
+    queryKey: ['enrollment-status', courseId, session?.user?.id],
     queryFn: async () => {
-      if (!session?.user?.id) return null;
+      if (!session?.user?.id || !courseId) return null;
       
-      try {
-        // Convert the string course ID to the UUID used in the database
-        const courseUUID = getCourseUUID(courseId);
-        console.log(`Fetching enrollment for course ${courseId} with UUID: ${courseUUID}`);
+      console.log(`Fetching enrollment for course ${courseId}`);
+      
+      const { data: dbEnrollment, error: dbError } = await supabase
+        .from('enrollments')
+        .select('*') 
+        .eq('user_id', session.user.id)
+        .eq('course_id', courseId)
+        .maybeSingle();
         
-        // Query using the UUID
-        const { data: dbEnrollment, error: dbError } = await supabase
-          .from('enrollments')
-          .select('*')
-          .eq('user_id', session.user.id)
-          .eq('course_id', courseUUID)
-          .maybeSingle();
-          
-        if (dbError) {
-          console.error('Error fetching enrollment:', dbError);
-          return null;
-        }
-        
-        return dbEnrollment || null;
-      } catch (error) {
-        console.error('Error fetching enrollment:', error);
-        return null;
+      if (dbError) {
+        console.error('Error fetching enrollment status:', dbError);
+        throw dbError;
       }
+      
+      console.log('Fetched enrollment data:', dbEnrollment);
+      return dbEnrollment;
     },
-    enabled: !!session?.user?.id && !!courseId
+    enabled: !!courseId && !!session?.user?.id,
   });
 
-  // Create enrollment mutation
-  const enrollMutation = useMutation({
-    mutationFn: async () => {
-      if (!session?.user?.id || !courseId) throw new Error('User not logged in or course not found');
-      
-      try {
-        // Get the UUID for this course ID
-        const courseUUID = getCourseUUID(courseId);
-        console.log(`Converting course ID ${courseId} to UUID: ${courseUUID}`);
-        
-        // First check if the course exists in the courses table
-        const { data: existingCourse, error: courseCheckError } = await supabase
-          .from('courses')
-          .select('id')
-          .eq('id', courseUUID)
-          .maybeSingle();
-          
-        // If course doesn't exist in database, create it first
-        if (!existingCourse) {
-          console.log('Course UUID not found in database, creating course record first...');
-          
-          // Get the current course metadata
-          const currentCourse = course || allCourses.find(c => c.id === courseId) || { 
-            id: courseId, 
-            title: courseId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '), 
-            description: 'Course description' 
-          };
-          
-          // Create the course record first
-          const { error: insertCourseError } = await supabase
-            .from('courses')
-            .insert({
-              id: courseUUID,
-              title: currentCourse.title,
-              description: currentCourse.description,
-              thumbnail: 'thumbnail' in currentCourse ? currentCourse.thumbnail : '/Images/placeholder-course.jpg',
-              domain: 'domain' in currentCourse ? currentCourse.domain : 'general'
-            });
-            
-          if (insertCourseError) {
-            console.error('Error creating course record:', insertCourseError);
-            throw insertCourseError;
-          }
-          
-          console.log('Successfully created course record with UUID:', courseUUID);
+  // Effect to track course access times (started_at, last_accessed_at)
+  React.useEffect(() => {
+    const trackCourseAccessTime = async () => {
+      // Ensure we have a valid session, course, and enrollment record with its own primary key (id)
+      if (session?.user?.id && courseId && enrollmentData && enrollmentData.id) {
+        const updates: Partial<EnrollmentRecord> = {
+          last_accessed_at: new Date().toISOString(),
+        };
+
+        // If started_at is not set, this is the first access, so set it.
+        if (!enrollmentData.started_at) {
+          updates.started_at = new Date().toISOString();
         }
-        
-        // Check if user is already enrolled (using the UUID)
-        const { data: existingEnrollment, error: checkEnrollError } = await supabase
+
+        const { error } = await supabase
           .from('enrollments')
-          .select('id')
-          .eq('user_id', session.user.id)
-          .eq('course_id', courseUUID) 
-          .maybeSingle();
-          
-        if (existingEnrollment) {
-          console.log('User already enrolled in course:', courseId);
-          return existingEnrollment;
+          .update(updates)
+          .eq('id', enrollmentData.id); // Match using the enrollment record's primary key
+
+        if (error) {
+          console.error('Error updating course access times:', error);
+        } else {
+          console.log('Course access times updated successfully:', updates);
+          // Optionally, refetch enrollment data if needed immediately, though not strictly necessary here
+          // refetchEnrollmentStatus(); 
         }
-        
-        // Now attempt to create the enrollment with the UUID
-        console.log('Creating new enrollment with course UUID:', courseUUID);
-        const { data, error } = await supabase
-          .from('enrollments')
-          .insert({
-            user_id: session.user.id,
-            course_id: courseUUID, // Use the UUID instead of string ID
-            progress: 0,
-            completed: false
-          })
-          .select('*')
-          .single();
-          
-        if (error) throw error;
-        return data;
-      } catch (error) {
-        console.error('Detailed enrollment error:', error);
-        throw error;
       }
+    };
+
+    // Only attempt to track time if enrollment data has been successfully fetched.
+    if (enrollmentData) {
+      trackCourseAccessTime();
+    }
+  // Dependencies: This effect runs when the user session, courseId, or enrollmentData changes.
+  // This ensures it runs on page load for an enrolled course, or if enrollment status changes.
+  }, [session, courseId, enrollmentData]);
+
+  // Create enrollment mutation
+  const enrollMutation = useMutation<EnrollmentRecord | null, Error, void, unknown>({
+    mutationFn: async () => {
+      if (!session?.user?.id || !courseId) throw new Error('User not logged in or course ID missing');
+
+      // 1. Check if course exists in 'courses' table, create if not
+      const { data: existingCourseInDb } = await supabase
+        .from('courses')
+        .select('id')
+        .eq('id', courseId)
+        .maybeSingle();
+
+      if (!existingCourseInDb) {
+        const currentCourseData = course || allCourses.find(c => c.id === courseId);
+        if (!currentCourseData) throw new Error('Course definition not found');
+        
+        const { error: insertCourseError } = await supabase.from('courses').insert({
+          id: courseId,
+          title: currentCourseData.title,
+          description: currentCourseData.description,
+          thumbnail: 'thumbnail' in currentCourseData ? currentCourseData.thumbnail : '/Images/placeholder-course.jpg',
+          domain: 'domain' in currentCourseData ? currentCourseData.domain : 'general',
+        });
+        if (insertCourseError) throw insertCourseError;
+      }
+
+      // 2. Check if enrollment already exists for this user and course
+      const { data: existingEnrollment, error: checkError } = await supabase
+        .from('enrollments')
+        .select('id')
+        .eq('user_id', session.user.id)
+        .eq('course_id', courseId)
+        .maybeSingle();
+
+      if (checkError) throw checkError;
+      if (existingEnrollment) {
+        toast.info('You are already enrolled in this course.');
+        return null; // Or return existingEnrollment if needed by caller
+      }
+
+      // 3. Create new enrollment
+      const { data: newEnrollment, error: insertEnrollError } = await supabase
+        .from('enrollments')
+        .insert({
+          user_id: session.user.id,
+          course_id: courseId,
+          progress: 0,
+          completed: false,
+        })
+        .select()
+        .single();
+
+      if (insertEnrollError) throw insertEnrollError;
+      return newEnrollment;
     },
-    onSuccess: () => {
-      toast.success('Successfully enrolled in course');
-      // Invalidate the enrollment query to refetch data
-      queryClient.invalidateQueries({ queryKey: ['enrollment', courseId, session?.user?.id] });
+    onSuccess: (data) => {
+      if (data) { // Only show success if a new enrollment was actually created
+        toast.success("Successfully enrolled!");
+      }
+      queryClient.invalidateQueries({ queryKey: ['user-enrollments'] });
+      queryClient.invalidateQueries({ queryKey: ['enrollment-status', courseId, session?.user?.id] });
+      refetchEnrollmentStatus(); // To trigger useEffect for time tracking if it's the very first enrollment
     },
-    onError: (error) => {
-      console.error('Error enrolling in course:', error);
-      toast.error('Failed to enroll in course');
+    onError: (error: Error) => {
+      toast.error(`Enrollment failed: ${error.message}`);
     }
   });
 
@@ -206,7 +225,7 @@ const CourseDetail: React.FC = () => {
       if (progressError) throw progressError;
       
       // Then, update the enrollment progress
-      if (!enrollment) return;
+      if (!enrollmentData) return;
       
       // Calculate new progress percentage
       const moduleCount = course?.modules?.length || 1;
@@ -221,7 +240,7 @@ const CourseDetail: React.FC = () => {
           progress: newProgress,
           completed: newProgress === 100
         })
-        .eq('id', enrollment.id);
+        .eq('id', enrollmentData.id);
         
       if (enrollmentError) throw enrollmentError;
       
@@ -275,7 +294,7 @@ const CourseDetail: React.FC = () => {
 
   const updateProgress = (increment: number) => {
     // Calculate progress
-    if (!enrollment || !course || !course.modules.length) return;
+    if (!enrollmentData || !course || !course.modules.length) return;
     
     // Update progress in database
     updateProgressMutation.mutate({
@@ -300,9 +319,9 @@ const CourseDetail: React.FC = () => {
   }
   
   const activeModule = course.modules[activeModuleIndex];
-  const isEnrolled = !!enrollment;
-  const isCompleted = enrollment?.completed || false;
-  const courseProgress = enrollment?.progress || 0;
+  const isEnrolled = !!enrollmentData;
+  const isCompleted = enrollmentData?.completed || false;
+  const courseProgress = enrollmentData?.progress || 0;
   
   return (
     <div className="min-h-screen flex flex-col bg-include-glow text-foreground">
