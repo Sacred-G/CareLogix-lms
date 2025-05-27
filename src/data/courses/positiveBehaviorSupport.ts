@@ -14,7 +14,7 @@ export const positiveBehaviorSupportCourse: Course = {
       id: "mod-1",
       title: "Understanding Behavior as Communication",
       description: "Learn how behavior serves as communication and how to identify underlying needs and triggers.",
-      videoUrl: "https://youtu.be/46HukmJNOFY",
+      videoUrl: "https://youtu.be/6VjF3c47DRQ",
       content: `
 # Understanding Behavior as Communication
 

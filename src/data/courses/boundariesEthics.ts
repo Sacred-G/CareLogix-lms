@@ -15,7 +15,7 @@ export const boundariesEthicsCourse: Course = {
       id: "mod-1",
       title: "Understanding Professional Boundaries",
       description: "Learn the importance of professional boundaries and how to maintain them in support relationships.",
-      videoUrl: "https://youtu.be/gR4JvqIoSuA",
+      videoUrl: "https://youtu.be/HH7ladPEC6Y",
       content: `
 # Understanding Professional Boundaries
 
@@ -214,7 +214,7 @@ Remember that maintaining boundaries is not about being cold or distant—it's a
       id: "mod-2",
       title: "Navigating Ethical Dilemmas",
       description: "Learn a framework for identifying and resolving ethical dilemmas in direct support work.",
-      videoUrl: "https://youtu.be/4YiDwE_lHzU",
+      videoUrl: "https://youtu.be/poX2TjgZta8",
       content: `
 # Navigating Ethical Dilemmas
 
@@ -419,7 +419,7 @@ Remember that many ethical dilemmas don't have perfect solutions. Your goal is t
           explanation: "Documentation of ethical decision-making records your process, reasoning, and actions, which provides accountability, helps others understand your decisions, creates a record for future reference, and supports learning from the experience."
         }
       ],
-      audioUrl: "/Audio/Navigating Ethical Dilemmas for Direct Support Professionals.wav",
+      audioUrl: "/Audio/Navigating Ethical Dilemmas for DSPs.wavv",
       transcript: "In this audio segment, we explore how to navigate ethical dilemmas in direct support work. We discuss core ethical principles including autonomy, beneficence, non-maleficence, justice, and fidelity. We examine common ethical challenges DSPs face and provide a six-step framework for ethical decision-making to help you resolve complex situations while upholding professional standards."
     }
   ]

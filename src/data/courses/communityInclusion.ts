@@ -15,7 +15,7 @@ export const communityInclusionCourse: Course = {
       id: "mod-1",
       title: "Principles of Community Inclusion",
       description: "Understand the importance of community inclusion and strategies to promote meaningful participation.",
-      videoUrl: "https://youtu.be/HLHBkkiDbrw",
+      videoUrl: "https://youtu.be/yscFkWh9_8U",
       content: `
 # Principles of Community Inclusion
 
@@ -161,174 +161,166 @@ Remember that meaningful inclusion takes time and intentional effort. Small step
     },
     {
       id: "mod-2",
-      title: "Supporting Social Skills Development",
-      description: "Learn techniques for teaching and supporting social skills in community settings.",
+      title: "Person-Centered Planning and Glossary of Terms for Support Professionals",
+      description: "Learn the principles and practices of person-centered planning for effective community inclusion.",
       videoUrl: "https://youtu.be/PFDKE6VnUNw",
       content: `
-# Supporting Social Skills Development
+# Person-Centered Planning
 
-Social skills are crucial for building relationships and navigating community settings successfully. Many individuals with developmental disabilities benefit from direct support and teaching in developing these skills.
+Person-centered planning is a foundational approach to supporting individuals with disabilities in achieving meaningful community inclusion. This approach puts the individual at the center of all planning and decision-making processes.
 
-## Understanding Social Skills Challenges
+## Core Principles of Person-Centered Planning
 
-Social skills challenges may include difficulties with:
+Person-centered planning is guided by these key principles:
 
-- Reading non-verbal cues and body language
-- Understanding unwritten social rules
-- Starting and maintaining conversations
-- Taking turns in interactions
-- Perspective-taking and empathy
-- Managing emotions in social situations
-- Adjusting behavior to different social contexts
-- Understanding humor, sarcasm, or abstract language
+- The person is the primary decision-maker in their life
+- Planning focuses on capacities, strengths, and preferences, not deficits
+- The individual's dreams and goals drive the planning process
+- Natural supports and community connections are prioritized
+- Planning is ongoing, flexible, and responsive to changing needs
+- Success is defined by the person, not predetermined program outcomes
+- Cultural values and preferences are respected and incorporated
 
-These challenges vary widely between individuals and can change in different environments or with different people.
+## Key Elements of Effective Person-Centered Planning
 
-## Assessment and Planning
+### 1. Getting to Know the Person
+- Understanding their history, culture, and background
+- Identifying interests, talents, and passions
+- Learning about relationships and existing supports
+- Discovering what works/doesn't work in their life
+- Understanding their preferred communication style
 
-Before teaching social skills:
+### 2. Building a Circle of Support
+- Identifying people who care about the person
+- Including both paid and unpaid supports
+- Ensuring diversity of perspectives and skills
+- Involving community members when appropriate
+- Respecting the person's preferences about who participates
 
-### 1. Observe Current Skills
-- Watch interactions in natural settings
-- Note strengths and challenges
-- Consider different environments and partners
-- Ask the person about their experiences
+### 3. Creating a Positive Vision for the Future
+- Exploring dreams and aspirations without limitations
+- Identifying what a good life means to the person
+- Focusing on strengths and possibilities
+- Creating concrete, visual representations
+- Thinking beyond traditional service options
 
-### 2. Identify Meaningful Goals
-- Focus on skills that matter to the person
-- Consider what will increase quality of life
-- Start with skills that bring immediate benefits
-- Identify prerequisite skills that may be needed
+### 4. Developing Action Steps
+- Breaking large goals into manageable steps
+- Assigning specific responsibilities
+- Creating timelines that make sense
+- Building on existing resources and relationships
+- Identifying needed supports and resources
 
-### 3. Create Teaching Opportunities
-- Use natural community situations when possible
-- Structure initial learning for success
-- Plan for practice in different settings
-- Consider who should be involved
+## Person-Centered Planning Methods
 
-## Teaching Strategies
+Several structured approaches exist for person-centered planning:
 
-### Direct Instruction
-- Break skills into small, teachable components
-- Explain clearly why the skill is important
-- Provide concrete examples and non-examples
-- Use visual supports when helpful
-- Practice in controlled settings before real situations
+### MAPS (Making Action Plans)
+- Explores the person's history, dreams, fears, needs, and talents
+- Identifies who the person is and what they need to be successful
+- Creates a concrete action plan for moving forward
 
-### Modeling
-- Demonstrate the skill yourself
-- Point out others using the skill effectively
-- Use video modeling when appropriate
-- Narrate what you're doing and why
-- Show different ways to handle situations
+### PATH (Planning Alternative Tomorrows with Hope)
+- Begins with the "North Star" vision of an ideal future
+- Works backward to identify immediate next steps
+- Creates a visual roadmap toward goals
 
-### Role-Play and Practice
-- Create realistic scenarios
-- Practice in non-stressful environments first
-- Give specific, constructive feedback
-- Gradually increase complexity
-- Celebrate improvements and efforts
+### Essential Lifestyle Planning
+- Focuses on day-to-day preferences and requirements
+- Distinguishes between "non-negotiables" and preferences
+- Emphasizes detailed documentation of what works
 
-### Coaching in Natural Settings
-- Provide reminders before situations
-- Give subtle cues during interactions
-- Offer feedback afterward
-- Gradually reduce prompting
-- Support reflection on what worked
+### Personal Futures Planning
+- Maps the person's relationships, places, interests, and choices
+- Identifies opportunities and obstacles in the community
+- Develops strategies to increase community participation
 
-## Supporting Specific Social Skills
+## Supporting Community Inclusion Through Person-Centered Planning
 
-### Conversation Skills
-- Teach conversation starters
-- Practice turn-taking
-- Develop topic maintenance
-- Work on appropriate ending of conversations
-- Address volume, tone, and pace
+Person-centered planning directly supports community inclusion by:
 
-### Reading Non-verbal Cues
-- Explicitly teach meaning of common expressions
-- Use pictures and videos to practice recognition
-- Connect cues to emotional states
-- Practice in structured then natural settings
+### Identifying Natural Community Connections
+- Mapping existing relationships and community places
+- Finding opportunities based on interests and strengths
+- Discovering untapped resources and connections
 
-### Friendship Skills
-- Identify shared interests
-- Teach ways to show interest in others
-- Practice appropriate self-disclosure
-- Develop conflict resolution strategies
-- Support maintenance of relationships
+### Addressing Barriers Creatively
+- Problem-solving transportation issues
+- Developing strategies for support needs
+- Addressing accessibility challenges
+- Building confidence through graduated steps
 
-### Social Problem-Solving
-- Recognize when a problem exists
-- Generate multiple possible solutions
-- Evaluate potential outcomes
-- Select and try a solution
-- Reflect on results
+### Building Reciprocal Relationships
+- Identifying ways the person can contribute to their community
+- Finding roles that highlight strengths and talents
+- Creating opportunities for giving as well as receiving support
 
-## Creating Supportive Environments
+## The DSP's Role in Person-Centered Planning
 
-To maximize success:
+As a Direct Support Professional, you play a critical role in person-centered planning by:
 
-1. Prepare environments when possible (reduce sensory challenges, etc.)
-2. Alert supportive community members
-3. Have exit strategies for overwhelming situations
-4. Balance challenge with support
-5. Always maintain dignity during teaching
+1. Being a skilled observer of preferences and interests
+2. Advocating for the person's voice in all decisions
+3. Implementing support strategies consistent with the plan
+4. Documenting what works and what doesn't
+5. Identifying new opportunities aligned with goals
+6. Supporting relationships with planning team members
+7. Helping evaluate progress and suggest adjustments
 
-Remember that social skills development is a journey, not a destination. Celebrate progress, be patient with challenges, and always keep the focus on skills that enhance quality of life and relationships for the individual.
+Remember that person-centered planning is not a one-time event but an ongoing process of discovery, action, reflection, and adjustment. Your attentiveness to the person's changing interests and goals is essential to maintaining a truly person-centered approach to community inclusion.
 `,
       questions: [
         {
-          id: "q1-mod2",
-          question: "When teaching social skills, why is it important to focus on skills that matter to the person?",
+          id: "q1-mod2-pcp",
+          question: "What is a core principle of person-centered planning?",
           options: [
-            "It's easier to teach skills they already want to learn", 
-            "It ensures the skills will be relevant and motivating, leading to better learning outcomes", 
-            "It makes teaching faster", 
-            "It's required by regulations"
+            "Planning should be completed quickly to maximize efficiency",
+            "Professional opinions should guide all decision-making",
+            "The person is the primary decision-maker in their life",
+            "Goals should focus on addressing deficits and challenges"
+          ],
+          correctAnswer: 2,
+          explanation: "A fundamental principle of person-centered planning is that the person is the primary decision-maker in their own life. The planning process centers their voice, preferences, and choices rather than being driven primarily by professional opinions or program requirements."
+        },
+        {
+          id: "q2-mod2-pcp",
+          question: "How does person-centered planning support community inclusion?",
+          options: [
+            "By creating standardized inclusion plans that work for everyone",
+            "By identifying natural community connections based on the person's interests and strengths",
+            "By limiting community exposure to prevent overwhelming experiences",
+            "By focusing primarily on specialized disability programs"
           ],
           correctAnswer: 1,
-          explanation: "Focusing on skills that matter to the person ensures relevance and motivation, which leads to better learning outcomes and skill maintenance. When people see the direct benefit of a skill to their own goals and interests, they're more likely to engage in learning and apply the skill in real situations."
+          explanation: "Person-centered planning supports community inclusion by identifying natural community connections based on the individual's unique interests and strengths. This approach helps discover opportunities for meaningful participation that align with what matters to the person."
         },
         {
-          id: "q2-mod2",
-          question: "Which of these is an effective strategy for teaching conversation skills?",
+          id: "q3-mod2-pcp",
+          question: "What is the purpose of building a 'circle of support' in person-centered planning?",
           options: [
-            "Correcting mistakes immediately during community conversations", 
-            "Practicing only in classroom settings for consistency", 
-            "Teaching specific conversation starters and practicing turn-taking in gradually more natural settings", 
-            "Focusing solely on written communication which is easier to learn"
+            "To create a group that will make decisions for the person",
+            "To ensure professionals maintain control of the planning process",
+            "To identify people who care about the person and can help implement the plan",
+            "To replace natural supports with paid staff"
           ],
           correctAnswer: 2,
-          explanation: "Teaching specific conversation starters, practicing turn-taking, and gradually moving from structured to more natural settings is an effective approach. This provides concrete strategies while building toward real-world application in a supportive way."
+          explanation: "Building a circle of support involves identifying people who genuinely care about the person and can contribute to implementing their plan. This includes both paid and unpaid supports and creates a network of people committed to helping the person achieve their goals."
         },
         {
-          id: "q3-mod2",
-          question: "What is 'coaching in natural settings'?",
+          id: "q4-mod2-pcp",
+          question: "As a DSP, what is your role in person-centered planning?",
           options: [
-            "Teaching outdoors in parks and natural areas", 
-            "Letting the person figure things out without any support", 
-            "Providing reminders before situations, subtle cues during interactions, and feedback afterward", 
-            "Having a professional coach observe and evaluate performance"
+            "Taking control of the planning process since you know the person best",
+            "Limiting options to those you believe are realistic",
+            "Being a skilled observer of preferences and advocating for the person's voice",
+            "Creating plans that fit within existing program structures"
           ],
           correctAnswer: 2,
-          explanation: "Coaching in natural settings involves providing reminders before social situations occur, giving subtle cues during the interaction if needed, and offering constructive feedback afterward. This approach supports learning in real-world contexts while gradually reducing dependence on prompts."
-        },
-        {
-          id: "q4-mod2",
-          question: "How should a DSP respond when an individual struggles with a social interaction in the community?",
-          options: [
-            "Immediately step in and take over the interaction", 
-            "Allow the struggle to continue regardless of difficulty to build resilience", 
-            "Provide the minimum support needed while maintaining the person's dignity", 
-            "Remove the person from the situation and avoid similar situations in the future"
-          ],
-          correctAnswer: 2,
-          explanation: "The best approach is to provide the minimum support needed while maintaining the person's dignity. This might mean offering a subtle cue, providing just enough support to continue the interaction successfully, or stepping back and debriefing later, depending on the specific situation."
+          explanation: "As a DSP, your role includes being a skilled observer of the person's preferences and interests, advocating for their voice in all decisions, implementing support strategies consistent with their plan, and helping identify new opportunities aligned with their goals."
         }
       ],
-      audioUrl: "/Audio/Improving Social Skills_ A Practical Guide.wav",
-      transcript: "In this audio lesson, we explore strategies for supporting social skills development in community settings. We discuss how to assess current skills and identify meaningful goals, review effective teaching strategies including direct instruction, modeling, role-playing, and coaching in natural environments, and address approaches for teaching specific skills like conversation, reading non-verbal cues, and friendship development."
+      audioUrl: "/Audio/Improving Social Skills_ A Practical Guide (1).wav",
+      transcript: "In this audio lesson, we explore the principles and practices of person-centered planning for effective community inclusion. We discuss the core elements of the person-centered approach, various planning methods like MAPS and PATH, strategies for identifying natural community connections, and the essential role DSPs play in implementing person-centered plans that support meaningful community participation."
     }
   ]
 };

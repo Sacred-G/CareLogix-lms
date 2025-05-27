@@ -14,7 +14,7 @@ export const scenarioPracticeCourse: Course = {
       id: "mod-1",
       title: "Managing Challenging Behaviors",
       description: "Practice responding to challenging behaviors effectively and professionally.",
-      videoUrl: "https://youtu.be/46HukmJNOFY",
+      videoUrl: "https://youtu.be/eLPtwKFS9ss",
       content: `
 # Managing Challenging Behaviors
 
@@ -250,7 +250,7 @@ Remember that behavior change takes time and consistency. Focus on progress rath
       id: "mod-2",
       title: "Supporting Clients During Difficult Situations",
       description: "Practice providing appropriate support during emotionally challenging situations.",
-      videoUrl: "https://youtu.be/46HukmJNOFY",
+      videoUrl: "",
       content: `
 # Supporting Clients During Difficult Situations
 
