@@ -19,13 +19,11 @@ const NewHireVideoPopup: React.FC<NewHireVideoPopupProps> = ({ delay = 1500 }) =
     // Check if the user has already seen the popup
     const hasSeenPopup = localStorage.getItem('hasSeenNewHirePopup');
     
-    // Check if the current domain is "include me too please"
+    // Check if the current domain is "includemetooplease.com"
     const currentDomain = window.location.hostname.toLowerCase();
-    const isIncludeMeToo = currentDomain.includes('includemetoo') || 
-                           currentDomain.includes('include-me-too') || 
-                           currentDomain.includes('include me too');
+    const isIncludeMeTooPlease = currentDomain.includes('includemetooplease.com');
     
-    if (!hasSeenPopup && isIncludeMeToo) {
+    if (!hasSeenPopup && isIncludeMeTooPlease) {
       const timer = setTimeout(() => {
         setIsOpen(true);
       }, delay);

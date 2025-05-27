@@ -12,8 +12,10 @@ import {
   deleteSignature 
 } from '@/services/signatureService';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Pencil, Trash2, Upload, Check } from 'lucide-react';
+import { Pencil, Trash2, Upload, Check, Edit3, Image } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import SignaturePad from '@/components/signature/SignaturePad';
 
 const SignatureManager: React.FC = () => {
   const [signatures, setSignatures] = useState<Signature[]>([]);
@@ -31,6 +33,8 @@ const SignatureManager: React.FC = () => {
   const [signatureFile, setSignatureFile] = useState<File | null>(null);
   const [isDefault, setIsDefault] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [canvasSignatureData, setCanvasSignatureData] = useState<string | null>(null);
+  const [signatureInputMethod, setSignatureInputMethod] = useState<'upload' | 'draw'>('upload');
 
   useEffect(() => {
     loadSignatures();
@@ -58,6 +62,8 @@ const SignatureManager: React.FC = () => {
     setSignatureFile(null);
     setIsDefault(false);
     setPreviewUrl(null);
+    setCanvasSignatureData(null);
+    setSignatureInputMethod('upload');
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,10 +92,29 @@ const SignatureManager: React.FC = () => {
   };
 
   const handleAddSignature = async () => {
-    if (!name || !title || !signatureFile) {
+    if (!name || !title) {
       toast({
         title: 'Missing fields',
-        description: 'Please fill out all required fields',
+        description: 'Please fill out name and title fields',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    // Check if we have either a file upload or a canvas signature
+    if (signatureInputMethod === 'upload' && !signatureFile) {
+      toast({
+        title: 'Missing signature',
+        description: 'Please upload a signature image',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (signatureInputMethod === 'draw' && !canvasSignatureData) {
+      toast({
+        title: 'Missing signature',
+        description: 'Please draw your signature',
         variant: 'destructive',
       });
       return;
@@ -97,12 +122,29 @@ const SignatureManager: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      await createSignature({
-        name,
-        title,
-        signatureFile,
-        default: isDefault,
-      });
+      if (signatureInputMethod === 'upload') {
+        await createSignature({
+          name,
+          title,
+          signatureFile,
+          default: isDefault,
+        });
+      } else {
+        // For canvas signatures, we need to convert the base64 data to a File
+        if (canvasSignatureData) {
+          // Convert base64 to blob
+          const response = await fetch(canvasSignatureData);
+          const blob = await response.blob();
+          const file = new File([blob], `${name}-signature.png`, { type: 'image/png' });
+          
+          await createSignature({
+            name,
+            title,
+            signatureFile: file,
+            default: isDefault,
+          });
+        }
+      }
       
       await loadSignatures();
       setIsAddDialogOpen(false);
@@ -214,7 +256,7 @@ const SignatureManager: React.FC = () => {
             <DialogHeader>
               <DialogTitle>Add New Signature</DialogTitle>
               <DialogDescription>
-                Upload a signature to use on certificates. This should be a clear image with a transparent background.
+                Add a signature to use on certificates. You can upload an image or draw your signature.
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
@@ -236,25 +278,61 @@ const SignatureManager: React.FC = () => {
                   placeholder="e.g., Program Director"
                 />
               </div>
-              <div className="grid gap-2">
-                <Label htmlFor="signature">Signature Image</Label>
-                <Input
-                  id="signature"
-                  type="file"
-                  onChange={handleFileChange}
-                  accept="image/*"
-                />
-                {previewUrl && (
-                  <div className="border rounded p-2 bg-gray-50">
-                    <p className="text-sm text-gray-500 mb-1">Preview:</p>
-                    <img
-                      src={previewUrl}
-                      alt="Signature Preview"
-                      className="max-h-20 object-contain bg-white p-2"
+              
+              <Tabs value={signatureInputMethod} onValueChange={(value) => setSignatureInputMethod(value as 'upload' | 'draw')}>
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="upload" className="flex items-center">
+                    <Image className="mr-2 h-4 w-4" />
+                    Upload Image
+                  </TabsTrigger>
+                  <TabsTrigger value="draw" className="flex items-center">
+                    <Edit3 className="mr-2 h-4 w-4" />
+                    Draw Signature
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="upload" className="mt-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="signature">Signature Image</Label>
+                    <Input
+                      id="signature"
+                      type="file"
+                      onChange={handleFileChange}
+                      accept="image/*"
                     />
+                    {previewUrl && (
+                      <div className="border rounded p-2 bg-gray-50">
+                        <p className="text-sm text-gray-500 mb-1">Preview:</p>
+                        <img
+                          src={previewUrl}
+                          alt="Signature Preview"
+                          className="max-h-20 object-contain bg-white p-2"
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+                </TabsContent>
+                
+                <TabsContent value="draw" className="mt-4">
+                  <div className="grid gap-2">
+                    <Label>Draw Your Signature</Label>
+                    <SignaturePad 
+                      onSave={setCanvasSignatureData}
+                      height={150}
+                    />
+                    {canvasSignatureData && (
+                      <div className="border rounded p-2 bg-gray-50">
+                        <p className="text-sm text-gray-500 mb-1">Preview:</p>
+                        <img
+                          src={canvasSignatureData}
+                          alt="Drawn Signature"
+                          className="max-h-20 object-contain bg-white p-2"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </TabsContent>
+              </Tabs>
               <div className="flex items-center space-x-2">
                 <Switch
                   id="default"

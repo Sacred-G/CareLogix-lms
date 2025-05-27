@@ -6,6 +6,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 import { ScormModule } from '@/data/scormTypes';
+import { getCourseUUID } from '@/data/courseIdMapping';
 
 // Define a type for the enrollment record including new time fields
 interface EnrollmentRecord {
@@ -19,6 +20,12 @@ interface EnrollmentRecord {
   last_accessed_at?: string | null;
   total_time_spent_ms?: number | null;
 }
+
+// Add progress increments constant
+const progressIncrements = {
+  content: 25,
+  quiz: 75,
+} as const;
 
 // Import the new components
 import Footer from '@/components/navigation/Footer';
@@ -73,11 +80,12 @@ const CourseDetail: React.FC = () => {
       
       console.log(`Fetching enrollment for course ${courseId}`);
       
+      // Enrollments table uses string IDs, not UUIDs
       const { data: dbEnrollment, error: dbError } = await supabase
         .from('enrollments')
         .select('*') 
         .eq('user_id', session.user.id)
-        .eq('course_id', courseId)
+        .eq('course_id', courseId) // Use string ID for enrollments table
         .maybeSingle();
         
       if (dbError) {
@@ -132,6 +140,9 @@ const CourseDetail: React.FC = () => {
   const enrollMutation = useMutation<EnrollmentRecord | null, Error, void, unknown>({
     mutationFn: async () => {
       if (!session?.user?.id || !courseId) throw new Error('User not logged in or course ID missing');
+      
+      // Convert string courseId to UUID for database compatibility
+      const courseUUID = getCourseUUID(courseId);
 
       // 1. Check if course exists in 'courses' table, create if not
       const { data: existingCourseInDb } = await supabase
@@ -159,7 +170,7 @@ const CourseDetail: React.FC = () => {
         .from('enrollments')
         .select('id')
         .eq('user_id', session.user.id)
-        .eq('course_id', courseId)
+        .eq('course_id', courseId) // Use string ID for enrollments table
         .maybeSingle();
 
       if (checkError) throw checkError;
@@ -168,12 +179,12 @@ const CourseDetail: React.FC = () => {
         return null; // Or return existingEnrollment if needed by caller
       }
 
-      // 3. Create new enrollment
+      // 3. Create new enrollment (enrollments table uses string IDs)
       const { data: newEnrollment, error: insertEnrollError } = await supabase
         .from('enrollments')
         .insert({
           user_id: session.user.id,
-          course_id: courseId,
+          course_id: courseId, // Use string ID for enrollments table
           progress: 0,
           completed: false,
         })
@@ -198,51 +209,256 @@ const CourseDetail: React.FC = () => {
 
   // Update progress mutation
   const updateProgressMutation = useMutation({
-    mutationFn: async ({ courseId, lessonId, quizId, completed, score }: { 
+    mutationFn: async ({ courseId, lessonId, quizId, completed, score, progress }: { 
       courseId: string,
       lessonId?: string, 
       quizId?: string, 
       completed: boolean, 
-      score?: number 
+      score?: number,
+      progress?: number
     }) => {
       if (!session?.user?.id) throw new Error('User not logged in');
       
-      // First, record the specific progress item
-      const progressData = {
-        user_id: session.user.id,
-        completed,
-        ...(lessonId && { lesson_id: lessonId }),
-        ...(quizId && { quiz_id: quizId }),
-        ...(score !== undefined && { score })
-      };
+      // First, create or find a section for this course to link lessons/quizzes to
+      let sectionId;
       
-      const { error: progressError } = await supabase
-        .from('user_progress')
-        .upsert(progressData, { 
-          onConflict: lessonId ? 'user_id,lesson_id' : 'user_id,quiz_id'
-        });
+      // Check if a section already exists for this course
+      const { data: existingSection } = await supabase
+        .from('sections')
+        .select('id')
+        .eq('course_id', courseId) // Use string ID for sections table
+        .maybeSingle();
         
-      if (progressError) throw progressError;
+      if (existingSection) {
+        sectionId = existingSection.id;
+      } else {
+        // Create a new section for this course
+        const { data: newSection, error: sectionError } = await supabase
+          .from('sections')
+          .insert({
+            course_id: courseId, // Use string ID for sections table
+            title: 'Main Section',
+            position: 0
+          })
+          .select()
+          .single();
+          
+        if (sectionError) {
+          console.error('Error creating section:', sectionError);
+          // Continue without a section if there's an error
+        } else {
+          sectionId = newSection.id;
+        }
+      }
       
-      // Then, update the enrollment progress
+      // Track progress based on the type (lesson or quiz)
+      if (lessonId && sectionId) {
+        // Try to find an existing lesson record
+        const { data: existingLesson } = await supabase
+          .from('lessons')
+          .select('id')
+          .eq('section_id', sectionId)
+          .eq('title', `Module ${activeModuleIndex + 1}`)
+          .maybeSingle();
+          
+        let lessonDbId;
+        
+        if (existingLesson) {
+          lessonDbId = existingLesson.id;
+        } else {
+          // Create a new lesson record
+          try {
+            const { data: newLesson, error: lessonError } = await supabase
+              .from('lessons')
+              .insert({
+                section_id: sectionId,
+                title: course?.modules[activeModuleIndex]?.title || `Module ${activeModuleIndex + 1}`,
+                content: course?.modules[activeModuleIndex]?.content || '',
+                position: activeModuleIndex
+              })
+              .select()
+              .single();
+              
+            if (lessonError) {
+              console.error('Error creating lesson:', lessonError);
+            } else {
+              lessonDbId = newLesson.id;
+            }
+          } catch (err) {
+            console.error('Exception creating lesson:', err);
+          }
+        }
+        
+        // If we have a valid lesson ID, save progress
+        if (lessonDbId) {
+          try {
+            const { error: progressError } = await supabase
+              .from('user_progress')
+              .upsert({
+                user_id: session.user.id,
+                lesson_id: lessonDbId,
+                completed: completed,
+                updated_at: new Date().toISOString()
+              }, {
+                onConflict: 'user_id,lesson_id'
+              });
+              
+            if (progressError) {
+              console.error('Error saving lesson progress:', progressError);
+            } else {
+              console.log('Lesson progress saved successfully');
+            }
+          } catch (err) {
+            console.error('Exception saving lesson progress:', err);
+          }
+        }
+      }
+      
+      // Handle quiz progress
+      if (quizId && sectionId && score !== undefined) {
+        // Try to find an existing quiz record
+        const { data: existingQuiz } = await supabase
+          .from('quizzes')
+          .select('id')
+          .eq('section_id', sectionId)
+          .maybeSingle();
+          
+        let quizDbId;
+        
+        if (existingQuiz) {
+          quizDbId = existingQuiz.id;
+        } else {
+          // Create a new quiz record
+          try {
+            const { data: newQuiz, error: quizError } = await supabase
+              .from('quizzes')
+              .insert({
+                section_id: sectionId
+              })
+              .select()
+              .single();
+              
+            if (quizError) {
+              console.error('Error creating quiz:', quizError);
+            } else {
+              quizDbId = newQuiz.id;
+            }
+          } catch (err) {
+            console.error('Exception creating quiz:', err);
+          }
+        }
+        
+        // If we have a valid quiz ID, save progress
+        if (quizDbId) {
+          try {
+            const { error: progressError } = await supabase
+              .from('user_progress')
+              .upsert({
+                user_id: session.user.id,
+                quiz_id: quizDbId,
+                completed: completed,
+                score: score,
+                updated_at: new Date().toISOString()
+              }, {
+                onConflict: 'user_id,quiz_id'
+              });
+              
+            if (progressError) {
+              console.error('Error saving quiz progress:', progressError);
+            } else {
+              console.log('Quiz progress saved successfully');
+            }
+          } catch (err) {
+            console.error('Exception saving quiz progress:', err);
+          }
+        }
+      }
+      
+      // Update the enrollment progress regardless of lesson/quiz progress
       if (!enrollmentData) return;
       
-      // Calculate new progress percentage
-      const moduleCount = course?.modules?.length || 1;
-      const newProgress = Math.min(
-        Math.round(((activeModuleIndex + (completed ? 1 : 0)) / moduleCount) * 100),
-        100
-      );
+      // Use provided progress or calculate new progress percentage based on content completion
+      let newProgress;
+      if (progress !== undefined) {
+        newProgress = progress;
+      } else {
+        // Get all possible content types in the course
+        const contentTypes = ['video', 'audio', 'text', 'quiz'];
+        let totalContentItems = 0;
+        let completedContentItems = 0;
+        
+        // Count total content items across all modules
+        course?.modules?.forEach((module, moduleIndex) => {
+          // Count each content type that exists in this module
+          if (module.videoUrl) totalContentItems++;
+          if (module.audioUrl) totalContentItems++;
+          if (module.content) totalContentItems++;
+          if (module.questions && module.questions.length > 0) totalContentItems++;
+        });
+        
+        // If there are no content items, default to module-based calculation
+        if (totalContentItems === 0) {
+          const moduleCount = course?.modules?.length || 1;
+          newProgress = Math.min(
+            Math.round(((activeModuleIndex + (completed ? 1 : 0)) / moduleCount) * 100),
+            100
+          );
+        } else {
+          // Fetch user progress to count completed items
+          const { data: userProgress } = await supabase
+            .from('user_progress')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .eq('completed', true);
+          
+          // Count completed items based on the user_progress records
+          if (userProgress && userProgress.length > 0) {
+            completedContentItems = userProgress.length;
+          }
+          
+          // Calculate progress as percentage of completed content items
+          newProgress = Math.min(
+            Math.round((completedContentItems / totalContentItems) * 100),
+            100
+          );
+        }
+      }
       
+      // Update last_accessed_at timestamp
+      const now = new Date().toISOString();
+      
+      // Update the enrollment record with the new progress
+      if (!enrollmentData?.id) {
+        console.error('Cannot update progress: No enrollment data found');
+        throw new Error('No enrollment data found');
+      }
+      
+      console.log(`Updating enrollment ${enrollmentData.id} for course ${courseId} to ${newProgress}%`);
+      
+      // Use multiple conditions to ensure we're updating the correct record
       const { error: enrollmentError } = await supabase
         .from('enrollments')
         .update({ 
           progress: newProgress,
-          completed: newProgress === 100
+          completed: newProgress === 100,
+          last_accessed_at: now
         })
-        .eq('id', enrollmentData.id);
+        .eq('id', enrollmentData.id)
+        .eq('user_id', session.user.id)
+        .eq('course_id', courseId);
         
-      if (enrollmentError) throw enrollmentError;
+      if (enrollmentError) {
+        console.error('Error updating enrollment progress:', enrollmentError);
+        throw enrollmentError;
+      }
+      
+      // Log the progress update
+      console.log(`Updated progress for course ${courseId} to ${newProgress}%`);
+      
+      // If this is a quiz completion with a score, log it separately
+      if (quizId && score !== undefined) {
+        console.log(`Quiz completed with score: ${score}%`);
+      }
       
       return { progress: newProgress };
     },
@@ -296,12 +512,58 @@ const CourseDetail: React.FC = () => {
     // Calculate progress
     if (!enrollmentData || !course || !course.modules.length) return;
     
+    const currentModule = course.modules[activeModuleIndex];
+    const moduleCount = course.modules.length;
+    const moduleIndex = activeModuleIndex;
+    let newProgress;
+    
+    // Simple milestone-based progress tracking
+    // Module 0 video = 25%
+    // Module 0 quiz = 50%
+    // Module 1 video = 75%
+    // Module 1 quiz = 100%
+    
+    // Check if we're in module 0 or module 1
+    if (moduleIndex === 0) {
+      if (increment === progressIncrements.quiz) {
+        // Module 0 quiz completion = 50%
+        newProgress = 50;
+        console.log('Module 0 quiz completed - progress set to 50%');
+      } else {
+        // Module 0 video or content completion = 25%
+        newProgress = 25;
+        console.log('Module 0 content completed - progress set to 25%');
+      }
+    } else if (moduleIndex === 1) {
+      if (increment === progressIncrements.quiz) {
+        // Module 1 quiz completion = 100%
+        newProgress = 100;
+        console.log('Module 1 quiz completed - progress set to 100%');
+      } else {
+        // Module 1 video or content completion = 75%
+        newProgress = 75;
+        console.log('Module 1 content completed - progress set to 75%');
+      }
+    } else {
+      // For any additional modules, we'll do simple progression
+      // Each module beyond the first two is worth (100 - 75) / (moduleCount - 2) percent
+      const additionalModuleValue = moduleCount > 2 ? Math.round((100 - 75) / (moduleCount - 2)) : 0;
+      newProgress = Math.min(75 + ((moduleIndex - 1) * additionalModuleValue), 100);
+      console.log(`Additional module ${moduleIndex} completed - progress set to ${newProgress}%`);
+    }
+    
     // Update progress in database
     updateProgressMutation.mutate({
       courseId: courseId,
       lessonId: course.modules[activeModuleIndex].id,
-      completed: true
+      completed: true,
+      // Pass the calculated progress to ensure it's saved correctly
+      progress: newProgress
     });
+    
+    // Invalidate queries to refresh the UI
+    queryClient.invalidateQueries({ queryKey: ['enrollment-status', courseId, session?.user?.id] });
+    queryClient.invalidateQueries({ queryKey: ['user-enrollments'] });
   };
   
   // Handle enrolling in course

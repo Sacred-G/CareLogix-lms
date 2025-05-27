@@ -146,7 +146,7 @@ const InteractiveMindmap: React.FC<InteractiveMindmapProps> = ({
     const horizontalSpacing = 800; // Extreme horizontal spacing
     
     // Calculate vertical spacing based on expanded children
-    let childrenToRender: JSX.Element[] = [];
+    const childrenToRender: JSX.Element[] = [];
     let totalChildHeight = 0;
     
     if (expandedNodes.has(node.id) && node.children && node.children.length > 0) {

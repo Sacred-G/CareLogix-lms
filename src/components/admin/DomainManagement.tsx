@@ -40,12 +40,12 @@ export default function DomainManagement({
         ) : domainStats && domainStats.length > 0 ? (
           <div className="grid gap-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-              <Card className="bg-slate-50">
+              <Card className="bg-card">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Domains</p>
-                      <p className="text-2xl font-bold">{domainStats.length}</p>
+                      <p className="text-2xl font-bold text-foreground">{domainStats.length}</p>
                     </div>
                     <div className="p-2 bg-primary/10 rounded-full">
                       <BarChart3 className="h-6 w-6 text-primary" />
@@ -54,12 +54,12 @@ export default function DomainManagement({
                 </CardContent>
               </Card>
               
-              <Card className="bg-slate-50">
+              <Card className="bg-card">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Users</p>
-                      <p className="text-2xl font-bold">
+                      <p className="text-2xl font-bold text-foreground">
                         {domainStats.reduce((sum, domain) => sum + domain.userCount, 0)}
                       </p>
                     </div>
@@ -70,12 +70,12 @@ export default function DomainManagement({
                 </CardContent>
               </Card>
               
-              <Card className="bg-slate-50">
+              <Card className="bg-card">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Admins</p>
-                      <p className="text-2xl font-bold">
+                      <p className="text-2xl font-bold text-foreground">
                         {domainStats.reduce((sum, domain) => sum + domain.adminCount, 0)}
                       </p>
                     </div>
@@ -86,12 +86,12 @@ export default function DomainManagement({
                 </CardContent>
               </Card>
               
-              <Card className="bg-slate-50">
+              <Card className="bg-card">
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Enrollments</p>
-                      <p className="text-2xl font-bold">
+                      <p className="text-2xl font-bold text-foreground">
                         {domainStats.reduce((sum, domain) => sum + domain.enrollmentCount, 0)}
                       </p>
                     </div>

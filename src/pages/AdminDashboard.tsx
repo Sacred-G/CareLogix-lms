@@ -1,25 +1,30 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 import { AdminRoute } from '@/components/auth/AdminRoute';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAdminData } from '@/hooks/useAdminData';
+import { useQueryClient } from '@tanstack/react-query';
+import { AdminRoleType } from '@/types/admin';
 import AdminStats from '@/components/admin/AdminStats';
 import UserManagement from '@/components/admin/UserManagement';
 import DomainManagement from '@/components/admin/DomainManagement';
 import CreateUserForm from '@/components/admin/CreateUserForm';
 import CourseStats from '@/components/admin/CourseStats';
 import EnrollmentsTable from '@/components/admin/EnrollmentsTable';
+import CourseAssignment from '@/components/admin/CourseAssignment';
 import ScormUploader from '@/components/admin/ScormUploader';
 import ScormManager from '@/components/admin/ScormManager';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Plus, UserPlus, Users } from 'lucide-react';
+import { BookOpen, Plus, UserPlus, Users, GraduationCap } from 'lucide-react';
 import { toast } from 'sonner';
 import { Badge } from '@/components/ui/badge';
 
 export default function AdminDashboard() {
+  const queryClient = useQueryClient();
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreateUserOpen, setIsCreateUserOpen] = useState(false);
   const [selectedDomain, setSelectedDomain] = useState('');
@@ -54,10 +59,12 @@ export default function AdminDashboard() {
 
   // Filter profiles based on search query and admin type
   const filteredProfiles = profiles?.filter(profile => {
-    // Filter by search query
-    const matchesSearch = 
-      (profile.full_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      profile.email?.toLowerCase().includes(searchQuery.toLowerCase()));
+    // Only filter by full_name since email is not stored in profiles table
+    // If search is empty, show all profiles
+    if (!searchQuery) return true;
+    
+    // Filter by full name only
+    const matchesSearch = profile.full_name?.toLowerCase().includes(searchQuery.toLowerCase());
     
     // Return matches
     return matchesSearch;
@@ -148,13 +155,41 @@ export default function AdminDashboard() {
             )}
             
             <Tabs defaultValue="users" className="w-full">
-              <TabsList className="grid grid-cols-4 w-full mb-6 max-w-md">
+              <div className="flex justify-end mb-4">
+                <Button
+                  variant="outline"
+                  onClick={async () => {
+                    try {
+                      const { data, error } = await supabase.from('profiles').select('*');
+                      console.log('DEBUG - All profiles (Direct):', data);
+                      console.log('DEBUG - Profiles count:', data?.length || 0);
+                      console.log('DEBUG - Current filtered profiles:', filteredProfiles);
+                      toast.success(`Found ${data?.length || 0} profiles in database`);
+                      
+                      if (error) {
+                        console.error('Error fetching profiles:', error);
+                        toast.error('Error fetching profiles');
+                      }
+                    } catch (e) {
+                      console.error('Debug button error:', e);
+                      toast.error('Error in debug button');
+                    }
+                  }}
+                >
+                  Debug: Show All Profiles
+                </Button>
+              </div>
+              <TabsList className="grid grid-cols-5 w-full mb-6 max-w-md">
                 <TabsTrigger value="users">
                   <Users className="mr-2 h-4 w-4" />
                   Users
                 </TabsTrigger>
                 <TabsTrigger value="courses">Course Stats</TabsTrigger>
                 <TabsTrigger value="enrollments">Enrollments</TabsTrigger>
+                <TabsTrigger value="assign">
+                  <GraduationCap className="mr-2 h-4 w-4" />
+                  Assign
+                </TabsTrigger>
                 <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
               </TabsList>
               
@@ -191,6 +226,16 @@ export default function AdminDashboard() {
                 />
               </TabsContent>
               
+              {/* Course Assignment Tab */}
+              <TabsContent value="assign">
+                <CourseAssignment
+                  profiles={profiles}
+                  refetchEnrollments={() => queryClient.invalidateQueries({ queryKey: ['admin-enrollments'] })}
+                  adminType={adminType as AdminRoleType}
+                  canManageUser={canManageUser}
+                />
+              </TabsContent>
+              
               {/* SCORM Content Tab */}
               <TabsContent value="scorm">
                 <div className="space-y-6">
@@ -211,9 +256,9 @@ export default function AdminDashboard() {
       isOpen={isCreateUserOpen}
       onClose={() => setIsCreateUserOpen(false)}
       createUser={handleCreateUser}
-      adminType={adminType}
-      availableDomains={allDomains || []}
-      managedDomains={managedDomains || []}
+      adminType={adminType as AdminRoleType}
+      availableDomains={Array.isArray(allDomains) ? allDomains : []}
+      managedDomains={Array.isArray(managedDomains) ? managedDomains : []}
     />
     </div>
   );

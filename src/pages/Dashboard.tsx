@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 import DashboardStats from '@/components/dashboard/DashboardStats';
@@ -7,8 +8,12 @@ import CourseTabs from '@/components/dashboard/CourseTabs';
 import CertificatesList from '@/components/dashboard/CertificatesList';
 import { useEnrollments } from '@/hooks/useEnrollments';
 import { useCertificates } from '@/hooks/useCertificates';
+import { toast } from 'sonner';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { AlertCircle } from 'lucide-react';
 
 const Dashboard = () => {
+  const location = useLocation();
   const { 
     inProgressCourses,
     completedCourses,
@@ -20,6 +25,17 @@ const Dashboard = () => {
   } = useEnrollments();
   
   const { certificates, isLoadingCertificates } = useCertificates();
+  
+  // Check if user was redirected due to lack of course access
+  const accessDenied = location.state?.accessDenied;
+  const accessDeniedMessage = location.state?.message;
+  
+  useEffect(() => {
+    // Show toast notification if user was redirected due to lack of course access
+    if (accessDenied) {
+      toast.error(accessDeniedMessage || "You don't have access to this course. Please contact your system administrator to request access.");
+    }
+  }, [accessDenied, accessDeniedMessage]);
 
   return (
     <div className="min-h-screen flex flex-col bg-include-glow text-foreground">

@@ -45,9 +45,14 @@ const CertificatesList = ({ certificates, loading = false }: CertificatesListPro
             <p className="text-muted-foreground mb-6">
               Complete a course to earn your first certificate!
             </p>
-            <Button asChild variant="outline">
-              <Link to="/courses">Browse Courses</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button asChild variant="outline">
+                <Link to="/courses">Browse Courses</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link to="/certificate-preview">View Certificate Example</Link>
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>

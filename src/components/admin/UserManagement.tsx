@@ -201,7 +201,7 @@ export default function UserManagement({
                   filteredProfiles.map((profile) => (
                     <TableRow key={profile.id}>
                       <TableCell className="font-medium">{profile.full_name || 'N/A'}</TableCell>
-                      <TableCell>{profile.email || 'N/A'}</TableCell>
+                      <TableCell>{profile.email_domain ? `*****@${profile.email_domain}` : 'N/A'}</TableCell>
                       <TableCell>
                         <Badge variant={getRoleBadgeVariant(profile.role)}>
                           {formatRoleName(profile.role)}

@@ -128,19 +128,80 @@ const CourseDetailTabs = ({
       [type]: true
     }));
     
-    // Update progress in database
+    // Check if all content types for this module are completed
+    const allContentCompleted = () => {
+      // Define which content types are available in this module
+      const hasVideo = !!currentModule.videoUrl;
+      const hasAudio = !!currentModule.audioUrl;
+      const hasText = !!currentModule.content;
+      
+      // Get current completion state including the new completion
+      const updatedState = {
+        ...contentCompletionState,
+        [type]: true
+      };
+      
+      // Check if all available content types are completed
+      return (!hasVideo || updatedState.video) && 
+             (!hasAudio || updatedState.audio) && 
+             (!hasText || updatedState.text);
+    };
+    
+    // Save the specific content completion to the database
     updateProgressMutation.mutate({
-      lessonId: currentModule.id,
+      courseId: course.id,
+      lessonId: `${course.id}:module:${activeModuleIndex}:${type}`,
       completed: true
     });
+    
+    // Use our simplified progress tracking
+    updateProgress(progressIncrements.content);
+    
+    // If all content for this module is completed, update the module completion status
+    if (allContentCompleted()) {
+      console.log(`All content for module ${activeModuleIndex + 1} completed`);
+      
+      // Update the module completion status in the database
+      updateProgressMutation.mutate({
+        courseId: course.id,
+        lessonId: `${course.id}:module:${activeModuleIndex}`,
+        completed: true
+      });
+      
+      // Show a success message
+      toast({
+        title: "Module Content Completed",
+        description: "You've completed all the content for this module!",
+      });
+    }
   };
 
   // Handle quiz completion
   const handleQuizComplete = (score: number) => {
     const passThreshold = 70;
 
+    // Always save the quiz attempt to the database regardless of pass/fail
+    // Use the course ID and module index as a unique identifier instead of module ID
+    updateProgressMutation.mutate({
+      courseId: course.id,
+      // Store module information in a different way to avoid UUID conversion issues
+      quizId: `${course.id}:module:${activeModuleIndex}`,
+      completed: score >= passThreshold,
+      score: score
+    });
+
     if (score >= passThreshold) {
+      // If passed, update the module progress in the database
+      updateProgressMutation.mutate({
+        courseId: course.id,
+        // Store module information in a different way to avoid UUID conversion issues
+        lessonId: `${course.id}:module:${activeModuleIndex}`,
+        completed: true
+      });
+      
+      // Use our simplified progress tracking for quizzes
       updateProgress(progressIncrements.quiz);
+      
       toast({
         title: "Quiz Completed!",
         description: `You scored ${score}%. Great job!`,
@@ -148,7 +209,12 @@ const CourseDetailTabs = ({
 
       // If this is the last module, update the course completion status
       if (!hasNextModule) {
-        updateEnrollment({ status: 'completed' });
+        // Update enrollment with completed status
+        updateProgressMutation.mutate({
+          courseId: course.id,
+          completed: true
+        });
+        
         toast({
           title: "Course Completed!",
           description: "Congratulations on completing this course!",

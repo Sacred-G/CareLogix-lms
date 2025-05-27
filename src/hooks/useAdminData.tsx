@@ -5,7 +5,8 @@ import { toast } from 'sonner';
 import { useAuth } from './useAuth';
 import { AdminRoleType, UserProfile, DomainStats, UserCreateRequest, UserUpdateRequest } from '@/types/admin';
 
-export function useAdminData() {
+// Define the hook as a regular function for Fast Refresh compatibility
+function useAdminData() {
   const queryClient = useQueryClient();
   const { user } = useAuth();
   
@@ -118,10 +119,27 @@ export function useAdminData() {
   });
 
   // Fetch profiles based on admin level
-  const { data: profiles, isLoading: loadingProfiles } = useQuery({
+  const { data: profiles, isLoading: loadingProfiles, refetch: refreshProfiles } = useQuery({
     queryKey: ['admin-profiles', adminType, managedDomains],
     queryFn: async () => {
       if (!adminType) return [];
+      
+      console.log('Fetching profiles with admin type:', adminType);
+      console.log('Managed domains:', managedDomains);
+      
+      // First try a direct database query to get all profiles
+      // This is just for debugging purposes
+      try {
+        const directQuery = await supabase.from('profiles').select('*');
+        console.log('DEBUG - Direct query found profiles:', directQuery.data?.length || 0);
+        console.log('DEBUG - First few profiles:', directQuery.data?.slice(0, 3));
+        console.log('DEBUG - All profiles IDs:', directQuery.data?.map(p => p.id));
+        if (directQuery.error) {
+          console.error('DEBUG - Direct query error:', directQuery.error);
+        }
+      } catch (e) {
+        console.error('DEBUG - Direct query error:', e);
+      }
       
       let query = supabase.from('profiles').select('*').order('full_name');
       
@@ -137,6 +155,8 @@ export function useAdminData() {
         console.error('Error fetching profiles:', error);
         throw error;
       }
+      
+      console.log('Fetched profiles count:', data?.length || 0);
       
       return data || [];
     },
@@ -196,12 +216,14 @@ export function useAdminData() {
         throw new Error('You can only create users in your managed domains');
       }
       
-      // 1. Create auth user
-      const { data: authData, error: authError } = await supabase.auth.admin.createUser({
+      // 1. Create auth user using regular signup (no need for admin privileges)
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
-        email_confirm: true,
-        user_metadata: { full_name }
+        options: {
+          data: { full_name }, // Add metadata with full name
+          emailRedirectTo: window.location.origin // Redirect back to app after confirmation
+        }
       });
       
       if (authError) {
@@ -213,32 +235,86 @@ export function useAdminData() {
         throw new Error('Failed to create user');
       }
       
-      // 2. Create profile with role and domain info
-      const { data: profileData, error: profileError } = await supabase
+      // 2. The handle_new_user trigger might not run immediately since email confirmation is pending
+      // Let's manually create a profile so it shows up in the admin panel right away
+      
+      // First check if profile already exists
+      const { data: existingProfile } = await supabase
         .from('profiles')
-        .insert({
-          id: authData.user.id,
-          full_name,
-          email,
-          role,
-          email_domain,
-          managed_domains: role === 'domain_admin' ? managed_domains : null,
-          failed_attempts: 0,
-          is_locked: false
-        })
-        .select('*')
+        .select('id')
+        .eq('id', authData.user.id)
         .single();
       
-      if (profileError) {
-        console.error('Error creating profile:', profileError);
-        throw profileError;
+      if (!existingProfile) {
+        // Manually create profile since trigger might not have run yet
+        const { error: profileCreateError } = await supabase
+          .from('profiles')
+          .insert([
+            {
+              id: authData.user.id,
+              first_name: full_name.split(' ')[0] || '',
+              last_name: full_name.split(' ').slice(1).join(' ') || '',
+              full_name: full_name,
+              email_domain: email.split('@')[1],
+              role: 'student' // Default role, will be updated below
+            }
+          ]);
+        
+        if (profileCreateError) {
+          console.error('Error creating profile manually:', profileCreateError);
+          // Continue anyway - the trigger might have created it already
+        }
       }
-      
-      return profileData;
+      // Now, update it with the role, full_name from form, and managed_domains (if applicable).
+      const profileUpdates: any = {
+        full_name,
+        role,
+      };
+
+      if (role === 'domain_admin' && managed_domains && managed_domains.length > 0) {
+        profileUpdates.managed_domains = managed_domains;
+      } else if (role !== 'domain_admin') {
+        // Ensure managed_domains is explicitly nulled if user is not a domain admin
+        // or if it was previously set and their role changes away from domain_admin.
+        // This depends on whether your schema allows NULL for managed_domains or if it should be an empty array.
+        // Assuming NULL is acceptable for non-domain-admins.
+        profileUpdates.managed_domains = null;
+      }
+
+      const { data: updatedProfileData, error: profileUpdateError } = await supabase
+        .from('profiles')
+        .update(profileUpdates)
+        .eq('id', authData.user.id)
+        .select('*')
+        .single();
+
+      if (profileUpdateError) {
+        console.error('Error updating profile:', profileUpdateError);
+        // It's possible the user was created in auth.users, but profile update failed.
+        // Consider how to handle this inconsistency, e.g., by trying to delete the auth user.
+        throw profileUpdateError;
+      }
+
+      if (!updatedProfileData) {
+        throw new Error('Failed to update profile for the new user.');
+      }
+
+      return updatedProfileData;
     },
     onSuccess: (data) => {
       toast.success(`User ${data.full_name} created successfully`);
+      
+      // Force immediate refresh of profiles list
+      refreshProfiles();
+      
+      // Also invalidate and refetch for good measure
       queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
+      queryClient.refetchQueries({ queryKey: ['admin-profiles'] });
+      
+      // Add multiple refresh attempts with increasing delays
+      setTimeout(() => refreshProfiles(), 500);
+      setTimeout(() => refreshProfiles(), 1500);
+      setTimeout(() => refreshProfiles(), 3000);
     },
     onError: (error: any) => {
       console.error('User creation error:', error);
@@ -384,7 +460,7 @@ export function useAdminData() {
         .from('enrollments')
         .select(`
           *,
-          profiles:user_id(id, full_name, email),
+          profiles:user_id(id, full_name),
           courses:course_id(id, title)
         `)
         .order('created_at', { ascending: false });
@@ -462,16 +538,17 @@ export function useAdminData() {
   });
 
   return {
-    // Admin status
+    // Admin information
     adminType,
-    loadingAdminType,
     managedDomains,
+    loadingAdminType,
     loadingDomains,
-    canManageUser,
     
-    // User management
+    // User profiles data
     profiles,
     loadingProfiles,
+    refreshProfiles,
+    canManageUser,
     createUser,
     updateUserProfile,
     refetchProfiles,
@@ -491,3 +568,6 @@ export function useAdminData() {
     loadingCourseCompletionData
   };
 }
+
+// Export the hook separately for Fast Refresh compatibility
+export { useAdminData };

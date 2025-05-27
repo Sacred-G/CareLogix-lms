@@ -11,7 +11,7 @@ interface AuthContextType {
   loading: boolean;
   error: string | null; // Added error property
   signIn: (email: string, password: string) => Promise<void>;
-  signInWithMicrosoft: () => Promise<void>;
+  // Microsoft login removed
   signUp: (email: string, password: string, fullName: string) => Promise<void>; // Fixed signUp parameters
   signOut: () => Promise<void>;
   updateProfile: (data: { full_name?: string; avatar_url?: string }) => Promise<void>;
@@ -171,28 +171,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  const signInWithMicrosoft = async () => {
-    try {
-      setError(null); // Clear any previous errors
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'azure',
-        options: {
-          redirectTo: `${window.location.origin}/dashboard`
-        }
-      });
-      
-      if (error) {
-        setError(error.message);
-        throw error;
-      }
-      
-      // The redirect will happen automatically, 
-      // so we don't need to navigate explicitly here
-    } catch (error: any) {
-      setError(error.message || 'Error signing in with Microsoft account');
-      toast.error(error.message || 'Error signing in with Microsoft account');
-    }
-  };
+  // Microsoft login functionality removed
 
   const value = {
     user,
@@ -200,7 +179,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     loading,
     error,
     signIn,
-    signInWithMicrosoft,
     signUp,
     signOut,
     updateProfile

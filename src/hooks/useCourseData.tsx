@@ -42,11 +42,20 @@ function useCourseData() {
     queryFn: async () => {
       // The .not() filter was removed from here as it caused errors with non-UUIDs.
       // Duplicate filtering is handled later in the useMemo hook for allDbAndStaticCourses.
+      // Query courses without ordering to prevent errors if created_at doesn't exist
       const { data, error } = await supabase
         .from('courses')
-        .select('*')
-        // .not('id', 'in', `(${excludedCourseIds.join(',')})`) // This line was removed
-        .order('created_at', { ascending: false });
+        .select('*');
+      
+      // Sort in JavaScript instead if needed
+      // This provides a fallback if the database doesn't support ordering by created_at
+      const sortedData = data?.sort((a, b) => {
+        // If created_at exists, use it for sorting
+        if (a.created_at && b.created_at) {
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        }
+        return 0; // No sorting if created_at doesn't exist
+      });
       
       // console.log('Excluded course IDs from database query:', excludedCourseIds); // This line was removed
       
@@ -55,7 +64,7 @@ function useCourseData() {
         throw error;
       }
       
-      return data || [];
+      return sortedData || [];
     },
     enabled: !!user
   });

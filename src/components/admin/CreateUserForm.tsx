@@ -117,10 +117,10 @@ export default function CreateUserForm({
     }
   };
 
-  // Get available domains based on admin type
+  // Get available domains based on admin type - ensure we always have arrays
   const domainOptions = adminType === 'super_admin'
-    ? availableDomains.map(domain => ({ label: domain, value: domain }))
-    : managedDomains.map(domain => ({ label: domain, value: domain }));
+    ? (Array.isArray(availableDomains) ? availableDomains : []).map(domain => ({ label: domain, value: domain }))
+    : (Array.isArray(managedDomains) ? managedDomains : []).map(domain => ({ label: domain, value: domain }));
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -216,8 +216,12 @@ export default function CreateUserForm({
                     <FormControl>
                       <MultiSelect
                         options={domainOptions || []}
-                        selected={(Array.isArray(field.value) ? field.value : []).map(domain => ({ label: domain, value: domain }))}
-                        onChange={(selected) => field.onChange(selected.map(item => item.value))}
+                        selected={Array.isArray(field.value) && field.value ? field.value.map(domain => ({ label: domain, value: domain })) : []}
+                        onChange={(selected) => {
+                          // Ensure selected is an array before mapping
+                          const safeSelected = Array.isArray(selected) ? selected : [];
+                          field.onChange(safeSelected.map(item => item.value));
+                        }}
                         placeholder="Select domains to manage"
                       />
                     </FormControl>

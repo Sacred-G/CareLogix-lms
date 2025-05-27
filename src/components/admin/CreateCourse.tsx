@@ -259,14 +259,16 @@ export default function CreateCourse() {
     <Card>
       <CardHeader>
         <CardTitle>Create New Course</CardTitle>
-        <CardDescription>
-          Add a new course to your learning platform
+        <div className="flex items-center">
+          <CardDescription>
+            Add a new course to your learning platform
+          </CardDescription>
           {userProfile?.email_domain && (
             <Badge variant="outline" className="ml-2">
               Domain: {userProfile.email_domain}
             </Badge>
           )}
-        </CardDescription>
+        </div>
       </CardHeader>
 
       <Form {...form}>

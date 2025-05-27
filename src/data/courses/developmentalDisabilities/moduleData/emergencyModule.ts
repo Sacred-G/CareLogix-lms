@@ -182,19 +182,19 @@ As a DSP, you are a mandated reporter with a legal and ethical obligation to pro
         id: 'opt1',
         text: "Firmly tell Chris to quiet down because people are starting to stare.",
         isCorrect: false,
-        feedback: 'This approach fails to recognize that Chris is experiencing genuine distress due to sensory overload, not deliberately misbehaving. Drawing attention to others\'s reactions may increase Chris\'s anxiety and escalate the situation further.'
+        feedback: "This approach fails to recognize that Chris is experiencing genuine distress due to sensory overload, not deliberately misbehaving. Drawing attention to others' reactions may increase Chris's anxiety and escalate the situation further."
       },
       {
         id: 'opt2',
         text: "Ask Chris if he wants to move to a quieter area, using simple, direct language while maintaining a calm demeanor.",
         isCorrect: true,
-        feedback: 'This is the best initial response because it addresses Chris\'s sensory needs while respecting his autonomy. Using simple language acknowledges his current processing difficulties, and staying calm helps prevent further escalation. Moving to a quieter area can reduce the sensory input that\'s causing distress.'
+        feedback: "This is the best initial response because it addresses Chris's sensory needs while respecting his autonomy. Using simple language acknowledges his current processing difficulties, and staying calm helps prevent further escalation. Moving to a quieter area can reduce the sensory input that's causing distress."
       },
       {
         id: 'opt3',
-        text: "Immediately take Chris\'s arm and lead him outside without explanation to remove him from the situation.",
+        text: "Immediately take Chris's arm and lead him outside without explanation to remove him from the situation.",
         isCorrect: false,
-        feedback: 'While removing Chris from the overwhelming environment could help, doing so without communication or consent ignores his autonomy and might increase his anxiety or trigger a more significant response. Physical guidance without permission should only be used when safety is at immediate risk.'
+        feedback: "While removing Chris from the overwhelming environment could help, doing so without communication or consent ignores his autonomy and might increase his anxiety or trigger a more significant response. Physical guidance without permission should only be used when safety is at immediate risk."
       },
       {
         id: 'opt4',
