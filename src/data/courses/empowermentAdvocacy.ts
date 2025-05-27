@@ -1,154 +1,94 @@
 import { Course } from '../courseTypes';
 
 export const empowermentAdvocacyCourse: Course = {
-  id: "empowerment-advocacy",
-  title: "Empowerment and Advocacy",
-  description: "Learn how to empower individuals with developmental disabilities and effectively advocate for their rights and needs.",
-  category: "Advocacy & Empowerment",
-  instructor: "Steven Bouldin, SHRM-CP",
-  thumbnail: "/Images/empowermentAdvocacy.png", // Please add this image to public/Images or update the filename if needed.
+  id: "infection-control",
+  title: "Infection Control and Prevention",
+  description: "Learn essential infection control practices to maintain a safe environment for individuals with developmental disabilities and prevent the spread of infectious diseases.",
+  category: "Health & Safety",
+  instructor: "Dr. Maria Sanchez, MPH, CIC",
+  thumbnail: "/Images/infectionControl.png", // Please add this image to public/Images or update the filename if needed.
   duration: "1 hour",
   certificateAvailable: true,
   modules: [
     {
       id: "mod-1",
-      title: "Principles of Empowerment",
-      description: "Understand the core principles of empowerment and how to apply them in support roles.",
+      title: "Principles of Infection Control",
+      description: "Understand the core principles of infection control and how to implement them in support settings.",
+      videoUrl: "https://youtu.be/JG70KaJX3UA",
       content: `
-# Principles of Empowerment
+# Principles of Infection Control
 
-Empowerment means enabling individuals to have control over their lives, make choices, and access opportunities. As a Direct Support Professional, you play a key role in fostering empowerment by:
+Infection control is a set of practices designed to prevent the spread of infectious diseases. As a Direct Support Professional, you play a crucial role in maintaining a safe environment by:
 
-- Encouraging self-advocacy and independence
-- Supporting informed decision-making
-- Providing resources and information
-- Respecting personal preferences and goals
-- Building confidence and self-esteem
+- Following proper hand hygiene protocols
+- Using personal protective equipment (PPE) correctly
+- Implementing standard precautions consistently
+- Recognizing signs and symptoms of infection
+- Maintaining clean and sanitary environments
 
-## Practical Strategies
-- Offer choices whenever possible
-- Use person-centered language
-- Involve individuals in planning and goal-setting
-- Celebrate achievements, big and small
+## Key Infection Control Practices
 
-Empowerment is a continuous process. Your support can make a meaningful difference in someone’s life.
+### Hand Hygiene
+- Wash hands with soap and water for at least 20 seconds
+- Use alcohol-based hand sanitizer when soap and water aren't available
+- Clean hands before and after every client interaction
+- Perform hand hygiene before putting on and after removing gloves
+
+### Personal Protective Equipment (PPE)
+- Gloves: Wear when contact with blood or body fluids is possible
+- Masks: Use when respiratory protection is needed
+- Gowns: Wear to protect skin and clothing during procedures
+- Eye Protection: Use when splashes or sprays are anticipated
+
+### Environmental Cleaning
+- Clean and disinfect high-touch surfaces regularly
+- Use EPA-approved disinfectants
+- Follow proper waste disposal procedures
+- Launder contaminated linens separately
+
+Effective infection control requires consistent application of these principles. Your diligence can prevent the spread of infection and protect both yourself and those you support.
 `,
       questions: [
         {
           id: "q1-mod1",
-          question: "What is empowerment in the context of support services?",
+          question: "What is the most effective way to prevent the spread of infections?",
           options: [
-            "Making decisions for others",
-            "Enabling individuals to have control and make choices",
-            "Limiting options to avoid mistakes",
-            "Focusing only on physical needs"
+            "Using antibiotics preventively",
+            "Proper hand hygiene",
+            "Wearing gloves all day",
+            "Isolating all individuals with symptoms"
           ],
           correctAnswer: 1,
-          explanation: "Empowerment is about enabling choice and control."
+          explanation: "Proper hand hygiene (washing hands with soap and water or using alcohol-based hand sanitizer) is considered the single most effective way to prevent the spread of infections in healthcare settings."
         },
         {
           id: "q2-mod1",
-          question: "Which of the following is a strategy for fostering empowerment?",
+          question: "When should you perform hand hygiene in a support setting?",
           options: [
-            "Discouraging risk-taking",
-            "Offering choices whenever possible",
-            "Making all plans for the individual",
-            "Ignoring personal preferences"
+            "Only after direct contact with an individual",
+            "Only when hands are visibly soiled",
+            "Before and after every client interaction",
+            "Once at the beginning of your shift"
+          ],
+          correctAnswer: 2,
+          explanation: "Hand hygiene should be performed before and after every client interaction to prevent the transmission of pathogens between individuals."
+        },
+        {
+          id: "q3-mod1",
+          question: "Which of the following is an example of a standard precaution?",
+          options: [
+            "Using PPE only with clients who have a known infection",
+            "Assuming all blood and body fluids are potentially infectious",
+            "Administering antibiotics to all clients",
+            "Restricting visitors in all situations"
           ],
           correctAnswer: 1,
-          explanation: "Offering choices is a key empowerment strategy."
+          explanation: "Standard precautions include assuming that all blood and body fluids are potentially infectious, regardless of a client's known infection status. This approach ensures consistent safety practices."
         }
       ],
-      audioUrl: "/Audio/Empowerment & Advocacy_ A DSP's Guide.mp4",
-      transcript: "This audio segment explores the principles of empowerment, practical strategies for promoting independence, and the importance of self-advocacy."
-    },
-    {
-      id: "mod-2",
-      title: "Advocacy in Action",
-      description: "Learn how to advocate for and with individuals with developmental disabilities.",
-      content: `
-# Advocacy in Action
-
-Advocacy involves supporting individuals to express their needs, protect their rights, and access resources. There are different types of advocacy, including:
-
-- **Self-Advocacy**: Empowering individuals to speak up for themselves
-- **Peer Advocacy**: Support from others with similar experiences
-- **Professional Advocacy**: Assistance from trained advocates or organizations
-
-## Key Skills for Advocacy
-- Listening actively and respectfully
-- Understanding rights and relevant laws
-- Communicating clearly and assertively
-- Collaborating with families and professionals
-- Navigating systems and resources
-
-## Example Scenario
-Maria wants to attend a community event but needs transportation. As a DSP, you can advocate by helping Maria explore options, communicate her needs, and connect with resources.
-`,
-      questions: [
-        {
-          id: "q1-mod2",
-          question: "Which of the following is NOT a type of advocacy?",
-          options: [
-            "Self-Advocacy",
-            "Peer Advocacy",
-            "Professional Advocacy",
-            "Passive Advocacy"
-          ],
-          correctAnswer: 3,
-          explanation: "Passive Advocacy is not a recognized advocacy type."
-        },
-        {
-          id: "q2-mod2",
-          question: "What is a key skill for effective advocacy?",
-          options: [
-            "Ignoring the individual's wishes",
-            "Listening actively and respectfully",
-            "Avoiding collaboration",
-            "Focusing only on paperwork"
-          ],
-          correctAnswer: 1,
-          explanation: "Listening actively is essential for advocacy."
-        },
-        {
-          id: "q3-mod2",
-          question: "Which of the following best describes self-advocacy?",
-          options: [
-            "A professional speaking on someone's behalf",
-            "An individual expressing their own needs and preferences",
-            "A group of peers supporting each other",
-            "A family member making all decisions"
-          ],
-          correctAnswer: 1,
-          explanation: "Self-advocacy is when an individual speaks up for themselves."
-        },
-        {
-          id: "q4-mod2",
-          question: "Which is an example of professional advocacy?",
-          options: [
-            "A DSP helping a person fill out a service request form",
-            "A person with a disability asking for an accommodation",
-            "A friend giving advice based on their own experience",
-            "A family member arranging transportation for a relative"
-          ],
-          correctAnswer: 0,
-          explanation: "Professional advocacy is provided by someone trained or in a professional role, such as a DSP assisting with forms."
-        },
-        {
-          id: "q5-mod2",
-          question: "Why is it important to understand relevant laws and rights as an advocate?",
-          options: [
-            "To ensure individuals receive all entitled supports and protections",
-            "To create more paperwork",
-            "To avoid talking to families",
-            "To discourage self-advocacy"
-          ],
-          correctAnswer: 0,
-          explanation: "Knowing the law helps advocates protect rights and access resources."
-        }
-      ],
-      audioUrl: "/Audio/Empowerment & Advocacy_ A DSP's Guide.mp4",
-      transcript: "This audio lesson covers types of advocacy, essential skills, and practical examples of advocating for and with individuals with developmental disabilities."
+      audioUrl: "/Audio/Direct Support Infection Control Training.wav",
+      transcript: "This audio segment covers the fundamental principles of infection control, including hand hygiene, proper use of personal protective equipment, and environmental cleaning strategies to prevent the spread of infectious diseases in support settings."
     }
-  ]
+  ],
+  domain: ''
 };

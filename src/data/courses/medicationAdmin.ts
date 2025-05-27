@@ -367,7 +367,7 @@ Remember: Medication errors are serious but reporting them promptly is essential
       title: "Common Medications and Side Effects",
       description: "Overview of medications commonly prescribed for individuals with developmental disabilities and their potential side effects.",
       pdfPath: '/public/pdfs/meidcation2.pdf',
-      videoUrl: "https://youtu.be/sUTHueAQTI4",
+      videoUrl: "/https://youtu.be/muel4drb1FY",
       content: `
 # Common Medications and Side Effects
 
@@ -580,7 +580,7 @@ Remember: As a DSP, your role is to observe and report, not diagnose or adjust m
         }
       ],
       
-      audioUrl: "/Audio/DSP Guide to Medication Side Effects (1).wav",
+      audioUrl: "/Audio/DSP Medication Monitoring and Safety Guide.wav",
       transcript: "In this audio lesson, we discuss common medications prescribed for individuals with developmental disabilities, their uses, and potential side effects. We emphasize the importance of observation and reporting, and outline when side effects should prompt immediate medical attention."
     }
   ]

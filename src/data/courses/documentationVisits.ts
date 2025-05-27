@@ -215,7 +215,7 @@ Remember that your documentation may be read by many people, including other sta
       id: "mod-2",
       title: "Writing Effective Visit Notes",
       description: "Learn specific techniques for writing clear, informative, and compliant visit notes.",
-      videoUrl: "https://youtu.be/frRXZtjLWQE",
+      videoUrl: "https://youtu.be/vwKbazGjQ5Y",
       content: `
 # Writing Effective Visit Notes
 

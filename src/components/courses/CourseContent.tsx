@@ -319,8 +319,41 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
             {/* SCORM Tab */}
             <TabsContent value="scorm" className="pt-4 animate-fade-in">
               <div className="space-y-8">
-                {/* Direct SCORM modules from config file - now linked to specific modules */}
-                {scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] && scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length > 0 ? (
+                {/* Special cases for courses that should always render iframe directly */}
+                {['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin'].includes(module.courseId || '') ? (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                      Interactive SCORM Module
+                    </h3>
+                    <div className="w-full rounded-lg overflow-hidden shadow-lg border border-muted">
+                      <iframe 
+                        src={
+                          module.courseId === 'intro-dev-disabilities' 
+                            ? "https://scorm-neon.vercel.app/Understanding%20Developmental%20Disabilities%20copy/training.htm"
+                            : module.courseId === 'client-rights'
+                            ? "https://scorm-neon.vercel.app/Client%20Rights%20%26%20Dignity%20of%20Risk/training.htm"
+                            : module.courseId === 'infection-control'
+                            ? "https://scorm-neon.vercel.app/Infection%20Control/training.htm"
+                            : module.courseId === 'emergency-preparedness'
+                            ? "https://scorm-neon.vercel.app/Emergency%20Preparedness/training.htm"
+                            : module.courseId === 'trust-rapport'
+                            ? "https://scorm-neon.vercel.app/Core%20Support%20Skills/training.htm"
+                            : module.courseId === 'documentation-visits'
+                            ? "https://scorm-neon.vercel.app/Documentation%20%26%20Administrative%20Tasks%202/training.htm"
+                            : module.courseId === 'medication-admin'
+                            ? "https://scorm-neon.vercel.app/Medication_Administration/training.htm"
+                            : "https://scorm-neon.vercel.app/Foundations%20of%20Empathetic%20Communication/training.htm"
+                        }
+                        title="Interactive SCORM Module"
+                        className="w-full h-[75vh] border-0"
+                        allowFullScreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        loading="eager"
+                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                      ></iframe>
+                    </div>
+                  </div>
+                ) : scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] && scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length > 0 ? (
                   <div className="space-y-4">
                     <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
                       Direct SCORM Modules

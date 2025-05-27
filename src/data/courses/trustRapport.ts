@@ -13,7 +13,7 @@ export const trustRapportCourse: Course = {
       id: "mod-1",
       title: "Foundations of Trust and Rapport",
       description: "Understand the importance of building positive relationships and developing empathy in support work.",
-      videoUrl: "https://youtu.be/fE93awDZavU",
+      videoUrl: "https://youtu.be/S7nAAgjQVIc",
       content: `
 # Foundations of Trust and Rapport
 
@@ -144,161 +144,23 @@ Remember that building trust and rapport takes time. Be patient, consistent, and
     },
     {
       id: "mod-2",
-      title: "Professional Boundaries and Family Collaboration",
-      description: "Learn to maintain appropriate professional boundaries while effectively collaborating with families and other support systems.",
-      videoUrl: "https://youtu.be/gR4JvqIoSuA",
+      title: "Interactive SCORM Module",
+      description: "Please complete the interactive SCORM package below.",
+      videoUrl: "",
       content: `
-# Professional Boundaries and Family Collaboration
-
-While building positive relationships is essential in support work, maintaining professional boundaries and collaborating effectively with families are equally important aspects of providing ethical and effective support.
-
-## Professional Boundaries
-
-Professional boundaries protect both the individual and the support worker, ensuring relationships remain healthy and ethical:
-
-### 1. Why Boundaries Matter
-- Protect both the individual and you from potential harm
-- Ensure the professional relationship remains ethical
-- Prevent burnout and compassion fatigue
-- Foster mutual respect and appropriate roles
-- Guided by the NADSP Code of Ethics
-
-### 2. Key Areas for Boundaries
-
-#### Personal Information
-- Avoid oversharing personal details
-- Focus conversations on the individual's needs
-- Share appropriate information to build rapport
-- Redirect personal questions professionally
-
-#### Privacy and Confidentiality
-- Respect the individual's private information
-- Only share information with authorized persons
-- Obtain consent before discussing with family
-- Maintain confidentiality in public settings
-
-#### Role Boundaries
-- Stay within your professional responsibilities
-- Avoid lending money or unauthorized tasks
-- Follow support plans and job descriptions
-- Refer to specialists when needed
-
-#### Emotional Boundaries
-- Maintain professional empathy
-- Avoid parental or romantic roles
-- Support without creating dependency
-- Encourage other relationships and supports
-
-#### Outside Contact
-- Follow agency policies on social media contact
-- Avoid exchanging personal phone numbers
-- Prioritize transparency with supervisors
-- Avoid secretive relationships
-
-## The "Grandma Rule"
-A simple guideline: If you wouldn't do it in front of your supervisor or the person's family, it might not be appropriate. This applies especially to social media and phone communications.
-
-## Responding to Boundary Testing
-When individuals test boundaries:
-- Respond in a caring but firm manner
-- Maintain professionalism while being respectful
-- Redirect to appropriate activities or topics
-- Consult with supervisors when needed
-
-## Collaborating with Families
-
-Family collaboration enhances outcomes while still prioritizing the individual's autonomy:
-
-### 1. Respecting Family Roles
-- Recognize families as lifelong advocates
-- Value their deep knowledge of the individual
-- Acknowledge cultural approaches and traditions
-- Work together to enhance support
-
-### 2. Effective Family Communication
-- Share information with permission
-- Include the individual in discussions when possible
-- Maintain confidentiality appropriately
-- Set clear expectations about roles
-
-### 3. Balancing Family Input with Individual Rights
-- Prioritize the individual's voice and choices
-- Navigate family dynamics respectfully
-- Advocate for the individual when needed
-- Find solutions that respect all perspectives
-
-### 4. Cultural Considerations
-- Adapt to household dynamics and traditions
-- Respect cultural values and approaches
-- Ensure cultural practices don't infringe on rights
-- Learn about and honor important traditions
-
-Remember that while building friendly relationships is important, maintaining professional boundaries ensures ethical practice. Similarly, collaborating with families enhances support while still honoring the individual's autonomy and preferences.
+<div style="width: 100%; height: 600px; border: 1px solid #ccc; overflow: hidden;">
+  <iframe
+    src="YOUR_SCORM_LINK_HERE"
+    style="width: 100%; height: 100%; border: none;"
+    title="Interactive SCORM Module"
+    allowfullscreen
+  ></iframe>
+</div>
+<p>If you have trouble viewing the module, please ensure your browser allows third-party cookies and that content from the source is not blocked. You may also need to try a different browser or check your internet connection.</p>
 `,
-      questions: [
-        {
-          id: "q1-mod2",
-          question: "Why are professional boundaries important in support work?",
-          options: [
-            "To keep emotional distance from the individual",
-            "To protect both the individual and you, ensuring the relationship remains healthy and ethical",
-            "To minimize the time spent with each individual",
-            "To limit the responsibilities of the support worker"
-          ],
-          correctAnswer: 1,
-          explanation: "Professional boundaries protect both the individual and the support worker. They ensure the professional relationship remains healthy and ethical, prevent burnout, and foster mutual respect."
-        },
-        {
-          id: "q2-mod2",
-          question: "What is the 'Grandma Rule' in support work?",
-          options: [
-            "Always treat individuals like your grandmother",
-            "If you wouldn't do it in front of your supervisor or the person's family, it might not be appropriate",
-            "Older individuals deserve more respect than younger ones",
-            "Always involve grandparents in support decisions"
-          ],
-          correctAnswer: 1,
-          explanation: "The 'Grandma Rule' suggests that if you wouldn't do something in front of your supervisor or the person's family, it might not be appropriate. This is especially applicable to social media and phone communications."
-        },
-        {
-          id: "q3-mod2",
-          question: "How should support professionals handle their primary allegiance when working with families?",
-          options: [
-            "Always defer to the family's wishes",
-            "Split allegiance equally between the family and the individual",
-            "Prioritize the individual's rights and choices in every decision",
-            "Follow agency policy regardless of individual preferences"
-          ],
-          correctAnswer: 2,
-          explanation: "While working collaboratively with families is important, the support professional's primary allegiance should be to the individual. You should always prioritize their voice and choices in every decision."
-        },
-        {
-          id: "q4-mod2",
-          question: "What should a support professional do if an individual tests boundaries (e.g., asking for a date)?",
-          options: [
-            "Immediately report them to a supervisor",
-            "Pretend not to hear the request and change the subject",
-            "Respond in a caring but firm manner that maintains professionalism",
-            "Avoid working with that individual in the future"
-          ],
-          correctAnswer: 2,
-          explanation: "If an individual tests boundaries, the appropriate response is to be caring but firm, maintaining professionalism while being respectful."
-        },
-        {
-          id: "q5-mod2",
-          question: "How should cultural values be respected within the support relationship?",
-          options: [
-            "They should be completely ignored to maintain professionalism",
-            "They should be respected as long as they don't infringe on the individual's rights",
-            "They should always take precedence over agency policies",
-            "They only matter for religious practices"
-          ],
-          correctAnswer: 1,
-          explanation: "Cultural values and approaches should be respected and adapted to, but only as long as they don't infringe on the individual's rights."
-        }
-      ],
+      questions: [],
       audioUrl: "",
-      transcript: "This audio segment explores the critical balance between building rapport and maintaining appropriate professional boundaries. We discuss why boundaries matter, how to implement them across different aspects of the support relationship, and how to navigate challenging boundary situations. We also examine effective strategies for collaborating with families while prioritizing the individual's rights and choices."
+      transcript: ""
     }
   ],
   certificateAvailable: true,
