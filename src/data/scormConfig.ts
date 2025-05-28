@@ -13,22 +13,6 @@ export interface DirectScormModule {
 // Add your SCORM modules here with their paths
 export const directScormModules: DirectScormModule[] = [
   {
-    id: 'scorm-medication-admin',
-    title: 'Medication Administration',
-    description: 'Interactive training on medication administration and safety',
-    path: 'https://scorm-neon.vercel.app/Medication_Administration/training.htm',
-    courseId: 'medication-admin',
-    moduleId: 'mod-1'  // First module in Medication Administration course
-  },
-  {
-    id: 'scorm-documentation-visits',
-    title: 'Documentation & Administrative Tasks',
-    description: 'Interactive training on effective documentation and administrative responsibilities',
-    path: 'https://scorm-neon.vercel.app/Documentation%20&%20Administrative%20Tasks%202/training.htm',
-    courseId: 'documentation-visits',
-    moduleId: 'mod-1'  // First module in Documentation and Visit Notes course
-  },
-  {
     id: 'scorm-dev-disabilities',
     title: 'Interactive SCORM Module',
     description: 'Please complete the interactive SCORM package for developmental disabilities training',
@@ -76,14 +60,7 @@ export const directScormModules: DirectScormModule[] = [
     courseId: 'emergency-preparedness',
     moduleId: 'mod-1'  // First module in Emergency Preparedness course
   },
-  {
-    id: 'scorm-dev-disabilities',
-    title: 'Introduction to Developmental Disabilities Interactive',
-    description: 'Interactive learning module for understanding developmental disabilities',
-    path: 'https://imtp.vercel.app/',
-    courseId: 'intro-dev-disabilities',
-    moduleId: 'mod-1'  // First module in Intro to Developmental Disabilities course
-  },
+
   {
     id: 'scorm-risk',
     title: 'Risk Management for DSPs',

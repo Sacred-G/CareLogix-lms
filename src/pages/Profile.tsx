@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
@@ -25,7 +24,6 @@ export default function Profile() {
   
   // Form states
   const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState<string | null>(null);
   
   // Progress data
@@ -46,6 +44,10 @@ export default function Profile() {
       fetchUserEnrollments(user.id);
       fetchUserAchievements(user.id);
     }
+    // Set email from user object directly as it's not in profiles table
+    if (user?.email) {
+      // No need to set email state, as it's disabled and comes from auth.user
+    }
   }, [user]);
   
   const fetchUserProfile = async (userId: string) => {
@@ -60,7 +62,6 @@ export default function Profile() {
       
       if (data) {
         setFullName(data.full_name || '');
-        setEmail(data.email || '');
         setAvatar(data.avatar_url);
       }
     } catch (error: any) {
@@ -109,7 +110,6 @@ export default function Profile() {
         .from('profiles')
         .update({
           full_name: fullName,
-          email: email,
           // avatar_url will be updated separately when handling file uploads
         })
         .eq('id', user.id);
@@ -169,7 +169,7 @@ export default function Profile() {
                       )}
                     </Avatar>
                     <h2 className="text-xl font-semibold">{fullName}</h2>
-                    <p className="text-muted-foreground">{email}</p>
+                    <p className="text-muted-foreground">{user?.email}</p>
                     <div className="mt-2">
                       <Badge>Student</Badge>
                     </div>
@@ -193,8 +193,7 @@ export default function Profile() {
                       <Label htmlFor="email">Email</Label>
                       <Input
                         id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={user?.email || ''}
                         disabled
                       />
                       <p className="text-xs text-muted-foreground">Email cannot be changed</p>

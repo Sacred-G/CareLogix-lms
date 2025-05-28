@@ -113,6 +113,7 @@ As Direct Support Professionals, it's crucial to:
 
 Remember that each person is unique, regardless of disability. Your role is to provide support that enhances quality of life and promotes as much independence as possible. The work you do as a DSP is not simply a job—it's a calling, a commitment to making a difference in the world, one interaction at a time.
 `,
+      pdfPath: '/pdfs/thesystempdf.pdf',
       questions: [
         {
           id: "q1-mod1",
@@ -225,7 +226,7 @@ Remember that each person is unique, regardless of disability. Your role is to p
           explanation: "The best approach is to adapt your communication style to meet the individual's specific needs and abilities. This might mean using simple language for some, visual supports for others, or typical adult communication for many individuals with developmental disabilities."
         }
       ],
-      audioUrl: "/Audio/Becoming a Direct Support Professional.wav",
+      audioUrl: "/Audio/css/Becoming a Direct Support Professional.wav",
       transcript: "In this audio segment, we discuss the various types of developmental disabilities and the importance of understanding each individual's unique needs and abilities. We emphasize the person-first approach and how to recognize strengths alongside support needs.",
       faqs: [
         {

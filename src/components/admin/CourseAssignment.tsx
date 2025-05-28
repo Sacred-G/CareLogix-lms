@@ -12,6 +12,8 @@ import { Label } from '@/components/ui/label';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { AdminRoleType } from '@/types/admin';
+import { createAdminBypassClient } from '@/utils/supabaseAdmin';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface Profile {
   id: string;
@@ -40,6 +42,7 @@ export default function CourseAssignment({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [filteredProfiles, setFilteredProfiles] = useState<Profile[] | null>(profiles);
   const [selectedDomain, setSelectedDomain] = useState<string>('');
+  const [loadingProfiles, setLoadingProfiles] = useState(true); // Add loading state
   
   // Get unique domains from profiles
   const domains = React.useMemo(() => {
@@ -57,6 +60,7 @@ export default function CourseAssignment({
   useEffect(() => {
     if (!profiles) {
       setFilteredProfiles(null);
+      setLoadingProfiles(false); // Set loading to false if no profiles
       return;
     }
 
@@ -77,6 +81,7 @@ export default function CourseAssignment({
     }
     
     setFilteredProfiles(filtered);
+    setLoadingProfiles(false); // Set loading to false after filtering
   }, [profiles, searchQuery, selectedDomain]);
 
   // Handle student selection
@@ -123,7 +128,7 @@ export default function CourseAssignment({
     }
   };
 
-  // Assign courses to students
+  // Function to assign courses to students
   const assignCourses = async () => {
     if (selectedStudents.length === 0 || selectedCourses.length === 0) {
       toast.error('Please select at least one student and one course');
@@ -131,13 +136,15 @@ export default function CourseAssignment({
     }
 
     setIsAssigning(true);
+    setIsDialogOpen(false);
+
+    let successCount = 0;
+    let failureCount = 0;
 
     try {
-      // Create enrollment records for each student-course combination
-      const enrollmentRecords = [];
-      
+      // Process each student-course combination individually
       for (const studentId of selectedStudents) {
-        // Check if the current admin can manage this user
+        // Verify if the current admin can manage this user
         const canManage = await canManageUser(studentId);
         if (!canManage) {
           toast.error(`You don't have permission to manage some of the selected students`);
@@ -145,294 +152,320 @@ export default function CourseAssignment({
           return;
         }
         
+        // Process each course for this student
         for (const courseId of selectedCourses) {
-          // Use the string course ID directly as that's what the system is using
-          // Based on CourseDetail.tsx enrollment implementation
-          enrollmentRecords.push({
-            user_id: studentId,
-            course_id: courseId, // Use the string course ID directly
-            progress: 0,
-            completed: false,
-            created_at: new Date().toISOString(),
-            started_at: null,
-            last_accessed_at: null,
-            total_time_spent_ms: 0
-          });
-        }
-      }
-
-      // Insert enrollment records - handle each enrollment individually to avoid batch failures
-      let successCount = 0;
-      let failureCount = 0;
-      
-      // First, ensure courses exist in the database
-      // This is a workaround for the issue where courses exist in code but not in the database
-      for (const courseId of selectedCourses) {
-        try {
-          // Check if the course exists in the database
-          const { data: existingCourse, error: checkError } = await supabase
-            .from('courses')
-            .select('id')
-            .eq('id', courseId)
-            .maybeSingle();
+          try {
+            // First check if enrollment already exists to avoid duplicates
+            const { data: existingEnrollment } = await supabase
+              .from('enrollments')
+              .select('id')
+              .eq('user_id', studentId)
+              .eq('course_id', courseId)
+              .maybeSingle();
+              
+            if (existingEnrollment) {
+              // Enrollment already exists, count as success
+              console.log(`Enrollment already exists for user ${studentId} and course ${courseId}`);
+              successCount++;
+              continue;
+            }
             
-          if (checkError) {
-            console.error(`Error checking if course ${courseId} exists:`, checkError);
-          }
-          
-          // If course doesn't exist in the database, create a placeholder record
-          if (!existingCourse) {
-            const courseInfo = allCourses.find(c => c.id === courseId);
-            if (courseInfo) {
-              const { error: insertError } = await supabase
-                .from('courses')
-                .insert({
-                  id: courseId,
-                  title: courseInfo.title || 'Unknown Course',
-                  description: courseInfo.description || '',
-                  created_at: new Date().toISOString()
+            // Prepare enrollment data
+            const enrollmentData = {
+              user_id: studentId,
+              course_id: courseId,
+              progress: 0,
+              completed: false,
+              created_at: new Date().toISOString(),
+              last_accessed: new Date().toISOString()
+            };
+            
+            // Try multiple approaches to insert the enrollment
+            let enrollmentAdded = false;
+
+            // Try standard upsert with conflict handling
+            try {
+              const { error: upsertError } = await supabase
+                .from('enrollments')
+                .upsert(enrollmentData, {
+                  onConflict: 'user_id,course_id',
+                  ignoreDuplicates: true
                 });
                 
-              if (insertError) {
-                console.log(`Note: Could not create course record for ${courseId}. This is expected and will be handled.`);
+              if (!upsertError) {
+                enrollmentAdded = true;
+                successCount++;
+                console.log(`Successfully assigned course ${courseId} to user ${studentId} via upsert`);
+              } else {
+                console.log(`Upsert error: ${upsertError.message}`);
+              }
+            } catch (upsertErr) {
+              console.log(`Upsert exception: ${upsertErr}`);
+            }
+            
+            // If that failed, try direct insert
+            if (!enrollmentAdded) {
+              try {
+                const { error: insertError } = await supabase
+                  .from('enrollments')
+                  .insert(enrollmentData);
+                  
+                if (!insertError) {
+                  enrollmentAdded = true;
+                  successCount++;
+                  console.log(`Successfully assigned course ${courseId} to user ${studentId} via insert`);
+                } else {
+                  console.error(`Insert error: ${insertError.message}`);
+                  
+                  // If we're here, the issue is likely RLS - log solution for admin
+                  if (adminType === 'super_admin') {
+                    console.error(`
+SQL to fix Supabase RLS issue (run in SQL Editor):
+
+-- Update RLS policy to allow admins to manage enrollments
+CREATE POLICY "Allow admins to manage enrollments"
+  ON public.enrollments
+  FOR ALL
+  USING (
+    auth.uid() IN (
+      SELECT id FROM profiles 
+      WHERE role IN ('super_admin', 'domain_admin')
+    )
+  );
+                    `);
+                  }
+                }
+              } catch (insertErr) {
+                console.error(`Insert exception: ${insertErr}`);
               }
             }
+            
+            // If still not added, record the failure
+            if (!enrollmentAdded) {
+              failureCount++;
+            }
+          } catch (courseErr) {
+            console.error(`Error processing course ${courseId} for user ${studentId}:`, courseErr);
+            failureCount++;
           }
-        } catch (err) {
-          console.log(`Note: Error handling course ${courseId}. This is expected and will be handled.`);
         }
       }
       
-      // Process enrollments one by one to identify specific issues
-      for (const enrollment of enrollmentRecords) {
-        try {
-          // First try to insert directly
-          const { error } = await supabase
-            .from('enrollments')
-            .upsert(enrollment, {
-              onConflict: 'user_id,course_id',
-              ignoreDuplicates: true
-            });
-
-          if (error) {
-            console.error(`Error assigning course ${enrollment.course_id} to user ${enrollment.user_id}:`, error);
-            
-            // If the error is due to foreign key constraint, try a different approach
-            // This is a workaround for the course ID format issue mentioned in the memory
-            try {
-              // Check if the user already has access to this course (enrollment might exist with a different ID format)
-              const { data: existingEnrollment } = await supabase
-                .from('enrollments')
-                .select('id')
-                .eq('user_id', enrollment.user_id)
-                .eq('course_id', enrollment.course_id)
-                .maybeSingle();
-                
-              if (existingEnrollment) {
-                // Enrollment already exists, count as success
-                console.log(`Enrollment already exists for user ${enrollment.user_id} and course ${enrollment.course_id}`);
-                successCount++;
-              } else {
-                // Try a direct SQL insert as a last resort
-                // This is a workaround that might bypass some constraints
-                const { error: directError } = await supabase
-                  .from('enrollments')
-                  .insert({
-                    ...enrollment,
-                    // Add a timestamp to ensure uniqueness if that's an issue
-                    created_at: new Date().toISOString()
-                  });
-                  
-                if (directError) {
-                  console.error(`Direct insert also failed for course ${enrollment.course_id}:`, directError);
-                  failureCount++;
-                } else {
-                  successCount++;
-                }
-              }
-            } catch (bypassErr) {
-              console.error(`Exception in bypass for course ${enrollment.course_id}:`, bypassErr);
-              failureCount++;
-            }
-          } else {
-            successCount++;
-          }
-        } catch (err) {
-          console.error(`Exception assigning course ${enrollment.course_id} to user ${enrollment.user_id}:`, err);
-          failureCount++;
-        }
-      }
-
+      // Show appropriate toast based on results
       if (failureCount > 0) {
         if (successCount > 0) {
-          toast.warning(`Partially successful: ${successCount} enrollments created, ${failureCount} failed`);
+          toast.warning(`Partially successful: ${successCount} enrollments created, ${failureCount} failed. Check console for details.`);
         } else {
-          toast.error(`Failed to assign courses. Please check the console for details.`);
+          toast.error(`Failed to assign courses. Check console for SQL instructions to fix permissions.`);
         }
-      } else {
+      } else if (successCount > 0) {
         toast.success(`Successfully assigned ${selectedCourses.length} courses to ${selectedStudents.length} students`);
-        // Reset selections
-        setSelectedStudents([]);
-        setSelectedCourses([]);
-        // Refresh enrollments data
-        refetchEnrollments();
-        // Close the dialog
-        setIsDialogOpen(false);
       }
     } catch (error) {
-      console.error('Error in course assignment:', error);
-      toast.error('An unexpected error occurred');
+      console.error('Error in course assignment process:', error);
+      toast.error('An unexpected error occurred during course assignment');
     } finally {
+      // Clear selections
+      setSelectedStudents([]);
+      setSelectedCourses([]);
+      
+      // Refresh enrollments data
+      refetchEnrollments();
+      
+      // Reset assigning state
       setIsAssigning(false);
     }
   };
 
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Course Assignment</CardTitle>
-        <CardDescription>Assign courses to students</CardDescription>
+        <CardDescription>
+          Assign courses to students
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search students..."
-                className="pl-8 w-[250px]"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+        {/* Student selection */}
+        <div className="space-y-4">
+          <div className="flex items-center space-x-2 mb-4">
+            <div className="flex-1">
+              <label className="text-sm font-medium mb-1 block">
+                Select Students
+              </label>
+              <div className="flex space-x-2">
+                <Input
+                  placeholder="Search students..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1"
+                />
+                {domains.length > 0 && (
+                  <Select value={selectedDomain} onValueChange={setSelectedDomain}>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="All domains" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All domains</SelectItem>
+                      {domains.map(domain => (
+                        <SelectItem key={domain} value={domain}>
+                          {domain}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+              </div>
             </div>
-            
-            <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="All domains" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All domains</SelectItem>
-                {domains.map(domain => (
-                  <SelectItem key={domain} value={domain}>{domain}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Button 
+              variant="outline" 
+              className="mt-6"
+              onClick={handleSelectAllStudents}
+            >
+              {selectedStudents.length === (filteredProfiles?.length || 0) ? 'Deselect All' : 'Select All'}
+            </Button>
           </div>
           
-          <Button onClick={() => setIsDialogOpen(true)} disabled={selectedStudents.length === 0}>
-            <Plus className="h-4 w-4 mr-2" />
-            Assign Courses
-          </Button>
-        </div>
-        
-        <div className="border rounded-md">
-          <div className="p-3 border-b bg-muted/40 flex items-center">
-            <Checkbox 
-              id="select-all-students" 
-              checked={filteredProfiles && selectedStudents.length === filteredProfiles.length && filteredProfiles.length > 0}
-              onCheckedChange={handleSelectAllStudents}
-              className="mr-2"
-            />
-            <Label htmlFor="select-all-students" className="text-sm font-medium">
-              Select All Students ({filteredProfiles?.length || 0})
-            </Label>
-          </div>
-          
-          <ScrollArea className="h-[300px]">
-            {filteredProfiles && filteredProfiles.length > 0 ? (
-              <div className="p-0">
-                {filteredProfiles.map(profile => (
-                  <div key={profile.id} className="flex items-center p-3 hover:bg-muted/50 border-b last:border-0">
-                    <Checkbox 
-                      id={`student-${profile.id}`}
-                      checked={selectedStudents.includes(profile.id)}
-                      onCheckedChange={() => toggleStudentSelection(profile.id)}
-                      className="mr-3"
-                    />
-                    <div>
-                      <div className="font-medium">{profile.full_name || 'Unnamed User'}</div>
-                      <div className="text-sm text-muted-foreground">{profile.email}</div>
+          {/* Student list */}
+          <div className="border rounded-md p-2">
+            <ScrollArea className="h-48">
+              {loadingProfiles ? (
+                <div className="space-y-2">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Skeleton key={i} className="h-6 w-full" />
+                  ))}
+                </div>
+              ) : filteredProfiles && filteredProfiles.length > 0 ? (
+                <div className="space-y-2">
+                  {filteredProfiles.map(profile => (
+                    <div key={profile.id} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`student-${profile.id}`}
+                        checked={selectedStudents.includes(profile.id)}
+                        onCheckedChange={() => toggleStudentSelection(profile.id)}
+                      />
+                      <Label
+                        htmlFor={`student-${profile.id}`}
+                        className="flex-1 cursor-pointer"
+                      >
+                        {profile.full_name || 'Unnamed User'}
+                        {profile.email && (
+                          <span className="text-sm text-gray-500 ml-2">
+                            ({profile.email})
+                          </span>
+                        )}
+                      </Label>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="p-8 text-center text-muted-foreground">
-                {searchQuery ? 'No students found matching your search' : 'No students available'}
-              </div>
-            )}
-          </ScrollArea>
-        </div>
-      </CardContent>
-      
-      {/* Course Assignment Dialog */}
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>Assign Courses</DialogTitle>
-            <DialogDescription>
-              Select courses to assign to {selectedStudents.length} student{selectedStudents.length !== 1 ? 's' : ''}
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="border rounded-md mt-4">
-            <div className="p-3 border-b bg-muted/40 flex items-center">
-              <Checkbox 
-                id="select-all-courses" 
-                checked={selectedCourses.length === allCourses.length && allCourses.length > 0}
-                onCheckedChange={handleSelectAllCourses}
-                className="mr-2"
-              />
-              <Label htmlFor="select-all-courses" className="text-sm font-medium">
-                Select All Courses ({allCourses.length})
-              </Label>
-            </div>
-            
-            <ScrollArea className="h-[300px]">
-              <div className="p-0">
-                {allCourses.map(course => (
-                  <div key={course.id} className="flex items-center p-3 hover:bg-muted/50 border-b last:border-0">
-                    <Checkbox 
-                      id={`course-${course.id}`}
-                      checked={selectedCourses.includes(course.id)}
-                      onCheckedChange={() => toggleCourseSelection(course.id)}
-                      className="mr-3"
-                    />
-                    <div>
-                      <div className="font-medium">{course.title}</div>
-                      <div className="text-sm text-muted-foreground">{course.description?.substring(0, 100)}...</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center p-4 text-gray-500">
+                  No students found
+                </div>
+              )}
             </ScrollArea>
           </div>
           
-          <DialogFooter className="mt-4">
-            <Button variant="outline" onClick={() => setIsDialogOpen(false)} disabled={isAssigning}>
-              <X className="h-4 w-4 mr-2" />
-              Cancel
+          {/* Course selection */}
+          <div className="mt-6">
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-sm font-medium">
+                Select Courses
+              </label>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleSelectAllCourses}
+              >
+                {selectedCourses.length === allCourses.length ? 'Deselect All' : 'Select All'}
+              </Button>
+            </div>
+            
+            {/* Course list */}
+            <div className="border rounded-md p-2">
+              <ScrollArea className="h-48">
+                <div className="space-y-2">
+                  {allCourses.map(course => (
+                    <div key={course.id} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`course-${course.id}`}
+                        checked={selectedCourses.includes(course.id)}
+                        onCheckedChange={() => toggleCourseSelection(course.id)}
+                      />
+                      <Label
+                        htmlFor={`course-${course.id}`}
+                        className="flex-1 cursor-pointer"
+                      >
+                        {course.title}
+                      </Label>
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+            </div>
+          </div>
+          
+          {/* Assignment button */}
+          <div className="flex justify-end mt-6">
+            <Button
+              onClick={() => setIsDialogOpen(true)}
+              disabled={selectedStudents.length === 0 || selectedCourses.length === 0 || isAssigning}
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              Assign Courses
             </Button>
-            <Button onClick={assignCourses} disabled={selectedCourses.length === 0 || isAssigning}>
-              {isAssigning ? (
-                <span className="flex items-center">
-                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Assigning...
-                </span>
-              ) : (
-                <>
-                  <Check className="h-4 w-4 mr-2" />
-                  Assign Courses
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+          </div>
+          
+          {/* Confirmation dialog */}
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Confirm Course Assignment</DialogTitle>
+                <DialogDescription>
+                  You are about to assign {selectedCourses.length} course(s) to {selectedStudents.length} student(s).
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-medium mb-2">Selected Students: {selectedStudents.length}</h3>
+                  <ul className="text-sm text-gray-500 max-h-20 overflow-y-auto">
+                    {selectedStudents.map(studentId => {
+                      const student = profiles?.find(p => p.id === studentId);
+                      return (
+                        <li key={studentId}>
+                          {student?.full_name || 'Unnamed User'}
+                          {student?.email && ` (${student.email})`}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-medium mb-2">Selected Courses: {selectedCourses.length}</h3>
+                  <ul className="text-sm text-gray-500 max-h-20 overflow-y-auto">
+                    {selectedCourses.map(courseId => {
+                      const course = allCourses.find(c => c.id === courseId);
+                      return (
+                        <li key={courseId}>
+                          {course?.title || courseId}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={assignCourses} disabled={isAssigning}>
+                  {isAssigning ? 'Assigning...' : 'Confirm Assignment'}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
+      </CardContent>
     </Card>
   );
 }

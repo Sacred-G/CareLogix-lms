@@ -27,3 +27,4 @@ public/scorm/**/*
 *.sln
 *.sw?
 public/Audio
+.vercel

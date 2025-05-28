@@ -85,6 +85,7 @@ Dignity refers to the inherent value and worth of every person. When providing p
 
 Remember that how you provide care matters as much as what care you provide. By maintaining dignity during personal care routines, you support not just physical wellbeing but also emotional and psychological health.
 `,
+      pdfPath: '/pdfs/preventativeAdvocacy.pdf',
       questions: [
         {
           id: "q1-mod1",
@@ -130,7 +131,7 @@ Remember that how you provide care matters as much as what care you provide. By 
       id: "mod-2",
       title: "Supporting Sensory and Mobility Needs",
       description: "Learn techniques for providing effective support for individuals with sensory sensitivities or mobility challenges.",
-      videoUrl: "https://youtu.be/G9RvzQPH0T8",
+      videoUrl: "https://youtu.be/o58WoiM7Flg",
       content: `
 # Supporting Sensory and Mobility Needs
 

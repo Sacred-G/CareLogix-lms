@@ -366,8 +366,8 @@ Remember: Medication errors are serious but reporting them promptly is essential
       id: "mod-2",
       title: "Common Medications and Side Effects",
       description: "Overview of medications commonly prescribed for individuals with developmental disabilities and their potential side effects.",
-      pdfPath: '/public/pdfs/meidcation2.pdf',
-      videoUrl: "/https://youtu.be/muel4drb1FY",
+      pdfPath: '/pdfs/meidcation2.pdf',
+      videoUrl: "https://youtu.be/muel4drb1FY",
       content: `
 # Common Medications and Side Effects
 

@@ -130,7 +130,8 @@ Remember that behavior occurs within a context. A person-centered approach consi
 
 By understanding behavior as communication, we can respond in ways that address underlying needs, teach new skills, and create supportive environments that reduce the need for challenging behaviors.
 `,
-      questions: [
+       pdfPath: '/pdfs/pbspdf.pdf',
+       questions: [
         {
           id: "q1-mod1",
           question: "Why is it important to view behavior as a form of communication?",
@@ -199,6 +200,7 @@ By understanding behavior as communication, we can respond in ways that address 
       id: "mod-2",
       title: "Implementing Positive Behavior Support Strategies",
       description: "Learn practical strategies for prevention, teaching alternatives, and responding effectively to challenging behaviors.",
+      pdfPath: '/pdfs/pbspdf1.pdf',
       videoUrl: "https://youtu.be/46HukmJNOFY",
       content: `
 # Implementing Positive Behavior Support Strategies
