@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": ["deno.ns", "deno.window", "deno.unstable"],
+    "types": ["https://deno.land/x/xhr@0.1.0/mod.ts", "deno"]
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "options": {
+      "useTabs": false,
+      "lineWidth": 80,
+      "indentWidth": 2,
+      "singleQuote": true
+    }
+  }
+}
