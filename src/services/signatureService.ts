@@ -44,19 +44,27 @@ export const initializeSignaturesStorage = async (): Promise<void> => {
 };
 
 // Upload a signature image to storage
-export const uploadSignatureImage = async (file: File, signatureId: string): Promise<string> => {
+export const uploadSignatureImage = async (imageData: string, signatureId: string): Promise<string> => {
   try {
     // Ensure bucket exists
     await initializeSignaturesStorage();
     
-    // Generate a unique file path
-    const fileExt = file.name.split('.').pop();
-    const filePath = `${signatureId}.${fileExt}`;
+    // Decode base64 image data
+    const byteCharacters = atob(imageData.split(',')[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'image/png' }); // Assuming PNG for signature pad output
     
-    // Upload the file
+    // Generate a unique file path
+    const filePath = `${signatureId}.png`; // Assuming PNG format
+    
+    // Upload the blob
     const { error } = await supabase.storage
       .from(SIGNATURES_BUCKET)
-      .upload(filePath, file, {
+      .upload(filePath, blob, {
         cacheControl: '3600',
         upsert: true,
       });
@@ -82,7 +90,7 @@ export const createSignature = async (signatureData: SignatureUpload): Promise<S
     const now = new Date().toISOString();
     
     // Upload the signature image
-    const imageUrl = await uploadSignatureImage(signatureData.signatureFile, signatureId);
+    const imageUrl = await uploadSignatureImage(signatureData.imageData, signatureId);
     
     // If this is the default signature, update any existing defaults to false
     if (signatureData.default) {
@@ -197,9 +205,9 @@ export const updateSignature = async (
     const now = new Date().toISOString();
     let imageUrl: string | undefined;
     
-    // If there's a new signature file, upload it
-    if (updates.signatureFile) {
-      imageUrl = await uploadSignatureImage(updates.signatureFile, id);
+    // If there's new image data, upload it
+    if (updates.imageData) {
+      imageUrl = await uploadSignatureImage(updates.imageData, id);
     }
     
     // If updating to be default, update any existing defaults to false
@@ -264,9 +272,10 @@ export const deleteSignature = async (id: string): Promise<boolean> => {
     if (deleteError) throw deleteError;
     
     // Delete the signature image if it exists
-    // We can now properly type this with our updated database types
+    // Delete the signature image if it exists
     if (signature?.image_url) {
-      const filePath = signature.image_url.split('/').pop();
+      const urlParts = signature.image_url.split('/');
+      const filePath = urlParts[urlParts.length - 1]; // Get the file name from the URL
       if (filePath) {
         await supabase.storage
           .from(SIGNATURES_BUCKET)

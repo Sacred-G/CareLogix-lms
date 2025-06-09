@@ -12,7 +12,7 @@ export interface Signature {
 export interface SignatureUpload {
   name: string;
   title: string;
-  signatureFile: File;
+  imageData: string; // Changed from signatureFile: File to imageData: string
   organizationId?: string;
   default?: boolean;
 }
