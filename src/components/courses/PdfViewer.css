@@ -1,0 +1,88 @@
+/* Styles for PDF viewer with dark theme - no shadows */
+.pdf-document-wrapper {
+  background-color: #000 !important;
+}
+
+/* Style the PDF page container */
+.react-pdf__Page {
+  background-color: #000 !important;
+  margin: 0 auto;
+}
+
+/* Style the PDF canvas (the actual PDF content) */
+.react-pdf__Page canvas {
+  background-color: #000 !important;
+}
+
+/* Style annotations and links in the PDF */
+.react-pdf__Page .annotationLayer {
+  background-color: transparent !important;
+}
+
+/* Style text layer to be more visible on dark background */
+.react-pdf__Page .textLayer {
+  background-color: transparent !important;
+}
+
+/* Style form fields in the PDF */
+.react-pdf__Page .textAnnotation .textWidgetAnnotation {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+/* Style text inputs in the PDF */
+.react-pdf__Page input[type="text"],
+.react-pdf__Page input[type="date"],
+.react-pdf__Page textarea,
+.react-pdf__Page select {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+/* Style buttons in the PDF */
+.react-pdf__Page button {
+  background-color: #444 !important;
+  color: #fff !important;
+  border: 1px solid #666 !important;
+}
+
+/* Style checkboxes and radio buttons in the PDF */
+.react-pdf__Page input[type="checkbox"],
+.react-pdf__Page input[type="radio"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Style the PDF toolbar if present */
+.react-pdf__Document {
+  background-color: #000 !important;
+}
+
+/* Ensure the PDF container doesn't have any white borders */
+.react-pdf__Page__svg {
+  background-color: #000 !important;
+}
+
+/* Style the loading and error messages for dark theme */
+.pdf-document-wrapper > div {
+  color: #fff !important;
+}
+
+/* Style the page controls to be visible on dark background */
+.pdf-controls {
+  background-color: #1a1a1a !important;
+  border: 1px solid #333 !important;
+}
+
+/* Ensure text in the PDF is visible on dark background */
+.react-pdf__Page .textLayer > span {
+  color: #fff !important;
+
+}
+
+/* Style the highlight/selection in the PDF */
+.react-pdf__Page ::selection {
+  background: rgba(0, 119, 255, 0.5) !important;
+  color: #fff !important;
+}
