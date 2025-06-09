@@ -7,10 +7,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Build outputs
 dist
 dist-ssr
-*.local
+build
+out
+.next
+.nuxt
+.nuxt-
+.cache
+.temp
+.tmp
 
 # SCORM packages in public folder (exclude content but keep directory structure)
 public/scorm/**/*
@@ -26,5 +43,31 @@ public/scorm/**/*
 *.njsproj
 *.sln
 *.sw?
+
+# Local development
 public/Audio
 .vercel
+
+# Local development
+*.local
+
+# Supabase
+supabase/.temp
+supabase/functions/**/vendor/
+supabase/functions/deno.lock
+
+# Test coverage
+coverage
+.nyc_output
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
