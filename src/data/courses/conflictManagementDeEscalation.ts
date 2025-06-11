@@ -12,6 +12,7 @@ export const conflictManagementDeEscalation: Course = {
     {
       id: 'mod-1',
       title: 'Foundations of De-Escalation in Supportive Living',
+      videoUrl: 'https://youtu.be/IOYhwKH6F-I',
       description: 'De-escalation is about safety and respect. Stay calm, listen, and validate. Use least-restrictive, person-centered approaches as mandated by DDS (e.g. Title 22). Always act calmly; your tone and attitude set the stage for resolution.',
       content: `
 # Foundations of De-Escalation in Supportive Living
@@ -473,6 +474,93 @@ Consult the DDS Supported Living Services Guide for service standards, and parti
         },
       ],
     },
+    {
+      id: 'mod-6',
+      title: 'Interactive De-Escalation Scenarios',
+      description: 'Practice de-escalation techniques with these interactive scenarios.',
+      content: `
+        <p>This module provides interactive scenarios to practice de-escalation techniques. Choose the best response to de-escalate each situation and receive immediate feedback.</p>
+      `,
+      interactiveContent: {
+        type: 'multiple-choice',
+        title: 'De-Escalation Practice',
+        description: 'Choose the best response to de-escalate the situation.',
+        scenarios: [
+          {
+            id: 'scenario-1',
+            title: 'Scenario 1: Medication Refusal',
+            description: 'A client who usually takes their medication without issue is now refusing, becoming agitated and saying, "I don\'t need that poison!"',
+            options: [
+              { id: 'opt1', text: 'Force the client to take the medication, explaining it\'s for their own good.' },
+              { id: 'opt2', text: 'Tell the client you understand their concern, ask what\'s bothering them, and offer to call their doctor or supervisor to discuss the medication.' },
+              { id: 'opt3', text: 'Leave the medication and walk away, hoping they will take it later.' },
+            ],
+            correctAnswer: 'opt2',
+            feedback: 'Forcing medication is never appropriate unless there is an immediate danger and a specific protocol for it. Leaving it can be neglectful. The best approach is to validate their feelings, understand the underlying issue, and involve appropriate professionals to find a solution that respects their autonomy while ensuring their well-being.',
+          },
+          {
+            id: 'scenario-2',
+            title: 'Scenario 2: Public Meltdown',
+            description: 'While on a community outing, a client suddenly becomes overwhelmed, starts yelling, and attempts to run away from the group.',
+            options: [
+              { id: 'opt1', text: 'Yell back at the client to stop and physically restrain them.' },
+              { id: 'opt2', text: 'Maintain a calm demeanor, gently guide the client to a quieter area if possible, and use a soothing voice to ask what they need.' },
+              { id: 'opt3', text: 'Ignore the behavior and continue with the outing, hoping it will pass.' },
+            ],
+            correctAnswer: 'opt2',
+            feedback: 'Yelling or ignoring the client will likely escalate the situation. Physical restraint should only be used as a last resort when there is immediate danger and only by trained personnel following strict protocols. The most effective strategy is to remove the client from the overstimulating environment and use calm, empathetic communication to understand and address their needs.',
+          },
+          {
+            id: 'scenario-3',
+            title: 'Scenario 3: Resource Dispute',
+            description: 'Two clients are arguing loudly over who gets to use the common area television. One client is accusing the other of always hogging it.',
+            options: [
+              { id: 'opt1', text: 'Tell them both to stop arguing or you will turn off the TV for everyone.' },
+              { id: 'opt2', text: 'Listen to both sides, acknowledge their frustration, and help them negotiate a fair schedule or alternative activity.' },
+              { id: 'opt3', text: 'Side with the client who is usually more cooperative to end the argument quickly.' },
+            ],
+            correctAnswer: 'opt2',
+            feedback: 'Threatening or showing favoritism can escalate tension and resentment. The best approach is to mediate the dispute, validate both perspectives, and facilitate a compromise or solution that empowers clients and resolves the conflict constructively.',
+          },
+        ],
+      },
+    },
   ],
   certificateAvailable: true,
+  // Add scenarios for the interactive tab
+  scenarioContent: `
+## Interactive De-Escalation Scenarios
+
+Practice these scenarios to apply your de-escalation skills in realistic situations.
+
+### Scenario 1: Medication Refusal
+**Situation:** A client who usually takes their medication without issue is now refusing, becoming agitated and saying, "I don't need that poison!"
+
+**Options:**
+1. Force the client to take the medication, explaining it's for their own good.
+2. Tell the client you understand their concern, ask what's bothering them, and offer to call their doctor or supervisor to discuss the medication.
+3. Leave the medication and walk away, hoping they will take it later.
+
+**Best Response:** Option 2 - Forcing medication is never appropriate unless there is an immediate danger and a specific protocol for it. Leaving it can be neglectful. The best approach is to validate their feelings, understand the underlying issue, and involve appropriate professionals to find a solution that respects their autonomy while ensuring their well-being.
+
+### Scenario 2: Public Meltdown
+**Situation:** While on a community outing, a client suddenly becomes overwhelmed, starts yelling, and attempts to run away from the group.
+
+**Options:**
+1. Yell back at the client to stop and physically restrain them.
+2. Maintain a calm demeanor, gently guide the client to a quieter area if possible, and use a soothing voice to ask what they need.
+3. Ignore the behavior and continue with the outing, hoping it will pass.
+
+**Best Response:** Option 2 - Yelling or ignoring the client will likely escalate the situation. Physical restraint should only be used as a last resort when there is immediate danger and only by trained personnel following strict protocols. The most effective strategy is to remove the client from the overstimulating environment and use calm, empathetic communication to understand and address their needs.
+
+### Scenario 3: Resource Dispute
+**Situation:** Two clients are arguing loudly over who gets to use the common area television. One client is accusing the other of always hogging it.
+
+**Options:**
+1. Tell them both to stop arguing or you will turn off the TV for everyone.
+2. Listen to both sides, acknowledge their frustration, and help them negotiate a fair schedule or alternative activity.
+3. Side with the client who is usually more cooperative to end the argument quickly.
+
+**Best Response:** Option 2 - Threatening or showing favoritism can escalate tension and resentment. The best approach is to mediate the dispute, validate both perspectives, and facilitate a compromise or solution that empowers clients and resolves the conflict constructively.
+`,
 };

@@ -49,7 +49,7 @@ function createCertificate(userId: string, userName: string, course: any, userEm
     issueDate: currentDate,
     completionDate: currentDate,
     certificateNumber: certNumber, // Custom certificate number
-    organizationName: 'DSP Training Program',
+    organizationName: 'Centered Support Service',
     organizationLogo: null,
     organizationDomain: userDomain
   };

@@ -716,7 +716,7 @@ function useAdminData() {
       
       return data || [];
     },
-    enabled: adminType === 'super_admin' // Only fetch all enrollments for super admins
+    enabled: !!adminType // Enable for all admin types
   });
 
   // Fetch course completion statistics

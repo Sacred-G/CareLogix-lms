@@ -16,9 +16,8 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
   const validUntil = certificate.validUntil ? format(new Date(certificate.validUntil), 'MMMM dd, yyyy') : null;
   
   // Get organization info and determine which signature to show
-  const organizationName = certificate.organizationName || 'CareLogix LMS';
-  const isIncludeMeToPlease = organizationName.toLowerCase().includes('includemetoplease');
-  const isCenteredSupport = organizationName.toLowerCase().includes('centeredsupportservice');
+  const organizationName = 'centeredsupportservice.org';
+  const isCenteredSupport = true; // Force Centered Support Service theme
   
   return (
     <div className={`certificate-container ${preview ? 'max-w-4xl mx-auto' : 'w-full'}`} style={{
@@ -74,7 +73,7 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
               
               <div className="mt-6 pt-4 border-t border-gray-200">
                 <p className="text-gray-900 font-medium">
-                  Date of Completion: {formattedCompletionDate}
+                  Completed on: {formattedCompletionDate}
                 </p>
               </div>
             </div>
@@ -84,40 +83,32 @@ const Certificate = ({ certificate, onDownload, preview = false }: CertificatePr
           <div className="mt-12 pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-end" style={{ marginTop: 'auto' }}>
             {/* Signature Section */}
             <div className="flex flex-col items-center">
-              {isIncludeMeToPlease && (
-                <div className="text-center">
-                  <div className="text-2xl font-signature text-gray-800">Woody Woodard</div>
-                  <div className="signature-line w-48 h-1 my-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
-                  <p className="text-sm text-gray-600">CareLogix LMS Administrator</p>
-                  <p className="text-xs text-gray-500 mt-2">Authorized Signature</p>
+              <div className="text-center">
+                <div className="text-2xl font-cursive text-gray-800" style={{
+                  fontFamily: '"Dancing Script", cursive, sans-serif',
+                  fontSize: '1.75rem',
+                  lineHeight: '1.2',
+                  marginBottom: '0.5rem'
+                }}>
+                  Steven Bouldin
                 </div>
-              )}
-              {isCenteredSupport && (
-                <div className="text-center">
-                  <div className="text-2xl font-signature text-gray-800">Steven Bouldin</div>
-                  <div className="signature-line w-48 h-1 my-1 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
-                  <p className="text-sm text-gray-600">centeredsupportservice.org</p>
-                  <p className="text-xs text-gray-500 mt-2">Authorized Representative</p>
-                </div>
-              )}
+                <div className="w-48 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent my-2"></div>
+                <p className="text-sm text-gray-600 mt-1">centeredsupportservice.org</p>
+                <p className="text-xs text-gray-500 mt-1">Authorized Representative</p>
+              </div>
             </div>
             
-            {/* Date and Certificate Number */}
-            <div className="flex flex-col items-center">
-              <div className="text-center mb-4">
-                <p className="text-sm text-gray-600 mb-1">Date of Issue</p>
-                <p className="text-base font-medium text-gray-900">{formattedIssueDate}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-sm text-gray-600 mb-1">Certificate Number</p>
-                <p className="text-sm font-mono font-medium text-gray-900">{certificate.certificateNumber}</p>
-              </div>
-            </div>
+            {/* Empty div to maintain flex spacing */}
+            <div></div>
           </div>
           
           {/* Footer */}
-          <div className="mt-4 pt-4 border-t border-gray-300 text-center text-sm text-gray-800">
-            <p>This certificate is proudly presented by {organizationName}</p>
+          <div className="mt-4 pt-4 border-t border-gray-300 text-center space-y-2">
+            <p className="text-sm text-gray-800">This certificate is proudly presented by {organizationName}</p>
+            <div className="flex justify-center items-center space-x-2 text-xs text-gray-600">
+              <span>Certificate ID:</span>
+              <span className="font-mono bg-gray-100 px-2 py-1 rounded">{certificate.certificateNumber}</span>
+            </div>
           </div>
         </div>
       </Card>

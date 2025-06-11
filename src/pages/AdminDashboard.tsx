@@ -16,12 +16,14 @@ import CreateUserForm from '@/components/admin/CreateUserForm';
 import CourseStats from '@/components/admin/CourseStats';
 import EnrollmentsTable from '@/components/admin/EnrollmentsTable';
 import CourseAssignment from '@/components/admin/CourseAssignment';
-import ScormUploader from '@/components/admin/ScormUploader';
 import ScormManager from '@/components/admin/ScormManager';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Plus, UserPlus, Users, GraduationCap } from 'lucide-react';
+import { BookOpen, Plus, UserPlus, Users, GraduationCap, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Badge } from '@/components/ui/badge';
+import { createCertificate, saveCertificate } from '@/services/certificateService';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { courses } from '@/data/courseData'; // Import all courses
 
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
@@ -29,6 +31,8 @@ export default function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreateUserOpen, setIsCreateUserOpen] = useState(false);
   const [selectedDomain, setSelectedDomain] = useState('');
+  const [certificateForm, setCertificateForm] = useState({ selectedUserId: '', selectedCourseId: '' });
+  const [isIssuingCertificate, setIsIssuingCertificate] = useState(false);
   
   const { 
     // Admin status
@@ -180,7 +184,7 @@ export default function AdminDashboard() {
                   Debug: Show All Profiles
                 </Button>
               </div>
-              <TabsList className="grid grid-cols-5 w-full mb-6 max-w-md">
+              <TabsList className="grid grid-cols-6 w-full mb-6 max-w-2xl">
                 <TabsTrigger value="users">
                   <Users className="mr-2 h-4 w-4" />
                   Users
@@ -190,6 +194,10 @@ export default function AdminDashboard() {
                 <TabsTrigger value="assign">
                   <GraduationCap className="mr-2 h-4 w-4" />
                   Assign
+                </TabsTrigger>
+                <TabsTrigger value="certificates">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Issue Certificate
                 </TabsTrigger>
                 <TabsTrigger value="scorm">SCORM Content</TabsTrigger>
               </TabsList>
@@ -224,6 +232,7 @@ export default function AdminDashboard() {
                 <EnrollmentsTable 
                   enrollments={enrollments}
                   loadingEnrollments={loadingEnrollments}
+                  refetchEnrollments={() => queryClient.invalidateQueries({ queryKey: ['admin-enrollments'] })}
                 />
               </TabsContent>
               
@@ -237,10 +246,122 @@ export default function AdminDashboard() {
                 />
               </TabsContent>
               
+              {/* Manual Certificate Issuer Tab */}
+              <TabsContent value="certificates" className="space-y-6 p-6 bg-white rounded-lg shadow">
+                <h2 className="text-2xl font-bold mb-4">Issue Certificate</h2>
+                <p className="text-gray-600 mb-6">Manually issue a certificate to a user who has completed a course.</p>
+                
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!certificateForm.selectedUserId || !certificateForm.selectedCourseId) {
+                    toast.error('Please select a user and a completed course.');
+                    return;
+                  }
+                  
+                  setIsIssuingCertificate(true);
+                  try {
+                    const selectedProfile = profiles?.find(p => p.id === certificateForm.selectedUserId);
+                    const selectedCourse = courses.find(c => c.id === certificateForm.selectedCourseId);
+
+                    if (!selectedProfile || !selectedCourse) {
+                      toast.error('Selected user or course not found.');
+                      setIsIssuingCertificate(false);
+                      return;
+                    }
+
+                    const certificate = createCertificate(
+                      selectedProfile.id,
+                      selectedProfile.full_name || selectedProfile.email || 'N/A',
+                      selectedCourse,
+                      selectedProfile.email || 'N/A'
+                    );
+                    
+                    const result = await saveCertificate(certificate);
+                    if (result.success) {
+                      toast.success(`Certificate issued to ${selectedProfile.full_name || selectedProfile.email} for ${selectedCourse.title}`);
+                      setCertificateForm({ selectedUserId: '', selectedCourseId: '' });
+                    } else {
+                      throw new Error('Failed to save certificate');
+                    }
+                  } catch (error) {
+                    console.error('Error issuing certificate:', error);
+                    toast.error('Failed to issue certificate');
+                  } finally {
+                    setIsIssuingCertificate(false);
+                  }
+                }} className="space-y-4">
+                  <div className="space-y-2">
+                    <label htmlFor="user-select" className="block text-sm font-medium text-gray-700">
+                      Select Recipient
+                    </label>
+                    <Select
+                      value={certificateForm.selectedUserId}
+                      onValueChange={(value) => setCertificateForm(prev => ({ ...prev, selectedUserId: value, selectedCourseId: '' }))}
+                      disabled={loadingProfiles}
+                    >
+                      <SelectTrigger id="user-select" className="w-full">
+                        <SelectValue placeholder="Select a user" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {profiles?.filter(p => p.role === 'student').map(profile => (
+                          <SelectItem key={profile.id} value={profile.id}>
+                            {profile.full_name} ({profile.email})
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="course-select" className="block text-sm font-medium text-gray-700">
+                      Select Completed Course
+                    </label>
+                    <Select
+                      value={certificateForm.selectedCourseId}
+                      onValueChange={(value) => setCertificateForm(prev => ({ ...prev, selectedCourseId: value }))}
+                      disabled={!certificateForm.selectedUserId || loadingEnrollments}
+                    >
+                      <SelectTrigger id="course-select" className="w-full">
+                        <SelectValue placeholder="Select a completed course" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {enrollments
+                          ?.filter(e => e.user_id === certificateForm.selectedUserId && e.completed)
+                          .map(enrollment => {
+                            const course = courses.find(c => c.id === enrollment.course_id);
+                            return course ? (
+                              <SelectItem key={enrollment.course_id} value={enrollment.course_id}>
+                                {course.title}
+                              </SelectItem>
+                            ) : null;
+                          })}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={isIssuingCertificate || !certificateForm.selectedUserId || !certificateForm.selectedCourseId}
+                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isIssuingCertificate ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Issuing...
+                        </>
+                      ) : 'Issue Certificate'}
+                    </button>
+                  </div>
+                </form>
+              </TabsContent>
+              
               {/* SCORM Content Tab */}
               <TabsContent value="scorm">
                 <div className="space-y-6">
-                  <ScormUploader />
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-2xl font-bold">SCORM Content Management</h2>
+                  </div>
                   <ScormManager />
                 </div>
               </TabsContent>
