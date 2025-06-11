@@ -10,12 +10,12 @@ import { communicationEmpathyCourse } from './courses/communicationEmpathy';
 import { emergencyPreparedness } from './courses/emergencyPreparedness';
 import { documentationVisitsCourse } from './courses/documentationVisits';
 import { boundariesEthicsCourse } from './courses/boundariesEthics';
-import { personalCareDignityCourse } from './courses/personalCareDignity';
 import { communityInclusionCourse } from './courses/communityInclusion';
 import { scenarioPracticeCourse } from './courses/scenarioPractice';
 import { empowermentAdvocacyCourse } from './courses/empowermentAdvocacy';
 import { developmentalDisabilitiesCourse } from './courses/developmentalDisabilities';
 import { transportationCourse } from './courses/transportation';
+import { conflictManagementDeEscalation } from './courses/conflictManagementDeEscalation';
 
 // Create a primary array with the DSP-specific courses
 export const dspCourses: Course[] = [
@@ -26,12 +26,12 @@ export const dspCourses: Course[] = [
   emergencyPreparedness,
   documentationVisitsCourse,
   boundariesEthicsCourse,
-  personalCareDignityCourse,
   communityInclusionCourse,
   scenarioPracticeCourse,
   resourcesCourse,
   empowermentAdvocacyCourse,
   transportationCourse,
+  conflictManagementDeEscalation,
 ];
 
 // Create a separate array for micro learning courses

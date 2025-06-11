@@ -7,7 +7,6 @@ import { communicationEmpathyCourse } from './communicationEmpathy';
 import { emergencyPreparedness } from './emergencyPreparedness';
 import { documentationVisitsCourse } from './documentationVisits';
 import { boundariesEthicsCourse } from './boundariesEthics';
-import { personalCareDignityCourse } from './personalCareDignity';
 import { communityInclusionCourse } from './communityInclusion';
 import { scenarioPracticeCourse } from './scenarioPractice';
 // Removed import for developmentalDisabilitiesCourse which is no longer being used
@@ -18,6 +17,8 @@ import { dosDontsCourse } from './dosDonts';
 import { sexualHarassmentTrainingCourse } from './sexualHarassmentTraining';
 import { hoyerLiftTrainingCourse } from './hoyerLiftTraining';
 import { riskManagementIncidentReportingCourse } from './riskManagementIncidentReporting';
+import { developmentalDisabilitiesInteractive } from './developmentalDisabilitiesInteractive';
+import { conflictManagementDeEscalation } from './conflictManagementDeEscalation';
 
 // New Hire Orientation Video Course
 export const newHireOrientationCourse: Course = {
@@ -66,7 +67,6 @@ export const dspCourses: Course[] = [
   emergencyPreparedness,
   documentationVisitsCourse,
   boundariesEthicsCourse,
-  personalCareDignityCourse,
   communityInclusionCourse,
   scenarioPracticeCourse,
   transportationCourse,
@@ -76,10 +76,14 @@ export const dspCourses: Course[] = [
   sexualHarassmentTrainingCourse,
   hoyerLiftTrainingCourse, // Added Hoyer Lift Training Course
   riskManagementIncidentReportingCourse, // Added Risk Management and Incident Reporting Course
+  conflictManagementDeEscalation,
 ];
 
 // Micro Learning Courses - Short, focused learning modules
 export const microLearningCourses: Course[] = [
+  // Interactive learning modules
+  developmentalDisabilitiesInteractive,
+  
   // Adding web accessibility, effective communication, and time management to micro learning
   {
     id: 'web-accessibility',
