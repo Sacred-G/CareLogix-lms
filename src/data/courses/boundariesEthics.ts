@@ -8,7 +8,7 @@ export const boundariesEthicsCourse: Course = {
   category: "Ethics & Rights",
   instructor: "Dr. James Wilson, PhD",
   thumbnail: "/Images/boundariesEthics.png",
-  duration: "2 hours",
+  duration: "1 hour",
   certificateAvailable: true,
   modules: [
     {
@@ -207,7 +207,7 @@ Remember that maintaining boundaries is not about being cold or distant—it's a
           explanation: "Insisting on physical contact is not an appropriate boundary consideration. Physical boundaries include respecting personal space, providing privacy during personal care, using appropriate touch only when necessary and welcomed, and respecting living spaces."
         }
       ],
-      audioUrl: "/Audio/Drawing the Line_ Mastering Professional Boundaries.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Professional%20Boundaries%20in%20Support%20Work.wav",
       transcript: "This audio segment explores the concept of professional boundaries in direct support work. We discuss the unique nature of the support relationship, different types of boundaries (physical, emotional, financial, and social), warning signs of boundary crossing, and strategies for maintaining healthy professional boundaries while still providing compassionate support."
     },
     {
@@ -419,7 +419,7 @@ Remember that many ethical dilemmas don't have perfect solutions. Your goal is t
           explanation: "Documentation of ethical decision-making records your process, reasoning, and actions, which provides accountability, helps others understand your decisions, creates a record for future reference, and supports learning from the experience."
         }
       ],
-      audioUrl: "/Audio/Navigating Ethical Dilemmas for DSPs.wavv",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Navigating%20Ethical%20Dilemmas%20for%20Direct%20Support%20Professionals.wav",
       transcript: "In this audio segment, we explore how to navigate ethical dilemmas in direct support work. We discuss core ethical principles including autonomy, beneficence, non-maleficence, justice, and fidelity. We examine common ethical challenges DSPs face and provide a six-step framework for ethical decision-making to help you resolve complex situations while upholding professional standards."
     }
   ]

@@ -15,7 +15,7 @@ export const documentationVisitsCourse: Course = {
       id: "mod-1",
       title: "Principles of Effective Documentation",
       description: "Learn why documentation matters and the core principles of writing effective notes.",
-      videoUrl: "https://youtu.be/Sle32SJLffw",
+      videoUrl: "https://youtu.be/Q5Dt29gzl0o",
       content: `
 # Principles of Effective Documentation
 
@@ -208,7 +208,7 @@ Remember that your documentation may be read by many people, including other sta
           explanation: "Documentation supports continuity of care by ensuring all team members have updated information, providing a history of interventions and their effectiveness, helping track patterns and changes over time, and facilitating coordination between different providers."
         }
       ],
-      audioUrl: "/Audio/Direct Support Professional Documentation Guidelines.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Direct%20Support%20Professional%20Documentation%20Guidelines.wav",
       transcript: "This audio segment explores why proper documentation is crucial for Direct Support Professionals. We discuss how documentation supports continuity of care, provides legal protection, facilitates quality improvement, and enables client advocacy. We also cover the five core principles of effective documentation: objectivity, accuracy, completeness, conciseness, and confidentiality."
     },
     {
@@ -405,7 +405,7 @@ Remember that your notes are part of a permanent record and may be read by the i
           explanation: "The Subjective section should include information provided by the client, such as their statements about how they feel, their perception of their situation, and their reported experiences. The client's statement about how they're feeling today belongs in this section."
         }
       ],
-      audioUrl: "/Audio/Mastering Visit Notes SOAP Format.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Mastering%20Visit%20Notes%20SOAP%20Format.wav",
       transcript: "In this audio segment, we discuss effective techniques for writing visit notes. We explore the SOAP format for organizing information, common documentation mistakes to avoid, and practical tips for creating excellent documentation. We emphasize the importance of clear, objective, and respectful language throughout all documentation."
     }
   ]

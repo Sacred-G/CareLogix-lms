@@ -15,7 +15,7 @@ export const clientRightsCourse: Course = {
       id: "mod-1",
       title: "Fundamental Rights of Clients",
       description: "Understanding the basic human and legal rights of individuals receiving support services.",
-      videoUrl: "https://youtu.be/Ao5tgdw-NdI",
+      videoUrl: "https://youtu.be/Pzr9JT4cEZ8",
       content: `
 # Fundamental Rights of Clients
 
@@ -207,7 +207,7 @@ As a DSP, you should:
           explanation: "DSPs should consider the specific risk involved, the person's understanding of consequences, and whether there are ways to mitigate danger while respecting choice. The goal is to support informed risk-taking rather than eliminating all risk or allowing dangerous situations."
         }
       ],
-      audioUrl: "/Audio/Client Rights and Dignity of Risk.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Upholding%20Rights%20for%20Individuals%20with%20Developmental%20Disabilities.wav",
       transcript: "This audio lesson covers the fundamental rights of individuals with developmental disabilities and the legal protections in place to uphold these rights. We discuss how DSPs can effectively advocate for and support client rights in everyday practice.",
       interactiveScenario: {
         title: "Navigating Client Rights Scenarios",

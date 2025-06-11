@@ -14,7 +14,7 @@ export const communicationEmpathyCourse: Course = {
       id: "mod-1",
       title: "Foundations of Empathetic Communication",
       description: "Learn the basics of empathetic listening and effective communication techniques.",
-      videoUrl: "https://www.youtube.com/watch?v=bSQ53FXO-cU&t=41s", 
+      videoUrl: "https://youtu.be/05Z147499gM", 
       content: `
 # Foundations of Empathetic Communication
 
@@ -188,7 +188,7 @@ Remember that empathetic communication is a skill that improves with practice an
           explanation: "Reflection improves communication skills by allowing you to examine your patterns, recognize what works well and what doesn't, and thoughtfully adjust your approach. This ongoing process of self-awareness and growth is essential for developing empathetic communication skills."
         }
       ],
-      audioUrl: "/Audio/Mastering Effective Support Communication.wa",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Mastering%20Empathetic%20Communication%20for%20Support%20Staff.wav",
       transcript: "This audio segment explores the foundations of empathetic communication, including active listening, validation techniques, and the importance of non-verbal communication. We discuss how to recognize and overcome common barriers to effective communication in support settings."
     }
   ],

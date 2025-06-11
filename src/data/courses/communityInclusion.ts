@@ -156,171 +156,225 @@ Remember that meaningful inclusion takes time and intentional effort. Small step
           explanation: "DSPs should provide just enough support to ensure success—no more, no less. This means careful assessment of what support is actually needed, stepping back when appropriate, and avoiding over-supporting, which can interfere with natural relationship development."
         }
       ],
-      audioUrl: "/Audio/Unlocking Community Inclusion.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Unlocking%20Community%20Inclusion.wav",
       transcript: "This audio lesson explores the principles of community inclusion for individuals with developmental disabilities. We discuss the benefits of meaningful inclusion, core principles including person-centered planning and natural supports, common barriers and solutions, and the specific role DSPs play in facilitating community connections."
     },
     {
       id: "mod-2",
-      title: "Person-Centered Planning and Glossary of Terms for Support Professionals",
-      description: "Learn the principles and practices of person-centered planning for effective community inclusion.",
-      videoUrl: "https://youtu.be/PFDKE6VnUNw",
+      title: "Social Skills Development",
+      description: "Understand the importance of social skills and learn effective strategies for teaching and supporting their development.",
+      videoUrl: "https://youtu.be/ooCBak-UmZs",
       content: `
-# Person-Centered Planning
+# Social Skills Development
 
-Person-centered planning is a foundational approach to supporting individuals with disabilities in achieving meaningful community inclusion. This approach puts the individual at the center of all planning and decision-making processes.
+## Definition and Fundamental Importance of Social Skills
 
-## Core Principles of Person-Centered Planning
+Social skills are defined as "the tools we use to connect with the world around us" and are "essential for building relationships and navigating social situations." They are crucial for "fostering a sense of belonging" and leading to a "more fulfilling, connected life."
 
-Person-centered planning is guided by these key principles:
+### Key Takeaways:
 
-- The person is the primary decision-maker in their life
-- Planning focuses on capacities, strengths, and preferences, not deficits
-- The individual's dreams and goals drive the planning process
-- Natural supports and community connections are prioritized
-- Planning is ongoing, flexible, and responsive to changing needs
-- Success is defined by the person, not predetermined program outcomes
-- Cultural values and preferences are respected and incorporated
+- **Foundation of Connection**: Social skills are the bedrock for human interaction, enabling individuals to form bonds, communicate effectively, and participate in society.
+- **Happiness and Well-being**: Good social skills make life more enjoyable and help create a supportive social network.
+- **Accessibility and Opportunity**: They open doors to new experiences and opportunities, making individuals more approachable.
 
-## Key Elements of Effective Person-Centered Planning
+## Benefits of Social Skills in Everyday Life
 
-### 1. Getting to Know the Person
-- Understanding their history, culture, and background
-- Identifying interests, talents, and passions
-- Learning about relationships and existing supports
-- Discovering what works/doesn't work in their life
-- Understanding their preferred communication style
+Social skills enhance various aspects of daily living:
 
-### 2. Building a Circle of Support
-- Identifying people who care about the person
-- Including both paid and unpaid supports
-- Ensuring diversity of perspectives and skills
-- Involving community members when appropriate
-- Respecting the person's preferences about who participates
+### Relationship Building
+- Facilitate making friends and forming supportive networks
+- Enable participation in group activities and teamwork
+- Help in developing meaningful connections
 
-### 3. Creating a Positive Vision for the Future
-- Exploring dreams and aspirations without limitations
-- Identifying what a good life means to the person
-- Focusing on strengths and possibilities
-- Creating concrete, visual representations
-- Thinking beyond traditional service options
+### Effective Communication
+- Enable individuals to join conversations and share thoughts
+- Help in understanding and using both verbal and non-verbal cues
+- Promote respectful and clear expression of ideas
 
-### 4. Developing Action Steps
-- Breaking large goals into manageable steps
-- Assigning specific responsibilities
-- Creating timelines that make sense
-- Building on existing resources and relationships
-- Identifying needed supports and resources
+### Academic and Professional Success
+- Improve collaboration with peers and colleagues
+- Enhance ability to seek and provide help
+- Create a more supportive and productive environment
 
-## Person-Centered Planning Methods
+## The Learning Journey
 
-Several structured approaches exist for person-centered planning:
+### Developmental Process
+Learning social skills is "a journey filled with its own set of challenges and triumphs" that "takes time, patience, and plenty of practice." It's similar to learning other fundamental life skills like riding a bike.
 
-### MAPS (Making Action Plans)
-- Explores the person's history, dreams, fears, needs, and talents
-- Identifies who the person is and what they need to be successful
-- Creates a concrete action plan for moving forward
+### Individual Differences
+- Some individuals learn social skills naturally
+- Others may need additional support and guidance
+- Developmental disabilities can present unique challenges in social learning
 
-### PATH (Planning Alternative Tomorrows with Hope)
-- Begins with the "North Star" vision of an ideal future
-- Works backward to identify immediate next steps
-- Creates a visual roadmap toward goals
+### Challenges for Individuals with Developmental Disabilities
+- Difficulty understanding subtle social cues and body language
+- Challenges with interpreting humor, sarcasm, or indirect communication
+- Trouble with conversation skills like taking turns and active listening
+- May find social situations overwhelming
 
-### Essential Lifestyle Planning
-- Focuses on day-to-day preferences and requirements
-- Distinguishes between "non-negotiables" and preferences
-- Emphasizes detailed documentation of what works
+## Effective Teaching Strategies
 
-### Personal Futures Planning
-- Maps the person's relationships, places, interests, and choices
-- Identifies opportunities and obstacles in the community
-- Develops strategies to increase community participation
+### Individualized Approach
+- Identify and build on existing strengths
+- Be patient and supportive of individual differences
+- Set realistic, achievable goals
 
-## Supporting Community Inclusion Through Person-Centered Planning
+### Practical Methods
+1. **Visual Aids**
+   - Use emotion cards to teach about different emotions
+   - Help with recognizing and understanding feelings in self and others
 
-Person-centered planning directly supports community inclusion by:
+2. **Interactive Games**
+   - Use structured games to teach rules and turn-taking
+   - Board games to practice communication and sportsmanship
+   - Role-playing to practice social scenarios
 
-### Identifying Natural Community Connections
-- Mapping existing relationships and community places
-- Finding opportunities based on interests and strengths
-- Discovering untapped resources and connections
+3. **Structured Activities**
+   - Create opportunities for practicing greetings and conversations
+   - Develop social stories to illustrate appropriate behaviors
+   - Provide clear, concrete examples of social interactions
 
-### Addressing Barriers Creatively
-- Problem-solving transportation issues
-- Developing strategies for support needs
-- Addressing accessibility challenges
-- Building confidence through graduated steps
+## Creating a Supportive Environment
 
-### Building Reciprocal Relationships
-- Identifying ways the person can contribute to their community
-- Finding roles that highlight strengths and talents
-- Creating opportunities for giving as well as receiving support
+- **Be Patient**: Celebrate all progress, no matter how small
+- **Reduce Distractions**: Choose appropriate settings for practice
+- **Allow Breaks**: Recognize when someone is feeling overwhelmed
+- **Encourage Positivity**: Focus on strengths and successes
+- **Model Behavior**: Demonstrate positive social interactions
 
-## The DSP's Role in Person-Centered Planning
+## The Role of Support Professionals
 
-As a Direct Support Professional, you play a critical role in person-centered planning by:
+As a DSP, you can help by:
+1. Creating safe spaces for practice
+2. Providing clear, consistent feedback
+3. Breaking down complex social skills into manageable steps
+4. Encouraging and reinforcing positive social interactions
+5. Helping individuals generalize skills across different settings
 
-1. Being a skilled observer of preferences and interests
-2. Advocating for the person's voice in all decisions
-3. Implementing support strategies consistent with the plan
-4. Documenting what works and what doesn't
-5. Identifying new opportunities aligned with goals
-6. Supporting relationships with planning team members
-7. Helping evaluate progress and suggest adjustments
-
-Remember that person-centered planning is not a one-time event but an ongoing process of discovery, action, reflection, and adjustment. Your attentiveness to the person's changing interests and goals is essential to maintaining a truly person-centered approach to community inclusion.
-`,
+Remember that developing social skills is an ongoing process. The goal is to help individuals build confidence in their ability to connect with others and participate meaningfully in their communities.`,
       questions: [
         {
-          id: "q1-mod2-pcp",
-          question: "What is a core principle of person-centered planning?",
+          id: "q1-mod2-social",
+          question: "What is one key benefit of strong social skills?",
           options: [
-            "Planning should be completed quickly to maximize efficiency",
-            "Professional opinions should guide all decision-making",
-            "The person is the primary decision-maker in their life",
-            "Goals should focus on addressing deficits and challenges"
-          ],
-          correctAnswer: 2,
-          explanation: "A fundamental principle of person-centered planning is that the person is the primary decision-maker in their own life. The planning process centers their voice, preferences, and choices rather than being driven primarily by professional opinions or program requirements."
-        },
-        {
-          id: "q2-mod2-pcp",
-          question: "How does person-centered planning support community inclusion?",
-          options: [
-            "By creating standardized inclusion plans that work for everyone",
-            "By identifying natural community connections based on the person's interests and strengths",
-            "By limiting community exposure to prevent overwhelming experiences",
-            "By focusing primarily on specialized disability programs"
+            "They eliminate the need for professional support",
+            "They make life more enjoyable and create supportive networks",
+            "They are only important in school settings",
+            "They are easy for everyone to learn"
           ],
           correctAnswer: 1,
-          explanation: "Person-centered planning supports community inclusion by identifying natural community connections based on the individual's unique interests and strengths. This approach helps discover opportunities for meaningful participation that align with what matters to the person."
+          explanation: "Strong social skills make life more enjoyable by helping individuals build relationships, create support networks, and participate more fully in their communities."
         },
         {
-          id: "q3-mod2-pcp",
-          question: "What is the purpose of building a 'circle of support' in person-centered planning?",
+          id: "q2-mod2-social",
+          question: "Which strategy is most effective for teaching social skills to individuals with developmental disabilities?",
           options: [
-            "To create a group that will make decisions for the person",
-            "To ensure professionals maintain control of the planning process",
-            "To identify people who care about the person and can help implement the plan",
-            "To replace natural supports with paid staff"
+            "Expecting them to learn through observation only",
+            "Using visual aids and structured practice",
+            "Avoiding social situations that might be challenging",
+            "Focusing only on verbal instructions"
           ],
-          correctAnswer: 2,
-          explanation: "Building a circle of support involves identifying people who genuinely care about the person and can contribute to implementing their plan. This includes both paid and unpaid supports and creates a network of people committed to helping the person achieve their goals."
+          correctAnswer: 1,
+          explanation: "Visual aids and structured practice are highly effective for teaching social skills as they provide clear, concrete examples and opportunities for safe practice."
         },
         {
-          id: "q4-mod2-pcp",
-          question: "As a DSP, what is your role in person-centered planning?",
+          id: "q3-mod2-social",
+          question: "What is an important consideration when supporting someone in developing social skills?",
           options: [
-            "Taking control of the planning process since you know the person best",
-            "Limiting options to those you believe are realistic",
-            "Being a skilled observer of preferences and advocating for the person's voice",
-            "Creating plans that fit within existing program structures"
+            "Rushing through the learning process",
+            "Focusing only on the end result",
+            "Celebrating small successes along the way",
+            "Comparing their progress to others"
           ],
           correctAnswer: 2,
-          explanation: "As a DSP, your role includes being a skilled observer of the person's preferences and interests, advocating for their voice in all decisions, implementing support strategies consistent with their plan, and helping identify new opportunities aligned with their goals."
+          explanation: "Celebrating small successes is crucial as it builds confidence and motivation, making the learning process more effective and enjoyable."
+        },
+        {
+          id: "q4-mod2-social",
+          question: "What is a common challenge individuals with developmental disabilities might face in social situations?",
+          options: [
+            "Understanding subtle social cues and body language",
+            "Speaking too quickly",
+            "Having too many friends",
+            "Being overly social"
+          ],
+          correctAnswer: 0,
+          explanation: "Many individuals with developmental disabilities struggle with understanding subtle social cues and body language, which are essential for effective social interaction."
+        },
+        {
+          id: "q5-mod2-social",
+          question: "Which of the following is NOT an effective method for teaching social skills?",
+          options: [
+            "Role-playing different social scenarios",
+            "Using emotion cards to teach about feelings",
+            "Expecting immediate mastery of complex skills",
+            "Playing structured games that require turn-taking"
+          ],
+          correctAnswer: 2,
+          explanation: "Expecting immediate mastery of complex skills is not effective. Social skills development requires patience, practice, and breaking down skills into manageable steps."
+        },
+        {
+          id: "q6-mod2-social",
+          question: "What is the primary role of a DSP in social skills development?",
+          options: [
+            "To make all social decisions for the individual",
+            "To create safe spaces for practice and provide consistent feedback",
+            "To limit social interactions to prevent discomfort",
+            "To focus only on academic skills"
+          ],
+          correctAnswer: 1,
+          explanation: "A DSP's primary role is to create safe spaces for practice, provide clear and consistent feedback, and help individuals develop confidence in their social abilities."
+        },
+        {
+          id: "q7-mod2-social",
+          question: "Why is it important to reduce distractions when practicing social skills?",
+          options: [
+            "It makes the session shorter",
+            "It helps the individual focus on the social interaction",
+            "It prevents the need for practice",
+            "It makes the DSP's job easier"
+          ],
+          correctAnswer: 1,
+          explanation: "Reducing distractions helps individuals focus better on the social interaction, making the learning process more effective and less overwhelming."
+        },
+        {
+          id: "q8-mod2-social",
+          question: "What is an example of a visual aid that can help teach social skills?",
+          options: [
+            "A long written explanation of social rules",
+            "A complex diagram of social hierarchies",
+            "Emotion cards showing different facial expressions",
+            "A recording of a conversation"
+          ],
+          correctAnswer: 2,
+          explanation: "Emotion cards are excellent visual aids that help individuals learn to recognize and understand different emotions through facial expressions."
+        },
+        {
+          id: "q9-mod2-social",
+          question: "What is a key benefit of using role-playing in social skills training?",
+          options: [
+            "It allows individuals to practice in a safe environment",
+            "It guarantees success in real-life situations",
+            "It replaces the need for real social interaction",
+            "It's only useful for children"
+          ],
+          correctAnswer: 0,
+          explanation: "Role-playing provides a safe, controlled environment where individuals can practice social interactions and receive feedback before facing real-life situations."
+        },
+        {
+          id: "q10-mod2-social",
+          question: "Why is it important to help individuals generalize social skills across different settings?",
+          options: [
+            "To make the learning process longer",
+            "Because skills learned in one context may not automatically transfer to others",
+            "To confuse the learner",
+            "It's not important to generalize skills"
+          ],
+          correctAnswer: 1,
+          explanation: "Generalization is crucial because individuals with developmental disabilities may not automatically transfer skills learned in one context to different settings or with different people."
         }
       ],
-      audioUrl: "/Audio/Improving Social Skills_ A Practical Guide (1).wav",
-      transcript: "In this audio lesson, we explore the principles and practices of person-centered planning for effective community inclusion. We discuss the core elements of the person-centered approach, various planning methods like MAPS and PATH, strategies for identifying natural community connections, and the essential role DSPs play in implementing person-centered plans that support meaningful community participation."
-    }
-  ]
-};
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//The%20Art%20of%20Social%20Connection%20(1).wav",
+      transcript: "This audio lesson covers the fundamentals of social skills development, including their importance, benefits, and effective teaching strategies. We explore the challenges faced by individuals with developmental disabilities and provide practical approaches for support professionals to facilitate social skill development in various settings."
+    },
+  ]}
