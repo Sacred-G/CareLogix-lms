@@ -15,29 +15,29 @@ import { getCertificateById } from '@/services/certificateService';
 const CertificatePage = () => {
   const { certificateId } = useParams<{ certificateId: string }>();
   const { user } = useAuth();
+  const userEmailDomain = user?.email?.split('@')[1] || '';
   const certificateRef = useRef<HTMLDivElement>(null);
 
   const { data: certificate, isLoading, error } = useQuery({
-    queryKey: ['certificate', certificateId],
+    queryKey: ['certificate', certificateId, user?.id],
     queryFn: async () => {
       if (!certificateId) {
         throw new Error('Certificate ID is required');
       }
       
-      const cert = await getCertificateById(certificateId);
-      
-      if (!cert) {
-        throw new Error('Certificate not found');
+      if (!user?.id) {
+        throw new Error('User not authenticated');
       }
       
-      // Security check: make sure the user owns this certificate
-      if (user && cert.userId !== user.id) {
-        throw new Error('Unauthorized');
+      const cert = await getCertificateById(certificateId, user.id);
+      
+      if (!cert) {
+        throw new Error('Certificate not found or access denied');
       }
       
       return cert;
     },
-    enabled: !!certificateId
+    enabled: !!certificateId && !!user?.id
   });
 
   const handlePrint = useReactToPrint({
