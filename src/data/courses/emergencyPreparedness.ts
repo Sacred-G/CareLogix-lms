@@ -8,14 +8,14 @@ export const emergencyPreparedness: Course = {
   category: "Safety",
   instructor: "Michael Torres, Emergency Response Specialist",
   thumbnail: "/Images/emergency.png", // If this image does not exist, use '/Images/Emergency.webp'
-  duration: "1 hour",
+  duration: "45 min",
   certificateAvailable: true,
   modules: [
     {
       id: "mod-1",
       title: "Personal Safety and Emergency Response Plans",
       description: "Learn how to create and implement effective emergency response plans for individuals with developmental disabilities.",
-      videoUrl: "https://youtu.be/HMiOpF22fjU",
+      videoUrl: "https://youtu.be/xfVR-FiFUHk",
       content: `
 # Personal Safety and Emergency Response Plans
 
@@ -197,7 +197,7 @@ Remember that preparation reduces panic. Regular practice of emergency procedure
           explanation: "Post-emergency emotional support addresses trauma, anxiety, and disruption that may occur after an emergency situation. It recognizes that the impact of emergencies continues beyond the immediate event and may require ongoing support and processing."
         }
       ],
-      audioUrl: "/Audio/Emergency Preparedness for Direct Support Staff.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Emergency%20and%20Crisis%20Preparedness%20for%20Support%20Staff.wav",
       transcript: "In this audio segment, we discuss the importance of personalized emergency planning for individuals with developmental disabilities. We cover how to assess individual needs, create comprehensive plans addressing evacuation, medical needs, and communication, and emphasize the importance of regular practice and updates."
     },
     {
@@ -406,8 +406,7 @@ Remember to customize go-kits for each individual's specific needs, and check co
           explanation: "Plans for power outages should include backup power sources (generators, battery backups, etc.) for essential medical equipment like oxygen concentrators, feeding pumps, or communication devices. This preparation can be life-saving for individuals dependent on powered medical equipment."
         }
       ],
-      audioUrl: "/Audio/Site Fire Emergency Procedures_ RACE and PASS.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Site%20Fire%20Emergency%20Procedures_%20RACE%20and%20PASS.wav",
       transcript: "This audio lesson covers specific procedures for handling fires and natural disasters while supporting individuals with developmental disabilities. We discuss prevention strategies, appropriate responses, and how to adapt emergency procedures for different needs. We also detail what should be included in emergency go-kits."
-    }
-  ]
-};
+    },
+  ]}

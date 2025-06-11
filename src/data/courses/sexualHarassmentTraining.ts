@@ -6,7 +6,7 @@ export const sexualHarassmentTrainingCourse: Course = {
   description: "Mandatory training for all employees on preventing sexual harassment in the workplace. Please select your role to begin.",
   category: "Compliance & Ethics",
   instructor: "HR Department",
-  thumbnail: "/Images/sexual.png", // Placeholder - ensure this image exists or update path
+  thumbnail: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/Images/sexual.png", // Placeholder - ensure this image exists or update path
   duration: "1-2 hours (depending on role)",
   certificateAvailable: true, // Assuming completion can be tracked or self-attested
   modules: [

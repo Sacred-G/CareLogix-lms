@@ -15,6 +15,37 @@ export const positiveBehaviorSupportCourse: Course = {
       title: "Understanding Behavior as Communication",
       description: "Learn how behavior serves as communication and how to identify underlying needs and triggers.",
       videoUrl: "https://youtu.be/6VjF3c47DRQ",
+      interactiveScenario: {
+        title: "Behavior Analysis Scenarios",
+        description: "Practice identifying the function of behavior in different scenarios.",
+        type: "behavior-analysis",
+        options: [
+          {
+            id: "scenario-1",
+            text: "The Lunch Room - Jamie starts throwing food when asked to eat vegetables",
+            isCorrect: true,
+            feedback: "Great job! In this scenario, Jamie is likely trying to avoid eating vegetables. This is a classic example of escape/avoidance behavior."
+          },
+          {
+            id: "scenario-2",
+            text: "Group Activity - Maria makes loud noises during challenging activities",
+            isCorrect: true,
+            feedback: "Excellent! Modifying the activity to match Maria's skill level helps prevent frustration and teaches her that she can be successful with appropriate support."
+          },
+          {
+            id: "scenario-3",
+            text: "Playground - Alex takes toys from others during recess",
+            isCorrect: false,
+            feedback: "This scenario demonstrates attention-seeking behavior. Let's think about how we can address this."
+          },
+          {
+            id: "scenario-4",
+            text: "Classroom - Taylor rocks back and forth during transitions",
+            isCorrect: false,
+            feedback: "This is an example of self-stimulatory behavior, often used for self-regulation."
+          }
+        ]
+      },
       content: `
 # Understanding Behavior as Communication
 
@@ -193,214 +224,10 @@ By understanding behavior as communication, we can respond in ways that address 
           explanation: "A person-centered approach considers the whole person, including their unique history, communication abilities, sensory needs, and environmental factors. This comprehensive view recognizes that behavior occurs within a complex context and is influenced by many factors specific to the individual."
         }
       ],
-      audioUrl: "/Audio/Guiding Behavior for Developmental Disabilities.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Guiding%20Behavior%20for%20Developmental%20Disabilities.wav",
       transcript: "This audio segment explores the concept of understanding behavior as communication. We discuss how behaviors serve specific functions for individuals, the importance of identifying triggers and patterns through ABC analysis, and how taking a person-centered approach helps us address underlying needs rather than just focusing on eliminating unwanted behaviors."
     },
-    {
-      id: "mod-2",
-      title: "Implementing Positive Behavior Support Strategies",
-      description: "Learn practical strategies for prevention, teaching alternatives, and responding effectively to challenging behaviors.",
-      pdfPath: '/pdfs/pbspdf1.pdf',
-      videoUrl: "https://youtu.be/46HukmJNOFY",
-      content: `
-# Implementing Positive Behavior Support Strategies
-
-Positive Behavior Support (PBS) is an evidence-based approach that focuses on understanding behaviors and implementing strategies that improve quality of life while decreasing challenging behaviors. This approach emphasizes prevention, teaching new skills, and making environmental modifications rather than simply reacting to behaviors.
-
-## Prevention Strategies
-
-The most effective behavior support involves preventing challenging behaviors before they occur. Prevention strategies include:
-
-### 1. Environmental Modifications
-
-- **Sensory Considerations:**
-  - Adjust lighting to reduce glare or intensity
-  - Provide noise-canceling headphones in loud environments
-  - Create quiet spaces for breaks from stimulation
-  - Offer sensory items that meet needs (fidgets, weighted items)
-  - Minimize visual clutter in living and working spaces
-
-- **Physical Arrangement:**
-  - Organize spaces for clear navigation and purpose
-  - Ensure comfortable seating and positioning
-  - Create areas for different types of activities
-  - Provide visual boundaries between spaces
-  - Consider proximity to others and personal space needs
-
-### 2. Schedule and Routine Support
-
-- **Predictable Routines:**
-  - Maintain consistent daily schedules when possible
-  - Prepare for transitions with warnings and supports
-  - Create visual schedules showing the sequence of activities
-  - Build in preferred activities throughout the day
-  - Ensure adequate downtime for processing and rest
-
-- **Balancing Activities:**
-  - Alternate demanding tasks with preferred activities
-  - Schedule challenging activities during optimal times of day
-  - Build in regular movement breaks
-  - Ensure activities match skill level and interest
-  - Provide choices within the schedule
-
-### 3. Relationship Building
-
-- **Positive Interactions:**
-  - Maintain a 4:1 ratio of positive to corrective interactions
-  - Engage in preferred activities together
-  - Show genuine interest in the person's perspective
-  - Respond to communication attempts promptly
-  - Take time to build rapport and trust
-
-- **Communication Support:**
-  - Use the person's preferred communication method
-  - Simplify language during stress or transitions
-  - Check for understanding before continuing
-  - Offer visual supports to supplement verbal information
-  - Honor all forms of communication (not just verbal)
-
-## Teaching Alternative Skills
-
-When challenging behaviors serve a communication purpose, teaching alternative skills is essential. Focus on:
-
-### 1. Functional Communication Training
-
-- Teach direct ways to communicate the same message as the challenging behavior
-- For attention-seeking behaviors, teach appropriate ways to request attention
-- For escape behaviors, teach ways to request breaks or help
-- For access behaviors, teach ways to request desired items or activities
-- Start with the simplest, most efficient communication method and build complexity gradually
-
-### 2. Coping and Self-Regulation Skills
-
-- Teach identification of emotional states (emotion vocabulary or visual scales)
-- Develop personalized calming strategies (deep breathing, counting, movement)
-- Create visual supports for self-regulation steps
-- Practice coping skills regularly, not just during distress
-- Develop self-advocacy skills for managing difficult situations
-
-### 3. Independence and Choice-Making
-
-- Teach skills that increase autonomy and reduce dependence
-- Break tasks into manageable steps with visual supports
-- Provide opportunities for meaningful choices throughout the day
-- Teach problem-solving strategies for common challenges
-- Build in opportunities for success and recognition
-
-## Responding to Challenging Behaviors
-
-When prevention isn't enough and behaviors do occur:
-
-### 1. In-the-Moment Strategies
-
-- **Stay Calm:**
-  - Maintain a neutral tone and expression
-  - Use minimal, clear language
-  - Focus on safety first
-  - Model the calm you wish to see
-  - Avoid power struggles or emotional reactions
-
-- **Redirect When Possible:**
-  - Offer alternatives that serve the same function
-  - Present high-interest activities or items
-  - Change environments if helpful
-  - Remind about available communication tools
-  - Use visual supports to redirect attention
-
-### 2. Consistent Responses
-
-- Ensure all team members respond similarly to behaviors
-- Focus responses on the function the behavior serves
-- Avoid inadvertently reinforcing challenging behaviors
-- Teach and reinforce alternative behaviors consistently
-- Document what works and what doesn't
-
-### 3. Post-Incident Support
-
-- Return to normal routines as soon as possible
-- Process what happened when everyone is calm (if appropriate)
-- Look for learning opportunities to prevent future incidents
-- Adjust support strategies based on new information
-- Emphasize moving forward, not dwelling on the incident
-
-## Creating Effective Behavior Support Plans
-
-A comprehensive PBS plan typically includes:
-
-1. **Clear description of the behavior** and its function based on assessment
-2. **Prevention strategies** tailored to the individual and environment
-3. **Teaching strategies** for alternative skills and coping mechanisms
-4. **Response strategies** for when behaviors do occur
-5. **Data collection methods** to monitor progress
-6. **Regular review and revision** based on outcomes
-
-Remember that PBS is not about controlling people but about understanding needs, teaching skills, and creating supportive environments that make challenging behaviors unnecessary.
-`,
-      questions: [
-        {
-          id: "q1-mod2",
-          question: "What is a key principle of Positive Behavior Support?",
-          options: [
-            "Using punishment to decrease unwanted behaviors", 
-            "Focusing primarily on the consequences after behaviors occur", 
-            "Emphasizing prevention, teaching new skills, and environmental modifications", 
-            "Separating individuals from others when they display challenging behaviors"
-          ],
-          correctAnswer: 2,
-          explanation: "A key principle of Positive Behavior Support is emphasizing prevention, teaching new skills, and making environmental modifications rather than simply reacting to behaviors after they occur. PBS is a proactive approach focused on understanding behavior and addressing underlying needs."
-        },
-        {
-          id: "q2-mod2",
-          question: "What is Functional Communication Training?",
-          options: [
-            "Teaching individuals to speak clearly and correctly", 
-            "Teaching appropriate ways to communicate the same message that a challenging behavior was communicating", 
-            "Training staff to understand what the person is saying", 
-            "A method to correct grammatical errors in speech"
-          ],
-          correctAnswer: 1,
-          explanation: "Functional Communication Training involves teaching appropriate ways to communicate the same message that a challenging behavior was communicating. For example, if hitting is used to communicate 'I need a break,' FCT would involve teaching the person to use words, pictures, or gestures to request a break instead."
-        },
-        {
-          id: "q3-mod2",
-          question: "Which of the following is an effective environmental modification that might prevent challenging behaviors?",
-          options: [
-            "Keeping the environment unpredictable to increase adaptability", 
-            "Ensuring all activities are challenging to promote growth", 
-            "Creating visual schedules and providing sensory supports based on individual needs", 
-            "Limiting choices to avoid overwhelming the person"
-          ],
-          correctAnswer: 2,
-          explanation: "Creating visual schedules and providing sensory supports based on individual needs are effective environmental modifications. These strategies help create predictability and address sensory needs that might otherwise lead to challenging behaviors."
-        },
-        {
-          id: "q4-mod2",
-          question: "What is an appropriate way to respond when a challenging behavior occurs?",
-          options: [
-            "Immediately provide a detailed lecture about why the behavior is inappropriate", 
-            "Stay calm, ensure safety, use minimal clear language, and redirect when possible", 
-            "Show your disappointment to help the person understand the impact of their behavior", 
-            "Immediately remove all privileges to discourage future occurrences"
-          ],
-          correctAnswer: 1,
-          explanation: "Staying calm, ensuring safety, using minimal clear language, and redirecting when possible is an appropriate response strategy. During moments of escalation, keeping communication simple and maintaining a calm presence helps de-escalate the situation rather than potentially intensifying it."
-        },
-        {
-          id: "q5-mod2",
-          question: "What is meant by a '4:1 ratio' in relationship building?",
-          options: [
-            "There should be 4 staff members for every 1 person supported", 
-            "For every corrective interaction, there should be at least 4 positive interactions", 
-            "Activities should be 4 parts work and 1 part leisure", 
-            "Communication should be 4 parts listening and 1 part speaking"
-          ],
-          correctAnswer: 1,
-          explanation: "A 4:1 ratio in relationship building means that for every corrective or directive interaction, there should be at least 4 positive interactions. This ratio helps maintain positive relationships and creates an environment where feedback is more likely to be well-received when needed."
-        }
-      ],
-      audioUrl: "/Audio/Positive Behavior Support Strategies.wav",
-      transcript: "This audio segment explores practical positive behavior support strategies, including preventative approaches, teaching alternative skills, and appropriate responses to challenging behaviors. We emphasize the importance of environmental modifications, consistent routines, relationship building, and teaching functional communication alternatives to challenging behaviors."
-    }
   ],
-  domain: 'general'
-};
+
+}
+  

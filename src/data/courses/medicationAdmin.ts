@@ -216,7 +216,7 @@ Remember: Medication errors are serious but reporting them promptly is essential
           explanation: "The 'right route' principle ensures that medications are delivered via the correct method of administration (e.g., oral, topical, sublingual). Using the wrong route can cause harm or reduce effectiveness of the medication."
         }
       ],
-      audioUrl: "/Audio/The Seven Rights of Medication Assistance.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//The%20Seven%20Rights%20of%20Medication%20Assistance%20(1).wav",
       transcript: "This audio segment covers the essential principles of medication safety, including the seven rights of medication administration, proper documentation requirements, and what to do if a medication error occurs. We emphasize the importance of following protocols and understanding your scope of practice.",
       interactiveScenario: {
         title: "Medication Administration Practice",
@@ -580,7 +580,7 @@ Remember: As a DSP, your role is to observe and report, not diagnose or adjust m
         }
       ],
       
-      audioUrl: "/Audio/DSP Medication Monitoring and Safety Guide.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//DSP%20Guide%20to%20Medication%20Side%20Effects%20(1).wav",
       transcript: "In this audio lesson, we discuss common medications prescribed for individuals with developmental disabilities, their uses, and potential side effects. We emphasize the importance of observation and reporting, and outline when side effects should prompt immediate medical attention."
     }
   ]

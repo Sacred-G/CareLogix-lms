@@ -8,6 +8,7 @@ export const trustRapportCourse: Course = {
   instructor: "Dr. Maya Williams, DSP-III",
   thumbnail: "/Images/b1c17745-26e5-4eba-bc1a-0d62a9716533.png",
   duration: "2 hours",
+  certificateAvailable: true,
   modules: [
     {
       id: "mod-1",
@@ -139,7 +140,7 @@ Remember that building trust and rapport takes time. Be patient, consistent, and
           explanation: "Understanding the individual's perspective is important because it shows that you value their experiences and emotions, which helps build trust and rapport."
         }
       ],
-      audioUrl: "/Audio/Building Trust, Rapport, and Boundaries in Support Work.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Building%20Trust,%20Rapport,%20and%20Boundaries%20in%20Support%20Work.wav",
       transcript: "This audio segment explores the foundations of building trust and rapport in support work. We discuss the importance of consistency, empathy, and positive interactions in establishing strong, supportive relationships. We also examine how shared activities and genuine interest help individuals see support professionals as allies rather than just staff."
     },
     {
@@ -159,10 +160,8 @@ Remember that building trust and rapport takes time. Be patient, consistent, and
 <p>If you have trouble viewing the module, please ensure your browser allows third-party cookies and that content from the source is not blocked. You may also need to try a different browser or check your internet connection.</p>
 `,
       questions: [],
-      audioUrl: "",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Building%20Trust,%20Rapport,%20and%20Boundaries%20in%20Support%20Work.wav",
       transcript: ""
     }
-  ],
-  certificateAvailable: true,
-  domain: ''
+  ]
 };

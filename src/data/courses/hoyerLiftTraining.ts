@@ -7,7 +7,7 @@ export const hoyerLiftTrainingCourse: Course = {
   category: "Patient Care Techniques",
   instructor: "Clinical Education Department",
   thumbnail: "/Images/hoyerllift.png", // Reminder: Add this image to your public/Images folder
-  duration: "Approx. 30 minutes",
+  duration: "Approx. 15 minutes",
   certificateAvailable: true,
   modules: [
     {

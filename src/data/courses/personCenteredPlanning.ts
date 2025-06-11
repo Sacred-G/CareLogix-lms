@@ -1,250 +1,181 @@
 import { Course } from '../courseTypes';
 
-export const personCenteredPlanningCourse: Course = {
-  id: "person-centered-planning",
-  title: "Person-Centered Planning",
-  description: "Learn to develop and implement effective person-centered plans that focus on individual strengths, preferences, and goals.",
-  category: "Core Skills",
-  instructor: "Steven Bouldi, SHRN-CP",
-  thumbnail: "/Images/personCenteredPlanning.png",
-  duration: "30 minutes",
+export const sirIncidentReportingCourse: Course = {
+  id: "sir-incident-reporting",
+  title: "SIR: Incident Reporting",
+  description: "Learn the essential procedures and best practices for documenting and reporting significant incidents in support settings.",
+  category: "Compliance & Safety",
+  instructor: "Steven Bouldin, SHRM-CP",
+  thumbnail: "/Images/incidentReporting.png",
+  duration: "45 minutes",
   modules: [
     {
       id: "mod-1",
-      title: "Introduction to Person-Centered Planning",
-      description: "Understand the fundamental principles and benefits of person-centered planning in support roles.",
-      videoUrl: "https://youtu.be/dQw4w9WgXcQ", // Replace with actual video URL
+      title: "Introduction to Incident Reporting",
+      description: "Understand the importance of proper incident reporting and the types of incidents that require documentation.",
+      videoUrl: "https://youtu.be/xiAQGNMf2MI",
       content: `
-# Introduction to Person-Centered Planning
+# Introduction to Incident Reporting
 
-Person-centered planning is an approach that places the individual at the heart of all decisions about their life and the support they receive. This module introduces the core concepts and benefits of this approach.
+Incident reporting is a critical component of providing quality support and ensuring the safety and well-being of individuals receiving services. This module covers the fundamentals of significant incident reporting (SIR) in support settings.
 
-## What is Person-Centered Planning?
+## What is a Significant Incident?
 
-Person-centered planning is a process that focuses on:
-- The individual's strengths and abilities
-- Their personal goals and aspirations
-- Building on existing relationships and community connections
-- Creating a vision for a meaningful life
+A significant incident is any event that:
+- Results in or has the potential to result in harm
+- Requires intervention or follow-up
+- Impacts the health, safety, or well-being of an individual
+- May require notification to external agencies
 
-## Why is it Important?
+## Why is Incident Reporting Important?
 
-- Promotes dignity and self-determination
-- Leads to more effective and meaningful support
-- Encourages community inclusion
-- Builds on individual strengths rather than focusing on limitations
-- Empowers individuals to take control of their lives
+- Ensures the safety and well-being of individuals
+- Helps identify patterns or trends in incidents
+- Supports continuous quality improvement
+- Meets regulatory and accreditation requirements
+- Documents important information for future reference
 
-## Core Principles
+## Types of Reportable Incidents
 
-1. **Individual Focus**: Every plan is unique to the person
-2. **Choice and Control**: The individual directs their own planning process
-3. **Strengths-Based**: Builds on abilities and existing supports
-4. **Community Inclusion**: Promotes participation in community life
-5. **Flexibility**: Adapts as the person's needs and goals evolve
+1. **Abuse/Neglect**: Physical, emotional, sexual, or financial
+2. **Medical Emergencies**: Hospitalizations, serious injuries
+3. **Behavioral Incidents**: Aggression, self-injury, elopement
+4. **Medication Errors**: Incorrect dosage, wrong medication
+5. **Property Damage**: Significant damage to property
+6. **Law Enforcement Involvement**: Arrests, citations, or investigations
+7. **Death**: Any death, regardless of cause
 
-## The Planning Process
+## The Incident Reporting Process
 
-1. **Discovery**: Learning about the person's history, preferences, and dreams
-2. **Visioning**: Creating a picture of a good life
-3. **Goal Setting**: Identifying specific, achievable objectives
-4. **Action Planning**: Determining steps to achieve goals
-5. **Implementation**: Putting the plan into action
-6. **Review and Update**: Regularly assessing and adjusting the plan
+1. **Immediate Response**: Ensure safety and provide necessary care
+2. **Documentation**: Complete the incident report form
+3. **Notification**: Inform appropriate personnel and agencies
+4. **Follow-up**: Conduct any necessary investigations
+5. **Prevention**: Implement strategies to prevent recurrence
 `,
-      pdfPath: '/pdfs/person-centered-planning-guide.pdf',
+      pdfPath: '/pdfs/incident-reporting-guide.pdf',
       questions: [
         {
           id: "q1-mod1",
-          question: "What is the primary focus of person-centered planning?",
+          question: "What is the primary purpose of incident reporting?",
           options: [
-            "Following organizational guidelines",
-            "The individual's strengths and goals",
-            "Standardized support approaches",
-            "Minimizing support costs"
+            "To assign blame for incidents",
+            "To ensure safety and improve quality of care",
+            "To create more paperwork",
+            "To avoid legal consequences"
           ],
           correctAnswer: 1,
-          explanation: "Person-centered planning focuses on the individual's unique strengths, goals, and preferences rather than applying standardized approaches."
+          explanation: "The primary purpose of incident reporting is to ensure the safety of individuals and improve the quality of care by identifying and addressing potential issues."
         },
         {
           id: "q2-mod1",
-          question: "Which of the following is NOT a core principle of person-centered planning?",
+          question: "Which of the following would NOT be considered a significant incident?",
           options: [
-            "Individual focus",
-            "Standardized approaches",
-            "Choice and control",
-            "Community inclusion"
+            "A minor bruise from a known medical condition",
+            "Physical altercation between individuals",
+            "Medication error requiring medical attention",
+            "Unexpected hospitalization"
           ],
-          correctAnswer: 1,
-          explanation: "Standardized approaches go against the principles of person-centered planning, which emphasizes individualization and flexibility."
+          correctAnswer: 0,
+          explanation: "A minor bruise from a known medical condition with no change in status would typically not be considered a significant incident unless it indicates a change in condition."
         },
         {
           id: "q3-mod1",
-          question: "What is the first step in the person-centered planning process?",
+          question: "What is the first step when an incident occurs?",
           options: [
-            "Goal setting",
-            "Discovery",
-            "Implementation",
-            "Review and update"
+            "Complete the paperwork",
+            "Ensure safety and provide care",
+            "Notify your supervisor",
+            "Document what happened"
           ],
           correctAnswer: 1,
-          explanation: "The discovery phase is the first step, where you learn about the person's history, preferences, and dreams."
+          explanation: "The first priority is always to ensure safety and provide any necessary care to those involved in the incident."
         },
         {
           id: "q4-mod1",
-          question: "Why is community inclusion important in person-centered planning?",
+          question: "Why is it important to report near-miss incidents?",
           options: [
-            "It reduces the need for professional support",
-            "It's required by most funding sources",
-            "It promotes meaningful relationships and opportunities",
-            "It's easier to implement than other approaches"
+            "They help identify potential risks before harm occurs",
+            "They are required by law",
+            "They help justify staffing levels",
+            "They are easier to document than actual incidents"
           ],
-          correctAnswer: 2,
-          explanation: "Community inclusion is important because it helps individuals build meaningful relationships and access opportunities that enrich their lives."
+          correctAnswer: 0,
+          explanation: "Reporting near-miss incidents helps identify potential risks and implement preventive measures before actual harm occurs."
         },
         {
           id: "q5-mod1",
-          question: "How often should person-centered plans be reviewed?",
+          question: "What information should be included in an incident report?",
           options: [
-            "Only when there's a problem",
-            "Annually, at minimum",
-            "Regularly and as needed",
-            "Never, once they're created"
+            "Only the facts of what happened",
+            "Only the staff member's opinion of what occurred",
+            "A detailed account including who, what, when, where, and how",
+            "Only information that makes the organization look good"
           ],
           correctAnswer: 2,
-          explanation: "Person-centered plans should be living documents that are reviewed regularly and adjusted as the person's needs, goals, or circumstances change."
+          explanation: "An incident report should include a detailed, factual account of the incident, including who was involved, what happened, when and where it occurred, and how it happened."
         }
       ],
-      audioUrl: "/Audio/person-centered-intro.wav",
-      transcript: "This audio segment introduces the fundamentals of person-centered planning, including its core principles and benefits. We'll explore how this approach differs from traditional planning methods and why it's so effective in supporting individuals to live meaningful lives."
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/incident-reporting-intro.wav",
+      transcript: "This audio segment introduces the fundamentals of incident reporting, including what constitutes a reportable incident, why reporting is crucial, and the different types of incidents that require documentation. We'll also cover the basic steps in the incident reporting process."
     },
     {
       id: "mod-2",
-      title: "Implementing Person-Centered Plans",
-      description: "Learn practical strategies for developing and implementing effective person-centered plans.",
-      videoUrl: "https://youtu.be/example2", // Replace with actual video URL
+      title: "SIR Training Module",
+      description: "Interactive SCORM module for comprehensive SIR training",
       content: `
-# Implementing Person-Centered Plans
+# SIR Training Module
 
-This module focuses on the practical aspects of creating and implementing person-centered plans that truly reflect the individual's goals and preferences.
+This interactive SCORM module provides comprehensive training on Significant Incident Reporting (SIR). The module covers all essential aspects of incident reporting through engaging multimedia content and interactive exercises.
 
-## The Discovery Process
+## What to Expect
 
-### Key Components:
-- Life history and experiences
-- Personal preferences and interests
-- Strengths and abilities
-- Relationships and support networks
-- Hopes and dreams for the future
+- Interactive lessons on incident reporting procedures
+- Real-world scenarios for practical application
+- Knowledge checks to reinforce learning
+- Certificate of completion upon successful module completion
 
-### Discovery Methods:
-- One-on-one conversations
-- Life mapping
-- Relationship mapping
-- Personal profile development
-- Observing in different settings
+## How to Use This Module
 
-## Creating the Plan
+1. Click the "Launch SCORM Module" button below to begin
+2. Progress through the module at your own pace
+3. Complete all interactive elements and knowledge checks
+4. Complete the final assessment to demonstrate your understanding
 
-### Essential Elements:
-1. **Personal Profile**
-   - Who is this person?
-   - What's important to them?
-   - How do they communicate?
-   - What are their strengths?
+## Technical Requirements
 
-2. **Vision Statement**
-   - What does a good life look like for this person?
-   - Short-term and long-term goals
-
-3. **Action Plan**
-   - Specific, measurable steps
-   - Person responsible for each step
-   - Timeline for completion
-   - Resources needed
-
-## Implementation Strategies
-
-- Start small with achievable goals
-- Build on existing strengths and relationships
-- Be flexible and adapt as needed
-- Celebrate successes along the way
-- Document progress and adjust the plan as needed
-
-## Common Challenges and Solutions
-
-| Challenge | Solution |
-|-----------|----------|
-| Resistance to change | Start with small, meaningful changes |
-| Limited resources | Identify natural supports in the community |
-| Conflicting opinions | Focus on the individual's preferences |
-| Lack of follow-through | Assign clear responsibilities and timelines |
+- Modern web browser (Chrome, Firefox, Edge, or Safari)
+- Stable internet connection
+- JavaScript enabled
+- Pop-up blockers disabled for this site
 `,
-      pdfPath: '/pdfs/implementing-person-centered-plans.pdf',
       questions: [
         {
           id: "q1-mod2",
-          question: "What is the purpose of the discovery process?",
+          question: "What is the primary purpose of the SCORM training module?",
           options: [
-            "To identify the person's limitations",
-            "To learn about the person's history, preferences, and dreams",
-            "To determine cost-saving measures",
-            "To assign support staff"
+            "To replace all other training methods",
+            "To provide interactive, standardized training on SIR procedures",
+            "To test your computer skills",
+            "To collect personal information"
           ],
           correctAnswer: 1,
-          explanation: "The discovery process is about understanding the whole person - their history, preferences, dreams, and what matters most to them."
+          explanation: "The SCORM module provides interactive, standardized training on Significant Incident Reporting procedures, enhancing understanding through multimedia content and interactive exercises."
         },
         {
           id: "q2-mod2",
-          question: "Which of the following is NOT typically included in a personal profile?",
+          question: "What should you do if you experience technical issues with the SCORM module?",
           options: [
-            "Medical history",
-            "Personal preferences",
-            "Communication style",
-            "Budget details"
-          ],
-          correctAnswer: 3,
-          explanation: "While financial considerations might be part of the overall plan, budget details are not typically included in the personal profile, which focuses on the individual's identity, preferences, and communication."
-        },
-        {
-          id: "q3-mod2",
-          question: "What is the benefit of starting with small, achievable goals?",
-          options: [
-            "It requires less documentation",
-            "It builds confidence and momentum",
-            "It's easier to get funding for small goals",
-            "Small goals don't need to be reviewed"
+            "Skip the training entirely",
+            "Try refreshing the page or using a different browser",
+            "Complete the training on a mobile device only",
+            "Ignore the issues and continue"
           ],
           correctAnswer: 1,
-          explanation: "Starting with small, achievable goals helps build confidence and momentum, making it more likely that the individual will stay engaged in the planning process."
-        },
-        {
-          id: "q4-mod2",
-          question: "Why is it important to identify natural supports in the community?",
-          options: [
-            "It reduces the need for professional staff",
-            "It helps create sustainable, meaningful relationships",
-            "It's required by most funding sources",
-            "It's easier than developing formal support systems"
-          ],
-          correctAnswer: 1,
-          explanation: "Natural supports help create sustainable, meaningful relationships that aren't dependent on paid staff, leading to more authentic community inclusion."
-        },
-        {
-          id: "q5-mod2",
-          question: "What should you do if there are conflicting opinions about the plan?",
-          options: [
-            "Let the highest-ranking professional decide",
-            "Focus on the individual's preferences",
-            "Create a compromise that pleases everyone",
-            "Put the plan on hold until there's agreement"
-          ],
-          correctAnswer: 1,
-          explanation: "When there are conflicting opinions, the focus should always return to the individual's preferences and what matters most to them."
+          explanation: "If you experience technical issues, try refreshing the page, clearing your browser cache, or using a different browser. If problems persist, contact technical support."
         }
       ],
-      audioUrl: "/Audio/implementing-plans.wav",
-      transcript: "In this segment, we'll explore practical strategies for implementing person-centered plans. We'll discuss the discovery process, creating effective action plans, and overcoming common challenges in the implementation phase."
+      customModuleType: 'scorm'
     }
   ]
 };

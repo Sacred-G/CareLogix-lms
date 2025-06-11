@@ -8,7 +8,7 @@ export const introDevDisabilitiesCourse: Course = {
   category: "Fundamentals",
   instructor: "Dr. Sarah Johnson",
   thumbnail: "/Images/DD2.png",
-  duration: "30 min",
+  duration: "45 min",
   modules: [
     {
       id: "mod-1",
@@ -226,7 +226,7 @@ Remember that each person is unique, regardless of disability. Your role is to p
           explanation: "The best approach is to adapt your communication style to meet the individual's specific needs and abilities. This might mean using simple language for some, visual supports for others, or typical adult communication for many individuals with developmental disabilities."
         }
       ],
-      audioUrl: "/Audio/css/Becoming a Direct Support Professional.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//DSPs_%20Supporting%20Developmental%20Disabilities.wav",
       transcript: "In this audio segment, we discuss the various types of developmental disabilities and the importance of understanding each individual's unique needs and abilities. We emphasize the person-first approach and how to recognize strengths alongside support needs.",
       faqs: [
         {
