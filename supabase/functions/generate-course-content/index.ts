@@ -2,7 +2,7 @@
 /// <reference lib="deno.ns" />
 /// <reference lib="deno.window" />
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
-import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.220.0/http/server.ts";
 
 // Supabase Edge Function for generating course content
 const openAIApiKey = Deno.env.get('OPENAI_API_KEY');

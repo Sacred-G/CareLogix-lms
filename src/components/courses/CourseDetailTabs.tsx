@@ -244,7 +244,7 @@ const CourseDetailTabs = ({
     <div className="container px-4 py-8">
       <div className="bg-card border rounded-lg overflow-hidden shadow-lg">
         {/* Module Navigation */}
-        <div className="flex items-center justify-between bg-muted p-4 border-b">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between bg-muted p-4 border-b">
           <Button 
             variant="outline" 
             onClick={goToPrevModule} 
@@ -255,7 +255,7 @@ const CourseDetailTabs = ({
             Previous Module
           </Button>
           
-          <h2 className="text-lg font-semibold hidden md:block">
+          <h2 className="text-base font-semibold text-center break-words max-w-xs w-full mx-auto sm:text-lg hidden md:block">
             Module {activeModuleIndex + 1}: {currentModule.title}
           </h2>
           
@@ -271,7 +271,7 @@ const CourseDetailTabs = ({
         </div>
 
         {/* Mobile Module Title */}
-        <h2 className="text-lg font-semibold p-4 md:hidden">
+        <h2 className="text-base font-semibold p-4 md:hidden text-center break-words max-w-xs w-full mx-auto">
           Module {activeModuleIndex + 1}: {currentModule.title}
         </h2>
         
@@ -285,7 +285,7 @@ const CourseDetailTabs = ({
         </div>
         
         {/* Module Navigation Footer */}
-        <div className="flex items-center justify-between p-4 border-t bg-muted/30">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between p-4 border-t bg-muted/30">
           <Button 
             variant="outline" 
             onClick={goToPrevModule} 
@@ -297,7 +297,7 @@ const CourseDetailTabs = ({
             Previous
           </Button>
           
-          <div className="flex items-center">
+          <div className="flex flex-col items-center gap-1 sm:flex-row sm:gap-2">
             <span className="text-sm text-muted-foreground">
               Module {activeModuleIndex + 1} of {course.modules.length}
             </span>

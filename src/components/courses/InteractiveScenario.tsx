@@ -47,7 +47,7 @@ interface BranchingContent {
 interface BranchingScenario {
   title: string;
   description: string;
-  type: 'multiple-choice' | 'dialogue' | 'mindmap';
+  type: 'multiple-choice' | 'dialogue' | 'mindmap' | 'behavior-analysis';
   content?: BranchingContent;
   options?: any[];
   mindmapType?: string;

@@ -19,7 +19,6 @@ const generateCourseUUIDs = () => {
     'emergency-preparedness',
     'documentation-visits',
     'boundaries-ethics',
-    'personal-care-dignity',
     'community-inclusion',
     'scenario-practice',
     'transportation',

@@ -29,6 +29,14 @@ export const directScormModules: DirectScormModule[] = [
     moduleId: 'mod-1'  // First module in Communication and Empathy course
   },
   {
+    id: 'scorm-sir-training',
+    title: 'SIR Training Module',
+    description: 'Interactive SCORM module for comprehensive SIR training',
+    path: 'https://scorm-neon.vercel.app/SIR%20Training/training.htm',
+    courseId: 'sir-incident-reporting',
+    moduleId: 'mod-2'  // Second module in SIR Incident Reporting course
+  },
+  {
     id: 'scorm-medication',
     title: 'Medication Administration',
     description: 'Interactive training on safe medication administration practices',
@@ -37,12 +45,28 @@ export const directScormModules: DirectScormModule[] = [
     moduleId: 'mod-1'  // First module in Medication Administration course
   },
   {
+    id: 'scorm-boundaries',
+    title: 'Professional Boundaries in Support Work',
+    description: 'Interactive training on maintaining professional boundaries in direct support work',
+    path: 'https://scorm-neon.vercel.app/Core%20Support%20Skills/training.htm',
+    courseId: 'boundaries-ethics',
+    moduleId: 'mod-1'  // First module in Professional Boundaries and Ethics course
+  },
+  {
     id: 'scorm-transport',
     title: 'Transportation Safety & Procedures',
     description: 'Interactive training on transportation safety for support professionals',
     path: 'https://scorm-neon.vercel.app/Transportation%20Safety%20&%20Procedures%202/training.htm',
     courseId: 'transportation',
     moduleId: 'mod-1'  // First module in Transportation course
+  },
+  {
+    id: 'scorm-pbs',
+    title: 'Positive Behavior Support',
+    description: 'Interactive training on positive behavior support strategies',
+    path: 'https://scorm-neon.vercel.app/Positive%20Behavior%20Support%20(1)/training.htm',
+    courseId: 'positive-behavior-support',
+    moduleId: 'mod-1'  // First module in Positive Behavior Support course
   },
   {
     id: 'scorm-documentation',
@@ -76,6 +100,22 @@ export const directScormModules: DirectScormModule[] = [
     path: 'https://scorm-neon.vercel.app/Core%20Support%20Skills/training.htm',
     courseId: 'core-skills',
     moduleId: 'mod-1'  // Moved to its own course
+  },
+  {
+    id: 'scorm-positive-behavior',
+    title: 'Positive Behavior Support Strategies',
+    description: 'Interactive training on implementing positive behavior support strategies',
+    path: 'https://scorm-neon.vercel.app/Positive%20Behavior%20Support%20Strategies/training.htm',
+    courseId: 'positive-behavior-support',
+    moduleId: 'mod-3'  // Third module in Positive Behavior Support course
+  },
+  {
+    id: 'scorm-emergency-preparedness',
+    title: 'Emergency Preparedness',
+    description: 'Interactive training on emergency preparedness and response procedures',
+    path: 'https://scorm-neon.vercel.app/Emergency%20Preparedness/training.htm',
+    courseId: 'emergency-preparedness',
+    moduleId: 'mod-3'  // Third module in Emergency Preparedness course
   }
   // Additional modules can be added here if needed
 ];

@@ -14,44 +14,62 @@ function useAdminData() {
   const { data: adminType, isLoading: loadingAdminType } = useQuery({
     queryKey: ['admin-type', user?.id],
     queryFn: async () => {
-      if (!user) return null;
-      
-      // For now, use the is_admin function which exists
-      // When you implement the SQL functions, these can be uncommented
-      /* 
-      const { data: isSuperAdmin, error: superAdminError } = await supabase.rpc('is_super_admin');
-      if (superAdminError) console.error('Error checking super admin status:', superAdminError);
-      if (isSuperAdmin) return 'super_admin';
-      
-      const { data: isDomainAdmin, error: domainAdminError } = await supabase.rpc('is_domain_admin');
-      if (domainAdminError) console.error('Error checking domain admin status:', domainAdminError);
-      if (isDomainAdmin) return 'domain_admin';
-      */
+      console.log('[DEBUG] Checking admin type for user:', user?.id);
+      if (!user) {
+        console.log('[DEBUG] No user, returning null');
+        return null;
+      }
       
       // Temporary solution until the custom RPC functions are created
+      console.log('[DEBUG] Checking is_admin RPC');
       const { data: isAdmin, error: adminError } = await supabase.rpc('is_admin');
-      if (adminError) console.error('Error checking admin status:', adminError);
+      
+      if (adminError) {
+        console.error('[ERROR] Error checking admin status:', adminError);
+      } else {
+        console.log('[DEBUG] is_admin result:', isAdmin);
+      }
       
       if (isAdmin) {
-        // Super admin check based on email
-        if (user.email === 'admin@example.com') {
-          return 'super_admin';
-        }
+        console.log(`[DEBUG] User is an admin, checking type for email: ${user.email}`);
         
-        // Check if the user is a domain admin
-        const { data: profile } = await supabase
+        console.log('[DEBUG] Fetching user profile to check role');
+        const { data: profile, error: profileError } = await supabase
           .from('profiles')
-          .select('role')
+          .select('role, email_domain')
           .eq('id', user.id)
           .single();
           
+        if (profileError) {
+          console.error('[ERROR] Error fetching profile:', profileError);
+          return null;
+        }
+        
+        console.log('[DEBUG] User profile:', { role: profile?.role, email: user.email });
+          
+        // Check role from profile first, then fall back to email check
+        if (profile?.role === 'super_admin') {
+          console.log('[DEBUG] User is super admin (from profile role)');
+          return 'super_admin';
+        }
+        
+        // Legacy super admin check (can be removed later)
+        if (user.email === 'admin@example.com') {
+          console.log('[DEBUG] User is super admin (from email)');
+          return 'super_admin';
+        }
+        
         if (profile?.role === 'domain_admin') {
+          console.log('[DEBUG] User is domain admin');
           return 'domain_admin';
         }
         
+        // Default to regular admin if they have the admin role but no specific admin type
+        console.log('[DEBUG] User is regular admin');
         return 'admin';
       }
       
+      console.log('[DEBUG] User is not an admin');
       return null;
     },
     enabled: !!user
@@ -118,86 +136,146 @@ function useAdminData() {
     enabled: !!user && !!adminType
   });
 
-  // Fetch profiles based on admin level
+  // Fetch profiles based on admin level with domain isolation
   const { data: profiles, isLoading: loadingProfiles, refetch: refreshProfiles } = useQuery({
-    queryKey: ['admin-profiles', adminType, managedDomains],
+    queryKey: ['admin-profiles', adminType, user?.id],
     queryFn: async () => {
-      if (!adminType) return [];
+      console.log('[DEBUG] Fetching profiles with adminType:', adminType);
       
-      console.log('Fetching profiles with admin type:', adminType);
-      console.log('Managed domains:', managedDomains);
-      
-      // First try a direct database query to get all profiles
-      // This is just for debugging purposes
-      try {
-        const directQuery = await supabase.from('profiles').select('*');
-        console.log('DEBUG - Direct query found profiles:', directQuery.data?.length || 0);
-        console.log('DEBUG - First few profiles:', directQuery.data?.slice(0, 3));
-        console.log('DEBUG - All profiles IDs:', directQuery.data?.map(p => p.id));
-        if (directQuery.error) {
-          console.error('DEBUG - Direct query error:', directQuery.error);
-        }
-      } catch (e) {
-        console.error('DEBUG - Direct query error:', e);
+      if (!adminType || !user?.id) {
+        console.log('[DEBUG] Missing adminType or user ID');
+        return [];
       }
       
-      let query = supabase.from('profiles').select('*').order('full_name');
+      // Get the current admin's profile
+      console.log('[DEBUG] Fetching admin profile for user ID:', user.id);
       
-      // Super admin can see all profiles
-      // Domain admin can only see profiles in their managed domains
-      if (adminType === 'domain_admin' && managedDomains?.length) {
-        query = query.in('email_domain', managedDomains);
+      // Get the profile with email_domain
+      const { data: adminProfile, error: profileError } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+        
+      if (profileError || !adminProfile) {
+        console.error('[ERROR] Error fetching admin profile:', profileError);
+        return [];
       }
       
+      // Extract domain from user's email
+      const extractDomain = (email: string): string | null => {
+        if (!email) return null;
+        const parts = email.split('@');
+        return parts.length === 2 ? parts[1].toLowerCase() : null;
+      };
+      
+      const adminEmail = user.email || '';
+      const adminDomain = extractDomain(adminEmail) || '';
+      
+      console.log('[DEBUG] Admin profile:', {
+        id: adminProfile.id,
+        email: adminEmail,
+        email_domain: adminDomain,
+        role: adminProfile.role,
+        adminType
+      });
+      
+      // Base query with required fields
+      let query = supabase
+        .from('profiles')
+        .select('*')
+        .order('full_name');
+      
+      // Apply domain filtering based on admin type
+      if (adminType === 'super_admin') {
+        console.log(`[DEBUG] Super admin - showing all profiles in domain: ${adminDomain}`);
+        // Super admin can see all profiles in their domain
+        query = query.eq('email_domain', adminDomain);
+      } else if (adminType === 'domain_admin') {
+        console.log(`[DEBUG] Domain admin - showing all non-admin users in domain: ${adminDomain}`);
+        // Domain admin can see all non-admin users in their domain
+        query = query
+          .eq('email_domain', adminDomain)
+          .or(`role.eq.student,role.eq.null`);
+      } else if (adminType === 'admin') {
+        console.log(`[DEBUG] Regular admin - showing students in domain: ${adminDomain}`);
+        // Regular admin can only see students in their domain
+        query = query
+          .eq('email_domain', adminDomain)
+          .eq('role', 'student');
+      } else {
+        // No access if none of the above conditions are met
+        console.warn('[WARN] Insufficient permissions to view profiles', { adminType, adminDomain });
+        return [];
+      }
+      
+      console.log('[DEBUG] Executing profiles query...');
       const { data, error } = await query;
       
       if (error) {
-        console.error('Error fetching profiles:', error);
+        console.error('[ERROR] Error fetching profiles:', error);
         throw error;
       }
       
-      console.log('Fetched profiles count:', data?.length || 0);
+      console.log(`[DEBUG] Found ${data?.length || 0} profiles before filtering`);
       
+      // Return the filtered results directly since we're doing filtering at the database level
+      console.log(`[DEBUG] Returning ${data?.length || 0} profiles after filtering`);
       return data || [];
     },
-    enabled: !!adminType && !loadingAdminType && !loadingDomains
+    enabled: !!adminType && !!user?.id && !loadingAdminType
   });
 
   // Check if current admin can manage a specific user
   const canManageUser = async (targetUserId: string): Promise<boolean> => {
-    if (adminType === 'super_admin') return true;
-    
-    // Temporary implementation until the can_manage_user RPC function is created
-    if (!managedDomains?.length) return false;
-    
-    // Get target user's domain
-    const { data: targetUser, error } = await supabase
-      .from('profiles')
-      .select('email_domain, role')
-      .eq('id', targetUserId)
-      .single();
+    try {
+      if (!user?.id) return false;
       
-    if (error) {
-      console.error('Error fetching target user:', error);
+      // Super admin can manage everyone
+      if (adminType === 'super_admin') return true;
+      
+      // Get the current admin's profile
+      const { data: adminProfile, error: adminError } = await supabase
+        .from('profiles')
+        .select('email_domain, role')
+        .eq('id', user.id)
+        .single();
+        
+      if (adminError || !adminProfile) {
+        console.error('Error fetching admin profile:', adminError);
+        return false;
+      }
+      
+      // Get target user's profile
+      const { data: targetUser, error: targetError } = await supabase
+        .from('profiles')
+        .select('email_domain, role')
+        .eq('id', targetUserId)
+        .single();
+        
+      if (targetError || !targetUser) {
+        console.error('Error fetching target user:', targetError);
+        return false;
+      }
+      
+      // Domain admins can only manage users in their domain and only non-admin users
+      if (adminType === 'domain_admin') {
+        return targetUser.email_domain === adminProfile.email_domain &&
+               targetUser.role !== 'super_admin' && 
+               targetUser.role !== 'domain_admin';
+      }
+      
+      // Regular admins can only manage students in their domain
+      if (adminType === 'admin') {
+        return targetUser.email_domain === adminProfile.email_domain &&
+               targetUser.role === 'student';
+      }
+      
+      return false;
+    } catch (error) {
+      console.error('Error in canManageUser:', error);
       return false;
     }
-    
-    // Domain admins can only manage users in their domains and only non-admin users
-    if (adminType === 'domain_admin') {
-      return targetUser.email_domain && 
-             managedDomains.includes(targetUser.email_domain) &&
-             targetUser.role !== 'super_admin' && 
-             targetUser.role !== 'domain_admin';
-    }
-    
-    // Regular admins can only manage students in their domain
-    if (adminType === 'admin') {
-      return targetUser.email_domain && 
-             managedDomains.includes(targetUser.email_domain) &&
-             targetUser.role === 'student';
-    }
-    
-    return false;
   };
   
   // Create new user (admin only)
@@ -409,42 +487,157 @@ function useAdminData() {
   
   // Get domain statistics
   const { data: domainStats, isLoading: loadingDomainStats } = useQuery({
-    queryKey: ['domain-stats', adminType, managedDomains],
+    queryKey: ['domain-stats', adminType, user?.id, allDomains, managedDomains],
     queryFn: async () => {
-      if (!adminType) return [];
+      console.log('[DEBUG] Fetching domain stats with:', {
+        adminType,
+        userEmail: user?.email,
+        allDomains,
+        managedDomains
+      });
       
-      const domains = adminType === 'super_admin' ? allDomains : managedDomains;
-      if (!domains || domains.length === 0) return [];
+      if (!adminType || !user?.email) {
+        console.log('[DEBUG] Missing adminType or user email');
+        return [];
+      }
+      
+      // Extract admin's domain from email
+      const adminDomain = user.email.split('@')[1]?.toLowerCase();
+      if (!adminDomain) {
+        console.log('[DEBUG] Could not extract domain from email:', user.email);
+        return [];
+      }
+      
+      // Determine which domains this admin can see
+      let domains: string[] = [];
+      
+      if (adminType === 'super_admin') {
+        // Super admins see all domains from allDomains
+        domains = allDomains || [];
+        console.log('[DEBUG] Super admin - showing all domains:', domains);
+      } else if (adminType === 'domain_admin') {
+        // Domain admins see their own domain and any explicitly managed domains
+        domains = [adminDomain, ...(managedDomains || [])].filter(Boolean);
+        console.log('[DEBUG] Domain admin - showing domains:', domains, 'managedDomains:', managedDomains);
+      } else {
+        // Regular admins only see their own domain
+        domains = [adminDomain];
+        console.log('[DEBUG] Regular admin - showing only domain:', domains);
+      }
+      
+      // Remove duplicates and filter out any empty/undefined domains
+      domains = [...new Set(domains)].filter(Boolean);
+      
+      console.log('[DEBUG] Final domains to fetch stats for:', domains);
+      if (domains.length === 0) {
+        console.log('[DEBUG] No domains to fetch stats for');
+        return [];
+      }
+      
+      console.log('[DEBUG] Fetching stats for domains:', domains);
       
       const stats = await Promise.all(domains.map(async (domain) => {
-        // Get user count for domain
-        const { data: users, error: usersError } = await supabase
-          .from('profiles')
-          .select('id, role')
-          .eq('email_domain', domain);
-        
-        if (usersError) {
-          console.error(`Error fetching users for domain ${domain}:`, usersError);
+        console.log(`[DEBUG] Processing domain: ${domain}`);
+        try {
+          // Get user count for domain with proper role filtering based on admin type
+          let userQuery = supabase
+            .from('profiles')
+            .select('id, role, email_domain', { count: 'exact' })
+            .eq('email_domain', domain);
+          
+          console.log(`[DEBUG] User query for domain ${domain}:`, userQuery);
+          
+          // Apply role filtering based on admin type
+          if (adminType === 'domain_admin') {
+            userQuery = userQuery.not('role', 'in', '("super_admin","domain_admin","admin")');
+            console.log(`[DEBUG] Applied domain_admin filter to query`);
+          } else if (adminType === 'admin') {
+            userQuery = userQuery.eq('role', 'student');
+            console.log(`[DEBUG] Applied regular admin filter to query`);
+          }
+          
+          const { data: users, error: usersError, count: userCount } = await userQuery;
+          
+          console.log(`[DEBUG] Users for domain ${domain}:`, {
+            count: userCount,
+            error: usersError,
+            users: users?.map(u => ({ id: u.id, role: u.role, email_domain: u.email_domain }))
+          });
+          
+          if (usersError) {
+            console.error(`Error fetching users for domain ${domain}:`, usersError);
+            return null;
+          }
+          
+          // Get enrollment count for domain with proper filtering
+          let enrollmentQuery = supabase
+            .from('enrollments')
+            .select('id, user_id, profiles!inner(email_domain)', { count: 'exact' })
+            .eq('profiles.email_domain', domain);
+            
+          console.log(`[DEBUG] Enrollment query for domain ${domain}:`, enrollmentQuery);
+          
+          // If we have users, filter enrollments by those users
+          if (users && users.length > 0) {
+            enrollmentQuery = enrollmentQuery.in('user_id', users.map(u => u.id));
+            console.log(`[DEBUG] Filtering enrollments by ${users.length} users`);
+          } else {
+            console.log(`[DEBUG] No users found for domain ${domain}, checking for any users in domain`);
+            // If no users, we'll need to get enrollments for the domain
+            const { data: domainUsers } = await supabase
+              .from('profiles')
+              .select('id')
+              .eq('email_domain', domain);
+              
+            console.log(`[DEBUG] Found ${domainUsers?.length || 0} users in domain ${domain}`);
+            
+            if (domainUsers && domainUsers.length > 0) {
+              enrollmentQuery = enrollmentQuery.in('user_id', domainUsers.map(u => u.id));
+              console.log(`[DEBUG] Filtering enrollments by ${domainUsers.length} domain users`);
+            } else {
+              // No users in domain, so no enrollments
+              console.log(`[DEBUG] No users found in domain ${domain}, returning empty stats`);
+              return {
+                domain,
+                userCount: 0,
+                adminCount: 0,
+                enrollmentCount: 0,
+                completionRate: 0
+              };
+            }
+          }
+          
+          const { count: enrollmentCount = 0, error: enrollmentError } = await enrollmentQuery;
+          
+          if (enrollmentError) {
+            console.error(`Error fetching enrollments for domain ${domain}:`, enrollmentError);
+          }
+          
+          // Calculate admin count based on admin type
+          let adminCount = 0;
+          if (users) {
+            if (adminType === 'super_admin') {
+              adminCount = users.filter(u => u.role === 'super_admin').length;
+            } else if (adminType === 'domain_admin') {
+              // Domain admins can see all non-admin users in their domain
+              adminCount = users.filter(u => u.role === 'admin').length;
+            } else {
+              // Regular admins only see students, so no admins in their view
+              adminCount = 0;
+            }
+          }
+          
+          return {
+            domain,
+            userCount: userCount || 0,
+            adminCount,
+            enrollmentCount: enrollmentCount || 0,
+            completionRate: 0 // Would need more complex query to calculate this
+          };
+        } catch (error) {
+          console.error(`Error processing domain ${domain}:`, error);
           return null;
         }
-        
-        // Get enrollment count for domain
-        const { count: enrollmentCount, error: enrollmentError } = await supabase
-          .from('enrollments')
-          .select('id', { count: 'exact' })
-          .in('user_id', users.map(u => u.id));
-        
-        if (enrollmentError) {
-          console.error(`Error fetching enrollments for domain ${domain}:`, enrollmentError);
-        }
-        
-        return {
-          domain,
-          userCount: users.length,
-          adminCount: users.filter(u => u.role !== 'student').length,
-          enrollmentCount: enrollmentCount || 0,
-          completionRate: 0 // Would need more complex query to calculate this
-        };
       }));
       
       return stats.filter(Boolean) as DomainStats[];
@@ -452,26 +645,78 @@ function useAdminData() {
     enabled: !!adminType && !!allDomains && !loadingAllDomains
   });
 
-  // Fetch all enrollments with course info
+  // Fetch enrollments with domain filtering
   const { data: enrollments, isLoading: loadingEnrollments } = useQuery({
-    queryKey: ['admin-enrollments'],
+    queryKey: ['admin-enrollments', adminType, user?.id],
     queryFn: async () => {
+      console.log('[DEBUG] Fetching enrollments with domain filtering');
+      
+      if (!user?.email) {
+        console.log('[DEBUG] No user email found');
+        return [];
+      }
+      
+      // Extract domain from user's email
+      const domain = user.email.split('@')[1]?.toLowerCase();
+      if (!domain) {
+        console.log('[DEBUG] Could not extract domain from email:', user.email);
+        return [];
+      }
+      
+      console.log(`[DEBUG] Fetching enrollments for domain: ${domain}`);
+      
+      // First, get users in this domain
+      const { data: domainUsers, error: usersError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('email_domain', domain);
+      
+      if (usersError) {
+        console.error('Error fetching domain users:', usersError);
+        return [];
+      }
+      
+      if (!domainUsers || domainUsers.length === 0) {
+        console.log(`[DEBUG] No users found in domain: ${domain}`);
+        return [];
+      }
+      
+      const userIds = domainUsers.map(user => user.id);
+      console.log(`[DEBUG] Found ${userIds.length} users in domain`);
+      
+      // Then fetch enrollments for these users
       const { data, error } = await supabase
         .from('enrollments')
         .select(`
           *,
-          profiles:user_id(id, full_name),
+          profiles:user_id(id, full_name, email_domain),
           courses:course_id(id, title)
         `)
+        .in('user_id', userIds)
         .order('created_at', { ascending: false });
       
       if (error) {
         console.error('Error fetching enrollments:', error);
-        throw error;
+        return [];
+      }
+      
+      console.log(`[DEBUG] Fetched ${data?.length || 0} enrollments for domain ${domain}`);
+      
+      // Log some sample data for verification
+      if (data && data.length > 0) {
+        console.log('[DEBUG] Sample enrollment:', {
+          id: data[0].id,
+          user_id: data[0].user_id,
+          course_id: data[0].course_id,
+          completed: data[0].completed,
+          profile: data[0].profiles,
+          course: data[0].courses
+        });
       }
       
       return data || [];
-    }
+    },
+    enabled: adminType === 'super_admin' // Only fetch all enrollments for super admins
   });
 
   // Fetch course completion statistics

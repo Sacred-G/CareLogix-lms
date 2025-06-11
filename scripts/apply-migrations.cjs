@@ -13,15 +13,8 @@ const readline = require('readline');
 // Get Supabase credentials from .env file or environment
 require('dotenv').config();
 
-// Use the service role key for migrations to ensure we have necessary permissions
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-// Verify we have the service role key
-if (!SUPABASE_SERVICE_KEY) {
-  console.error('Error: SUPABASE_SERVICE_ROLE_KEY is required for migrations');
-  process.exit(1);
-}
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
   console.error('Error: Supabase credentials not found in environment variables');
@@ -29,16 +22,8 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
   process.exit(1);
 }
 
-// Create Supabase admin client with service role key
-const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false
-  }
-});
-
-// Create a regular client for non-admin operations
-const supabase = createClient(SUPABASE_URL, process.env.VITE_SUPABASE_KEY);
+// Create Supabase client with service role key (has admin rights)
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -62,33 +47,18 @@ async function applyMigration(migrationFile) {
   console.log(`Applying migration: ${migrationFile}`);
   
   try {
-    if (migrationFile.startsWith('000_')) {
-      console.error(`❌ Migration ${migrationFile} cannot be applied automatically.`);
-      console.error('Please run the following SQL statements manually in the Supabase SQL Editor:');
-      console.log('\n' + sql + '\n');
-      
-      const proceed = await new Promise((resolve) => {
-        rl.question(`Have you run the SQL for ${migrationFile} manually? (y/n): `, (answer) => {
-          resolve(answer.toLowerCase() === 'y');
-        });
-      });
-      
-      if (!proceed) {
-        console.log('Migration cancelled');
-        return false;
-      }
-      console.log(`✅ Migration ${migrationFile} confirmed as manually applied.`);
-      return true;
-    } else {
-      console.log('Using exec_sql function...');
-      const { error } = await supabaseAdmin.rpc('exec_sql', { query: sql });
-      if (error) throw error;
-      
-      console.log(`✅ Migration ${migrationFile} applied successfully`);
-      return true;
+    // Execute SQL queries using Supabase
+    const { error } = await supabase.rpc('exec_sql', { query: sql });
+    
+    if (error) {
+      console.error(`Error applying migration ${migrationFile}:`, error);
+      return false;
     }
+    
+    console.log(`Migration ${migrationFile} applied successfully`);
+    return true;
   } catch (error) {
-    console.error(`❌ Error applying migration ${migrationFile}:`, error.message);
+    console.error(`Error applying migration ${migrationFile}:`, error);
     return false;
   }
 }
@@ -168,76 +138,63 @@ async function main() {
 
 // First create the exec_sql function if it doesn't exist
 async function createExecSqlFunction() {
-  console.log('Setting up exec_sql function...');
+  console.log('Creating or updating the exec_sql function...');
   
-  // First, drop the function if it exists
-  const dropFunctionSQL = `
-  DROP FUNCTION IF EXISTS public.exec_sql(text);
-  `;
-  
-  // Then create the function with the correct return type
-  const createFunctionSQL = `
-  CREATE OR REPLACE FUNCTION public.exec_sql(query text)
-  RETURNS text
-  LANGUAGE plpgsql
-  SECURITY DEFINER
-  AS $function$
+  const sql = `
+  -- Create a function that allows executing arbitrary SQL (requires service role)
+  CREATE OR REPLACE FUNCTION exec_sql(query text)
+  RETURNS void AS $$
   BEGIN
     EXECUTE query;
-    RETURN 'Query executed successfully';
   END;
-  $function$;
-  `;
-  
-  // Grant necessary permissions
-  const grantSQL = `
-  GRANT EXECUTE ON FUNCTION public.exec_sql(text) TO authenticated;
-  GRANT EXECUTE ON FUNCTION public.exec_sql(text) TO service_role;
+  $$ LANGUAGE plpgsql SECURITY DEFINER;
   `;
   
   try {
-    console.log('Dropping existing exec_sql function if it exists...');
-    await supabase.rpc('exec_sql', { query: dropFunctionSQL }).catch(() => {
-      // Ignore errors when dropping non-existent function
-    });
+    const { error } = await supabase.rpc('exec_sql', { query: sql });
     
-    console.log('Creating new exec_sql function...');
-    await supabase.rpc('exec_sql', { query: createFunctionSQL });
-    
-    console.log('Setting permissions...');
-    await supabase.rpc('exec_sql', { query: grantSQL });
-    
-    console.log('exec_sql function setup completed successfully');
-    return true;
-  } catch (error) {
-    console.error('Error setting up exec_sql function:');
-    console.error('Please run these SQL statements manually in the Supabase SQL Editor:');
-    console.log('\n' + dropFunctionSQL);
-    console.log(createFunctionSQL);
-    console.log(grantSQL + '\n');
-    
-    const proceed = await new Promise((resolve) => {
-      rl.question('Have you run the above SQL statements manually? (y/n): ', (answer) => {
-        resolve(answer.toLowerCase() === 'y');
+    // If the function doesn't exist yet, we need to create it first
+    if (error && error.message.includes('function exec_sql(text) does not exist')) {
+      // Direct query to create the function (needs to be run by someone with admin rights)
+      console.log('Function does not exist, trying to create it directly...');
+      
+      // You'll need to use a more direct method like connecting to the database
+      // with a PostgreSQL client to create this function initially
+      console.log('Please create the exec_sql function manually using the Supabase SQL editor:');
+      console.log(sql);
+      
+      const proceed = await new Promise((resolve) => {
+        rl.question('Have you created the function manually? (y/n): ', (answer) => {
+          resolve(answer.toLowerCase() === 'y');
+        });
       });
-    });
-    
-    if (!proceed) {
-      console.log('Migration cancelled');
-      process.exit(1);
+      
+      if (!proceed) {
+        console.log('Migration cancelled');
+        process.exit(1);
+      }
+      
+      return true;
+    } else if (error) {
+      console.error('Error creating exec_sql function:', error);
+      return false;
     }
     
+    console.log('exec_sql function created or already exists');
     return true;
+  } catch (error) {
+    console.error('Error creating exec_sql function:', error);
+    return false;
   }
 }
 
 // Main execution
 (async () => {
-  await main();
+  const success = await createExecSqlFunction();
+  if (success) {
+    await main();
+  } else {
+    console.error('Failed to set up migration prerequisites');
+    process.exit(1);
+  }
 })();
-
-// Remove the createExecSqlFunction as it's causing a circular dependency and is not the correct way to create exec_sql
-// async function createExecSqlFunction() {
-//   console.log('Setting up exec_sql function...');
-//   // ... (rest of the function)
-// }

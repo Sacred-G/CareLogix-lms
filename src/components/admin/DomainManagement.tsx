@@ -15,11 +15,55 @@ interface DomainManagementProps {
 }
 
 export default function DomainManagement({
-  domainStats,
+  domainStats = [],
   loadingDomainStats,
   adminType,
   onAddDomainAdmin
 }: DomainManagementProps) {
+  // Filter out any null/undefined domain stats first
+  const filteredDomainStats = React.useMemo(() => {
+    const filtered = domainStats?.filter(stat => {
+      const isValid = stat && stat.domain;
+      if (!isValid) {
+        console.log('[DOMAIN_MGMT] Filtering out invalid domain stat:', stat);
+      }
+      return isValid;
+    }) || [];
+    
+    console.log('[DOMAIN_MGMT] Filtered domain stats:', filtered);
+    return filtered;
+  }, [domainStats]);
+
+  // Calculate totals based on filtered domain stats
+  const { totalDomains, totalUsers, totalAdmins, totalEnrollments } = React.useMemo(() => {
+    const totals = {
+      totalDomains: filteredDomainStats.length,
+      totalUsers: 0,
+      totalAdmins: 0,
+      totalEnrollments: 0
+    };
+    
+    filteredDomainStats.forEach(domain => {
+      totals.totalUsers += domain.userCount || 0;
+      totals.totalAdmins += domain.adminCount || 0;
+      totals.totalEnrollments += domain.enrollmentCount || 0;
+    });
+    
+    console.log('[DOMAIN_MGMT] Calculated totals:', totals);
+    return totals;
+  }, [filteredDomainStats]);
+  
+  // Debug log the received props
+  React.useEffect(() => {
+    console.log('[DOMAIN_MGMT] Received domain stats:', {
+      domainStats,
+      filteredDomainStats,
+      adminType,
+      loading: loadingDomainStats,
+      timestamp: new Date().toISOString()
+    });
+  }, [domainStats, filteredDomainStats, adminType, loadingDomainStats]);
+  
   return (
     <Card className="mb-6">
       <CardHeader>
@@ -45,7 +89,9 @@ export default function DomainManagement({
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Domains</p>
-                      <p className="text-2xl font-bold text-foreground">{domainStats.length}</p>
+                      <p className="text-2xl font-bold text-foreground">
+                        {loadingDomainStats ? <Skeleton className="h-8 w-12" /> : totalDomains}
+                      </p>
                     </div>
                     <div className="p-2 bg-primary/10 rounded-full">
                       <BarChart3 className="h-6 w-6 text-primary" />
@@ -60,7 +106,7 @@ export default function DomainManagement({
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Users</p>
                       <p className="text-2xl font-bold text-foreground">
-                        {domainStats.reduce((sum, domain) => sum + domain.userCount, 0)}
+                        {loadingDomainStats ? <Skeleton className="h-8 w-12" /> : totalUsers}
                       </p>
                     </div>
                     <div className="p-2 bg-blue-500/10 rounded-full">
@@ -76,7 +122,7 @@ export default function DomainManagement({
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Admins</p>
                       <p className="text-2xl font-bold text-foreground">
-                        {domainStats.reduce((sum, domain) => sum + domain.adminCount, 0)}
+                        {loadingDomainStats ? <Skeleton className="h-8 w-12" /> : totalAdmins}
                       </p>
                     </div>
                     <div className="p-2 bg-amber-500/10 rounded-full">
@@ -92,7 +138,7 @@ export default function DomainManagement({
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Total Enrollments</p>
                       <p className="text-2xl font-bold text-foreground">
-                        {domainStats.reduce((sum, domain) => sum + domain.enrollmentCount, 0)}
+                        {loadingDomainStats ? <Skeleton className="h-8 w-12" /> : totalEnrollments}
                       </p>
                     </div>
                     <div className="p-2 bg-teal-500/10 rounded-full">
@@ -115,7 +161,20 @@ export default function DomainManagement({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {domainStats.map((domain) => (
+                {filteredDomainStats.length === 0 && !loadingDomainStats ? (
+              <TableRow>
+                <TableCell colSpan={adminType === 'super_admin' ? 6 : 5} className="text-center py-8">
+                  <div className="flex flex-col items-center justify-center">
+                    <BarChart3 className="h-10 w-10 text-muted-foreground mb-2" />
+                    <p className="text-muted-foreground">
+                      {adminType === 'super_admin' 
+                        ? 'No domains found' 
+                        : 'You do not have any domains to manage'}
+                    </p>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ) : filteredDomainStats.map((domain) => (
                   <TableRow key={domain.domain}>
                     <TableCell className="font-medium">{domain.domain}</TableCell>
                     <TableCell>{domain.userCount}</TableCell>

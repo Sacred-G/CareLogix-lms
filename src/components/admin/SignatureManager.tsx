@@ -123,24 +123,26 @@ const SignatureManager: React.FC = () => {
     setIsSubmitting(true);
     try {
       if (signatureInputMethod === 'upload') {
-        await createSignature({
-          name,
-          title,
-          signatureFile,
-          default: isDefault,
-        });
+        if (signatureFile) {
+          const reader = new FileReader();
+          reader.onload = async (event) => {
+            const base64Data = event.target?.result as string;
+            await createSignature({
+              name,
+              title,
+              imageData: base64Data,
+              default: isDefault,
+            });
+          };
+          reader.readAsDataURL(signatureFile);
+        }
       } else {
-        // For canvas signatures, we need to convert the base64 data to a File
+        // For canvas signatures, we already have the base64 data
         if (canvasSignatureData) {
-          // Convert base64 to blob
-          const response = await fetch(canvasSignatureData);
-          const blob = await response.blob();
-          const file = new File([blob], `${name}-signature.png`, { type: 'image/png' });
-          
           await createSignature({
             name,
             title,
-            signatureFile: file,
+            imageData: canvasSignatureData,
             default: isDefault,
           });
         }
@@ -186,12 +188,26 @@ const SignatureManager: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      await updateSignature(selectedSignature.id, {
-        name,
-        title,
-        signatureFile: signatureFile || undefined,
-        default: isDefault,
-      });
+      if (signatureFile) {
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          const base64Data = event.target?.result as string;
+          await updateSignature(selectedSignature.id, {
+            name,
+            title,
+            imageData: base64Data,
+            default: isDefault,
+          });
+        };
+        reader.readAsDataURL(signatureFile);
+      } else {
+        // If no new file is uploaded, just update the other fields
+        await updateSignature(selectedSignature.id, {
+          name,
+          title,
+          default: isDefault,
+        });
+      }
       
       await loadSignatures();
       setIsEditDialogOpen(false);

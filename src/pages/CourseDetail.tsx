@@ -31,19 +31,90 @@ const progressIncrements = {
 import Footer from '@/components/navigation/Footer';
 import CourseHeader from '@/components/courses/CourseHeader';
 import CourseDetailTabs from '@/components/courses/CourseDetailTabs';
+import AIContentTabs from '@/components/courses/AIContentTabs';
 import CourseNotFound from '@/components/courses/CourseNotFound';
 import EmptyCourse from '@/components/courses/EmptyCourse';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import CertificateModal from '@/components/certificate/CertificateModal'; // Import CertificateModal
+import { Certificate as CertificateType } from '@/data/courseTypes'; // Import CertificateType
 
 const CourseDetail: React.FC = () => {
   const queryClient = useQueryClient();
   const { courseId = '' } = useParams<{ courseId: string }>();
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("content");
+  const [activeAITab, setActiveAITab] = useState("content");
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
+  const [isMarkingComplete, setIsMarkingComplete] = useState(false);
+  const [isSubmittingQuiz, setIsSubmittingQuiz] = useState(false);
+  const [showCertificateModal, setShowCertificateModal] = useState(false); // New state for modal visibility
+  const [generatedCertificate, setGeneratedCertificate] = useState<CertificateType | null>(null); // New state for certificate data
   const { session } = useAuth();
   
   // Find the course by ID
   const course = allCourses.find(c => c.id === courseId);
+
+  // If course not found, show not found message
+  if (!course) {
+    return <CourseNotFound />;
+  }
+  
+  // Handler for when a quiz answer is selected
+  const handleQuizAnswer = (questionId: string, answerIndex: number) => {
+    setQuizAnswers(prev => ({
+      ...prev,
+      [questionId]: answerIndex
+    }));
+  };
+  
+  // Handler for marking a module as complete
+  const handleModuleComplete = async () => {
+    if (!enrollmentData) return;
+    
+    try {
+      setIsMarkingComplete(true);
+      await updateProgressMutation.mutateAsync({
+        courseId: enrollmentData.course_id,
+        progress: 100,
+        completed: true
+      });
+      toast.success('Module marked as completed!');
+    } catch (error) {
+      console.error('Error marking module as complete:', error);
+      toast.error('Failed to mark module as complete');
+    } finally {
+      setIsMarkingComplete(false);
+    }
+  };
+  
+  // Handler for submitting a quiz
+  const handleQuizSubmit = async () => {
+    if (!enrollmentData) return;
+    
+    try {
+      setIsSubmittingQuiz(true);
+      // Add quiz submission logic here
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      toast.success('Quiz submitted successfully!');
+    } catch (error) {
+      console.error('Error submitting quiz:', error);
+      toast.error('Failed to submit quiz');
+    } finally {
+      setIsSubmittingQuiz(false);
+    }
+  };
+  
+  // Function to update user progress with the more complete implementation
+  const updateUserProgress = (increment: number) => {
+    if (!enrollmentData || !course || !course.modules.length) return;
+    
+    const newProgress = Math.min(100, (enrollmentData.progress || 0) + increment);
+    updateProgressMutation.mutate({
+      courseId: enrollmentData.course_id,
+      progress: newProgress,
+      completed: newProgress === 100
+    });
+  };
   
   // Fetch SCORM modules for this course
   const { data: scormModules, isLoading: isLoadingScorm } = useQuery({
@@ -435,21 +506,126 @@ const CourseDetail: React.FC = () => {
       
       console.log(`Updating enrollment ${enrollmentData.id} for course ${courseId} to ${newProgress}%`);
       
+      // Check if course is being completed (progress reached 100%)
+      const isCourseCompleted = newProgress === 100 && enrollmentData.progress < 100;
+      console.log('Course completion check:', { 
+        newProgress, 
+        currentProgress: enrollmentData.progress, 
+        isCourseCompleted 
+      });
+      
       // Use multiple conditions to ensure we're updating the correct record
-      const { error: enrollmentError } = await supabase
+      const { data: updatedEnrollment, error: enrollmentError } = await supabase
         .from('enrollments')
         .update({ 
           progress: newProgress,
-          completed: newProgress === 100,
+          completed: isCourseCompleted || enrollmentData.completed,
           last_accessed_at: now
         })
         .eq('id', enrollmentData.id)
         .eq('user_id', session.user.id)
-        .eq('course_id', courseId);
+        .eq('course_id', courseId)
+        .select()
+        .single();
         
       if (enrollmentError) {
         console.error('Error updating enrollment progress:', enrollmentError);
         throw enrollmentError;
+      }
+      
+      console.log('Enrollment updated successfully:', updatedEnrollment);
+      
+      // Generate certificate if course is completed
+      if (isCourseCompleted && course) {
+        console.log('Attempting to generate certificate for course:', course.id);
+        try {
+          console.log('1. Fetching user profile...');
+          // Get user profile for name and email
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select('full_name, email')
+            .eq('id', session.user.id)
+            .single();
+            
+          if (profileError) {
+            console.error('Error fetching profile:', profileError);
+            throw profileError;
+          }
+          
+          if (!profile) {
+            const error = new Error('User profile not found');
+            console.error(error.message);
+            throw error;
+          }
+          
+          console.log('2. Profile found, creating certificate object...');
+          // Create certificate
+          const certificateNumber = `CERT-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+          const certificate: CertificateType = {
+            id: certificateNumber, // Add the missing 'id' property
+            userId: session.user.id,
+            userName: profile.full_name || 'Learner',
+            courseId: course.id,
+            courseTitle: course.title,
+            issueDate: new Date().toISOString(),
+            completionDate: new Date().toISOString(),
+            certificateNumber: certificateNumber,
+            organizationName: 'Learn with Compassion',
+            organizationLogo: '/logo.png',
+            validUntil: null // Use validUntil as per CertificateType
+          };
+          
+          console.log('3. Certificate object created:', certificate);
+          
+          // Save certificate to database
+          console.log('4. Saving certificate to database...');
+          const { data: certData, error: certError } = await supabase
+            .from('certificates')
+            .insert({
+              id: certificate.id, // Use certificate.id
+              user_id: certificate.userId,
+              user_name: certificate.userName,
+              course_id: certificate.courseId,
+              course_title: certificate.courseTitle,
+              issue_date: certificate.issueDate,
+              completion_date: certificate.completionDate,
+              certificate_number: certificate.certificateNumber,
+              organization_name: certificate.organizationName,
+              organization_logo: certificate.organizationLogo,
+              valid_until: certificate.validUntil // Use valid_until for DB
+            })
+            .select();
+            
+          if (certError) {
+            console.error('Error saving certificate:', certError);
+            throw certError;
+          }
+          
+          console.log('5. Certificate saved successfully:', certData);
+          
+          // Set the generated certificate and show the modal
+          setGeneratedCertificate(certificate);
+          setShowCertificateModal(true);
+          
+          console.log('Certificate generated and modal set to show.');
+          
+          // Send notification to user
+          const { error: notifError } = await supabase
+            .from('notifications')
+            .insert({
+              user_id: session.user.id,
+              title: 'Course Completed!',
+              message: `Congratulations! You've completed the course "${course.title}". Your certificate is now available in your profile.`,
+              type: 'success',
+              action: `/profile/certificates/${certificate.certificateNumber}`
+            });
+            
+          if (notifError) {
+            console.error('Error sending notification:', notifError);
+          }
+        } catch (certErr) {
+          console.error('Error in certificate generation:', certErr);
+        }
       }
       
       // Log the progress update
@@ -471,7 +647,7 @@ const CourseDetail: React.FC = () => {
     }
   });
   
-  // Helper functions for quiz functionality
+  // Function to check if an answer is correct (helper for quiz functionality)
   const checkAnswer = (questionId: string, selectedOptionIndex: number): boolean => {
     if (!course) return false;
     
@@ -490,6 +666,7 @@ const CourseDetail: React.FC = () => {
     return selectedOptionIndex === question.correctAnswer;
   };
 
+  // Function to calculate score for a module
   const calculateModuleScore = (moduleId: string): number => {
     if (!course) return 0;
     
@@ -508,8 +685,8 @@ const CourseDetail: React.FC = () => {
     return Math.round((correctAnswers / currentModule.questions.length) * 100);
   };
 
+  // Progress update function (using the more complete implementation above)
   const updateProgress = (increment: number) => {
-    // Calculate progress
     if (!enrollmentData || !course || !course.modules.length) return;
     
     const currentModule = course.modules[activeModuleIndex];
@@ -588,43 +765,68 @@ const CourseDetail: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-include-glow text-foreground">
       <div className="min-h-screen flex flex-col">
-      
-      <main className="flex-1">
-        <CourseHeader 
-          course={course}
-          isEnrolled={isEnrolled}
-          courseProgress={courseProgress}
-          isLoadingEnrollment={isLoadingEnrollment}
-          enrollMutation={enrollMutation}
-          handleEnroll={handleEnroll}
-          session={session}
-        />
-        
-        <section className="py-8">
-          <CourseDetailTabs
+        <main className="flex-1">
+          <CourseHeader 
             course={course}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            activeModuleIndex={activeModuleIndex}
-            setActiveModuleIndex={setActiveModuleIndex}
-            scormModules={scormModules}
-            isLoadingScorm={isLoadingScorm}
             isEnrolled={isEnrolled}
-            isCompleted={isCompleted}
-            activeModule={activeModule}
+            courseProgress={courseProgress}
+            isLoadingEnrollment={isLoadingEnrollment}
+            enrollMutation={enrollMutation}
+            handleEnroll={handleEnroll}
             session={session}
-            updateProgressMutation={updateProgressMutation}
-            quizAnswers={quizAnswers}
-            setQuizAnswers={setQuizAnswers}
-            checkAnswer={checkAnswer}
-            updateProgress={updateProgress}
-            calculateModuleScore={calculateModuleScore}
           />
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
+          
+          <Tabs value={activeAITab} onValueChange={setActiveAITab} className="container py-6">
+            <TabsList className="grid w-full grid-cols-2 max-w-md mb-6">
+              <TabsTrigger value="content">Course Content</TabsTrigger>
+              <TabsTrigger value="ai">AI-Generated Content</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="content">
+              <CourseDetailTabs
+                course={course}
+                activeModuleIndex={activeModuleIndex}
+                setActiveModuleIndex={setActiveModuleIndex}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                quizAnswers={quizAnswers}
+                setQuizAnswers={setQuizAnswers}
+                checkAnswer={checkAnswer}
+                updateProgress={updateUserProgress}
+                calculateModuleScore={calculateModuleScore}
+                scormModules={scormModules || []}
+                isEnrolled={isEnrolled}
+                isCompleted={isCompleted}
+                activeModule={course.modules[activeModuleIndex]}
+                session={session}
+                updateProgressMutation={updateProgressMutation}
+              />
+            </TabsContent>
+            
+            <TabsContent value="ai">
+              <AIContentTabs 
+                course={{
+                  quizContent: course.quizContent,
+                  moduleContent: course.moduleContent,
+                  objectives: course.objectives,
+                  assessmentCriteria: course.assessmentCriteria,
+                  scenarioContent: course.scenarioContent,
+                  lessonPlan: course.lessonPlan
+                }} 
+              />
+            </TabsContent>
+          </Tabs>
+        </main>
+        
+        <Footer />
+      </div>
+      {generatedCertificate && (
+        <CertificateModal
+          open={showCertificateModal}
+          onOpenChange={setShowCertificateModal}
+          certificate={generatedCertificate}
+        />
+      )}
     </div>
   );
 };

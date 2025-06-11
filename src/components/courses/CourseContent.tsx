@@ -46,6 +46,13 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
   const [activeTab, setActiveTab] = useState('content');
   const [selectedScormModuleId, setSelectedScormModuleId] = useState<string | null>(null);
   const [selectedRoleIframeUrl, setSelectedRoleIframeUrl] = useState<string | null>(null);
+  
+  // Auto-switch to SCORM tab if SCORM content is available and this is the first render
+  React.useEffect(() => {
+    if (scormModules && scormModules.length > 0 && activeTab === 'content') {
+      setActiveTab('scorm');
+    }
+  }, [scormModules, activeTab]);
 
   // Calculate if quiz is unlocked (both video and audio completed)
   const isVideoRequired = !!module.videoUrl;
@@ -108,6 +115,30 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
       description: `You've completed ${progress}% of this SCORM module.`
     });
   };
+
+  // Handle interactive iframe module type
+  if (module.customModuleType === 'interactiveIframe' && module.iframeUrl) {
+    return (
+      <div className="space-y-8">
+        <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Interactive Module'}</h2>
+        <p className="text-muted-foreground text-lg">{module.description || 'Please complete the interactive content below.'}</p>
+        <div className="w-full rounded-lg overflow-hidden shadow-lg border border-muted" style={{ height: module.iframeHeight || '70vh' }}>
+          <iframe 
+            src={module.iframeUrl}
+            title={module.iframeTitle || 'Interactive Content'}
+            className="w-full h-full border-0"
+            allowFullScreen
+            allow="autoplay; fullscreen; geolocation; microphone; camera; midi; encrypted-media"
+            loading="eager"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+          />
+        </div>
+        <div className="prose dark:prose-invert max-w-none mt-6">
+          <ReactMarkdown>{module.content}</ReactMarkdown>
+        </div>
+      </div>
+    );
+  }
 
   // Handle role-based iframe selection module type
   if (module.customModuleType === 'roleBasedIframeSelection') {
@@ -187,21 +218,36 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className={`grid w-full ${module.id === 'mod-1' ? 'grid-cols-4' : 'grid-cols-2'} mb-6`}>
-          <TabsTrigger value="content" className="text-base py-3">Lesson Content</TabsTrigger>
+          <TabsTrigger 
+            value="content" 
+            className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
+          >
+            Lesson Content
+          </TabsTrigger>
+          {module.id === 'mod-1' && (
+            <>
+              <TabsTrigger 
+                value="scorm" 
+                className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
+              >
+                SCORM Modules
+              </TabsTrigger>
+              <TabsTrigger 
+                value="interactive" 
+                className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
+              >
+                Interactive
+              </TabsTrigger>
+            </>
+          )}
           <TabsTrigger 
             value="quiz" 
-            className="text-base py-3"
+            className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
             onClick={handleQuizTabClick}
           >
             {!isQuizUnlocked && <Lock className="h-3 w-3 mr-2" />}
             Quiz
           </TabsTrigger>
-          {module.id === 'mod-1' && (
-            <>
-              <TabsTrigger value="scorm" className="text-base py-3">SCORM Modules</TabsTrigger>
-              <TabsTrigger value="interactive" className="text-base py-3">Interactive</TabsTrigger>
-            </>
-          )}
         </TabsList>
         
         <TabsContent value="content" className="space-y-8 pt-4 animate-fade-in">
@@ -316,11 +362,11 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
         
         {module.id === 'mod-1' && (
           <>
-            {/* SCORM Tab */}
+            {/* SCORM Tab - Auto-launch when tab is selected */}
             <TabsContent value="scorm" className="pt-4 animate-fade-in">
               <div className="space-y-8">
                 {/* Special cases for courses that should always render iframe directly */}
-                {['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin'].includes(module.courseId || '') ? (
+                {['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support'].includes(module.courseId || '') ? (
                   <div className="space-y-4">
                     <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
                       Interactive SCORM Module
@@ -342,6 +388,8 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
                             ? "https://scorm-neon.vercel.app/Documentation%20%26%20Administrative%20Tasks%202/training.htm"
                             : module.courseId === 'medication-admin'
                             ? "https://scorm-neon.vercel.app/Medication_Administration/training.htm"
+                            : module.courseId === 'positive-behavior-support'
+                            ? "https://scorm-neon.vercel.app/Positive%20Behavior%20Support%20(1)/training.htm"
                             : "https://scorm-neon.vercel.app/Foundations%20of%20Empathetic%20Communication/training.htm"
                         }
                         title="Interactive SCORM Module"

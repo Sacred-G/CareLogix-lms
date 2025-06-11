@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ToastProvider } from "@/components/toast/toast-provider";
 import OnboardingTour from "./components/onboarding/OnboardingTour";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 import CourseAccessGuard from "./components/auth/CourseAccessGuard";
 import Index from "./pages/Index";
 import Courses from "./pages/Courses";
@@ -17,6 +17,8 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import AuthPage from "./pages/AuthPage";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminCertificatesPage from "./pages/admin/certificates";
+import CertificateViewer from "./pages/certificates/[id]";
 import CertificatePage from "./pages/CertificatePage";
 import CertificatePreview from "./pages/CertificatePreview";
 import SignatureManagement from "./pages/SignatureManagement";
@@ -51,12 +53,27 @@ const App = () => (
                   </CourseAccessGuard>
                 </ProtectedRoute>
               } />
+              <Route path="/admin" element={
+                <ProtectedRoute adminOnly={true}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/certificates" element={
+                <ProtectedRoute adminOnly>
+                  <AdminCertificatesPage />
+                </ProtectedRoute>
+              } />
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
               <Route path="/admin/courses" element={<ProtectedRoute><CourseManagement /></ProtectedRoute>} />
               <Route path="/admin/signatures" element={<ProtectedRoute><SignatureManagement /></ProtectedRoute>} />
               <Route path="/certificates/:certificateId" element={<ProtectedRoute><CertificatePage /></ProtectedRoute>} />
+              <Route path="/certificates/:id" element={
+                <ProtectedRoute>
+                  <CertificateViewer />
+                </ProtectedRoute>
+              } />
               <Route path="/certificate-preview" element={<CertificatePreview />} />
               <Route path="/extras" element={<ProtectedRoute><Extras /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />

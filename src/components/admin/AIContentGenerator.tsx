@@ -6,15 +6,17 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from '@/components/ui/button';
 import { Loader2, Brain } from 'lucide-react';
 
+export type AIContentType = 'description' | 'module' | 'quiz' | 'objectives' | 'assessment' | 'scenario' | 'transcript' | 'lesson_plan';
+
 interface AIContentGeneratorProps {
   courseTitle: string;
-  onContentGenerated: (content: string) => void;
+  onContentGenerated: (content: string, type: AIContentType) => void;
   transcript?: string;
 }
 
 export default function AIContentGenerator({ courseTitle, onContentGenerated, transcript }: AIContentGeneratorProps) {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [contentType, setContentType] = useState<'description' | 'module' | 'quiz' | 'objectives' | 'assessment' | 'scenario' | 'transcript' | 'lesson_plan'>('description');
+  const [contentType, setContentType] = useState<AIContentType>('description');
 
   const handleGenerateWithAI = async () => {
     if (!courseTitle || courseTitle.length < 3) {
@@ -38,9 +40,9 @@ export default function AIContentGenerator({ courseTitle, onContentGenerated, tr
       }
 
       if (data?.content) {
-        onContentGenerated(data.content);
-        toast.success(`${getContentTypeLabel(contentType)} generated successfully with OpenAI`);
-      } else {
+        onContentGenerated(data.content, contentType);
+        toast.success(`${getContentTypeLabel(contentType)} generated successfully`);
+      } else {  
         throw new Error('No content was generated');
       }
     } catch (error: any) {

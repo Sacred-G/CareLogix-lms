@@ -7,12 +7,12 @@ import { toast } from 'sonner';
 
 interface AuthContextType {
   user: User | null;
-  session: Session | null; // Added session property
+  session: Session | null;
   loading: boolean;
-  error: string | null; // Added error property
+  error: string | null;
+  isAdmin: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  // Microsoft login removed
-  signUp: (email: string, password: string, fullName: string) => Promise<void>; // Fixed signUp parameters
+  signUp: (email: string, password: string, fullName: string) => Promise<void>;
   signOut: () => Promise<void>;
   updateProfile: (data: { full_name?: string; avatar_url?: string }) => Promise<void>;
 }
@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -178,11 +179,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     session,
     loading,
     error,
+    isAdmin,
     signIn,
     signUp,
     signOut,
-    updateProfile
+    updateProfile,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

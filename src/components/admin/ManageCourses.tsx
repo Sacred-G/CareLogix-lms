@@ -64,12 +64,41 @@ export default function ManageCourses() {
 
   const deleteCourse = useMutation({
     mutationFn: async (courseId: string) => {
-      const { error } = await supabase
+      // First, get the course to verify domain ownership
+      const { data: course, error: fetchError } = await supabase
+        .from('courses')
+        .select('id, created_by')
+        .eq('id', courseId)
+        .single();
+      
+      if (fetchError) {
+        console.error('Error fetching course:', fetchError);
+        throw new Error('Failed to fetch course details');
+      }
+      
+      if (!course) {
+        throw new Error('Course not found');
+      }
+      
+      // Get the creator's profile to check domain
+      const { data: creatorProfile } = await supabase
+        .from('profiles')
+        .select('email_domain')
+        .eq('id', course.created_by || '')
+        .single();
+      
+      // Verify domain ownership
+      if (creatorProfile?.email_domain !== userProfile?.email_domain) {
+        throw new Error('You can only delete courses created under your organization\'s domain');
+      }
+      
+      // If domain check passes, delete the course
+      const { error: deleteError } = await supabase
         .from('courses')
         .delete()
         .eq('id', courseId);
       
-      if (error) throw error;
+      if (deleteError) throw deleteError;
       return courseId;
     },
     onSuccess: (courseId) => {
@@ -79,7 +108,7 @@ export default function ManageCourses() {
     },
     onError: (error) => {
       console.error('Error deleting course:', error);
-      toast.error('Failed to delete course: You can only delete courses for your domain');
+      toast.error(`Failed to delete course: ${error.message}`);
     }
   });
 

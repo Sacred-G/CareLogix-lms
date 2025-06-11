@@ -16,6 +16,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 
+import { AIContentType } from './AIContentGenerator';
+
 type CourseFormValues = {
   title: string;
   description: string;
@@ -23,6 +25,12 @@ type CourseFormValues = {
   videoUrl?: string;
   audioUrl?: string;
   transcript?: string;
+  quizContent?: string;
+  moduleContent?: string;
+  objectives?: string;
+  assessmentCriteria?: string;
+  scenarioContent?: string;
+  lessonPlan?: string;
 };
 
 export default function CreateCourse() {
@@ -39,6 +47,12 @@ export default function CreateCourse() {
       videoUrl: '',
       audioUrl: '',
       transcript: '',
+      quizContent: '',
+      moduleContent: '',
+      objectives: '',
+      assessmentCriteria: '',
+      scenarioContent: '',
+      lessonPlan: '',
     },
   });
 
@@ -69,16 +83,26 @@ export default function CreateCourse() {
         throw new Error('User profile not found');
       }
 
+      const courseData = {
+        title: values.title,
+        description: values.description,
+        thumbnail: values.thumbnail,
+        created_by: user?.id,
+        domain: userProfile.email_domain,
+        transcript: values.transcript || null,
+        quiz_content: values.quizContent || null,
+        module_content: values.moduleContent || null,
+        objectives: values.objectives || null,
+        assessment_criteria: values.assessmentCriteria || null,
+        scenario_content: values.scenarioContent || null,
+        lesson_plan: values.lessonPlan || null,
+        video_url: values.videoUrl || null,
+        audio_url: values.audioUrl || null,
+      };
+
       const { data, error } = await supabase
         .from('courses')
-        .insert({
-          title: values.title,
-          description: values.description,
-          thumbnail: values.thumbnail,
-          created_by: user?.id,
-          domain: userProfile.email_domain,
-          transcript: values.transcript || null
-        })
+        .insert(courseData)
         .select();
 
       if (error) throw error;
@@ -174,48 +198,42 @@ export default function CreateCourse() {
     },
   });
 
-  const handleContentGenerated = (content: string) => {
-    // Try to detect if content is JSON
+  const handleAIContent = (content: string, type: AIContentType) => {
     try {
-      // Check if content starts and ends with curly braces or square brackets
-      if ((content.trim().startsWith('{') && content.trim().endsWith('}')) || 
-          (content.trim().startsWith('[') && content.trim().endsWith(']'))) {
-        // Try to parse as JSON in case it's structured content
-        const parsedContent = JSON.parse(content);
-        // Handle different content types
-        if (Array.isArray(parsedContent) && parsedContent[0]?.question) {
-          // It's quiz questions
-          const formattedQuizContent = parsedContent.map((q, i) => 
-            `Question ${i+1}: ${q.question}\n` +
-            `Options: ${q.options.join(', ')}\n` +
-            `Correct Answer: ${q.correctAnswer}\n`
-          ).join('\n\n');
-          form.setValue('description', formattedQuizContent);
-        } else if (parsedContent.title && parsedContent.description && parsedContent.options) {
-          // It's a scenario
-          const formattedScenario = 
-            `# ${parsedContent.title}\n\n` +
-            `## Scenario Description\n${parsedContent.description}\n\n` +
-            `## Response Options\n` +
-            parsedContent.options.map((o, i) => 
-              `${i+1}. ${o.text}\n   ${o.isCorrect ? '✓ BEST PRACTICE: ' : ''}${o.feedback}`
-            ).join('\n\n');
-          form.setValue('description', formattedScenario);
-        } else {
-          // Default handling for other JSON structures
-          form.setValue('description', JSON.stringify(parsedContent, null, 2));
-        }
-      } else {
-        // Plain text content
-        form.setValue('description', content);
+      // Store the raw content in the appropriate field based on type
+      switch (type) {
+        case 'quiz':
+          form.setValue('quizContent', content);
+          break;
+        case 'module':
+          form.setValue('moduleContent', content);
+          break;
+        case 'objectives':
+          form.setValue('objectives', content);
+          break;
+        case 'assessment':
+          form.setValue('assessmentCriteria', content);
+          break;
+        case 'scenario':
+          form.setValue('scenarioContent', content);
+          break;
+        case 'lesson_plan':
+          form.setValue('lessonPlan', content);
+          break;
+        case 'transcript':
+          form.setValue('transcript', content);
+          break;
+        case 'description':
+        default:
+          form.setValue('description', content);
       }
-    } catch (e) {
-      // If JSON parsing fails, just use the content as-is
-      form.setValue('description', content);
+      
+      // Switch to basic tab to show content
+      setActiveTab('basic');
+    } catch (error) {
+      console.error('Error processing AI content:', error);
+      toast.error('Failed to process AI-generated content');
     }
-    
-    // Switch to basic tab to show content
-    setActiveTab('basic');
   };
 
   const handleTranscriptGenerated = (transcript: string) => {
@@ -240,7 +258,7 @@ export default function CreateCourse() {
         }
         
         if (data?.content) {
-          handleContentGenerated(data.content);
+          handleAIContent(data.content, 'description');
           toast.success('Generated course content from transcript');
         }
       });
@@ -323,7 +341,7 @@ export default function CreateCourse() {
                     {useAI && (
                       <AIContentGenerator 
                         courseTitle={form.watch('title')} 
-                        onContentGenerated={handleContentGenerated}
+                        onContentGenerated={handleAIContent}
                         transcript={form.watch('transcript')}
                       />
                     )}

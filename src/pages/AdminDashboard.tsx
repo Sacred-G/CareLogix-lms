@@ -7,11 +7,11 @@ import Footer from '@/components/navigation/Footer';
 import { AdminRoute } from '@/components/auth/AdminRoute';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAdminData } from '@/hooks/useAdminData';
+import { useAuth } from '@/hooks/useAuth';
 import { useQueryClient } from '@tanstack/react-query';
 import { AdminRoleType } from '@/types/admin';
 import AdminStats from '@/components/admin/AdminStats';
 import UserManagement from '@/components/admin/UserManagement';
-import DomainManagement from '@/components/admin/DomainManagement';
 import CreateUserForm from '@/components/admin/CreateUserForm';
 import CourseStats from '@/components/admin/CourseStats';
 import EnrollmentsTable from '@/components/admin/EnrollmentsTable';
@@ -25,6 +25,7 @@ import { Badge } from '@/components/ui/badge';
 
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreateUserOpen, setIsCreateUserOpen] = useState(false);
   const [selectedDomain, setSelectedDomain] = useState('');
@@ -45,10 +46,6 @@ export default function AdminDashboard() {
     refetchProfiles,
     
     // Domain management
-    allDomains,
-    loadingAllDomains,
-    domainStats,
-    loadingDomainStats,
     
     // Existing stats
     enrollments,
@@ -88,8 +85,21 @@ export default function AdminDashboard() {
   
   // Handle adding a domain admin for a specific domain
   const handleAddDomainAdmin = (domain: string) => {
+    // First check if user has permission to add domain admins
+    if (adminType !== 'super_admin' && adminType !== 'domain_admin') {
+      toast.error('You do not have permission to add domain admins');
+      return;
+    }
+    
     setSelectedDomain(domain);
     setIsCreateUserOpen(true);
+    
+    // Log the action for debugging
+    console.log('[ADMIN] Adding domain admin for domain:', domain, {
+      adminType,
+      managedDomains,
+      currentUserEmail: user?.email
+    });
   };
 
   return (
@@ -144,15 +154,6 @@ export default function AdminDashboard() {
               loadingEnrollments={loadingEnrollments}
             />
             
-            {/* Domain Management (only visible to super admin and domain admin) */}
-            {(adminType === 'super_admin' || adminType === 'domain_admin') && (
-              <DomainManagement
-                domainStats={domainStats}
-                loadingDomainStats={loadingDomainStats}
-                adminType={adminType}
-                onAddDomainAdmin={handleAddDomainAdmin}
-              />
-            )}
             
             <Tabs defaultValue="users" className="w-full">
               <div className="flex justify-end mb-4">
@@ -257,7 +258,7 @@ export default function AdminDashboard() {
       onClose={() => setIsCreateUserOpen(false)}
       createUser={handleCreateUser}
       adminType={adminType as AdminRoleType}
-      availableDomains={Array.isArray(allDomains) ? allDomains : []}
+      availableDomains={[]}
       managedDomains={Array.isArray(managedDomains) ? managedDomains : []}
     />
     </div>

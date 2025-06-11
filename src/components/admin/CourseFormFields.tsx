@@ -9,6 +9,15 @@ type CourseFormValues = {
   title: string;
   description: string;
   thumbnail: string;
+  videoUrl?: string;
+  audioUrl?: string;
+  transcript?: string;
+  quizContent?: string;
+  moduleContent?: string;
+  objectives?: string;
+  assessmentCriteria?: string;
+  scenarioContent?: string;
+  lessonPlan?: string;
 };
 
 interface CourseFormFieldsProps {
@@ -71,6 +80,71 @@ export default function CourseFormFields({ control }: CourseFormFieldsProps) {
             <FormMessage />
           </FormItem>
         )}
+      />
+
+      <FormField
+        control={control}
+        name="videoUrl"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Video URL</FormLabel>
+            <FormControl>
+              <Input placeholder="Enter video URL" {...field} value={field.value || ''} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={control}
+        name="audioUrl"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Audio URL</FormLabel>
+            <FormControl>
+              <Input placeholder="Enter audio URL" {...field} value={field.value || ''} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      {/* Hidden fields for AI-generated content */}
+      <FormField
+        control={control}
+        name="quizContent"
+        render={({ field }) => <input type="hidden" {...field} />}
+      />
+      <FormField
+        control={control}
+        name="moduleContent"
+        render={({ field }) => <input type="hidden" {...field} />}
+      />
+      <FormField
+        control={control}
+        name="objectives"
+        render={({ field }) => <input type="hidden" {...field} />}
+      />
+      <FormField
+        control={control}
+        name="assessmentCriteria"
+        render={({ field }) => <input type="hidden" {...field} />}
+      />
+      <FormField
+        control={control}
+        name="scenarioContent"
+        render={({ field }) => <input type="hidden" {...field} />}
+      />
+      <FormField
+        control={control}
+        name="lessonPlan"
+        render={({ field }) => <input type="hidden" {...field} />}
+      />
+      <FormField
+        control={control}
+        name="transcript"
+        render={({ field }) => <input type="hidden" {...field} />}
       />
     </>
   );

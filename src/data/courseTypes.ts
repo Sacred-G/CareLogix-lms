@@ -1,4 +1,3 @@
-
 export interface Question {
   id: string;
   question: string;
@@ -18,6 +17,7 @@ export interface FAQ {
   answer: string;
 }
 
+
 export interface ScenarioOption {
   id: string;
   text: string;
@@ -28,9 +28,10 @@ export interface ScenarioOption {
 export interface Module {
   id: string;
   title: string;
+  learningObjectives?: string[];
   description: string;
   videoUrl?: string;
-  content: string;
+  content: string
   audioUrl?: string;
   transcript?: string;
   questions?: Question[];
@@ -44,11 +45,31 @@ export interface Module {
   interactiveScenario?: {
     title: string;
     description: string;
-    type: 'multiple-choice' | 'dialogue' | 'mindmap';
+    type: 'multiple-choice' | 'dialogue' | 'mindmap' | 'behavior-analysis';
     content?: any; // This would be structured based on scenario type
     options?: ScenarioOption[];
     mindmapType?: string; // For mindmap type, identifies which mindmap data to use
   };
+  
+  // Interactive content for behavior analysis scenarios
+  interactiveContent?: {
+    type: string;
+    title: string;
+    description: string;
+    scenarios: {
+      id: string;
+      title: string;
+      description: string;
+      options: { id: string; text: string }[];
+      correctAnswer: string;
+      feedback: string;
+    }[];
+  };
+  
+  // For direct iframe embeds
+  iframeUrl?: string; // URL for iframe content
+  iframeTitle?: string; // Title for accessibility
+  iframeHeight?: string; // Optional custom height (e.g., '600px')
 }
 
 export interface Course {
@@ -63,6 +84,17 @@ export interface Course {
   certificateAvailable?: boolean;
   domain?: string; // Domain property added here
   featured?: boolean; // Added to highlight important courses
+  
+  // AI-generated content fields
+  quizContent?: string; // Generated quiz content
+  moduleContent?: string; // Generated module outline
+  objectives?: string; // Learning objectives
+  assessmentCriteria?: string; // Assessment criteria
+  scenarioContent?: string; // Interactive scenario content
+  lessonPlan?: string; // Detailed lesson plan
+  videoUrl?: string; // Video URL
+  audioUrl?: string; // Audio URL
+  transcript?: string; // Transcript text
 }
 
 export interface Certificate {
@@ -77,4 +109,5 @@ export interface Certificate {
   certificateNumber: string;
   organizationName?: string;
   organizationLogo?: string;
+  organizationDomain?: string;
 }

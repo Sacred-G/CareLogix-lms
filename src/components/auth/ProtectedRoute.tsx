@@ -4,10 +4,11 @@ import { useAuth } from '@/hooks/useAuth';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
+  adminOnly?: boolean;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { user, loading } = useAuth();
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, adminOnly = false }) => {
+  const { user, loading, isAdmin } = useAuth();
   const location = useLocation();
 
   // If authentication is still loading, we can show a loading state
@@ -25,8 +26,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     return <Navigate to="/auth" state={{ from: location }} replace />;
   }
 
-  // If authenticated, render the children
+  // Check if admin access is required and user is not admin
+  if (adminOnly && !isAdmin) {
+    return <Navigate to="/" replace />;
+  }
+
+  // If authenticated (and admin if required), render the children
   return <>{children}</>;
 };
 
-export default ProtectedRoute;
+export { ProtectedRoute };
