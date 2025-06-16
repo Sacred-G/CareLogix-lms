@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -14,6 +13,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { getUniversityNameFromEmail } from '@/utils/domainFormatter';
 
 export default function Header() {
   const { user, signOut } = useAuth();
@@ -54,10 +54,8 @@ export default function Header() {
             {/* Using a simple div for the logo for now, could be replaced with an SVG */}
             <div className="w-8 h-8 rounded-md bg-gradient-primary text-primary-foreground flex items-center justify-center font-bold shadow-md">CL</div>
             <span className="font-heading font-bold text-xl hidden sm:inline-block text-gradient-primary">
-  {user && user.email ?
-    `${user.email.split('@')[1]?.split('.')[0]?.charAt(0).toUpperCase() + user.email.split('@')[1]?.split('.')[0]?.slice(1)} University`
-    : 'CareLogix LMS'}
-</span>
+              {user && user.email ? getUniversityNameFromEmail(user.email) : 'CareLogix LMS'}
+            </span>
           </Link>
         </div>
 

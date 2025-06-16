@@ -282,7 +282,15 @@ function useAdminData() {
   const createUser = useMutation({
     mutationFn: async ({ email, full_name, role, managed_domains, password }: UserCreateRequest) => {
       // Extract email domain
-      const email_domain = email.split('@')[1];
+      const email_domain = email.split('@')[1]?.toLowerCase();
+      
+      console.log('[DEBUG] Creating user with data:', {
+        email,
+        email_domain,
+        full_name,
+        role,
+        managed_domains
+      });
       
       // Check if the current admin can create users with this role
       if (adminType !== 'super_admin' && (role === 'super_admin' || role === 'domain_admin')) {
@@ -295,14 +303,45 @@ function useAdminData() {
       }
       
       // 1. Create auth user using regular signup (no need for admin privileges)
+      // Save the current admin session token before creating new user
+      const { data: { session: adminSession } } = await supabase.auth.getSession();
+      const adminAccessToken = adminSession?.access_token;
+      
+      // Create the new user account
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          data: { full_name }, // Add metadata with full name
-          emailRedirectTo: window.location.origin // Redirect back to app after confirmation
+          data: { 
+            full_name,
+            email_domain, // Store this in user metadata too
+            is_admin_created: true // Flag that admin created this account
+          },
+          emailRedirectTo: `${window.location.origin}/auth` // Direct to auth page not auto-login
         }
       });
+      
+      console.log('[DEBUG] Created auth user, restoring admin session...');
+      
+      // Explicitly restore admin session if we were logged out
+      if (adminAccessToken) {
+        // Check if we need to restore admin session
+        const { data: currentSession } = await supabase.auth.getSession();
+        
+        if (currentSession.session?.access_token !== adminAccessToken) {
+          console.log('[DEBUG] Admin session changed, restoring...');
+          try {
+            // Set session back to admin
+            await supabase.auth.setSession({
+              access_token: adminAccessToken,
+              refresh_token: adminSession!.refresh_token
+            });
+            console.log('[DEBUG] Admin session restored successfully');
+          } catch (sessionError) {
+            console.error('[ERROR] Failed to restore admin session:', sessionError);
+          }
+        }
+      }
       
       if (authError) {
         console.error('Error creating auth user:', authError);
@@ -325,74 +364,125 @@ function useAdminData() {
       
       if (!existingProfile) {
         // Manually create profile since trigger might not have run yet
+        // Create a complete profile with all required fields
+        const profileData = {
+          id: authData.user.id,
+          first_name: full_name.split(' ')[0] || '',
+          last_name: full_name.split(' ').slice(1).join(' ') || '',
+          full_name: full_name,
+          email_domain: email_domain,
+          role: role || 'student', // Use the provided role immediately
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        };
+        
+        // Add managed_domains if applicable
+        if (role === 'domain_admin' && managed_domains && managed_domains.length > 0) {
+          profileData['managed_domains'] = managed_domains;
+        }
+        
+        console.log('[DEBUG] Creating profile with data:', profileData);
         const { error: profileCreateError } = await supabase
           .from('profiles')
-          .insert([
-            {
-              id: authData.user.id,
-              first_name: full_name.split(' ')[0] || '',
-              last_name: full_name.split(' ').slice(1).join(' ') || '',
-              full_name: full_name,
-              email_domain: email.split('@')[1],
-              role: 'student' // Default role, will be updated below
-            }
-          ]);
+          .insert([profileData]);
         
         if (profileCreateError) {
-          console.error('Error creating profile manually:', profileCreateError);
+          console.error('[ERROR] Error creating profile manually:', profileCreateError);
           // Continue anyway - the trigger might have created it already
+        } else {
+          console.log('[DEBUG] Profile created successfully');
         }
+      } else {
+        console.log('[DEBUG] Profile already exists, updating instead');
       }
-      // Now, update it with the role, full_name from form, and managed_domains (if applicable).
+      
+      // Now, update the profile with all details to ensure everything is set correctly
       const profileUpdates: any = {
         full_name,
         role,
+        email_domain // Ensure email_domain is explicitly set
       };
 
       if (role === 'domain_admin' && managed_domains && managed_domains.length > 0) {
         profileUpdates.managed_domains = managed_domains;
       } else if (role !== 'domain_admin') {
         // Ensure managed_domains is explicitly nulled if user is not a domain admin
-        // or if it was previously set and their role changes away from domain_admin.
-        // This depends on whether your schema allows NULL for managed_domains or if it should be an empty array.
-        // Assuming NULL is acceptable for non-domain-admins.
         profileUpdates.managed_domains = null;
       }
 
-      const { data: updatedProfileData, error: profileUpdateError } = await supabase
+      // Update with UPSERT instead to make sure profile exists even if earlier insert failed
+      // This is a more robust approach
+      const { data: profileData, error: profileUpdateError } = await supabase
         .from('profiles')
-        .update(profileUpdates)
-        .eq('id', authData.user.id)
+        .upsert({
+          id: authData.user.id,
+          ...profileUpdates,
+          updated_at: new Date().toISOString()
+        })
         .select('*')
         .single();
-
+      
       if (profileUpdateError) {
-        console.error('Error updating profile:', profileUpdateError);
-        // It's possible the user was created in auth.users, but profile update failed.
-        // Consider how to handle this inconsistency, e.g., by trying to delete the auth user.
-        throw profileUpdateError;
+        console.error('[ERROR] Error updating profile:', profileUpdateError);
+        // Log this error but continue - we successfully created the auth user
+        console.log('[DEBUG] Trying one more time with just an update');
+        
+        // Try a simple update as fallback
+        const { data: retryData, error: retryError } = await supabase
+          .from('profiles')
+          .update(profileUpdates)
+          .eq('id', authData.user.id);
+          
+        if (retryError) {
+          console.error('[ERROR] Final profile update attempt failed:', retryError);
+          throw retryError;
+        }
+        
+        // Get the profile data for return
+        const { data: finalData } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', authData.user.id)
+          .single();
+          
+        if (finalData) {
+          return finalData;
+        } else {
+          throw new Error('Failed to retrieve the new user profile.');
+        }
       }
 
-      if (!updatedProfileData) {
+      if (!profileData) {
         throw new Error('Failed to update profile for the new user.');
       }
 
-      return updatedProfileData;
+      return profileData;
     },
     onSuccess: (data) => {
       toast.success(`User ${data.full_name} created successfully`);
       
-      // Force immediate refresh of profiles list
-      refreshProfiles();
+      console.log('[DEBUG] User created successfully:', data);
       
-      // Also invalidate and refetch for good measure
-      queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
-      queryClient.refetchQueries({ queryKey: ['admin-profiles'] });
+      // Force several refreshes to ensure UI is updated
+      // This approach ensures that the profiles list is updated
+      const refreshFunc = () => {
+        console.log('[DEBUG] Refreshing profiles list...');
+        refreshProfiles();
+        queryClient.invalidateQueries({ queryKey: ['admin-profiles'] });
+        queryClient.removeQueries({ queryKey: ['admin-profiles'] });
+        queryClient.refetchQueries({ queryKey: ['admin-profiles'] });
+      };
       
-      // Add multiple refresh attempts with increasing delays
-      setTimeout(() => refreshProfiles(), 500);
-      setTimeout(() => refreshProfiles(), 1500);
-      setTimeout(() => refreshProfiles(), 3000);
+      // Immediately refresh
+      refreshFunc();
+      
+      // Then set up a series of refreshes with delays
+      [500, 1000, 2000, 3000, 5000].forEach(delay => {
+        setTimeout(() => refreshFunc(), delay);
+      });
+      
+      // Invalidate all related queries to ensure fresh data
+      queryClient.invalidateQueries();
     },
     onError: (error: any) => {
       console.error('User creation error:', error);

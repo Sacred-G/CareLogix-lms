@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,16 +7,14 @@ import Footer from '@/components/navigation/Footer';
 import { courses } from '@/data/courseData';
 import CourseCard from '@/components/courses/CourseCard';
 import { useAuth } from '@/hooks/useAuth';
+import { getOrganizationNameFromEmail } from '@/utils/domainFormatter';
 
 const Index = () => {
   const { user } = useAuth();
   // Dynamic org/university name logic (same as Header)
   let orgName = 'Your Organization';
   if (user && user.email) {
-    const domain = user.email.split('@')[1]?.split('.')[0];
-    if (domain) {
-      orgName = `${domain.charAt(0).toUpperCase() + domain.slice(1)} University`;
-    }
+    orgName = getOrganizationNameFromEmail(user.email);
   }
   // Show up to 6 courses on the home page instead of just 3
   const featuredCourses = courses.slice(0, 6);
@@ -37,7 +34,7 @@ const Index = () => {
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="mb-6 animate-fade-in text-center">
                 <span className="block text-2xl md:text-3xl font-semibold text-gradient-primary">Learn with</span>
-                <span className="block text-5xl md:text-6xl font-extrabold text-gradient-primary leading-tight">Compassion</span>
+                <span className="block text-5xl md:text-6xl font-extrabold text-gradient-primary">Compassion</span>
                 <span className="block text-3xl md:text-4xl font-bold text-gradient-primary">and Confidence</span>
               </h1>
               <p className="text-xl mb-8 text-muted-foreground">

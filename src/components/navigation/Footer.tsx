@@ -1,16 +1,13 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { getUniversityNameFromEmail } from '@/utils/domainFormatter';
 
 export default function Footer() {
   const { user } = useAuth();
   let orgName = 'Your Organization';
   if (user && user.email) {
-    const domain = user.email.split('@')[1]?.split('.')[0];
-    if (domain) {
-      orgName = `${domain.charAt(0).toUpperCase() + domain.slice(1)} University`;
-    }
+    orgName = getUniversityNameFromEmail(user.email);
   }
   return (
     <footer className="w-full border-t bg-[#181820]">
