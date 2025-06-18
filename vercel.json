@@ -1,8 +1,10 @@
 {
   "rewrites": [
-    { "source": "/certificate-preview", "destination": "/index.html" },
     { "source": "/static/(.*)", "destination": "/static/$1" },
     { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/certificate-preview", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  ],
+  "trailingSlash": false,
+  "cleanUrls": true
 }
