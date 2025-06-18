@@ -19,7 +19,7 @@ export const clientRightsCourse: Course = {
       content: `
 # Fundamental Rights of Clients
 
-All individuals with developmental disabilities have the same basic human rights as everyone else. As a Direct Support Professional, you play a crucial role in protecting and promoting these rights.
+All individuals with developmental disabilities have the same basic human rights as everyone else. As a Support Staff, you play a crucial role in protecting and promoting these rights.
 
 ## Core Rights
 
