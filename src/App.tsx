@@ -74,7 +74,11 @@ const App = () => (
                   <CertificateViewer />
                 </ProtectedRoute>
               } />
-              <Route path="/certificate-preview" element={<CertificatePreview />} />
+              <Route path="/certificate-preview" element={
+                <ProtectedRoute>
+                  <CertificatePreview />
+                </ProtectedRoute>
+              } />
               <Route path="/extras" element={<ProtectedRoute><Extras /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
