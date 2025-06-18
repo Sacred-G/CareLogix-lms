@@ -64,6 +64,7 @@ const Courses = () => {
           searchQuery={searchQuery}
           categoryFilter={categoryFilter}
           activeTab={activeTab}
+          userProfile={userProfile}
           userProfileDomain={userProfile?.email_domain}
         />
       </main>

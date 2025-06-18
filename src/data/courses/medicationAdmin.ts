@@ -98,7 +98,7 @@ If a medication error occurs:
 
 Remember: Medication errors are serious but reporting them promptly is essential for individual safety and system improvement.
 `,
-      pdfPath: '/pdfs/medication1.pdf',
+      pdfPath: 'https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/pdfs/medication1.pdf',
       questions: [
         {
           id: "q1-mod1",
@@ -366,7 +366,7 @@ Remember: Medication errors are serious but reporting them promptly is essential
       id: "mod-2",
       title: "Common Medications and Side Effects",
       description: "Overview of medications commonly prescribed for individuals with developmental disabilities and their potential side effects.",
-      pdfPath: '/pdfs/meidcation2.pdf',
+      pdfPath: 'https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/pdfs/meidcation2.pdf',
       videoUrl: "https://youtu.be/muel4drb1FY",
       content: `
 # Common Medications and Side Effects

@@ -311,7 +311,7 @@ Loading and unloading are critical moments for safety in transportation. Proper 
           explanation: 'If unloading on the street side is unavoidable, always watch for traffic and ensure the individual’s safety.'
         }
       ],
-      audioUrl: '/Audio/Safe Loading and Unloading Procedures.wav',
+      audioUrl: 'https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Safe%20Loading%20and%20Unloading%20Procedures.wav',
       transcript: 'The source emphasizes that loading and unloading are the times when accidents are most likely to occur during transportation, stressing that complacency increases risk while extra care significantly reduces it. It details preventative measures to avoid common injuries like falls, strains, and back problems, highlighting that safety is a shared responsibility, not solely that of the driver or company. The text also provides specific guidance on assessing the loading area before beginning, ensuring a safe environment, and underscores the importance of clear communication, treating everyone with respect, and offering assistance, especially to those with mobility challenges or medical conditions. Furthermore, it includes advice on safely transporting children using appropriate restraints and emphasizes staying calm and prepared for emergencies, knowing that proactive steps contribute to a safe, comfortable, and injury-free experience for all.'
     }
   ],

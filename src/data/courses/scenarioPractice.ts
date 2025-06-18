@@ -154,7 +154,7 @@ Remember that behavior change takes time and consistency. Focus on progress rath
           explanation: "Documentation should include objective descriptions of what happened without judgmental language. It should factually record the antecedents (what happened before), the behavior itself, the response to the behavior, and the outcome. This objective record helps in understanding patterns and improving support plans."
         }
       ],
-      audioUrl: "/Audio/Guiding Behavior for Developmental Disabilities.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Guiding%20Behavior%20for%20Developmental%20Disabilities.wav",
       transcript: "In this audio segment, we explore strategies for managing challenging behaviors effectively. We discuss understanding behavior as communication, proactive prevention strategies, crisis response techniques, legal and ethical considerations, and the importance of self-care for direct support professionals who work with challenging behaviors.",
       interactiveScenario: {
         title: "Managing an Aggressive Outburst",
@@ -398,7 +398,7 @@ Remember that by providing steady, compassionate support during difficult times,
           explanation: "Balancing support and space involves following the person's lead, recognizing when your presence is helpful versus overwhelming, offering comfort when appropriate, allowing private time for processing when needed, and remaining available without hovering. This balanced approach respects autonomy while providing necessary support."
         }
       ],
-      audioUrl: "/Audio/Supporting People Through Life's Difficult Moments.wav",
+      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Supporting%20People%20Through%20Life's%20Difficult%20Moments.wav",
       transcript: "In this audio segment, we explore strategies for supporting individuals through emotionally challenging situations. We discuss different types of difficult circumstances people might face, key principles for providing effective support, specific communication techniques for both verbal and non-verbal individuals, when to seek professional help, and the importance of self-care when supporting others through difficult times.",
       interactiveScenario: {
         title: "Supporting Through Grief and Loss",

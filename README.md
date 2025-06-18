@@ -1,73 +1,137 @@
-# Welcome to your Lovable project
+# Learn with Compassion LMS
 
-## Project info
+A comprehensive Learning Management System designed for training and development in supportive living environments. This platform provides accessible, interactive courses for staff training with a focus on person-centered care and professional development.
 
-**URL**: https://lovable.dev/projects/e833b40c-a7a0-42e0-8af5-756783a612c2
+## 🌟 Key Features
 
-## How can I edit this code?
+- **Interactive Course Content**: Engaging modules with videos, quizzes, and interactive scenarios
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Admin Dashboard**: Manage users, courses, and track progress
+- **Certificate Generation**: Automatically generate certificates upon course completion
+- **SCORM Support**: Integration with SCORM-compliant e-learning content
+- **Role-Based Access**: Different access levels for admins, instructors, and learners
+- **Progress Tracking**: Monitor individual and team progress through courses
 
-There are several ways of editing your application.
+## 🛠️ Technology Stack
 
-**Use Lovable**
+- **Frontend**: 
+  - React 18 with TypeScript
+  - Vite for fast development and building
+  - Tailwind CSS for styling
+  - shadcn/ui components
+  - React Router for navigation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e833b40c-a7a0-42e0-8af5-756783a612c2) and start prompting.
+- **Backend**:
+  - Supabase for authentication and database
+  - Node.js for server-side functionality
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Deployment**:
+  - Vercel for frontend hosting
+  - Supabase for backend services
 
-**Use your preferred IDE**
+## 🚀 Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 16+ and npm 8+
+- Git
+- Supabase account (for backend services)
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/learn-with-compassion-lms.git
+   cd learn-with-compassion-lms
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add your Supabase credentials:
+   ```
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## 📚 Course Development
+
+To add a new course:
+
+1. Create a new TypeScript file in `src/data/courses/`
+2. Follow the existing course structure with modules, content, and quizzes
+3. Import and add the course to `src/data/courseData.ts`
+
+Example course structure:
+```typescript
+export const myNewCourse: Course = {
+  id: 'unique-course-id',
+  title: 'Course Title',
+  description: 'Course description',
+  category: 'Category Name',
+  instructor: 'Instructor Name',
+  thumbnail: '/path/to/thumbnail.png',
+  duration: '1h 30min',
+  modules: [
+    {
+      id: 'module-1',
+      title: 'Module Title',
+      description: 'Module description',
+      content: 'Markdown content here...',
+      questions: [
+        {
+          id: 'q1',
+          question: 'Sample question?',
+          options: ['Option 1', 'Option 2'],
+          correctAnswer: 0,
+          explanation: 'Explanation for the answer'
+        }
+      ]
+    }
+  ]
+};
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Production Build
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Vercel Deployment
 
-## What technologies are used for this project?
+1. Push your code to a GitHub repository
+2. Import the repository to Vercel
+3. Set up environment variables in Vercel
+4. Deploy!
 
-This project is built with:
+## 🤝 Contributing
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## How can I deploy this project?
+## 📝 License
 
-Simply open [Lovable](https://lovable.dev/projects/e833b40c-a7a0-42e0-8af5-756783a612c2) and click on Share -> Publish.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Can I connect a custom domain to my Lovable project?
+## 🙏 Acknowledgments
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful component library
+- [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
+- [Supabase](https://supabase.com/) for the amazing backend services
+- [Vite](https://vitejs.dev/) for the lightning-fast build tooling

@@ -113,7 +113,7 @@ As Direct Support Professionals, it's crucial to:
 
 Remember that each person is unique, regardless of disability. Your role is to provide support that enhances quality of life and promotes as much independence as possible. The work you do as a DSP is not simply a job—it's a calling, a commitment to making a difference in the world, one interaction at a time.
 `,
-      pdfPath: '/pdfs/thesystempdf.pdf',
+      pdfPath: 'https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/pdfs/thesystempdf.pdf',
       questions: [
         {
           id: "q1-mod1",

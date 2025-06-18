@@ -161,7 +161,7 @@ Remember that behavior occurs within a context. A person-centered approach consi
 
 By understanding behavior as communication, we can respond in ways that address underlying needs, teach new skills, and create supportive environments that reduce the need for challenging behaviors.
 `,
-       pdfPath: '/pdfs/pbspdf.pdf',
+       pdfPath: 'https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/pdfs/pbspdf.pdf',
        questions: [
         {
           id: "q1-mod1",

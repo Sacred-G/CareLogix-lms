@@ -5,7 +5,7 @@ export const hoyerLiftTrainingCourse: Course = {
   title: "Hoyer Lift Operation and Safety",
   description: "Learn the proper techniques for safely operating a Hoyer lift to transfer individuals, covering transfers from bed to chair and chair to bed.",
   category: "Patient Care Techniques",
-  instructor: "Clinical Education Department",
+  instructor: "CareLogix Training",
   thumbnail: "/Images/hoyerllift.png", // Reminder: Add this image to your public/Images folder
   duration: "Approx. 15 minutes",
   certificateAvailable: true,
