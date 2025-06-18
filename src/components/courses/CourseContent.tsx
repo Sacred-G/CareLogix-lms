@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Module, ScenarioOption } from '@/data/courseTypes';
 import VideoPlayer from './VideoPlayer';
@@ -116,6 +115,34 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
     });
   };
 
+  // Helper functions to determine if tabs have content
+  const hasScormContent = () => {
+    return ['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support', 'boundaries-ethics'].includes(module.courseId || '') ||
+           (scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] && scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length > 0) ||
+           (scormModules && scormModules.length > 0);
+  };
+
+  const hasInteractiveContent = () => {
+    return !!(module.interactiveScenario || 
+             (module.flashcards && module.flashcards.length > 0) || 
+             (module.faqs && module.faqs.length > 0));
+  };
+
+  // Calculate number of tabs to determine grid layout
+  const getTabCount = () => {
+    let count = 2; // Always have content and quiz tabs
+    if (module.id === 'mod-1') {
+      if (hasScormContent()) count++;
+      if (hasInteractiveContent()) count++;
+    }
+    return count;
+  };
+
+  const getGridCols = () => {
+    const tabCount = getTabCount();
+    return `grid-cols-${tabCount}`;
+  };
+
   // Handle interactive iframe module type
   if (module.customModuleType === 'interactiveIframe' && module.iframeUrl) {
     return (
@@ -217,38 +244,62 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
       </div>
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className={`grid w-full ${module.id === 'mod-1' ? 'grid-cols-4' : 'grid-cols-2'} mb-6`}>
-          <TabsTrigger 
-            value="content" 
-            className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
-          >
-            Lesson Content
-          </TabsTrigger>
-          {module.id === 'mod-1' && (
-            <>
+        <div className="relative mb-6">
+          <div className="relative">
+            <TabsList 
+              className={`w-full flex flex-nowrap overflow-x-auto pb-2 gap-1 sm:gap-2 md:grid md:${getGridCols()} md:pb-0`}
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch',
+                scrollPadding: '0 1rem',
+              }}
+            >
               <TabsTrigger 
-                value="scorm" 
-                className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
+                value="content" 
+                className="flex-shrink-0 text-xs sm:text-sm md:text-base py-2 px-2 sm:px-3 whitespace-nowrap
+                  data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 
+                  data-[state=active]:text-white transition-colors duration-200 rounded-md"
               >
-                SCORM Modules
+                <span className="truncate">Content</span>
               </TabsTrigger>
+              {module.id === 'mod-1' && hasScormContent() && (
+                <TabsTrigger 
+                  value="scorm" 
+                  className="flex-shrink-0 text-xs sm:text-sm md:text-base py-2 px-2 sm:px-3 whitespace-nowrap
+                    data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 
+                    data-[state=active]:text-white transition-colors duration-200 rounded-md"
+                >
+                  <span className="truncate">SCORM</span>
+                </TabsTrigger>
+              )}
+              {module.id === 'mod-1' && hasInteractiveContent() && (
+                <TabsTrigger 
+                  value="interactive" 
+                  className="flex-shrink-0 text-xs sm:text-sm md:text-base py-2 px-2 sm:px-3 whitespace-nowrap
+                    data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 
+                    data-[state=active]:text-white transition-colors duration-200 rounded-md"
+                >
+                  <span className="truncate">Interactive</span>
+                </TabsTrigger>
+              )}
               <TabsTrigger 
-                value="interactive" 
-                className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
+                value="quiz" 
+                className="flex-shrink-0 text-xs sm:text-sm md:text-base py-2 px-2 sm:px-3 whitespace-nowrap
+                  data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 
+                  data-[state=active]:text-white transition-colors duration-200 rounded-md"
+                onClick={handleQuizTabClick}
               >
-                Interactive
+                <span className="flex items-center justify-center gap-1">
+                  {!isQuizUnlocked && <Lock className="h-3 w-3 flex-shrink-0" />}
+                  <span className="truncate">Quiz</span>
+                </span>
               </TabsTrigger>
-            </>
-          )}
-          <TabsTrigger 
-            value="quiz" 
-            className="text-base py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
-            onClick={handleQuizTabClick}
-          >
-            {!isQuizUnlocked && <Lock className="h-3 w-3 mr-2" />}
-            Quiz
-          </TabsTrigger>
-        </TabsList>
+            </TabsList>
+            {/* Fade effect on the right side for mobile */}
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none md:hidden"></div>
+          </div>
+        </div>
         
         <TabsContent value="content" className="space-y-8 pt-4 animate-fade-in">
           {module.videoUrl && (
@@ -318,6 +369,218 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           )}
         </TabsContent>
         
+        {module.id === 'mod-1' && hasScormContent() && (
+          <TabsContent value="scorm" className="pt-4 animate-fade-in">
+            <div className="space-y-8">
+              {/* Special cases for courses that should always render iframe directly */}
+              {['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support', 'boundaries-ethics'].includes(module.courseId || '') ? (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                    Interactive SCORM Module
+                  </h3>
+                  <div className="w-full rounded-lg overflow-hidden shadow-lg border border-muted">
+                    <iframe 
+                      src={
+                        module.courseId === 'intro-dev-disabilities' 
+                          ? "https://scorm-neon.vercel.app/Understanding%20Developmental%20Disabilities%20copy/training.htm"
+                          : module.courseId === 'client-rights'
+                          ? "https://scorm-neon.vercel.app/Client%20Rights%20%26%20Dignity%20of%20Risk/training.htm"
+                          : module.courseId === 'infection-control'
+                          ? "https://scorm-neon.vercel.app/Infection%20Control/training.htm"
+                          : module.courseId === 'emergency-preparedness'
+                          ? "https://scorm-neon.vercel.app/Emergency%20Preparedness/training.htm"
+                          : module.courseId === 'trust-rapport'
+                          ? "https://scorm-neon.vercel.app/Core%20Support%20Skills/training.htm"
+                          : module.courseId === 'documentation-visits'
+                          ? "https://scorm-neon.vercel.app/Documentation%20%26%20Administrative%20Tasks%202/training.htm"
+                          : module.courseId === 'medication-admin'
+                          ? "https://scorm-neon.vercel.app/Medication_Administration/training.htm"
+                          : module.courseId === 'positive-behavior-support'
+                          ? "https://scorm-neon.vercel.app/Positive%20Behavior%20Support%20(1)/training.htm"
+                          : module.courseId === 'boundaries-ethics'
+                          ? "https://scorm-neon.vercel.app/Core%20Support%20Skills/training.htm"
+                          : "https://scorm-neon.vercel.app/Foundations%20of%20Empathetic%20Communication/training.htm"
+                      }
+                      title="Interactive SCORM Module"
+                      className="w-full h-[75vh] border-0"
+                      allowFullScreen
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      loading="eager"
+                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                    ></iframe>
+                  </div>
+                </div>
+              ) : scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] && scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length > 0 ? (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                    Direct SCORM Modules
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].map(directModule => (
+                      <Card key={directModule.id} className="cursor-pointer hover:shadow-md transition-shadow">
+                        <CardHeader>
+                          <h4 className="text-md font-medium">{directModule.title}</h4>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">
+                            {directModule.description}
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <Button 
+                            onClick={() => window.open(directModule.path, '_blank')}
+                            className="w-full"
+                          >
+                            Launch Module
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+              
+              {/* Legacy SCORM modules from Supabase */}
+              {scormModules && scormModules.length > 0 ? (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                    Interactive SCORM Modules
+                  </h3>
+                  
+                  {selectedScormModuleId ? (
+                    <div className="space-y-4">
+                      <Button 
+                        variant="outline" 
+                        onClick={() => setSelectedScormModuleId(null)}
+                        className="mb-4"
+                      >
+                        Back to Module List
+                      </Button>
+                      <ScormViewer 
+                        moduleId={selectedScormModuleId} 
+                        onComplete={handleScormComplete}
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      {scormModules.some(m => m.status === 'local_mode') && (
+                        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+                          <p className="text-amber-800 text-sm font-medium">
+                            Some SCORM modules are in Local Mode due to storage configuration issues. When clicking "Launch Local Module", 
+                            you'll be given instructions to download and view the content locally.
+                          </p>
+                        </div>
+                      )}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {scormModules.map(scormModule => (
+                        <Card key={scormModule.id} className="cursor-pointer hover:shadow-md transition-shadow">
+                          <CardHeader>
+                            <h4 className="text-md font-medium">{scormModule.title}</h4>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-sm text-muted-foreground">
+                              {scormModule.description || "Interactive SCORM module"}
+                            </p>
+                          </CardContent>
+                          <CardFooter>
+                            <Button 
+                              onClick={() => handleScormModuleSelect(scormModule.id)}
+                              disabled={!scormModule.public_url}
+                              className="w-full"
+                              variant={scormModule.status === 'local_mode' ? "secondary" : "default"}
+                            >
+                              {!scormModule.public_url ? "Module Processing..." : 
+                               scormModule.status === 'local_mode' ? "Launch Local Module" : "Launch Module"}
+                            </Button>
+                          </CardFooter>
+                        </Card>
+                      ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              ) : null}
+
+              {/* No SCORM content message */}
+              {(!scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] || scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length === 0) && 
+               (!scormModules || scormModules.length === 0) && (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">No SCORM modules available for this module.</p>
+                </div>
+              )}
+            </div>
+          </TabsContent>
+        )}
+
+        {module.id === 'mod-1' && hasInteractiveContent() && (
+          <TabsContent value="interactive" className="pt-4 animate-fade-in">
+            <div className="space-y-8">
+              {/* Interactive Scenario or Mindmap */}
+              {module.interactiveScenario && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                    {module.interactiveScenario.type === 'mindmap' ? 'Interactive Mind Map' : 'Interactive Scenario'}
+                  </h3>
+                  
+                  {module.interactiveScenario.type === 'mindmap' ? (
+                    <MindmapSection 
+                      type={module.interactiveScenario.mindmapType || 'dsp-role'}
+                      title={module.interactiveScenario.title}
+                      description={module.interactiveScenario.description}
+                    />
+                  ) : module.interactiveScenario.content ? (
+                    <InteractiveScenario 
+                      branchingScenario={module.interactiveScenario}
+                    />
+                  ) : (
+                    <InteractiveScenario 
+                      scenario={{
+                        title: module.interactiveScenario.title,
+                        description: module.interactiveScenario.description,
+                        type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
+                        options: module.interactiveScenario.options || []
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+              
+              {/* Flashcards Section */}
+              {module.flashcards && module.flashcards.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                    Flashcards
+                  </h3>
+                  <FlashcardSection 
+                    flashcards={module.flashcards} 
+                    title="Course Flashcards"
+                  />
+                </div>
+              )}
+              
+              {/* FAQs Section */}
+              {module.faqs && module.faqs.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
+                    Frequently Asked Questions
+                  </h3>
+                  <FAQSection faqs={module.faqs} />
+                </div>
+              )}
+              
+              {/* Only show this message if there's no interactive content */}
+              {!module.interactiveScenario && 
+               (!module.flashcards || module.flashcards.length === 0) && 
+               (!module.faqs || module.faqs.length === 0) && (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground">No interactive content available for this module.</p>
+                </div>
+              )}
+            </div>
+          </TabsContent>
+        )}
+
         <TabsContent value="quiz" className="pt-4 animate-fade-in">
           {!isQuizUnlocked ? (
             <div className="py-16 text-center">
@@ -359,218 +622,6 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
             </div>
           )}
         </TabsContent>
-        
-        {module.id === 'mod-1' && (
-          <>
-            {/* SCORM Tab - Auto-launch when tab is selected */}
-            <TabsContent value="scorm" className="pt-4 animate-fade-in">
-              <div className="space-y-8">
-                {/* Special cases for courses that should always render iframe directly */}
-                {['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support'].includes(module.courseId || '') ? (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
-                      Interactive SCORM Module
-                    </h3>
-                    <div className="w-full rounded-lg overflow-hidden shadow-lg border border-muted">
-                      <iframe 
-                        src={
-                          module.courseId === 'intro-dev-disabilities' 
-                            ? "https://scorm-neon.vercel.app/Understanding%20Developmental%20Disabilities%20copy/training.htm"
-                            : module.courseId === 'client-rights'
-                            ? "https://scorm-neon.vercel.app/Client%20Rights%20%26%20Dignity%20of%20Risk/training.htm"
-                            : module.courseId === 'infection-control'
-                            ? "https://scorm-neon.vercel.app/Infection%20Control/training.htm"
-                            : module.courseId === 'emergency-preparedness'
-                            ? "https://scorm-neon.vercel.app/Emergency%20Preparedness/training.htm"
-                            : module.courseId === 'trust-rapport'
-                            ? "https://scorm-neon.vercel.app/Core%20Support%20Skills/training.htm"
-                            : module.courseId === 'documentation-visits'
-                            ? "https://scorm-neon.vercel.app/Documentation%20%26%20Administrative%20Tasks%202/training.htm"
-                            : module.courseId === 'medication-admin'
-                            ? "https://scorm-neon.vercel.app/Medication_Administration/training.htm"
-                            : module.courseId === 'positive-behavior-support'
-                            ? "https://scorm-neon.vercel.app/Positive%20Behavior%20Support%20(1)/training.htm"
-                            : "https://scorm-neon.vercel.app/Foundations%20of%20Empathetic%20Communication/training.htm"
-                        }
-                        title="Interactive SCORM Module"
-                        className="w-full h-[75vh] border-0"
-                        allowFullScreen
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        loading="eager"
-                        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                      ></iframe>
-                    </div>
-                  </div>
-                ) : scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] && scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length > 0 ? (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
-                      Direct SCORM Modules
-                    </h3>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].map(directModule => (
-                        <Card key={directModule.id} className="cursor-pointer hover:shadow-md transition-shadow">
-                          <CardHeader>
-                            <h4 className="text-md font-medium">{directModule.title}</h4>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-sm text-muted-foreground">
-                              {directModule.description}
-                            </p>
-                          </CardContent>
-                          <CardFooter>
-                            <Button 
-                              onClick={() => window.open(directModule.path, '_blank')}
-                              className="w-full"
-                            >
-                              Launch Module
-                            </Button>
-                          </CardFooter>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-                
-                {/* Legacy SCORM modules from Supabase */}
-                {scormModules && scormModules.length > 0 ? (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
-                      Interactive SCORM Modules
-                    </h3>
-                    
-                    {selectedScormModuleId ? (
-                      <div className="space-y-4">
-                        <Button 
-                          variant="outline" 
-                          onClick={() => setSelectedScormModuleId(null)}
-                          className="mb-4"
-                        >
-                          Back to Module List
-                        </Button>
-                        <ScormViewer 
-                          moduleId={selectedScormModuleId} 
-                          onComplete={handleScormComplete}
-                        />
-                      </div>
-                    ) : (
-                      <>
-                        {scormModules.some(m => m.status === 'local_mode') && (
-                          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-                            <p className="text-amber-800 text-sm font-medium">
-                              Some SCORM modules are in Local Mode due to storage configuration issues. When clicking "Launch Local Module", 
-                              you'll be given instructions to download and view the content locally.
-                            </p>
-                          </div>
-                        )}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {scormModules.map(scormModule => (
-                          <Card key={scormModule.id} className="cursor-pointer hover:shadow-md transition-shadow">
-                            <CardHeader>
-                              <h4 className="text-md font-medium">{scormModule.title}</h4>
-                            </CardHeader>
-                            <CardContent>
-                              <p className="text-sm text-muted-foreground">
-                                {scormModule.description || "Interactive SCORM module"}
-                              </p>
-                            </CardContent>
-                            <CardFooter>
-                              <Button 
-                                onClick={() => handleScormModuleSelect(scormModule.id)}
-                                disabled={!scormModule.public_url}
-                                className="w-full"
-                                variant={scormModule.status === 'local_mode' ? "secondary" : "default"}
-                              >
-                                {!scormModule.public_url ? "Module Processing..." : 
-                                 scormModule.status === 'local_mode' ? "Launch Local Module" : "Launch Module"}
-                              </Button>
-                            </CardFooter>
-                          </Card>
-                        ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                ) : null}
-
-                {/* No SCORM content message */}
-                {(!scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] || scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length === 0) && 
-                 (!scormModules || scormModules.length === 0) && (
-                  <div className="text-center py-8">
-                    <p className="text-muted-foreground">No SCORM modules available for this module.</p>
-                  </div>
-                )}
-              </div>
-            </TabsContent>
-
-            {/* Interactive Tab */}
-            <TabsContent value="interactive" className="pt-4 animate-fade-in">
-              <div className="space-y-8">
-                {/* Interactive Scenario or Mindmap */}
-                {module.interactiveScenario && (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
-                      {module.interactiveScenario.type === 'mindmap' ? 'Interactive Mind Map' : 'Interactive Scenario'}
-                    </h3>
-                    
-                    {module.interactiveScenario.type === 'mindmap' ? (
-                      <MindmapSection 
-                        type={module.interactiveScenario.mindmapType || 'dsp-role'}
-                        title={module.interactiveScenario.title}
-                        description={module.interactiveScenario.description}
-                      />
-                    ) : module.interactiveScenario.content ? (
-                      <InteractiveScenario 
-                        branchingScenario={module.interactiveScenario}
-                      />
-                    ) : (
-                      <InteractiveScenario 
-                        scenario={{
-                          title: module.interactiveScenario.title,
-                          description: module.interactiveScenario.description,
-                          type: module.interactiveScenario.type as 'multiple-choice' | 'dialogue',
-                          options: module.interactiveScenario.options || []
-                        }}
-                      />
-                    )}
-                  </div>
-                )}
-                
-                {/* Flashcards Section */}
-                {module.flashcards && module.flashcards.length > 0 && (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
-                      Flashcards
-                    </h3>
-                    <FlashcardSection 
-                      flashcards={module.flashcards} 
-                      title="Course Flashcards"
-                    />
-                  </div>
-                )}
-                
-                {/* FAQs Section */}
-                {module.faqs && module.faqs.length > 0 && (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-medium border-l-4 border-primary pl-3 py-1">
-                      Frequently Asked Questions
-                    </h3>
-                    <FAQSection faqs={module.faqs} />
-                  </div>
-                )}
-                
-                {/* Only show this message if there's no interactive content */}
-                {!module.interactiveScenario && 
-                 (!module.flashcards || module.flashcards.length === 0) && 
-                 (!module.faqs || module.faqs.length === 0) && (
-                  <div className="text-center py-8">
-                    <p className="text-muted-foreground">No interactive content available for this module.</p>
-                  </div>
-                )}
-              </div>
-            </TabsContent>
-          </>
-        )}
       </Tabs>
     </div>
   );

@@ -5,18 +5,19 @@ export const resourcesCourse: Course = {
   title: "DSP Resources & Tools",
   description: "Essential resources, forms, and tools for Direct Support Professionals.",
   category: "Resources",
-  instructor: "Centered Care",
-  thumbnail: "/Images/resources.png", // If this image does not exist, please review and update accordingly.
+  instructor: "CareLogix-LMS",
+  thumbnail: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/Images/y6g8d4sn.png", // If this image does not exist, please review and update accordingly.
   duration: "Reference",
   modules: [
     {
       id: "risk-management-tools",
-      title: "Risk Management Tools",
+      title: "Resource Downloads",
       description: "Resources for preventing and reporting incidents.",
       content: `
 # Risk Management Tools
 
 Regional Center staff, Service Providers and families may find the documents listed below useful in both preventing and reporting Special Incident Reports (SIRs).
+## Click on any of the links below to download the document.
 
 ## Health Condition Checklists
 - [Checklist: Aspiration/Aspiration Pneumonia](https://www.dds.ca.gov/wp-content/uploads/2019/10/Checklist_Aspiration.pdf)
@@ -46,24 +47,6 @@ Regional Center staff, Service Providers and families may find the documents lis
 - [Specific Clinical Risk Factors: Aspiration Pneumonia](http://www.westsiderc.org/wp-content/uploads/2014/06/SpecificRiskAspiration.pdf)
 - [Specific Clinical Risk Factors: GI Problems in People with Developmental Disabilities](http://www.westsiderc.org/wp-content/uploads/2014/06/SpecificRiskGI.pdf)
 `,
-      questions: [
-        {
-          id: "q1-resources",
-          question: "Why are risk management tools important for DSPs?",
-          options: [
-            "They're only important for medical professionals",
-            "They help in both preventing and responding to incidents",
-            "They replace the need for DSP judgment",
-            "They're only useful after an incident has occurred"
-          ],
-
-          correctAnswer: 1,
-          explanation: "Risk management tools are important because they help DSPs both prevent incidents from occurring and respond appropriately when they do happen. They provide structured guidance but don't replace professional judgment."
-        }
-      ],
-      videoUrl: "",
-      audioUrl: "",
-      transcript: "This module provides access to various risk management tools and resources that can be useful in supporting individuals with developmental disabilities safely."
     },
     {
       id: "reporting-forms",
@@ -85,25 +68,9 @@ Access and download the necessary forms for incident reporting, restraint docume
 - [WRC Rx Error Diagnostic Tool_2022](https://westsiderc.org/wp-content/uploads/2022/10/WRC-Rx-Error-Diagnostic-Tool_2022-1.pdf)
 - [WRC COVID-19 Form For Vendor/Providers Employee/Staff](https://westsiderc.org/wp-content/uploads/2020/03/WRC-COVID019-Vendor-Employee-Staff-Form.docx)
 `,
-      questions: [
-        {
-          id: "q1-reporting",
-          question: "What is the purpose of the SIR form?",
-          options: [
-            "To order medical supplies",
-            "To report special incidents involving clients",
-            "To request time off",
-            "To apply for additional funding"
-          ],
-          correctAnswer: 1,
-          explanation: "SIR (Special Incident Report) forms are used to report incidents involving clients such as injuries, medication errors, suspected abuse, or other reportable events. Proper reporting ensures appropriate follow-up and helps improve safety measures."
-        }
-      ],
-      videoUrl: "",
-      audioUrl: "",
-      transcript: "This module provides access to essential reporting forms needed by Direct Support Professionals for incident documentation and reporting."
-    }
+
+    },
   ],
-  domain: "general",
+  domain: "",
   featured: true
 };

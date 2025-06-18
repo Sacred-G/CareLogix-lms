@@ -138,30 +138,72 @@ Remember that building trust and rapport takes time. Be patient, consistent, and
           ],
           correctAnswer: 1,
           explanation: "Understanding the individual's perspective is important because it shows that you value their experiences and emotions, which helps build trust and rapport."
+        },
+        {
+          id: "q6-mod1",
+          question: "Professional boundaries involve finding the line between being supportive versus becoming inappropriately involved. What is essential to respect regarding professional boundaries?",
+          options: [
+            "Only the staff member's needs",
+            "The supervisor's preferences",
+            "Personal space, avoiding overfamiliarity, and prioritizing the individual's needs",
+            "Financial gain for the staff member"
+          ],
+          correctAnswer: 2,
+          explanation: "Respecting personal space, avoiding overfamiliarity, and prioritizing the individual's needs are essential for maintaining professional boundaries."
+        },
+        {
+          id: "q7-mod1",
+          question: "When it comes to sharing personal information, what is considered inappropriate for a support professional?",
+          options: [
+            "Stating 'I have two kids in school' if asked about family",
+            "Oversharing personal problems or building a dependency",
+            "Briefly mentioning a weekend activity",
+            "Discussing general weather conditions"
+          ],
+          correctAnswer: 1,
+          explanation: "Oversharing personal problems or building a dependency on the support professional is inappropriate and blurs professional boundaries."
+        },
+        {
+          id: "q8-mod1",
+          question: "Why are professional boundaries considered important in support work?",
+          options: [
+            "To limit the individual's independence",
+            "To make the staff member's job easier",
+            "They protect both the individual and the support professional, ensuring the relationship remains healthy and ethical.",
+            "To avoid any emotional connection whatsoever"
+          ],
+          correctAnswer: 2,
+          explanation: "Professional boundaries are crucial as they protect both the individual and the support professional, ensuring the relationship remains healthy, ethical, and focused on the individual's well-being."
+        },
+        {
+          id: "q9-mod1",
+          question: "When working with families, especially if the family tends to speak over the individual, what gentle redirect is suggested to ensure the individual's voice is heard?",
+          options: [
+            "'You are not allowed to interrupt.'",
+            "'I will only speak to the individual directly.'",
+            "'I'd love to hear what Alex thinks first and then we can add on tips.'",
+            "'Your input is not needed at this time.'"
+          ],
+          correctAnswer: 2,
+          explanation: "A gentle redirect like, 'I'd love to hear what Alex thinks first and then we can add on tips,' respectfully ensures the individual's voice is prioritized."
+        },
+        {
+          id: "q10-mod1",
+          question: "Regarding gift-giving or financial boundaries, what is generally considered acceptable or advised?",
+          options: [
+            "Accepting expensive gifts as a sign of appreciation",
+            "Asking for loans from the individual",
+            "Giving or receiving small tokens like a handmade card or a $5 holiday gift, while checking agency policy.",
+            "Allowing the individual to manage your personal finances"
+          ],
+          correctAnswer: 2,
+          explanation: "Generally, small tokens may be acceptable, but it's crucial to always check and adhere to agency policy regarding gifts and financial interactions to maintain professional boundaries."
         }
       ],
       audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Building%20Trust,%20Rapport,%20and%20Boundaries%20in%20Support%20Work.wav",
       transcript: "This audio segment explores the foundations of building trust and rapport in support work. We discuss the importance of consistency, empathy, and positive interactions in establishing strong, supportive relationships. We also examine how shared activities and genuine interest help individuals see support professionals as allies rather than just staff."
-    },
-    {
-      id: "mod-2",
-      title: "Interactive SCORM Module",
-      description: "Please complete the interactive SCORM package below.",
-      videoUrl: "",
-      content: `
-<div style="width: 100%; height: 600px; border: 1px solid #ccc; overflow: hidden;">
-  <iframe
-    src="YOUR_SCORM_LINK_HERE"
-    style="width: 100%; height: 100%; border: none;"
-    title="Interactive SCORM Module"
-    allowfullscreen
-  ></iframe>
-</div>
-<p>If you have trouble viewing the module, please ensure your browser allows third-party cookies and that content from the source is not blocked. You may also need to try a different browser or check your internet connection.</p>
-`,
-      questions: [],
-      audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Building%20Trust,%20Rapport,%20and%20Boundaries%20in%20Support%20Work.wav",
-      transcript: ""
     }
+    
+    
   ]
 };

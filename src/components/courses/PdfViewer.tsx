@@ -203,49 +203,97 @@ const PdfViewer: React.FC<PdfViewerProps> = ({
   }, [activeTab, filePath]);
 
   return (
-    <div className="pdf-viewer-container bg-muted/30 p-4 rounded-lg shadow-inner">
+    <div className="pdf-viewer-container bg-muted/30 p-2 sm:p-4 rounded-lg shadow-inner w-full max-w-full overflow-hidden">
       {title && <h3 className="text-lg font-semibold mb-3 text-center text-primary">{title}</h3>}
       
       {isEditable ? (
         <Tabs defaultValue="view" onValueChange={setActiveTab} className="w-full">
-          <div className="flex justify-between items-center mb-4">
-            <TabsList>
-              <TabsTrigger value="view">View PDF</TabsTrigger>
-              <TabsTrigger value="edit">Edit Form</TabsTrigger>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4 w-full">
+            <TabsList className="w-full sm:w-auto overflow-x-auto no-scrollbar">
+              <TabsTrigger value="view" className="text-xs sm:text-sm px-3 py-1.5">View PDF</TabsTrigger>
+              <TabsTrigger value="edit" className="text-xs sm:text-sm px-3 py-1.5">Edit Form</TabsTrigger>
             </TabsList>
             
-            <div className="pdf-controls flex flex-wrap items-center justify-end gap-2 p-2">
-              <a href={filePath} download target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm">
-                  <Download className="h-4 w-4 mr-1" /> Download
+            <div className="w-full sm:w-auto flex justify-end">
+              <a href={filePath} download target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="outline" size="sm" className="w-full sm:w-auto">
+                  <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1" />
+                  <span className="text-xs sm:text-sm">Download</span>
                 </Button>
               </a>
             </div>
           </div>
           
           <TabsContent value="view" className="mt-0">
-            <div className="pdf-controls flex flex-wrap items-center justify-center gap-2 mb-4 p-3 bg-card rounded-md shadow">
-              <Button onClick={goToPreviousPage} disabled={pageNumber <= 1} variant="outline" size="sm">
-                <ChevronLeft className="h-4 w-4 mr-1" /> Prev
-              </Button>
-              <span className="text-sm font-medium mx-2">
-                Page {pageNumber} of {numPages || '--'}
-              </span>
-              <Button onClick={goToNextPage} disabled={pageNumber >= (numPages || 0)} variant="outline" size="sm">
-                Next <ChevronRight className="h-4 w-4 ml-1" />
-              </Button>
-              <Button onClick={handleZoomIn} variant="outline" size="sm">
-                <ZoomIn className="h-4 w-4 mr-1" /> Zoom In
-              </Button>
-              <Button onClick={handleZoomOut} variant="outline" size="sm">
-                <ZoomOut className="h-4 w-4 mr-1" /> Zoom Out
-              </Button>
-              <Button onClick={handleRotate} variant="outline" size="sm">
-                <RotateCcw className="h-4 w-4 mr-1" /> Rotate
-              </Button>
+            <div className="pdf-controls">
+        <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-2">
+          {/* Navigation Buttons */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Button 
+              onClick={goToPreviousPage} 
+              disabled={pageNumber <= 1} 
+              variant="outline" 
+              size="sm"
+              className="h-8 px-2 text-xs sm:text-sm"
+            >
+              <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+              <span className="hidden sm:inline">Prev</span>
+            </Button>
+            
+            <div className="text-xs sm:text-sm font-medium bg-muted/50 px-2 py-1.5 rounded-md">
+              {pageNumber} / {numPages || '--'}
+            </div>
+            
+            <Button 
+              onClick={goToNextPage} 
+              disabled={pageNumber >= (numPages || 0)} 
+              variant="outline" 
+              size="sm"
+              className="h-8 px-2 text-xs sm:text-sm"
+            >
+              <span className="hidden sm:inline">Next</span>
+              <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 ml-0.5" />
+            </Button>
+          </div>
+          
+          {/* Zoom Controls */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Button 
+              onClick={handleZoomIn} 
+              variant="outline" 
+              size="sm"
+              className="h-8 px-2 text-xs sm:text-sm"
+              aria-label="Zoom in"
+            >
+              <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+              <span className="hidden sm:inline">Zoom In</span>
+            </Button>
+            
+            <Button 
+              onClick={handleZoomOut} 
+              variant="outline" 
+              size="sm"
+              className="h-8 px-2 text-xs sm:text-sm"
+              aria-label="Zoom out"
+            >
+              <ZoomOut className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+              <span className="hidden sm:inline">Zoom Out</span>
+            </Button>
+            
+            <Button 
+              onClick={handleRotate} 
+              variant="outline" 
+              size="sm"
+              className="h-8 px-2 text-xs sm:text-sm"
+              aria-label="Rotate"
+            >
+              <RotateCcw className="h-3 w-3 sm:h-4 sm:w-4" />
+            </Button>
+          </div>
+        </div>
             </div>
 
-            <div className="pdf-document-wrapper overflow-auto flex justify-center items-center bg-white p-2 rounded shadow" style={{ minHeight: '60vh' }}>
+            <div className="pdf-document-wrapper w-full overflow-auto flex justify-center items-center bg-white p-1 sm:p-2 rounded shadow" style={{ minHeight: '50vh', maxHeight: '70vh' }}>
               <Document
                 file={filePath}
                 onLoadSuccess={onDocumentLoadSuccess}
@@ -347,33 +395,86 @@ const PdfViewer: React.FC<PdfViewerProps> = ({
       ) : (
         // Non-editable view (fallback to original viewer)
         <>
-          <div className="pdf-controls flex flex-wrap items-center justify-center gap-2 mb-4 p-3 bg-card rounded-md shadow">
-            <Button onClick={goToPreviousPage} disabled={pageNumber <= 1} variant="outline" size="sm">
-              <ChevronLeft className="h-4 w-4 mr-1" /> Prev
-            </Button>
-            <span className="text-sm font-medium mx-2">
-              Page {pageNumber} of {numPages || '--'}
-            </span>
-            <Button onClick={goToNextPage} disabled={pageNumber >= (numPages || 0)} variant="outline" size="sm">
-              Next <ChevronRight className="h-4 w-4 ml-1" />
-            </Button>
-            <Button onClick={handleZoomIn} variant="outline" size="sm">
-              <ZoomIn className="h-4 w-4 mr-1" /> Zoom In
-            </Button>
-            <Button onClick={handleZoomOut} variant="outline" size="sm">
-              <ZoomOut className="h-4 w-4 mr-1" /> Zoom Out
-            </Button>
-            <Button onClick={handleRotate} variant="outline" size="sm">
-              <RotateCcw className="h-4 w-4 mr-1" /> Rotate
-            </Button>
-            <a href={filePath} download target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm">
-                <Download className="h-4 w-4 mr-1" /> Download
-              </Button>
-            </a>
+          <div className="pdf-controls">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-2">
+              {/* Navigation Buttons */}
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Button 
+                  onClick={goToPreviousPage} 
+                  disabled={pageNumber <= 1} 
+                  variant="outline" 
+                  size="sm"
+                  className="h-8 px-2 text-xs sm:text-sm"
+                >
+                  <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+                  <span className="hidden sm:inline">Prev</span>
+                </Button>
+                
+                <div className="text-xs sm:text-sm font-medium bg-muted/50 px-2 py-1.5 rounded-md">
+                  {pageNumber} / {numPages || '--'}
+                </div>
+                
+                <Button 
+                  onClick={goToNextPage} 
+                  disabled={pageNumber >= (numPages || 0)} 
+                  variant="outline" 
+                  size="sm"
+                  className="h-8 px-2 text-xs sm:text-sm"
+                >
+                  <span className="hidden sm:inline">Next</span>
+                  <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 ml-0.5" />
+                </Button>
+              </div>
+              
+              {/* Zoom Controls */}
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Button 
+                  onClick={handleZoomIn} 
+                  variant="outline" 
+                  size="sm"
+                  className="h-8 px-2 text-xs sm:text-sm"
+                  aria-label="Zoom in"
+                >
+                  <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+                  <span className="hidden sm:inline">Zoom In</span>
+                </Button>
+                
+                <Button 
+                  onClick={handleZoomOut} 
+                  variant="outline" 
+                  size="sm"
+                  className="h-8 px-2 text-xs sm:text-sm"
+                  aria-label="Zoom out"
+                >
+                  <ZoomOut className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+                  <span className="hidden sm:inline">Zoom Out</span>
+                </Button>
+                
+                <Button 
+                  onClick={handleRotate} 
+                  variant="outline" 
+                  size="sm"
+                  className="h-8 px-2 text-xs sm:text-sm"
+                  aria-label="Rotate"
+                >
+                  <RotateCcw className="h-3 w-3 sm:h-4 sm:w-4" />
+                </Button>
+                
+                <a href={filePath} download target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="h-8 px-2 text-xs sm:text-sm"
+                  >
+                    <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5" />
+                    <span className="hidden sm:inline">Download</span>
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div className="pdf-document-wrapper overflow-auto flex justify-center items-center bg-white p-2 rounded shadow" style={{ minHeight: '60vh' }}>
+          <div className="pdf-document-wrapper w-full overflow-auto flex justify-center items-center bg-white p-1 sm:p-2 rounded shadow" style={{ minHeight: '50vh', maxHeight: '70vh' }}>
             <Document
               file={filePath}
               onLoadSuccess={onDocumentLoadSuccess}

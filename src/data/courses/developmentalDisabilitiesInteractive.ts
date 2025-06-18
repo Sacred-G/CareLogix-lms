@@ -5,8 +5,8 @@ export const developmentalDisabilitiesInteractive: Course = {
   title: "The Role of Support Staff: Interactive Training",
   description: "An interactive micro-learning experience for support staff working with individuals with developmental disabilities. Learn essential strategies and approaches to provide effective, person-centered support.",
   category: "Support Staff Training",
-  instructor: "JFC Training Team",
-  thumbnail: "/Images/DD2.png",
+  instructor: "Steven Bouldin, SHRM-CP",
+  thumbnail: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/Images/ChatGPT%20Image%20Jun%2016,%202025,%2007_23_07%20AM.png",
   duration: "20 min",
   modules: [
     {

@@ -67,6 +67,7 @@ export const createCertificate = (
 
 // Save certificate to database
 export const saveCertificate = async (certificate: Certificate): Promise<{ success: boolean; certificateId?: string }> => {
+  console.log('[CertificateService] Attempting to save certificate:', JSON.stringify(certificate, null, 2));
   try {
     // Ensure we have the organization domain
     let organizationDomain = certificate.organizationDomain;
@@ -82,6 +83,7 @@ export const saveCertificate = async (certificate: Certificate): Promise<{ succe
         organizationDomain = getUserDomain(user.email) || undefined;
       }
     }
+    console.log('[CertificateService] Organization domain for save:', organizationDomain);
 
     const { data, error } = await supabase
       .from('certificates')
@@ -102,14 +104,18 @@ export const saveCertificate = async (certificate: Certificate): Promise<{ succe
       .select('id')
       .single();
     
-    if (error) throw error;
+    if (error) {
+      console.error('[CertificateService] Supabase error object during save:', JSON.stringify(error, null, 2));
+      throw error;
+    }
     
     return { 
       success: true,
       certificateId: data.id
     };
-  } catch (error) {
-    console.error('Error saving certificate:', error);
+  } catch (error: any) {
+    console.error('[CertificateService] Full error in saveCertificate catch block:', JSON.stringify(error, null, 2));
+    console.error('Error saving certificate:', error.message || error);
     return { success: false };
   }
 };

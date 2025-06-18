@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -7,6 +6,7 @@ import Footer from '@/components/navigation/Footer';
 import { AdminRoute } from '@/components/auth/AdminRoute';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAdminData } from '@/hooks/useAdminData';
+import { useEnrollments } from '@/hooks/useEnrollments'; // Added import
 import { useAuth } from '@/hooks/useAuth';
 import { useQueryClient } from '@tanstack/react-query';
 import { AdminRoleType } from '@/types/admin';
@@ -55,8 +55,17 @@ export default function AdminDashboard() {
     enrollments,
     loadingEnrollments, 
     courseStats,
-    loadingStats
+    loadingStats,
+    // enrollments and loadingEnrollments from useAdminData are still used by AdminStats and Issue Certificate tab
+    // We will fetch a separate, more detailed list for the EnrollmentsTable
   } = useAdminData();
+
+  // Fetch enrollments specifically for the Admin Enrollments Table
+  const {
+    enrollments: adminTableEnrollments,
+    isLoadingEnrollments: isLoadingAdminTableEnrollments,
+    refetchEnrollments: refetchAdminTableEnrollments
+  } = useEnrollments(true);
 
   // Filter profiles based on search query and admin type
   const filteredProfiles = profiles?.filter(profile => {
@@ -112,8 +121,8 @@ export default function AdminDashboard() {
       <AdminRoute>
         <div className="min-h-screen flex flex-col">
         
-        <main className="flex-1 bg-muted/30 py-8">
-          <div className="container px-4">
+        <main className="flex-1 bg-muted/30 py-8 h-auto">
+          <div className="container px-4 h-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
               <div>
                 <h1 className="text-3xl font-bold mb-2">
@@ -159,7 +168,7 @@ export default function AdminDashboard() {
             />
             
             
-            <Tabs defaultValue="users" className="w-full">
+            <Tabs defaultValue="users" className="w-full h-auto">
               <div className="flex justify-end mb-4">
                 <Button
                   variant="outline"
@@ -184,7 +193,7 @@ export default function AdminDashboard() {
                   Debug: Show All Profiles
                 </Button>
               </div>
-              <TabsList className="grid grid-cols-6 w-full mb-6 max-w-2xl">
+              <TabsList className="grid grid-cols-6 w-full mb-6  h-auto">
                 <TabsTrigger value="users">
                   <Users className="mr-2 h-4 w-4" />
                   Users
@@ -203,7 +212,7 @@ export default function AdminDashboard() {
               </TabsList>
               
               {/* Users Tab */}
-              <TabsContent value="users">
+              <TabsContent value="users" className="h-auto">
                 <UserManagement
                   profiles={profiles}
                   filteredProfiles={filteredProfiles}
@@ -220,7 +229,7 @@ export default function AdminDashboard() {
               </TabsContent>
               
               {/* Course Stats Tab */}
-              <TabsContent value="courses">
+              <TabsContent value="courses" className="h-auto">
                 <CourseStats 
                   courseStats={courseStats}
                   loadingStats={loadingStats}
@@ -228,16 +237,16 @@ export default function AdminDashboard() {
               </TabsContent>
               
               {/* Enrollments Tab */}
-              <TabsContent value="enrollments">
+              <TabsContent value="enrollments" className="h-auto">
                 <EnrollmentsTable 
-                  enrollments={enrollments}
-                  loadingEnrollments={loadingEnrollments}
-                  refetchEnrollments={() => queryClient.invalidateQueries({ queryKey: ['admin-enrollments'] })}
+                  enrollments={adminTableEnrollments} // Use admin-specific enrollments
+                  loadingEnrollments={isLoadingAdminTableEnrollments} // Use admin-specific loading state
+                  refetchEnrollments={refetchAdminTableEnrollments} // Use direct refetch from the hook
                 />
               </TabsContent>
               
               {/* Course Assignment Tab */}
-              <TabsContent value="assign">
+              <TabsContent value="assign" className="h-auto">
                 <CourseAssignment
                   profiles={profiles}
                   refetchEnrollments={() => queryClient.invalidateQueries({ queryKey: ['admin-enrollments'] })}
@@ -247,10 +256,11 @@ export default function AdminDashboard() {
               </TabsContent>
               
               {/* Manual Certificate Issuer Tab */}
-              <TabsContent value="certificates" className="space-y-6 p-6 bg-white rounded-lg shadow">
+              <TabsContent value="certificates" className="h-auto space-y-6 p-6 rounded-lg shadow">
                 <h2 className="text-2xl font-bold mb-4">Issue Certificate</h2>
                 <p className="text-gray-600 mb-6">Manually issue a certificate to a user who has completed a course.</p>
                 
+                { (console.log('[AdminDashboard] Cert Tab - loadingProfiles before User Select:', loadingProfiles, 'Profiles available:', profiles?.length), null) }
                 <form onSubmit={async (e) => {
                   e.preventDefault();
                   if (!certificateForm.selectedUserId || !certificateForm.selectedCourseId) {
@@ -296,7 +306,16 @@ export default function AdminDashboard() {
                     </label>
                     <Select
                       value={certificateForm.selectedUserId}
-                      onValueChange={(value) => setCertificateForm(prev => ({ ...prev, selectedUserId: value, selectedCourseId: '' }))}
+                      onValueChange={(value) => {
+                      console.log('[AdminDashboard] Selected User ID for certificate:', value);
+                      console.log('[AdminDashboard] All enrollments being considered:', JSON.stringify(enrollments, null, 2));
+                      const userCompletedEnrollments = enrollments?.filter(e => e.user_id === value && e.completed);
+                      console.log('[AdminDashboard] Filtered completed enrollments for selected user:', JSON.stringify(userCompletedEnrollments, null, 2));
+                      if (!userCompletedEnrollments || userCompletedEnrollments.length === 0) {
+                        console.warn('[AdminDashboard] No completed enrollments found for this user in the available enrollments data.');
+                      }
+                      setCertificateForm(prev => ({ ...prev, selectedUserId: value, selectedCourseId: '' }));
+                    }}
                       disabled={loadingProfiles}
                     >
                       <SelectTrigger id="user-select" className="w-full">
@@ -328,7 +347,8 @@ export default function AdminDashboard() {
                         {enrollments
                           ?.filter(e => e.user_id === certificateForm.selectedUserId && e.completed)
                           .map(enrollment => {
-                            const course = courses.find(c => c.id === enrollment.course_id);
+                                                      const course = courses.find(c => c.id === enrollment.course_id);
+                          // console.log(`[AdminDashboard] Mapping enrollment: user_id=${enrollment.user_id}, course_id=${enrollment.course_id}, completed=${enrollment.completed}, course_found=${!!course}`);
                             return course ? (
                               <SelectItem key={enrollment.course_id} value={enrollment.course_id}>
                                 {course.title}
@@ -357,7 +377,7 @@ export default function AdminDashboard() {
               </TabsContent>
               
               {/* SCORM Content Tab */}
-              <TabsContent value="scorm">
+              <TabsContent value="scorm" className="h-auto">
                 <div className="space-y-6">
                   <div className="flex justify-between items-center">
                     <h2 className="text-2xl font-bold">SCORM Content Management</h2>

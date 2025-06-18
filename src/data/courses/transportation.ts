@@ -14,7 +14,7 @@ export const transportationCourse: Course = {
       id: 'mod-1',
       title: 'Introduction to Transportation Safety',
       description: 'Understand the importance of safe transportation and your responsibilities as a support professional.',
-      videoUrl: 'https://youtu.be/c6fGxvQg9c8',
+      videoUrl: 'https://youtu.be/Zp-ZldX0Kl8',
       content: `
 # Introduction to Transportation Safety
 
@@ -164,7 +164,7 @@ Providing transportation is a key part of supporting individuals in the communit
           explanation: 'Having emergency contacts handy ensures prompt response in case of an emergency.'
         }
       ],
-      audioUrl: '/Audio/Ensuring Driver and Road Safety.wav',
+      audioUrl: 'https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media/audio2/Mastering%20Safe%20Driving%20for%20Support%20Staff.wav',
       transcript: 'This safety training video excerpt focuses on the importance of safe driving practices for employees operating company vehicles. It emphasizes that company drivers are representatives of their employer and must adhere to a higher standard of safety for both personal protection and the companys reputation. Key areas covered include operational and maintenance checks, defensive driving techniques to avoid accidents, evaluating and identifying at-risk drivers, and maintaining pedestrian safety. The overarching message is that safe driving is a shared responsibility between the driver and the organization'
     },
     {

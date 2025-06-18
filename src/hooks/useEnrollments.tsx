@@ -6,67 +6,107 @@ import { Course } from '@/data/courseTypes';
 import { allCourses } from '@/data/courses/completeDataIndex';
 
 // Using function declaration for Fast Refresh compatibility
-function useEnrollments() {
-  const { user } = useAuth();
-  
-  // Fetch user profile to determine their email domain
-  const { data: userProfile } = useQuery({
-    queryKey: ['user-profile-enrollments', user?.id], // Different queryKey from useCourseData
+function useEnrollments(isAdminView = false) { // Add isAdminView flag
+  const { user } = useAuth(); // Still needed for user_id in certificate creation if not fetched otherwise
+
+  // Fetch enrollments (all for admin, user-specific otherwise)
+  const { data: rawEnrollments, isLoading: isLoadingEnrollments, refetch: refetchEnrollments } = useQuery({
+    queryKey: isAdminView ? ['all-enrollments-admin'] : ['user-enrollments', user?.id],
     queryFn: async () => {
-      if (!user) return null;
+      if (!isAdminView && !user) return []; // For non-admin, user is required
       
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('email_domain') // Only select email_domain
-        .eq('id', user.id)
-        .single();
-      
-      if (error) {
-        console.error('Error fetching user profile for enrollments:', error);
-        // Don't throw, allow fallback to no domain filtering if profile fails for some reason
-        return null; 
-      }
-      
-      return data;
-    },
-    enabled: !!user
-  });
-  
-  // Fetch user enrollments
-  const { data: enrollments, isLoading: isLoadingEnrollments } = useQuery({
-    queryKey: ['user-enrollments', user?.id],
-    queryFn: async () => {
-      if (!user) return [];
-      
-      const { data, error } = await supabase
+      let query = supabase
         .from('enrollments')
         .select(`
           id,
+          user_id,
           progress,
           completed,
           course_id,
-          courses:course_id (
+          profile:profiles!inner (
+            full_name,
+            email
+          ),
+          courses!inner (
             id,
             title,
             description,
-            thumbnail,
-            domain
+            domain,
+            thumbnail
           )
         `)
-        .eq('user_id', user.id)
         .order('created_at', { ascending: false });
+
+      if (!isAdminView && user) {
+        query = query.eq('user_id', user.id);
+      }
+        
+      const { data, error } = await query;
         
       if (error) {
         console.error('Error fetching enrollments:', error);
         throw error;
       }
       
+      // console.log('Fetched raw enrollments:', data); // Debug log
       return data || [];
     },
-    enabled: !!user
+    enabled: isAdminView || !!user // Enable if admin view or if user is available for non-admin
   });
 
-  // Map enrolled database courses to the Course type
+  // Processed enrollments - structure them as EnrollmentsTable expects
+  const enrollments = React.useMemo(() => {
+    if (!rawEnrollments) return [];
+    return rawEnrollments.map((enrollment: any) => {
+      // The data should already be in the correct structure from the query
+      // but we ensure profile and course objects exist
+      // enrollment.courses (plural) will be the object fetched from the 'courses' table.
+      const rawCourseData = enrollment.courses; 
+
+      let processedCourseData;
+      if (rawCourseData) {
+        processedCourseData = {
+          ...rawCourseData,
+          // Ensure all expected fields from the query are present or have fallbacks
+          id: rawCourseData.id || enrollment.course_id, // Prefer joined ID, fallback to FK
+          title: rawCourseData.title || 'Unknown Course',
+          description: rawCourseData.description || '',
+          domain: rawCourseData.domain || 'General',
+          category: rawCourseData.domain || 'General', // Map domain to category
+          thumbnail: rawCourseData.thumbnail || 'https://placehold.co/600x400/png',
+          certificateAvailable: rawCourseData.certificateAvailable !== undefined ? rawCourseData.certificateAvailable : false,
+          instructor: rawCourseData.instructor || 'Unknown Instructor',
+          duration: rawCourseData.duration || 0,
+          modules: rawCourseData.modules || [],
+        };
+      } else {
+        // Fallback if 'enrollment.course' is somehow null despite inner join (should not happen)
+        processedCourseData = { 
+          id: enrollment.course_id, // Use the FK from enrollments table
+          title: 'Unknown Course',
+          description: '',
+          category: 'General',
+          thumbnail: 'https://placehold.co/600x400/png',
+          certificateAvailable: false,
+          domain: 'General',
+          instructor: 'Unknown Instructor',
+          duration: 0,
+          modules: [],
+        };
+      }
+
+      return {
+        ...enrollment,
+        profile: enrollment.profile || { full_name: 'N/A', email: 'N/A' },
+        course: processedCourseData,
+      };
+    });
+  }, [rawEnrollments]);
+
+  // The mapDatabaseCourse, inProgressCourses, completedCourses, recommendedCourses logic 
+  // might need adjustment or removal if this hook is now solely for the admin enrollments table.
+  // For now, let's assume they might still be used elsewhere or can be adapted.
+
   const mapDatabaseCourse = (enrollment: any): Course => {
     const stringCourseId = enrollment.course_id; // This is now expected to be the string course ID
     const dbCourseDetails = enrollment.courses; // This is the joined 'courses' table data (if any)
@@ -95,11 +135,12 @@ function useEnrollments() {
         title: dbCourseDetails?.title || 'Unknown Course',
         description: dbCourseDetails?.description || '',
         category: dbCourseDetails?.domain || 'General', // Fallback category from DB domain or 'General'
-        instructor: 'N/A',
         thumbnail: dbCourseDetails?.thumbnail || 'https://placehold.co/600x400/png',
-        duration: 'N/A',
-        modules: [], // Modules should ideally come from static data
-        domain: dbCourseDetails?.domain || '' // Keep domain if it's used elsewhere
+        certificateAvailable: dbCourseDetails?.certificateAvailable !== undefined ? dbCourseDetails?.certificateAvailable : false,
+        domain: dbCourseDetails?.domain || '', // Keep domain if it's used elsewhere
+        instructor: dbCourseDetails?.instructor || 'Unknown Instructor',
+        duration: dbCourseDetails?.duration || 0,
+        modules: dbCourseDetails?.modules || [],
       };
     }
   };
@@ -124,7 +165,19 @@ function useEnrollments() {
     : [];
   
   // Get recommended courses by excluding enrolled courses
-  const enrolledCourseIds = enrollments?.map(e => e.course_id) || [];
+  // This userProfile fetching is for the non-admin part (recommended courses for logged-in user)
+  const { data: userProfile } = useQuery({
+    queryKey: ['user-profile-for-recommendations', user?.id],
+    queryFn: async () => {
+      if (!user || isAdminView) return null; // Don't fetch if admin view or no user
+      const { data, error } = await supabase.from('profiles').select('email_domain').eq('id', user.id).single();
+      if (error) { console.error('Error fetching user profile for recommendations:', error); return null; }
+      return data;
+    },
+    enabled: !!user && !isAdminView
+  });
+
+  const enrolledCourseIds = rawEnrollments?.map(e => e.course_id) || [];
   
   const recommendedCourses = React.useMemo(() => {
     const potentialRecommended = allCourses.filter(course => !enrolledCourseIds.includes(course.id));
@@ -150,7 +203,7 @@ function useEnrollments() {
       }
     }
     return domainFilteredRecommended.slice(0, 3);
-  }, [enrolledCourseIds, userProfile]); // allCourses is stable, so not strictly needed in deps if it never changes instance
+  }, [enrolledCourseIds, userProfile, isAdminView]); // Add isAdminView
   
   // Calculate stats
   const totalEnrollments = enrollments?.length || 0;
@@ -165,7 +218,8 @@ function useEnrollments() {
     totalEnrollments,
     completedCount,
     inProgressCount,
-    enrollments
+    enrollments, // This is now the processed enrollments
+    refetchEnrollments // Expose refetch
   };
 }
 

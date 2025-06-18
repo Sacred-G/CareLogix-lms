@@ -1,4 +1,3 @@
-
 import { Course } from '../courseTypes';
 import { introDevDisabilitiesCourse } from './introDevDisabilities';
 import { clientRightsCourse } from './clientRights';
@@ -19,6 +18,7 @@ import { hoyerLiftTrainingCourse } from './hoyerLiftTraining';
 import { riskManagementIncidentReportingCourse } from './riskManagementIncidentReporting';
 import { developmentalDisabilitiesInteractive } from './developmentalDisabilitiesInteractive';
 import { conflictManagementDeEscalation } from './conflictManagementDeEscalation';
+import { resourcesCourse } from './resources';
 
 // New Hire Orientation Video Course
 export const newHireOrientationCourse: Course = {
@@ -77,6 +77,7 @@ export const dspCourses: Course[] = [
   hoyerLiftTrainingCourse, // Added Hoyer Lift Training Course
   riskManagementIncidentReportingCourse, // Added Risk Management and Incident Reporting Course
   conflictManagementDeEscalation,
+  resourcesCourse,
 ];
 
 // Micro Learning Courses - Short, focused learning modules
