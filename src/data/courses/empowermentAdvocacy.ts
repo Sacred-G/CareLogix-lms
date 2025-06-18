@@ -136,6 +136,66 @@ Empowerment is an ongoing process that requires patience, creativity, and a comm
           ],
           correctAnswer: 2,
           explanation: "Creating a supportive environment includes providing information and resources in accessible formats that enable individuals to make informed choices and participate fully."
+        },
+        {
+          id: "q6-mod1",
+          question: "What is the best way to support someone who has difficulty communicating their needs?",
+          options: [
+            "Make assumptions about what they want",
+            "Use alternative communication methods like pictures or gestures",
+            "Only offer limited choices to make it easier",
+            "Ask their family members instead of asking them directly"
+          ],
+          correctAnswer: 1,
+          explanation: "Using alternative communication methods like pictures, gestures, or assistive technology helps individuals express their needs in ways that work best for them, promoting their independence and self-advocacy."
+        },
+        {
+          id: "q7-mod1",
+          question: "Why is it important to involve individuals in planning their own support services?",
+          options: [
+            "It's required by law",
+            "It increases their sense of control and ownership",
+            "It makes the support worker's job easier",
+            "It's quicker than making decisions for them"
+          ],
+          correctAnswer: 1,
+          explanation: "Involving individuals in planning their support services increases their sense of control, ownership, and investment in their own goals, leading to better outcomes and greater satisfaction with services."
+        },
+        {
+          id: "q8-mod1",
+          question: "What should you do if an individual wants to take a risk that you're concerned about?",
+          options: [
+            "Forbid them from taking the risk",
+            "Help them understand the risks and benefits, then support their decision",
+            "Tell them it's not allowed",
+            "Contact their guardian to override their decision"
+          ],
+          correctAnswer: 1,
+          explanation: "The best approach is to help the individual understand the potential risks and benefits, discuss possible alternatives, and then support their informed decision while helping to minimize any potential negative consequences."
+        },
+        {
+          id: "q9-mod1",
+          question: "What is a key aspect of promoting empowerment in daily activities?",
+          options: [
+            "Completing tasks for the individual to ensure they're done correctly",
+            "Providing opportunities for the individual to make choices, no matter how small",
+            "Following the same routine every day",
+            "Making all decisions to reduce stress for the individual"
+          ],
+          correctAnswer: 1,
+          explanation: "Empowerment is built through daily opportunities to make choices and exercise control, even in small matters. These small decisions help build confidence and self-determination over time."
+        },
+        {
+          id: "q10-mod1",
+          question: "How can you help someone develop self-advocacy skills in a group setting?",
+          options: [
+            "Speak for them to ensure their needs are met",
+            "Encourage them to speak for themselves and offer support if needed",
+            "Only ask them simple yes/no questions",
+            "Address the group leader instead of the individual"
+          ],
+          correctAnswer: 1,
+          explanation: "In group settings, it's important to encourage individuals to speak for themselves while offering appropriate support. This might include giving them time to respond, helping them prepare what they want to say, or providing assistive communication tools if needed."
         }
       ],
       audioUrl: "https://xaqzisvydglrczbzmbpw.supabase.co/storage/v1/object/public/course_media//Empowerment%20&%20Advocacy_%20A%20DSP's%20Guide.wav",
