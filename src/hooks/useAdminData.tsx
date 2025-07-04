@@ -809,10 +809,17 @@ function useAdminData() {
     enabled: !!adminType // Enable for all admin types
   });
 
-  // Fetch course completion statistics
+  // Fetch course completion statistics with domain filtering
   const { data: courseStats, isLoading: loadingStats } = useQuery({
-    queryKey: ['admin-course-stats'],
+    queryKey: ['admin-course-stats', adminType, user?.email],
     queryFn: async () => {
+      if (!user?.email) return [];
+      
+      // Extract domain from admin's email
+      const domain = user.email.split('@')[1]?.toLowerCase();
+      if (!domain) return [];
+      
+      // First, get all courses
       const { data: courses, error: coursesError } = await supabase
         .from('courses')
         .select('id, title');
@@ -822,35 +829,43 @@ function useAdminData() {
         throw coursesError;
       }
       
-      const stats = await Promise.all(courses.map(async (course) => {
-        const { count: enrollmentCount, error: countError } = await supabase
-          .from('enrollments')
-          .select('id', { count: 'exact', head: true })
-          .eq('course_id', course.id);
+      // Get users in the admin's domain
+      const { data: domainUsers, error: usersError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('email_domain', domain);
         
-        const { count: completedCount, error: completedError } = await supabase
-          .from('enrollments')
-          .select('id', { count: 'exact', head: true })
-          .eq('course_id', course.id)
-          .eq('completed', true);
+      if (usersError) {
+        console.error('Error fetching domain users:', usersError);
+        throw usersError;
+      }
+      
+      const userIds = domainUsers?.map(user => user.id) || [];
+      if (userIds.length === 0) return [];
+      
+      // Get all enrollments for users in this domain
+      const { data: enrollments, error: enrollmentsError } = await supabase
+        .from('enrollments')
+        .select('id, course_id, completed, user_id')
+        .in('user_id', userIds);
         
-        if (countError || completedError) {
-          console.error('Error fetching course stats:', countError || completedError);
-          return {
-            id: course.id,
-            title: course.title,
-            totalEnrollments: 0,
-            completedEnrollments: 0
-          };
-        }
+      if (enrollmentsError) {
+        console.error('Error fetching enrollments:', enrollmentsError);
+        throw enrollmentsError;
+      }
+      
+      // Calculate stats for each course
+      const stats = courses.map(course => {
+        const courseEnrollments = enrollments?.filter(e => e.course_id === course.id) || [];
+        const completedCount = courseEnrollments.filter(e => e.completed).length;
         
         return {
           id: course.id,
           title: course.title,
-          totalEnrollments: enrollmentCount || 0,
-          completedEnrollments: completedCount || 0
+          totalEnrollments: courseEnrollments.length,
+          completedEnrollments: completedCount
         };
-      }));
+      });
       
       return stats;
     }
@@ -860,8 +875,8 @@ function useAdminData() {
   const { data: courseCompletionData, isLoading: loadingCourseCompletionData } = useQuery({
     queryKey: ['course-completion-data', courseStats],
     queryFn: async () => {
-      // Simple implementation for now
-      const stats = courseStats || [];
+      // Filter out courses with no enrollments
+      const stats = (courseStats || []).filter(course => course.totalEnrollments > 0);
       
       return stats.map(course => ({
         name: course.title,

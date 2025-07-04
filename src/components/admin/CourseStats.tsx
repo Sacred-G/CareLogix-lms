@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -19,6 +20,7 @@ interface CourseStatsProps {
 }
 
 export default function CourseStats({ courseStats, loadingStats }: CourseStatsProps) {
+  const { user } = useAuth();
   const [selectedCourse, setSelectedCourse] = useState<CourseStatItem | null>(null);
   const [enrolledUsers, setEnrolledUsers] = useState<CourseParticipant[] | null>(null);
   const [completedUsers, setCompletedUsers] = useState<CourseParticipant[] | null>(null);
@@ -27,7 +29,7 @@ export default function CourseStats({ courseStats, loadingStats }: CourseStatsPr
   const handleCourseClick = async (course: CourseStatItem) => {
     setSelectedCourse(course);
     setLoadingDetails(true);
-    const { enrolledUsers, completedUsers } = await getCourseParticipants(course.id);
+    const { enrolledUsers, completedUsers } = await getCourseParticipants(course.id, user?.email || null);
     setEnrolledUsers(enrolledUsers);
     setCompletedUsers(completedUsers);
     setLoadingDetails(false);

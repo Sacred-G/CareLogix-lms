@@ -17,6 +17,7 @@
     "@ant-design/icons": "^6.0.0",
     "@azure/msal-browser": "^4.13.1",
     "@azure/msal-react": "^3.0.12",
+    "@clerk/clerk-react": "^5.32.3",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",

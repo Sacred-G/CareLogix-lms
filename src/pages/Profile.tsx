@@ -39,16 +39,24 @@ export default function Profile() {
   
   // Fetch user profile data
   useEffect(() => {
-    if (user?.id) {
-      fetchUserProfile(user.id);
-      fetchUserEnrollments(user.id);
-      fetchUserAchievements(user.id);
-    }
-    // Set email from user object directly as it's not in profiles table
-    if (user?.email) {
-      // No need to set email state, as it's disabled and comes from auth.user
-    }
-  }, [user]);
+    let isMounted = true;
+    
+    const fetchData = async () => {
+      if (user?.id) {
+        await Promise.all([
+          fetchUserProfile(user.id),
+          fetchUserEnrollments(user.id),
+          fetchUserAchievements(user.id)
+        ]);
+      }
+    };
+    
+    fetchData();
+    
+    return () => {
+      isMounted = false;
+    };
+  }, [user?.id]); // Only depend on user.id to prevent unnecessary re-fetches
   
   const fetchUserProfile = async (userId: string) => {
     try {
@@ -91,11 +99,120 @@ export default function Profile() {
   };
   
   const fetchUserAchievements = async (userId: string) => {
-    // Mock achievements for now - in a real app we'd fetch from a database table
-    setAchievements([
-      { id: 1, title: 'First Login', description: 'Logged in for the first time', date: '2023-05-01' },
-      { id: 2, title: 'Course Started', description: 'Started your first course', date: '2023-05-02' }
-    ]);
+    try {
+      console.log('Fetching achievements for user:', userId);
+      
+      // Clear existing achievements first
+      setAchievements([]);
+      
+      // Fetch fresh data from the database
+      const [enrollmentsResult, completionsResult] = await Promise.all([
+        supabase
+          .from('enrollments')
+          .select('*, courses(*)')
+          .eq('user_id', userId)
+          .order('completed_at', { ascending: false }),
+          
+        supabase
+          .from('completions')
+          .select('*')
+          .eq('user_id', userId)
+          .order('completed_at', { ascending: false })
+      ]);
+
+      const enrollments = enrollmentsResult.data || [];
+      const completions = completionsResult.data || [];
+      
+      console.log('Enrollments:', enrollments);
+      console.log('Completions:', completions);
+      
+      const achievements = [];
+      const now = new Date();
+      
+      // Add registration achievement with current date
+      achievements.push({
+        id: 'reg-1',
+        title: 'Welcome Aboard!',
+        description: 'Joined the learning platform',
+        date: now.toISOString().split('T')[0],
+        icon: '👋',
+        timestamp: now.getTime()
+      });
+
+      // Add course completion achievements
+      const completedCourses = enrollments.filter(e => e.progress === 100);
+      if (completedCourses.length > 0) {
+        achievements.push({
+          id: 'course-1',
+          title: 'First Course Completed',
+          description: `Completed ${completedCourses[0].courses?.title || 'a course'}`,
+          date: completedCourses[0].completed_at?.split('T')[0] || now.toISOString().split('T')[0],
+          icon: '🎓',
+          timestamp: new Date(completedCourses[0].completed_at || now).getTime()
+        });
+
+        if (completedCourses.length >= 3) {
+          achievements.push({
+            id: 'course-3',
+            title: 'Triple Threat',
+            description: 'Completed 3 courses',
+            date: completedCourses[2].completed_at?.split('T')[0] || now.toISOString().split('T')[0],
+            icon: '🔥',
+            timestamp: new Date(completedCourses[2].completed_at || now).getTime()
+          });
+        }
+      }
+
+      // Add streak achievement based on recent activity
+      if (completions.length > 0) {
+        const completionDates = completions
+          .map(c => new Date(c.completed_at || c.created_at).toDateString())
+          .filter((v, i, a) => a.indexOf(v) === i);
+        
+        if (completionDates.length >= 3) {
+          achievements.push({
+            id: 'streak-1',
+            title: 'Learning Streak',
+            description: 'Completed activities on 3 different days',
+            date: now.toISOString().split('T')[0],
+            icon: '⚡',
+            timestamp: now.getTime()
+          });
+        }
+      }
+
+      // Add enrollment achievement
+      if (enrollments.length > 0) {
+        const latestEnrollment = enrollments[0]; // Already ordered by completed_at
+        achievements.push({
+          id: 'enroll-1',
+          title: 'First Steps',
+          description: `Enrolled in ${latestEnrollment.courses?.title || 'a course'}`,
+          date: latestEnrollment.enrolled_at?.split('T')[0] || now.toISOString().split('T')[0],
+          icon: '📚',
+          timestamp: new Date(latestEnrollment.enrolled_at || now).getTime()
+        });
+      }
+
+      // Sort achievements by timestamp (newest first)
+      const sortedAchievements = achievements.sort((a, b) => b.timestamp - a.timestamp);
+      
+      console.log('Generated achievements:', sortedAchievements);
+      setAchievements(sortedAchievements);
+    } catch (error) {
+      console.error('Error in fetchUserAchievements:', error);
+      // Fallback to default achievements with current date
+      setAchievements([
+        { 
+          id: 'default-1', 
+          title: 'Getting Started', 
+          description: 'You\'re on your learning journey!', 
+          date: new Date().toISOString().split('T')[0], 
+          icon: '🌟',
+          timestamp: Date.now()
+        }
+      ]);
+    }
   };
   
   const handleUpdateProfile = async (e: React.FormEvent) => {
@@ -266,12 +383,16 @@ export default function Profile() {
                       {achievements.length > 0 ? (
                         <ul className="space-y-4">
                           {achievements.map((achievement) => (
-                            <li key={achievement.id} className="flex items-center space-x-4">
-                              <span className="text-2xl">🏆</span>
-                              <div>
-                                <div className="font-semibold">{achievement.title}</div>
+                            <li key={achievement.id} className="flex items-start space-x-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-xl">
+                                {achievement.icon || '🏆'}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="font-semibold text-foreground">{achievement.title}</div>
                                 <div className="text-sm text-muted-foreground">{achievement.description}</div>
-                                <div className="text-xs text-muted-foreground">{achievement.date}</div>
+                                <div className="text-xs text-muted-foreground mt-1">
+                                  Earned on {new Date(achievement.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                </div>
                               </div>
                             </li>
                           ))}

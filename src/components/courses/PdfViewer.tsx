@@ -10,7 +10,19 @@ import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Download, RotateCcw, Extern
 import { useFormSubmissions } from '@/hooks/useFormSubmissions';
 
 // Configure the worker source for PDF.js
-pdfjs.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.mjs'; // Using local worker
+// Use a dynamic path that works in both development and production
+const workerSrc = process.env.NODE_ENV === 'production' 
+  ? `${window.location.origin}${process.env.PUBLIC_URL || ''}/js/pdf.worker.mjs`
+  : '/js/pdf.worker.mjs';
+
+try {
+  pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
+} catch (error) {
+  console.error('Failed to set up PDF.js worker:', error);
+  // Fallback to using the worker from a CDN if local worker fails
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+  console.warn('Falling back to CDN worker');
+}
 
 interface PdfViewerProps {
   filePath: string;

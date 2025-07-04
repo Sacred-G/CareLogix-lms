@@ -1,6 +1,7 @@
 import { Certificate, Course } from '@/data/courseTypes';
 import { supabase } from '@/integrations/supabase/client';
 import { verifyUserDomainAccess, getUserDomain, verifyCertificateAccess } from './domainService';
+import { v4 as uuidv4 } from 'uuid';
 
 // Generate a unique certificate ID
 export const generateCertificateId = (): string => {
@@ -51,14 +52,14 @@ export const createCertificate = (
   const userDomain = getUserDomain(email);
   
   return {
-    id: certNumber,
+    id: uuidv4(), // Generate UUID for database ID
     userId,
     userName,
     courseId: course.id,
     courseTitle: course.title,
     issueDate: currentDate,
     completionDate: currentDate,
-    certificateNumber: certNumber,
+    certificateNumber: certNumber, // Keep the formatted certificate number
     organizationName: organization.name,
     organizationLogo: organization.logo,
     organizationDomain: userDomain || undefined,

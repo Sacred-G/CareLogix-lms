@@ -117,9 +117,11 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
 
   // Helper functions to determine if tabs have content
   const hasScormContent = () => {
-    return ['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support', 'boundaries-ethics'].includes(module.courseId || '') ||
-           (scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] && scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length > 0) ||
-           (scormModules && scormModules.length > 0);
+    const hasDirectScorm = ['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support', 'boundaries-ethics'].includes(module.courseId || '');
+    const hasScormInConfig = scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`]?.length > 0;
+    const hasScormInDatabase = scormModules?.length > 0;
+    
+    return hasDirectScorm || hasScormInConfig || hasScormInDatabase;
   };
 
   const hasInteractiveContent = () => {
@@ -169,18 +171,89 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
 
   // Handle role-based iframe selection module type
   if (module.customModuleType === 'roleBasedIframeSelection') {
+    const [isTrainingCompleted, setIsTrainingCompleted] = React.useState(false);
+    const [isMarkingComplete, setIsMarkingComplete] = React.useState(false);
+
+    const handleMarkComplete = async () => {
+      if (!onContentComplete) return;
+      
+      try {
+        setIsMarkingComplete(true);
+        // Mark the module as completed
+        onContentComplete('video'); // Using 'video' as the content type since it's required for completion
+        setIsTrainingCompleted(true);
+        
+        toast({
+          title: "Training Marked as Completed",
+          description: "Thank you for completing the training. Your progress has been saved.",
+        });
+      } catch (error) {
+        console.error('Error marking training as complete:', error);
+        toast({
+          title: "Error",
+          description: "Failed to mark training as complete. Please try again.",
+          variant: "destructive"
+        });
+      } finally {
+        setIsMarkingComplete(false);
+      }
+    };
+
     if (selectedRoleIframeUrl) {
       return (
         <div className="space-y-8">
           <h2 className="text-2xl font-bold text-gradient-primary">{module.title || 'Training Module'}</h2>
           <p className="text-muted-foreground text-lg">{module.description || 'Please complete the training below.'}</p>
-          <iframe 
-            src={selectedRoleIframeUrl}
-            title={module.title || 'Sexual Harassment Prevention Training'}
-            className="w-full h-[70vh] border-0 rounded-lg shadow-lg"
-            allowFullScreen
-          ></iframe>
-          <Button onClick={() => setSelectedRoleIframeUrl(null)} variant="outline">Back to Role Selection</Button>
+          
+          <div className="relative w-full h-[70vh] border-0 rounded-lg shadow-lg overflow-hidden">
+            <iframe 
+              src={selectedRoleIframeUrl}
+              title={module.title || 'Sexual Harassment Prevention Training'}
+              className="w-full h-full border-0"
+              allowFullScreen
+            />
+          </div>
+          
+          <div className="space-y-4">
+            {module.completionInstructions && (
+              <div className="prose dark:prose-invert max-w-none p-4 bg-muted/30 rounded-lg">
+                <ReactMarkdown>{module.completionInstructions}</ReactMarkdown>
+              </div>
+            )}
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                onClick={() => setSelectedRoleIframeUrl(null)} 
+                variant="outline"
+                className="flex-1"
+              >
+                Back to Role Selection
+              </Button>
+              
+              <Button
+                onClick={handleMarkComplete}
+                disabled={isTrainingCompleted || isMarkingComplete}
+                className={`flex-1 ${isTrainingCompleted ? 'bg-green-500 hover:bg-green-600' : ''}`}
+              >
+                {isMarkingComplete ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Saving...
+                  </>
+                ) : isTrainingCompleted ? (
+                  <>
+                    <CheckCircle className="w-4 h-4 mr-2" />
+                    Training Completed
+                  </>
+                ) : (
+                  'Mark Training as Complete'
+                )}
+              </Button>
+            </div>
+          </div>
         </div>
       );
     }
@@ -503,7 +576,8 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
               ) : null}
 
               {/* No SCORM content message */}
-              {(!scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] || scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length === 0) && 
+              {!['intro-dev-disabilities', 'client-rights', 'infection-control', 'emergency-preparedness', 'trust-rapport', 'communication-empathy', 'documentation-visits', 'medication-admin', 'positive-behavior-support', 'boundaries-ethics'].includes(module.courseId || '') && 
+               (!scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`] || scormModulesByCourse[`${module.courseId || ''}_${module.id || ''}`].length === 0) && 
                (!scormModules || scormModules.length === 0) && (
                 <div className="text-center py-8">
                   <p className="text-muted-foreground">No SCORM modules available for this module.</p>

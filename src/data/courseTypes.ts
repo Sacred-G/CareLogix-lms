@@ -41,6 +41,7 @@ export interface Module {
   customModuleType?: string; // For special handling like role-based iframes
   supervisorIframeUrl?: string; // URL for supervisor iframe content
   nonSupervisorIframeUrl?: string; // URL for non-supervisor iframe content
+  completionInstructions?: string; // Instructions shown after iframe content
   pdfPath?: string; // Optional path to a PDF document for the module
   interactiveScenario?: {
     title: string;
