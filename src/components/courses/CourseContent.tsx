@@ -267,7 +267,10 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           {module.supervisorIframeUrl && (
             <Button 
-              onClick={() => setSelectedRoleIframeUrl(module.supervisorIframeUrl!)}
+              onClick={() => {
+  setSelectedRoleIframeUrl(module.supervisorIframeUrl!);
+  if (onContentComplete) onContentComplete('video');
+}}
               className="flex-1 py-3 text-lg bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               Supervisor Training
@@ -275,7 +278,10 @@ export default function CourseContent({ module, onQuizComplete, onContentComplet
           )}
           {module.nonSupervisorIframeUrl && (
             <Button 
-              onClick={() => setSelectedRoleIframeUrl(module.nonSupervisorIframeUrl!)}
+              onClick={() => {
+  setSelectedRoleIframeUrl(module.nonSupervisorIframeUrl!);
+  if (onContentComplete) onContentComplete('video');
+}}
               className="flex-1 py-3 text-lg bg-secondary hover:bg-secondary/90 text-secondary-foreground"
             >
               Non-Supervisor Training

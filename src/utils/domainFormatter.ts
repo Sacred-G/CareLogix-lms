@@ -16,6 +16,7 @@ export const formatDomainToOrganizationName = (domain: string): string => {
   const customMappings: Record<string, string> = {
     'centeredsupportservice': 'Centered Support Service',
     'includemetoo': 'Include Me Too Please',
+'includemetooplease.com': 'Include Me Too Please',
     'carelogix': 'CareLogix',
     'dsptraining': 'DSP Training',
   };

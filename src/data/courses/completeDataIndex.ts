@@ -19,6 +19,7 @@ import { riskManagementIncidentReportingCourse } from './riskManagementIncidentR
 import { developmentalDisabilitiesInteractive } from './developmentalDisabilitiesInteractive';
 import { conflictManagementDeEscalation } from './conflictManagementDeEscalation';
 import { resourcesCourse } from './resources';
+import { specialIncidentReportingScenarios } from './specialIncidentReportingScenarios';
 
 // New Hire Orientation Video Course
 export const newHireOrientationCourse: Course = {
@@ -83,7 +84,8 @@ export const dspCourses: Course[] = [
 // Micro Learning Courses - Short, focused learning modules
 export const microLearningCourses: Course[] = [
   // Interactive learning modules
-  developmentalDisabilitiesInteractive
+  developmentalDisabilitiesInteractive,
+  specialIncidentReportingScenarios
 ];
 
 // General courses for generic professional development

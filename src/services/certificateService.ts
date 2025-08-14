@@ -1,5 +1,6 @@
 import { Certificate, Course } from '@/data/courseTypes';
 import { supabase } from '@/integrations/supabase/client';
+import { formatDomainToOrganizationName } from '@/utils/domainFormatter';
 import { verifyUserDomainAccess, getUserDomain, verifyCertificateAccess } from './domainService';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -22,7 +23,7 @@ export const getOrganizationFromEmail = (email: string): { name: string; logo?: 
       name: 'Centered Support Service',
       logo: '/Images/css_logo.png' // Path to CSS logo
     },
-    'includemetoo.org': {
+    'includemetooplease.com': {
       name: 'Include Me Too Please',
       logo: '/Images/IMTP_LOGO.png' // Path to IMTP logo
     },
@@ -49,8 +50,11 @@ export const createCertificate = (
   const currentDate = new Date().toISOString();
   const organization = getOrganizationFromEmail(email);
   const certNumber = generateCertificateId();
-  const userDomain = getUserDomain(email);
-  
+  let userDomain = getUserDomain(email);
+  // Remove common domain suffixes for best formatting
+  const domainForFormatting = userDomain ? userDomain.replace(/\.(com|org|net|edu)$/i, '') : '';
+  const formattedOrgName = formatDomainToOrganizationName(domainForFormatting || '');
+
   return {
     id: uuidv4(), // Generate UUID for database ID
     userId,
@@ -59,8 +63,8 @@ export const createCertificate = (
     courseTitle: course.title,
     issueDate: currentDate,
     completionDate: currentDate,
-    certificateNumber: certNumber, // Keep the formatted certificate number
-    organizationName: organization.name,
+    certificateNumber: certNumber, // Store custom certificate number
+    organizationName: formattedOrgName || organization.name,
     organizationLogo: organization.logo,
     organizationDomain: userDomain || undefined,
   };
@@ -86,21 +90,22 @@ export const saveCertificate = async (certificate: Certificate): Promise<{ succe
     }
     console.log('[CertificateService] Organization domain for save:', organizationDomain);
 
+    // Remove 'id' if present to prevent UUID errors
+    const { id, certificateNumber, completionDate, issueDate, courseId, courseTitle, userId, userName, organizationName, organizationLogo, ...certificateData } = certificate;
     const { data, error } = await supabase
       .from('certificates')
       .insert({
-        id: certificate.id,
-        user_id: certificate.userId,
-        user_name: certificate.userName,
-        course_id: certificate.courseId,
-        course_title: certificate.courseTitle,
-        issue_date: certificate.issueDate,
-        completion_date: certificate.completionDate,
-        valid_until: certificate.validUntil || null,
-        certificate_number: certificate.certificateNumber,
-        organization_name: certificate.organizationName || null,
-        organization_logo: certificate.organizationLogo || null,
-        organization_domain: organizationDomain || null
+        user_id: userId,
+        user_name: userName,
+        course_id: courseId,
+        course_title: courseTitle,
+        issue_date: issueDate,
+        completion_date: completionDate,
+        certificate_number: certificateNumber,
+        organization_name: organizationName || null,
+        organization_logo: organizationLogo || null,
+        organization_domain: organizationDomain || null,
+        valid_until: certificate.validUntil || null
       })
       .select('id')
       .single();

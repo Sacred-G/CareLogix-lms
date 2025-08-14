@@ -6,3 +6,11 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Brother Signature';
+  src: url('../../brother-signature-font/BrotherSignature-7BWnK.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

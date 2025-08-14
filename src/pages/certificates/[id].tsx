@@ -4,23 +4,16 @@ import { supabase } from '@/integrations/supabase/client';
 import { Spin, Result, Button } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 
-interface Certificate {
-  id: string;
-  user_name: string;
-  course_title: string;
-  issue_date: string;
-  certificate_number: string;
-  valid_until?: string;
-  organization_name?: string;
-  organization_logo?: string;
-}
+import { Certificate as CertificateType } from '@/data/courseTypes';
+// Use shared CertificateType interface for camelCase fields
+
 
 const CertificateViewer = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [certificate, setCertificate] = useState<Certificate | null>(null);
+  const [certificate, setCertificate] = useState<CertificateType | null>(null);
 
   useEffect(() => {
     const fetchCertificate = async () => {
@@ -37,7 +30,20 @@ const CertificateViewer = () => {
         if (error) throw error;
         if (!data) throw new Error('Certificate not found');
 
-        setCertificate(data);
+        setCertificate({
+          id: data.id,
+          userId: data.user_id,
+          userName: data.user_name,
+          courseId: data.course_id,
+          courseTitle: data.course_title,
+          issueDate: data.issue_date,
+          completionDate: data.completion_date,
+          validUntil: data.valid_until,
+          certificateNumber: data.certificate_number,
+          organizationName: data.organization_name,
+          organizationLogo: data.organization_logo,
+          organizationDomain: data.organization_domain,
+        });
         setError(null);
       } catch (err: any) {
         console.error('Error fetching certificate:', err);
@@ -85,18 +91,19 @@ const CertificateViewer = () => {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">Certificate of Completion</h1>
           <p className="text-gray-600">This certificate is awarded to</p>
-          <h2 className="text-4xl font-bold my-4">{certificate.user_name}</h2>
+          <h2 className="text-4xl font-bold my-4">{certificate.userName}</h2>
           <p className="text-lg">for successfully completing the course</p>
-          <h3 className="text-2xl font-semibold my-2">{certificate.course_title}</h3>
+          <h3 className="text-2xl font-semibold my-2">{certificate.courseTitle}</h3>
           
           <div className="mt-8 flex justify-between">
             <div className="text-left">
-              <p className="font-semibold">Issued on:</p>
-              <p>{new Date(certificate.issue_date).toLocaleDateString()}</p>
+              <p className="font-semibold">{certificate.userName}</p>
+              <p>{certificate.courseTitle}</p>
+              <p>{new Date(certificate.issueDate).toLocaleDateString()}</p>
             </div>
             <div className="text-right">
               <p className="font-semibold">Certificate ID:</p>
-              <p>{certificate.certificate_number}</p>
+              <p>{certificate.certificateNumber}</p>
             </div>
           </div>
         </div>

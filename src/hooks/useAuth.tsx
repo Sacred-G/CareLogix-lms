@@ -98,26 +98,35 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
 
       if (data && data.user) {
-        // Create a profile entry with the user's role
+        // Extract email domain
+        const email_domain = email.split('@')[1]?.toLowerCase() || null;
+        
+        // Create a profile entry with the user's role and domain
         const { error: profileError } = await supabase
           .from('profiles')
-          .insert({
+          .upsert({
             id: data.user.id,
             full_name: fullName,
             email: email,
+            email_domain: email_domain,
             role: email.includes('admin') ? 'admin' : 'student',
             failed_attempts: 0,
-            is_locked: false
+            is_locked: false,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            // For regular sign-ups, managed_domains will be null by default
+            // and can be updated later by an admin if needed
+            managed_domains: null
           });
 
         if (profileError) {
-          console.error('Error creating profile:', profileError);
+          console.error('Error creating/updating profile:', profileError);
           toast.error('Account created but profile setup failed.');
         } else {
           toast.success('Account created successfully! Please check your email to confirm your account.');
         }
-        navigate('/auth');
       }
+      navigate('/auth');
     } catch (error: any) {
       setError(error.message || 'Error creating account');
       toast.error(error.message || 'Error creating account');
